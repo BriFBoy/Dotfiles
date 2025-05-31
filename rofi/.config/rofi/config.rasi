@@ -1,0 +1,8 @@
+configuration {
+   modes: [drun, run];
+   font: "JetBrainsMono Nerd Font Mono, 13";
+}
+
+@import "~/.cache/wal/colors-rofi-dark"
+
+

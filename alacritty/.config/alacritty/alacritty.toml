@@ -1,0 +1,17 @@
+# MY Alacrity config
+[general]
+import = [
+   "~/.cache/wal/colors-alacritty.toml",
+   "~/.config/alacritty/jetbrain-mono-nerd.toml"
+]
+
+[window]
+opacity = 0.8
+
+[scrolling]
+multiplier = 5
+
+history = 100
+[font]
+size = 13
+

@@ -1,0 +1,18 @@
+[global]
+
+monitor = 0
+origin = top-center
+
+alignment = center
+
+width = (100, 300)
+height = (0, 300)
+offset = (10, 10)
+
+padding = 5
+text_icon_padding = 2
+corner_radius = 7
+
+frame_color = "#00ffffcc"
+background = "#00000080"
+foreground = "#00ffffcc"

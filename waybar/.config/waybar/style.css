@@ -1,0 +1,58 @@
+@import url("../../.cache/wal/colors-waybar.css");
+
+* {
+    /* `otf-font-awesome` is required to be installed for icons */
+    font-family: FontAwesome, Roboto, Helvetica, Arial, sans-serif;
+    font-size: 13px;
+    border-radius: 13px;
+    color: @color6;
+}
+
+window#waybar {
+    background-color: transparent;
+}
+#center {
+    background-color: @background;
+    font-size: larger;
+    font-weight: bold;
+}
+#hardware {
+    background-color: @background;
+    font-size: larger;
+    font-weight: bold;
+
+}
+#workspaces button {
+    padding: 0 5px;
+    background-color: transparent;
+}
+
+#workspaces button.active {
+    color: @color12;
+}
+#tray,
+#temperature,
+#bluetooth,
+#custom-powerbutton,
+#clock,
+#cpu,
+#memory,
+#disk,
+#network,
+#pulseaudio {
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+#workspaces {
+    background-color: @background;
+    font-size: larger;
+    font-weight: bold;
+    border-radius: 10px;
+}
+#tray {
+    background-color: @background;
+    font-size: larger;
+    font-weight: bold;
+    border-radius: 10px;
+}
