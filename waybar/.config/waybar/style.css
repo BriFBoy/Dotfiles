@@ -3,21 +3,19 @@
 * {
     /* `otf-font-awesome` is required to be installed for icons */
     font-family: FontAwesome, Roboto, Helvetica, Arial, sans-serif;
-    font-size: 13px;
-    border-radius: 13px;
+    font-size: 14px;
+    font-weight: bolder;
     color: @color6;
 }
 
 window#waybar {
-    background-color: transparent;
+    background-color: @background;
 }
 #center {
-    background-color: @background;
     font-size: larger;
     font-weight: bold;
 }
 #hardware {
-    background-color: @background;
     font-size: larger;
     font-weight: bold;
 
@@ -28,11 +26,12 @@ window#waybar {
 }
 
 #workspaces button.active {
-    color: @color12;
+    color: @color1;
 }
 #tray,
 #temperature,
 #bluetooth,
+#battery,
 #custom-powerbutton,
 #clock,
 #cpu,
@@ -45,13 +44,11 @@ window#waybar {
 }
 
 #workspaces {
-    background-color: @background;
     font-size: larger;
     font-weight: bold;
     border-radius: 10px;
 }
 #tray {
-    background-color: @background;
     font-size: larger;
     font-weight: bold;
     border-radius: 10px;

@@ -1,11 +1,11 @@
 // -*- mode: jsonc -*-
 {
-    // "layer": "top", // Waybar at top layer
-    // "position": "bottom", // Waybar position (top|bottom|left|right)
-    "height": 30, // Waybar height (to be removed for auto height)
+    
+    "position": "bottom", // Waybar position (top|bottom|left|right)
+    "height": 32, // Waybar height (to be removed for auto height)
     // "width": 1280, // Waybar width
-    "spacing": 10, // Gaps between modules in px
-    // Choose the order of the modules
+    "spacing": 5, // Gaps between modules in px
+    
     "modules-left": [
         "hyprland/workspaces",
         "tray"
@@ -14,8 +14,9 @@
         "group/center"
     ],
     "modules-right": [
-        "group/hardware"
-
+        "group/hardware",
+        "group/othersuff"
+        
     ],
 
     "group/center": {
@@ -23,7 +24,7 @@
         "modules": [
             "pulseaudio",
             "clock", 
-            "group/powermenu"
+            "custom/powerbutton"
         ]
     },
     "group/hardware": {
@@ -31,25 +32,17 @@
         "modules": [
             "cpu",
             "memory",
-            "disk",
-            "temperature"
+            "disk"
         ]
     },
-    "group/powermenu": {
-        "modules": [
-            "custom/powerbutton", 
-            "bluetooth",
-            "network"
-        ],
+        "group/othersuff": {
         "orientation": "horizontal",
-        "transition-left-to-right": false,
-        "drawer": {
-            "click-to-reveal": false,
-            "transition-duration": 500
-
-        }
+        "modules": [
+            "bluetooth",
+            "network",
+            "battery"
+        ]
     },
-    
 
      "hyprland/workspaces": {
          "disable-scroll": true,
@@ -57,6 +50,7 @@
          "warp-on-scroll": false,
          "format": "{name}"
     },
+
     "pulseaudio": {
         "format": "{volume}% {icon}",
         "format-bluetooth": "{volume}% {icon}",
@@ -80,7 +74,7 @@
 
     "tray": {
         // "icon-size": 21,
-        "spacing": 10,
+        "spacing": 10
         // "icons": {
         //   "blueman": "bluetooth",
         //   "TelegramDesktop": "$HOME/.local/share/icons/hicolor/16x16/apps/telegram.png"
@@ -95,6 +89,16 @@
 	    "tooltip-format": "{controller_alias}\t{controller_address}",
 	    "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{device_enumerate}",
 	    "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}"
+    },
+    "battery": {
+        "interval": 120,
+        "states": {
+            "warning": 35,
+            "critical": 30
+        },
+        "format": "{capacity}% {icons}",
+        "format-icons": ["", "", "", "", ""],
+        "max-length": 25
     },
 
     "clock": {
@@ -112,29 +116,13 @@
         "format": "{}% "
     },
 
-    "temperature": {
-        // "thermal-zone": 2,
-        // "hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",
-        "critical-threshold": 80,
-        // "format-critical": "{temperatureC}°C {icon}",
-        "format": "{temperatureC}°C {icon}",
-        "format-icons": ["", "", ""]
-    },
-
-    "backlight": {
-        // "device": "acpi_video1",
-        "format": "{percent}% {icon}",
-        "format-icons": ["", "", "", "", "", "", "", "", ""]
-    },
-
     "network": {
-        // "interface": "wlp2*", // (Optional) To force the use of this interface
-        "format-wifi": "{essid} ({signalStrength}%) ",
-        "format-ethernet": "",
-        "tooltip-format": "{ifname} via {gwaddr} ",
+        "format-wifi": "({signalStrength}%) 󰖩 ",
+        "format-ethernet": "󱚽 ",
+        "tooltip-format": "{gwaddr} ",
         "format-linked": "{ifname} (No IP) ",
-        "format-disconnected": "Disconnected ⚠",
-        "format-alt": "{ifname}: {ipaddr}/{cidr}"
+        "format-disconnected": "󰖪 ",
+        "format-alt": "{ipaddr}/{cidr}"
     },
 
     "custom/powerbutton": {
