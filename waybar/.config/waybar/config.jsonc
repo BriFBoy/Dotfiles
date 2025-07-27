@@ -2,7 +2,7 @@
 {
     
     "position": "bottom", // Waybar position (top|bottom|left|right)
-    "height": 32, // Waybar height (to be removed for auto height)
+    "height": 40, // Waybar height (to be removed for auto height)
     // "width": 1280, // Waybar width
     "spacing": 5, // Gaps between modules in px
     
@@ -91,14 +91,13 @@
 	    "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}"
     },
     "battery": {
-        "interval": 120,
+        "interval": 60,
         "states": {
             "warning": 35,
             "critical": 30
         },
-        "format": "{capacity}% {icons}",
-        "format-icons": ["", "", "", "", ""],
-        "max-length": 25
+        "format": "{capacity}% ",
+        "format-icons": [""]
     },
 
     "clock": {
@@ -117,7 +116,7 @@
     },
 
     "network": {
-        "format-wifi": "({signalStrength}%) 󰖩 ",
+        "format-wifi": "{signalStrength}% ",
         "format-ethernet": "󱚽 ",
         "tooltip-format": "{gwaddr} ",
         "format-linked": "{ifname} (No IP) ",
