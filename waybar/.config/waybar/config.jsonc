@@ -2,7 +2,7 @@
 {
     
     "position": "bottom", // Waybar position (top|bottom|left|right)
-    "height": 40, // Waybar height (to be removed for auto height)
+    "height": 42, // Waybar height (to be removed for auto height)
     // "width": 1280, // Waybar width
     "spacing": 5, // Gaps between modules in px
     
@@ -73,21 +73,16 @@
     },
 
     "tray": {
-        // "icon-size": 21,
         "spacing": 10
-        // "icons": {
-        //   "blueman": "bluetooth",
-        //   "TelegramDesktop": "$HOME/.local/share/icons/hicolor/16x16/apps/telegram.png"
-        // }
     },
 
     "bluetooth": {
 	    // "controller": "controller1", // specify the alias of the controller if there are more than 1 on the system
-	    "format": " {status}",
+	    "format": "󰂯 {status}",
 	    "format-disabled": "", // an empty format will hide the module
-	    "format-connected": " {num_connections} connected",
+	    "format-connected": "󰂯 Connected",
 	    "tooltip-format": "{controller_alias}\t{controller_address}",
-	    "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{device_enumerate}",
+	    "tooltip-format-connected": "{num_connections} Connected: \n {device_alias}",
 	    "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}"
     },
     "battery": {
@@ -103,7 +98,7 @@
     "clock": {
         // "timezone": "America/New_York",
         "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
-        "format-alt": "{:%Y-%m-%d}"
+        "format-alt": "{:%d-%m-%Y}"
     },
 
     "cpu": {
@@ -126,7 +121,7 @@
 
     "custom/powerbutton": {
         "on-click": "wlogout",
-        "format": ""
+        "format": "⏻"
     },
 
     "disk": {

@@ -1,8 +1,11 @@
 configuration {
-   modes: [drun, run];
+   modes: [drun, run, filebrowser];
    font: "JetBrainsMono Nerd Font Mono, 13";
 }
 
+@theme "./theme.rasi"
 @import "~/.cache/wal/colors-rofi-dark"
+
+
 
 

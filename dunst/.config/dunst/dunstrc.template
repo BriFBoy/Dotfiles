@@ -1,0 +1,20 @@
+[global]
+
+font = JetBrainsMono Nerd Font Mono 12
+monitor = 0
+origin = top-center
+
+alignment = center
+
+width = (125, 300)
+height = (75, 200)
+offset = (10, 10)
+corner_radius = 7
+frame_width = 1
+corner_radius = 0
+
+padding = 5
+text_icon_padding = 2
+frame_color = "${color6}"
+foreground = "${color6}"
+background = "${background}"

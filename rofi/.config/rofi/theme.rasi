@@ -1,11 +1,36 @@
 /**
  * rofi -dump-theme output.
- * Rofi version: 1.7.8+wayland1
+ * Rofi version: 1.7.9.1
  **/
 * {
-    background-color: Black;
-    foreground: White;
-    text-color: White;
+    red:                         rgba ( 220, 50, 47, 100 % );
+    selected-active-foreground:  var(background);
+    lightfg:                     rgba ( 88, 104, 117, 100 % );
+    separatorcolor:              var(foreground);
+    urgent-foreground:           var(red);
+    alternate-urgent-background: var(lightbg);
+    lightbg:                     rgba ( 238, 232, 213, 100 % );
+    background-color:            transparent;
+    border-color:                var(foreground);
+    normal-background:           var(background);
+    selected-urgent-background:  var(red);
+    alternate-active-background: var(lightbg);
+    spacing:                     2;
+    blue:                        rgba ( 38, 139, 210, 100 % );
+    alternate-normal-foreground: var(foreground);
+    urgent-background:           var(background);
+    selected-normal-foreground:  var(lightbg);
+    active-foreground:           var(blue);
+    background:                  rgba ( 253, 246, 227, 100 % );
+    selected-active-background:  var(blue);
+    active-background:           var(background);
+    selected-normal-background:  var(lightfg);
+    alternate-normal-background: var(lightbg);
+    foreground:                  rgba ( 0, 43, 54, 100 % );
+    selected-urgent-foreground:  var(background);
+    normal-foreground:           var(foreground);
+    alternate-urgent-foreground: var(red);
+    alternate-active-foreground: var(blue);
 }
 element {
     padding: 1px ;
@@ -62,9 +87,8 @@ element-icon {
     text-color:       inherit;
 }
 window {
-    padding:          5;
     background-color: var(background);
-    border:           1;
+    width: 900px;
 }
 mainbox {
     padding: 0;
@@ -123,7 +147,14 @@ inputbar {
     padding:    1px ;
     spacing:    0px ;
     text-color: var(normal-foreground);
-    children:   [ "prompt","textbox-prompt-colon","entry","num-filtered-rows","textbox-num-sep","num-rows","case-indicator" ];
+    children:   [ "prompt","textbox-prompt-colon","entry","overlay","num-filtered-rows","textbox-num-sep","num-rows","case-indicator" ];
+}
+overlay {
+    padding:          0px 0.2000em ;
+    background-color: var(normal-foreground);
+    foreground-color: var(normal-background);
+    margin:           0px 0.2000em ;
+    text-color:       var(normal-background);
 }
 case-indicator {
     spacing:    0;
@@ -137,7 +168,6 @@ entry {
     placeholder:       "Type to filter";
 }
 prompt {
-    spacing:    0;
     text-color: var(normal-foreground);
 }
 textbox-prompt-colon {
