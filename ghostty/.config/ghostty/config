@@ -1,1 +1,5 @@
 config-file = ~/.cache/wal/ghostty.conf
+
+# Font conifguratin
+font-family = "JetBrainsMono Nerd Font Mono"
+font-size = 13
