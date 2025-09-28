@@ -6,13 +6,13 @@ return {
 	{
 		"mason-org/mason-lspconfig.nvim",
 		opts = {
-			ensure_installed = { "lua_ls", "jdtls", "ts_ls" },
+			ensure_installed = { "lua_ls", "jdtls", "ts_ls", "cssls" },
 			automatic_enable = true,
 		},
 	},
 	{
 		"neovim/nvim-lspconfig",
-		init = function()
+		config = function()
      local capabilites = require("blink.cmp").get_lsp_capabilities()
       vim.lsp.config("*", { capabilites = capabilites })
 

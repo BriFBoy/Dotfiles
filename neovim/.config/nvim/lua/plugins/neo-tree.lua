@@ -1,11 +1,10 @@
 return {
-  
     "nvim-neo-tree/neo-tree.nvim",
     branch = "v3.x",
     dependencies = {
       "nvim-lua/plenary.nvim",
       "MunifTanjim/nui.nvim",
-      "nvim-tree/nvim-web-devicons", 
+      "nvim-tree/nvim-web-devicons",
     },
     lazy = false,
     opts = {
@@ -29,5 +28,4 @@ return {
         vim.keymap.set("n", "<leader>ts", ":Neotree filesystem reveal left<CR>", {desc = "Neotree tree show"})
         vim.keymap.set("n", "<leader>th", ":Neotree close<CR>", {desc = "Neotree tree hide"})
     end
-  
 }

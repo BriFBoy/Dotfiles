@@ -14,7 +14,17 @@ return {
     cmp = {
       enable = true
     },
-    completion = { documentation = { auto_show = true, } },
+    completion = {
+      documentation = { auto_show = true },
+      trigger = {
+        show_on_trigger_character = true,
+      },
+      ghost_text = {
+        enabled = true,
+      },
+    },
+
+    signature = { enable = true },
 
     sources = {
       default = { 'lsp', 'path', 'snippets', 'buffer' },
