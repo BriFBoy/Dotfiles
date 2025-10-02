@@ -18,10 +18,6 @@ if [ "$continue" != "y" ]; then
   exit
 fi
 
-
-DOTFILES_DIR="~/.dotfiles"
-
-
 echo "Do you want candy stuff? [y/n] (cava, fastfetch, etc)"
 read docandy
 
@@ -31,7 +27,7 @@ sleep 1; echo 2
 sleep 1; echo 1
 
 # Installing packages for hyprland and the display manager
-yay -S --needed --onconfirm hyprland hypridle hyprshot hyprlock wlogout ly
+yay -S --needed --onconfirm hyprland hypridle hyprshot hyprlock wlogout ly waybar python-pywal16 swww
 
 # Installing other packages
 yay -S --needed -onconfirm neovim ghostty dolphin firefox stow
@@ -44,17 +40,10 @@ fi
 # Starting the systemd service for the display manager
 sudo systemctl enable ly.service
 
-# Copies the dotifles to the .dotfiles dir and
-# uses stow to create a symlink to the correct config directory
-if [ -d $DOTFILES_DIR ]; then
-  cp . $DOTFILES_DIR
-else 
-  mkdir $DOTFILES_DIR
-  cp . $DOTFILES_DIR
-fi
-stow -d $DOTFILES_DIR hyprland ghostty bash rofi waybar dunst neovim
+# Uses stow to create a symlink to the correct config directory
+stow hyprland ghostty bash rofi waybar dunst neovim
 if [ "$docandy" = "y" ]; then
-  stow -d $DOTFILES_DIR cava fastfetch
+  stow cava fastfetch
 fi
 
 echo "Done!"
