@@ -27,10 +27,10 @@ sleep 1; echo 2
 sleep 1; echo 1
 
 # Installing packages for hyprland and the display manager
-yay -S --needed --onconfirm hyprland hypridle hyprshot hyprlock wlogout ly waybar python-pywal16 swww
+yay -S --needed hyprland hypridle hyprshot hyprlock wlogout ly waybar python-pywal16 swww
 
 # Installing other packages
-yay -S --needed -onconfirm neovim ghostty dolphin firefox stow
+yay -S --needed neovim ghostty dolphin firefox stow
 
 # Installs the candy packages if needed
 if [ "$docandy" = "y" ]; then 
