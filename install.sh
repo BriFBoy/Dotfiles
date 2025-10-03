@@ -10,6 +10,41 @@ echo "|                                |___/                                    
 echo "+================================================================================+"
 echo ""
 
+#
+# Function declaration
+#
+yayInstallation () {
+  if ! command -v yay >/dev/null; then
+    sudo pacman -S --needed git base-devel
+    git clone https://aur.archlinux.org/yay.git ~/yay
+    cd ~/yay
+    makepkg -si
+    cd ~/.dotfiles
+  fi
+  
+}
+stowDotfilesSetup() {
+  # Uses stow to create a symlink to the correct config directory
+  yay -S --needed --noconfirm stow python-pywal16
+  if command -v stow >/dev/null; then
+    rm -rf ~/.bashrc # removes the allready existing .bashrc file
+    stow hyprland ghostty bash rofi waybar dunst neovim
+    [ "$docandy" = "y" ] && stow cava fastfetch
+  else
+    exit; echo "stow not installed"
+  fi
+  exit 
+}
+pywalSetup() {
+  # Creates pywal colors and uses them for dunst
+  wal -i ./default_wallpaper.jpg
+  . "$HOME/.cache/wal/colors.sh"
+  export background foreground color0 color1 color2 color3 color4 color5 color6 color7 color8 color9 color10 color11 color12 color13 color14 color15
+  envsubst < ~/.config/dunst/dunstrc.template > ~/.config/dunst/dunstrc
+}
+
+
+
 echo "This script will install BriFBoy's dotfiles and DELETE the allready existing ones. Make sure you havea backup!"
 sleep 2
 echo "Do you want to continue? [y/n]"
@@ -26,46 +61,31 @@ echo "Starting installation in 3"
 sleep 1; echo 2
 sleep 1; echo 1
 
-if ! command -v yay >/dev/null; then
-  sudo pacman -S --needed git base-devel
-  git clone https://aur.archlinux.org/yay.git ~/yay
-  cd ~/yay
-  makepkg -si
-  cd ~/.dotfiles
-fi
+yayInstallation
 
-# Uses stow to create a symlink to the correct config directory
-yay -S --needed stow python-pywal16
-if command -v stow >/dev/null; then
-  rm -rf ~/.bashrc
-  stow hyprland ghostty bash rofi waybar dunst neovim
-  if [ "$docandy" = "y" ]; then
-    stow cava fastfetch
-  fi
-else
-  exit; echo "stow not installed"
-fi
+stowDotfilesSetup 
 
-# Creates pywal colors and uses them for dunst
-wal -i ./default_wallpaper.jpg
-. "$HOME/.cache/wal/colors.sh"
-export background foreground color0 color1 color2 color3 color4 color5 color6 color7 color8 color9 color10 color11 color12 color13 color14 color15
-envsubst < ~/.config/dunst/dunstrc.template > ~/.config/dunst/dunstrc
+pywalSetup
+
+# Starts up the swww-daemon just too quickly set det wallpaer before killing it
+swww-daemon & 
+sleep 4
+swww img ~/.dotfiles/default_wallpaper.jpg
+killall swww-daemon 
 
 # Installing packages for hyprland and the display manager
-yay -S --needed hyprland hypridle hyprshot hyprlock wlogout ly waybar swww
+yay -S --needed --noconfirm hyprland hypridle hyprshot hyprlock wlogout ly waybar swww ttf-jetbrains-mono-nerd
 
 # Installing other packages
-yay -S --needed neovim ghostty dolphin firefox 
+yay -S --needed --noconfirm neovim ghostty dolphin firefox 
 
 # Installs the candy packages if needed
 if [ "$docandy" = "y" ]; then 
-  yay -S --needed cava fastfetch
+  yay -S --needed --noconfirm cava fastfetch
 fi
 
 # Starting the systemd service for the display manager
 sudo systemctl enable ly.service
-
 
 echo "Done!"
 echo "Reboot to apply changes"

@@ -9,6 +9,7 @@ return {
 			sources = {
 				require("none-ls-luacheck.diagnostics.luacheck"),
 				null_ls.builtins.formatting.stylua,
+        null_ls.builtins.formatting.beautysh,
 			},
 		})
 
