@@ -36,8 +36,8 @@ fi
 
 # Uses stow to create a symlink to the correct config directory
 yay -S --needed stow python-pywal16
-sleep 5
 if command -v stow >/dev/null; then
+  rm -rf ~/.bashrc
   stow hyprland ghostty bash rofi waybar dunst neovim
   if [ "$docandy" = "y" ]; then
     stow cava fastfetch
