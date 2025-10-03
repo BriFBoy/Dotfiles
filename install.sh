@@ -39,13 +39,14 @@ fi
 yay -S --needed stow python-pywal16
 sleep 1; echo "stowing dotfiles"
 isstowinstalled=$(pacman -Q stow | awk "{print $1}")
-if [ isyayinstalled != "stow" ]; then
+if [ isyayinstalled = "stow" ]; then
   stow hyprland ghostty bash rofi waybar dunst neovim
   if [ "$docandy" = "y" ]; then
     stow cava fastfetch
   fi
+else
+  exit 
 fi
-
 # Creates pywal colors and uses them for dunst
 wal -i ./default_wallpaper.jpg
 . "$HOME/.cache/wal/colors.sh"
