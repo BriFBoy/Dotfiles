@@ -26,8 +26,7 @@ echo "Starting installation in 3"
 sleep 1; echo 2
 sleep 1; echo 1
 
-isyayinstalled=$(pacman -Q yay | awk "{print $1}")
-if [ "$isyayinstalled" != "yay" ]; then
+if ! command -v yay >/dev/null; then
   sudo pacman -S --needed git base-devel
   git clone https://aur.archlinux.org/yay.git ~/yay
   cd ~/yay
@@ -37,16 +36,15 @@ fi
 
 # Uses stow to create a symlink to the correct config directory
 yay -S --needed stow python-pywal16
-sleep 1; echo "stowing dotfiles"
-isstowinstalled=$(pacman -Q stow | awk "{print $1}")
-if [ "$isstowinstalled" = "stow" ]; then
+if ! command -v stow >/dev/null; then
   stow hyprland ghostty bash rofi waybar dunst neovim
   if [ "$docandy" = "y" ]; then
     stow cava fastfetch
   fi
 else
-  exit 
+  exit; echo "stow not installed"
 fi
+
 # Creates pywal colors and uses them for dunst
 wal -i ./default_wallpaper.jpg
 . "$HOME/.cache/wal/colors.sh"
