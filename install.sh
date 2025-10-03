@@ -26,10 +26,10 @@ echo "Starting installation in 3"
 sleep 1; echo 2
 sleep 1; echo 1
 
-isyayinstalled=$(pacman -Q yay | awk "print $1")
+isyayinstalled=$(pacman -Q yay | awk "{print $1}")
 if [ isyayinstalled != "yay" ]; then
   sudo pacman -S --needed git base-devel
-  git clone --depth 1 https://aur.archlinux.org/yay.git 
+  git clone https://aur.archlinux.org/yay.git 
   cd ~/yay
   makepkg -si
   cd ~/.dotfiles
