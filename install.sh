@@ -33,7 +33,6 @@ stowDotfilesSetup() {
   else
     exit; echo "stow not installed"
   fi
-  exit 
 }
 pywalSetup() {
   # Creates pywal colors and uses them for dunst
