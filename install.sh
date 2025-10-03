@@ -38,9 +38,12 @@ fi
 # Uses stow to create a symlink to the correct config directory
 yay -S --needed stow python-pywal16
 sleep 1; echo "stowing dotfiles"
-stow hyprland ghostty bash rofi waybar dunst neovim
-if [ "$docandy" = "y" ]; then
-  stow cava fastfetch
+isstowinstalled=$(pacman -Q stow | awk "{print $1}")
+if [ isyayinstalled != "stow" ]; then
+  stow hyprland ghostty bash rofi waybar dunst neovim
+  if [ "$docandy" = "y" ]; then
+    stow cava fastfetch
+  fi
 fi
 
 # Creates pywal colors and uses them for dunst
