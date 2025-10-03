@@ -27,7 +27,7 @@ sleep 1; echo 2
 sleep 1; echo 1
 
 isyayinstalled=$(pacman -Q yay | awk "{print $1}")
-if [ isyayinstalled != "yay" ]; then
+if [ "$isyayinstalled" != "yay" ]; then
   sudo pacman -S --needed git base-devel
   git clone https://aur.archlinux.org/yay.git ~/yay
   cd ~/yay
@@ -39,7 +39,7 @@ fi
 yay -S --needed stow python-pywal16
 sleep 1; echo "stowing dotfiles"
 isstowinstalled=$(pacman -Q stow | awk "{print $1}")
-if [ isyayinstalled = "stow" ]; then
+if [ "$isstowinstalled" = "stow" ]; then
   stow hyprland ghostty bash rofi waybar dunst neovim
   if [ "$docandy" = "y" ]; then
     stow cava fastfetch
