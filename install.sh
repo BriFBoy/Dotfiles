@@ -10,12 +10,20 @@ echo "|                                |___/                                    
 echo "+================================================================================+"
 echo ""
 
+echo "This script will install BriFBoy's dotfiles and DELETE the allready existing ones. Make sure you havea backup!"
+sleep 2
+echo "Do you want to continue? [y/n]"
+read continue
+if [ "$continue" != "y" ]; then
+  exit
+fi
+
 #
 # Function declaration
 #
 yayInstallation () {
   if ! command -v yay >/dev/null; then
-    sudo pacman -S --needed git base-devel
+    sudo pacman -S --needed --noconfirm git base-devel
     git clone https://aur.archlinux.org/yay.git ~/yay
     cd ~/yay
     makepkg -si
@@ -41,16 +49,13 @@ pywalSetup() {
   export background foreground color0 color1 color2 color3 color4 color5 color6 color7 color8 color9 color10 color11 color12 color13 color14 color15
   envsubst < ~/.config/dunst/dunstrc.template > ~/.config/dunst/dunstrc
 }
-
-
-
-echo "This script will install BriFBoy's dotfiles and DELETE the allready existing ones. Make sure you havea backup!"
-sleep 2
-echo "Do you want to continue? [y/n]"
-read continue
-if [ "$continue" != "y" ]; then
-  exit
-fi
+# Starts up the swww-daemon just too quickly set det wallpaer before killing it
+setDefaultWallpaper() {
+  swww-daemon & 
+  sleep 4
+  swww img ~/.dotfiles/default_wallpaper.jpg
+  killall swww-daemon 
+}
 
 echo "Do you want candy stuff? [y/n] (cava, fastfetch, etc)"
 read docandy
@@ -64,24 +69,34 @@ yayInstallation
 
 stowDotfilesSetup 
 
-pywalSetup
+pywalSetup 
 
-# Starts up the swww-daemon just too quickly set det wallpaer before killing it
-swww-daemon & 
-sleep 4
-swww img ~/.dotfiles/default_wallpaper.jpg
-killall swww-daemon 
 
-# Installing packages for hyprland and the display manager
-yay -S --needed --noconfirm hyprland hypridle hyprshot hyprlock wlogout ly waybar swww ttf-jetbrains-mono-nerd
-
-# Installing other packages
-yay -S --needed --noconfirm neovim ghostty dolphin firefox 
+packages=(
+  # Installing packages for hyprland and the display manager
+  hyprland
+  hypridle 
+  hyprshot 
+  hyprlock 
+  wlogout 
+  ly 
+  waybar 
+  swww 
+  ttf-jetbrains-mono-nerd
+  # Installing other packages
+  neovim 
+  ghostty 
+  dolphin 
+  firefox
+)
+yay -S --needed --noconfirm "$packages"
 
 # Installs the candy packages if needed
 if [ "$docandy" = "y" ]; then 
   yay -S --needed --noconfirm cava fastfetch
 fi
+
+setDefaultWallpaper 
 
 # Starting the systemd service for the display manager
 sudo systemctl enable ly.service
