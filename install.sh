@@ -72,7 +72,7 @@ stowDotfilesSetup
 pywalSetup 
 
 # Installs the needed packages
-yay -S --needed --noconfirm hyprland hypridle hyprlock hyprshot wlogout ly waybar swww ttf-jetbrain-mono-nerd neovim ghostty dolphin firefox 
+yay -S --needed --noconfirm hyprland hypridle hyprlock hyprshot wlogout ly waybar swww ttf-jetbrains-mono-nerd neovim ghostty dolphin firefox 
 
 # Installs the candy packages if needed
 if [ "$docandy" = "y" ]; then 
