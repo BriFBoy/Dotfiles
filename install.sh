@@ -89,7 +89,7 @@ packages=(
   dolphin 
   firefox
 )
-yay -S --needed --noconfirm "$packages"
+yay -S --needed --noconfirm "$packages[@]"
 
 # Installs the candy packages if needed
 if [ "$docandy" = "y" ]; then 
