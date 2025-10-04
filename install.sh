@@ -31,8 +31,8 @@ yayInstallation () {
   fi
   
 }
+# Uses stow to create a symlink to the correct config directory
 stowDotfilesSetup() {
-  # Uses stow to create a symlink to the correct config directory
   yay -S --needed --noconfirm stow python-pywal16
   if command -v stow >/dev/null; then
     rm -rf ~/.bashrc # removes the allready existing .bashrc file
@@ -42,8 +42,8 @@ stowDotfilesSetup() {
     exit; echo "stow not installed"
   fi
 }
+# Creates pywal colors and uses them for dunst
 pywalSetup() {
-  # Creates pywal colors and uses them for dunst
   wal -i ./default_wallpaper.jpg
   . "$HOME/.cache/wal/colors.sh"
   export background foreground color0 color1 color2 color3 color4 color5 color6 color7 color8 color9 color10 color11 color12 color13 color14 color15
@@ -71,25 +71,8 @@ stowDotfilesSetup
 
 pywalSetup 
 
-
-packages=(
-  # Installing packages for hyprland and the display manager
-  hyprland
-  hypridle 
-  hyprshot 
-  hyprlock 
-  wlogout 
-  ly 
-  waybar 
-  swww 
-  ttf-jetbrains-mono-nerd
-  # Installing other packages
-  neovim 
-  ghostty 
-  dolphin 
-  firefox
-)
-yay -S --needed --noconfirm "${packages[@]}"
+# Installs the needed packages
+yay -S --needed --noconfirm hyprland hypridle hyprlock hyprshot wlogout ly waybar swww ttf-jetbrain-mono-nerd neovim ghostty dolphin firefox 
 
 # Installs the candy packages if needed
 if [ "$docandy" = "y" ]; then 
