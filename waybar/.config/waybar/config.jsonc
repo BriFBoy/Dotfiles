@@ -1,132 +1,78 @@
-// -*- mode: jsonc -*-
 {
-    
-    "position": "bottom", // Waybar position (top|bottom|left|right)
-    "height": 42, // Waybar height (to be removed for auto height)
-    // "width": 1280, // Waybar width
-    "spacing": 5, // Gaps between modules in px
-    
-    "modules-left": [
-        "hyprland/workspaces",
-        "tray"
-    ],
-    "modules-center": [
-        "group/center"
-    ],
-    "modules-right": [
-        "group/hardware",
-        "group/othersuff"
-        
-    ],
-
-    "group/center": {
-        "orientation": "horizontal",
-        "modules": [
-            "pulseaudio",
-            "clock", 
-            "custom/powerbutton"
-        ]
+  "layer": "top",
+  "position": "bottom",
+  "spacing": 7,
+  "reload_style_on_change": true,
+  "height": 40,
+  "modules-left": [
+    "hyprland/workspaces"
+  ],
+  "modules-center": [
+    "pulseaudio",
+    "clock",
+    "custom/menu"
+  ],
+  "modules-right": [
+    "tray",
+    "bluetooth",
+    "network",
+    "battery"
+  ],
+  "battery": {
+    "format": "{capacity}% {icon}",
+    "format-icons": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ]
+  },
+  "clock": {
+    "format": " {:%H:%M}",
+    "format-alt": "{:%d-%m-%Y }"
+  },
+  "hyprland/workspaces": {
+    "format": "{icon}",
+    "on-click": "activate",
+    "all-outputs": true,
+    "sort-by-number": true
+  },
+  "custom/menu": {
+    "on-click": "wlogout",
+    "format": "⏻"
+  },
+  "pulseaudio": {
+    "format": "{icon} {volume}%",
+    "format-bluetooth": "{volume}% {icon}",
+    "format-muted": "",
+    "format-icons": {
+      "default": [
+        "",
+        "",
+        ""
+      ]
     },
-    "group/hardware": {
-        "orientation": "horizontal",
-        "modules": [
-            "cpu",
-            "memory",
-            "disk"
-        ]
-    },
-        "group/othersuff": {
-        "orientation": "horizontal",
-        "modules": [
-            "bluetooth",
-            "network",
-            "battery"
-        ]
-    },
-
-     "hyprland/workspaces": {
-         "disable-scroll": true,
-         "all-outputs": true,
-         "warp-on-scroll": false,
-         "format": "{name}"
-    },
-
-    "pulseaudio": {
-        "format": "{volume}% {icon}",
-        "format-bluetooth": "{volume}% {icon}",
-        "format-muted": "",
-        "format-icons": {
-            "alsa_output.pci-0000_00_1f.3.analog-stereo": "",
-            "alsa_output.pci-0000_00_1f.3.analog-stereo-muted": "",
-            "headphone": "",
-            "hands-free": "",
-            "headset": "",
-            "phone": "",
-            "phone-muted": "",
-            "portable": "",
-            "car": "",
-            "default": ["", ""]
-        },
-        "scroll-step": 1,
-        "on-click": "pavucontrol",
-        "ignored-sinks": ["Easy Effects Sink"]
-    },
-
-    "tray": {
-        "spacing": 10
-    },
-
-    "bluetooth": {
-	    // "controller": "controller1", // specify the alias of the controller if there are more than 1 on the system
-	    "format": "󰂯 {status}",
-	    "format-disabled": "", // an empty format will hide the module
-	    "format-connected": "󰂯 Connected",
-	    "tooltip-format": "{controller_alias}\t{controller_address}",
-	    "tooltip-format-connected": "{num_connections} Connected: \n {device_alias}",
-	    "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}"
-    },
-    "battery": {
-        "interval": 60,
-        "states": {
-            "warning": 35,
-            "critical": 30
-        },
-        "format": "{capacity}% ",
-        "format-icons": [""]
-    },
-
-    "clock": {
-        // "timezone": "America/New_York",
-        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
-        "format-alt": "{:%d-%m-%Y}"
-    },
-
-    "cpu": {
-        "format": "{usage}% ",
-        "tooltip": false
-    },
-
-    "memory": {
-        "format": "{}% "
-    },
-
-    "network": {
-        "format-wifi": "{signalStrength}% ",
-        "format-ethernet": "󱚽 ",
-        "tooltip-format": "{gwaddr} ",
-        "format-linked": "{ifname} (No IP) ",
-        "format-disconnected": "󰖪 ",
-        "format-alt": "{ipaddr}/{cidr}"
-    },
-
-    "custom/powerbutton": {
-        "on-click": "wlogout",
-        "format": "⏻"
-    },
-
-    "disk": {
-        "interval": 30,
-        "format": "{percentage_free}% ",
-        "path": "/"
-    }
+    "scroll-step": 1,
+    "on-click": "pavucontrol"
+  },
+  "network": {
+    "format": "{ifname}",
+    "format-wifi": "({signalStrength}%) ",
+    "format-ethernet": "",
+    "format-disconnected": "󱚼", //An empty format will hide the module.
+    "tooltip-format": "{ifname} via {gwaddr} 󰊗",
+    "tooltip-format-wifi": "{essid} ({signalStrength}%) ",
+    "tooltip-format-ethernet": "{ifname} ",
+    "tooltip-format-disconnected": "Disconnected",
+    "max-length": 50
+  },
+  "bluetooth": {
+    "format": "",
+    "format-disabled": "󰂲", // an empty format will hide the module
+    "format-connected": " {num_connections} connected",
+    "tooltip-format": "{controller_alias}\t{controller_address}",
+    "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{device_enumerate}",
+    "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}"
+  }
 }
