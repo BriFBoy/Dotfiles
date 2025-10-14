@@ -7,6 +7,9 @@ return {
 		indent = {
 			char = "▏",
 		},
+		exclude = {
+			filetypes = { "dashboard", "help", "lazy", "mason", "neo-tree" },
+			buftypes = { "terminal", "nofile" },
+		},
 	},
 }
-

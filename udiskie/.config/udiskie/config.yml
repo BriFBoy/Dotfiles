@@ -1,0 +1,9 @@
+notifications:
+  timeout: 1
+  device_unmounted: -1
+  device_unlocked: false
+  device_locked: false
+  
+program_options:
+  tray: false
+

@@ -30,7 +30,7 @@
   },
   "clock": {
     "format": " {:%H:%M}",
-    "format-alt": "{:%d-%m-%Y }"
+    "format-alt": " {:%d-%m-%Y }"
   },
   "hyprland/workspaces": {
     "format": "{icon}",
