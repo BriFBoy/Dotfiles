@@ -64,10 +64,6 @@ button:hover {
     background: rgba(0, 0, 0, 0.2);
 }
 
-#battery {
-    background-color: #ffffff;
-    color: #000000;
-}
 #custom-menu {
     margin: 0 4px;
     font-weight: 200;
@@ -84,6 +80,10 @@ button:hover {
     border-radius: 20px;
     padding-left: 10px;
     padding-right: 10px;
+}
+
+#battery {
+  background-color: transparent; 
 }
 
 #bluetooth {
