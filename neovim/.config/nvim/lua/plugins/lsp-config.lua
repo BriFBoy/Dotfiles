@@ -6,7 +6,7 @@ return {
 	{
 		"mason-org/mason-lspconfig.nvim",
 		opts = {
-			ensure_installed = { "lua_ls", "jdtls", "ts_ls", "cssls" },
+			ensure_installed = { "lua_ls", "jdtls", "ts_ls", "cssls", "tailwindcss" },
 			automatic_enable = true,
 		},
 	},
@@ -19,7 +19,12 @@ return {
 			vim.keymap.set("n", "K", vim.lsp.buf.hover, {})
 			vim.keymap.set({ "n", "v" }, "<space>ca", vim.lsp.buf.code_action, {})
 			vim.diagnostic.config({
-				virtual_text = true,
+				virtual_text = {
+					severity = {
+						min = vim.diagnostic.severity.ERROR,
+						max = vim.diagnostic.severity.ERROR,
+					},
+				},
 				signs = true,
 				underline = true,
 				update_in_insert = false,
