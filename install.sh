@@ -15,63 +15,74 @@ sleep 2
 echo "Do you want to continue? [y/n]"
 read continue
 if [ "$continue" != "y" ] && [ "$continue" != "" ]; then
-  exit
+    exit
 fi
+echo ""
+echo "Do you want programming stuff? nvm, neovim, etc.."
+read programming
+
+echo ""
+echo "Starting installation"; sleep 1
+echo ""
 
 #
 # Function declaration
 #
 yayInstallation () {
-  if ! command -v yay >/dev/null; then
-    echo "installing yay"
-    sudo pacman -S --needed --noconfirm git base-devel
-    git clone https://aur.archlinux.org/yay.git ~/yay
-    cd ~/yay
-    makepkg -si
-    cd ~/.dotfiles
-  fi
-  
+    if ! command -v yay >/dev/null; then
+        echo "installing yay"
+        sudo pacman -S --needed --noconfirm git base-devel
+        git clone https://aur.archlinux.org/yay.git ~/yay
+        cd ~/yay
+        makepkg -si
+        cd ~/.dotfiles
+    fi
+
 }
 # Uses stow to create a symlink to the correct config directory
 stowDotfilesSetup() {
-  yay -S --needed --noconfirm stow python-pywal16
-  if command -v stow >/dev/null; then
-    rm -rf ~/.bashrc # removes the allready existing .bashrc file
-    stow hyprland ghostty bash rofi waybar dunst neovim
-    [ "$docandy" = "y" ] || [ "$docandy" = "" ] && stow cava fastfetch
-  else
-    exit; echo "stow not installed"
-  fi
+    yay -S --needed --noconfirm stow python-pywal16
+    if command -v stow >/dev/null; then
+        rm -rf ~/.bashrc # removes the allready existing .bashrc file
+        stow hyprland ghostty bash rofi waybar dunst
+        stow cava fastfetch
+    else
+        echo "stow not installed"; exit;
+    fi
 }
 # Creates pywal colors and uses them for dunst
 pywalSetup() {
-  wal -i ./default_wallpaper.jpg
-  . "$HOME/.cache/wal/colors.sh"
-  export background foreground color0 color1 color2 color3 color4 color5 color6 color7 color8 color9 color10 color11 color12 color13 color14 color15
-  envsubst < ~/.config/dunst/dunstrc.template > ~/.config/dunst/dunstrc
+    wal -i ./default_wallpaper.jpg
+    . "$HOME/.cache/wal/colors.sh"
+    export background foreground color0 color1 color2 color3 color4 color5 color6 color7 color8 color9 color10 color11 color12 color13 color14 color15
+    envsubst < ~/.config/dunst/dunstrc.template > ~/.config/dunst/dunstrc
 }
-
-echo "Do you want candy stuff? [y/n] (cava, fastfetch, etc)"
-read docandy
-
-echo ""
-echo "Starting installation in 3"
-sleep 1; echo 2
-sleep 1; echo 1
+programmingModule() {
+    stow neovim tmux
+    yay -S --needed --noconfirm curl tmux neovim
+    curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.3/install.sh | bash
+    source ~/.nvm/nvm.sh
+    nvm install node
+}
 
 yayInstallation
 
-stowDotfilesSetup 
+stowDotfilesSetup
 
-pywalSetup 
+if [ "$programming" == "y" ] || [ "$programming" == "" ]; then
+    programmingModule
+fi
+
+pywalSetup
+
+cd; mkdir -p Pictures/Wallpapers
+cp .dotfiles/default_wallpaper.jpg Pictures/Wallpapers/
 
 # Installs the needed packages
-yay -S --needed --noconfirm hyprland hypridle hyprlock hyprshot wlogout ly waybar swww ttf-jetbrains-mono-nerd neovim ghostty dolphin firefox 
+yay -S --needed --noconfirm hyprland hypridle hyprlock hyprshot wlogout ly waybar swww ttf-jetbrains-mono-nerd neovim ghostty dolphin floorp-bin
 
 # Installs the candy packages if needed
-if [ "$docandy" = "y" ] || [ "$docandy" = "" ]; then 
-  yay -S --needed --noconfirm cava fastfetch
-fi
+yay -S --needed --noconfirm cava fastfetch
 
 # Starting the systemd service for the display manager
 sudo systemctl enable ly.service
