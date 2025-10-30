@@ -6,6 +6,8 @@ return {
 			lua = { "stylua" },
 			javascript = { "prettier" },
 			typescript = { "prettier" },
+			javascriptreact = { "prettier" },
+			typescriptreact = { "prettier" },
 
 			-- Strongly typed
 			java = { "google-java-format" },
