@@ -7,7 +7,11 @@ return {
 		"mason-org/mason-lspconfig.nvim",
 		opts = {
 			ensure_installed = { "lua_ls", "jdtls", "ts_ls", "cssls", "tailwindcss" },
-			automatic_enable = true,
+			automatic_enable = {
+				exclude = {
+					"jdtls",
+				},
+			},
 		},
 	},
 	{
@@ -16,12 +20,10 @@ return {
 			local capabilites = require("blink.cmp").get_lsp_capabilities()
 			vim.lsp.config("*", { capabilites = capabilites })
 
-			vim.keymap.set("n", "K", vim.lsp.buf.hover, {})
-			vim.keymap.set({ "n", "v" }, "<space>ca", vim.lsp.buf.code_action, {})
 			vim.diagnostic.config({
 				virtual_text = {
 					severity = {
-						min = vim.diagnostic.severity.ERROR,
+						min = vim.diagnostic.severity.WARN,
 						max = vim.diagnostic.severity.ERROR,
 					},
 				},
