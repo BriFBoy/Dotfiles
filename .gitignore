@@ -3,3 +3,5 @@ dunst/.config/dunst/dunstrc
 # Ignoreing the cava shaders and themes and only leaves the config file
 cava/.config/cava/shaders/
 cava/.config/cava/themes/
+
+neovim/.config/nvim/lazy-lock.json
