@@ -6,7 +6,7 @@ return {
 	{
 		"mason-org/mason-lspconfig.nvim",
 		opts = {
-			ensure_installed = { "lua_ls", "jdtls", "ts_ls", "cssls", "tailwindcss" },
+			ensure_installed = { "lua_ls", "jdtls", "ts_ls", "cssls", "tailwindcss", "clangd" },
 			automatic_enable = {
 				exclude = {
 					"jdtls",

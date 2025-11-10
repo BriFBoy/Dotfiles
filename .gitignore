@@ -5,3 +5,4 @@ cava/.config/cava/shaders/
 cava/.config/cava/themes/
 
 neovim/.config/nvim/lazy-lock.json
+.luarc.json
