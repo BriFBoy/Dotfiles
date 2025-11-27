@@ -9,7 +9,8 @@ alias fastfetch='fastfetch --color-title "$foreground" --logo-color-1 "$color1" 
 alias wallpaper="sh ~/.dotfiles/Scripts/wallpapermenu.sh"
 alias tmux="tmux attach-session -t Main || tmux new-session -s Main"
 
-PS1='\[\e[96m\]\W\[\e[0m\] \[\e[38;5;244m\]>\[\e[0m\]'
+PROMPT_COMMAND='PS1_CMD1=$(git branch --show-current 2>/dev/null)'
+PS1='\e[33m\w ${PS1_CMD1}\n-> \e[0m'
 
 fastfetch
 
