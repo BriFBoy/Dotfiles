@@ -11,7 +11,7 @@ return {
     appearance = {
       nerd_font_variant = 'mono'
     },
-    completio = {
+    completion = {
       documentation = { auto_show = true },
       trigger = {
         show_on_trigger_character = true,
