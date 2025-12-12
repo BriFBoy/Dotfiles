@@ -18,5 +18,29 @@ return {
 		vim.keymap.set("n", "<Leader>dt", dap.toggle_breakpoint, { desc = "Toggle Breakpoint" })
 		vim.keymap.set("n", "<Leader>dc", dap.continue, { desc = "Debugger continue" })
 		vim.keymap.set("n", "<Leader>du", dapui.toggle, { desc = "Debugger Ui Toggle" })
+
+		dap.adapters.codelldb = {
+			type = "server",
+			port = "${port}",
+			executable = {
+				-- CHANGE THIS PATH
+				command = "/home/brian/.local/share/nvim/mason/packages/codelldb/codelldb",
+				args = { "--port", "${port}" },
+			},
+		}
+
+		dap.configurations.c = {
+			{
+				name = "Launch C program",
+				type = "codelldb",
+				request = "launch",
+				program = function()
+					return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/", "file")
+				end,
+				cwd = "${workspaceFolder}",
+				stopOnEntry = false,
+				args = {}, -- you can add program args here
+			},
+		}
 	end,
 }
