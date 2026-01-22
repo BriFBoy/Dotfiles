@@ -23,11 +23,28 @@ return {
 			type = "server",
 			port = "${port}",
 			executable = {
-				-- CHANGE THIS PATH
 				command = "/home/brian/.local/share/nvim/mason/packages/codelldb/codelldb",
 				args = { "--port", "${port}" },
 			},
 		}
+		dap.adapters["pwa-node"] = {
+			type = "executable",
+			command = "/home/brian/.local/share/nvim/mason/packages/js-debug-adapter/js-debug-adapter",
+			args = { "--stdio" },
+		}
+
+		for _, language in ipairs({ "typescript", "javascript" }) do
+			dap.configurations[language] = {
+				{
+					type = "pwa-node",
+					request = "launch",
+					name = "Launch file",
+					program = "${file}",
+					cwd = "${workspaceFolder}",
+					runtimeExecutable = "node",
+				},
+			}
+		end
 
 		dap.configurations.c = {
 			{

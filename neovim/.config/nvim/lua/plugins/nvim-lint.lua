@@ -2,10 +2,10 @@ return {
 	"mfussenegger/nvim-lint",
 	opts = {
 		linters_by_ft = {
-			javascript = { "eslint_d" },
-			typescript = { "eslint_d" },
-			javascriptreact = { "eslint_d" }, -- for .jsx
-			typescriptreact = { "eslint_d" }, -- for .tsx
+			javascript = { "eslint" },
+			typescript = { "eslint" },
+			javascriptreact = { "eslint" }, -- for .jsx
+			typescriptreact = { "eslint" }, -- for .tsx
 			java = { "checkstyle" },
 			c = { "clangtidy" },
 			sh = { "shellcheck" },

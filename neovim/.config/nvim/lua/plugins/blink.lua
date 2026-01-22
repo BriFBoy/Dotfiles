@@ -21,8 +21,14 @@ return {
 			},
 		},
 
-		signature = { enable = true },
-
+		signature = {
+			enabled = true,
+			auto_open = true,
+			floating = true,
+			hint = {
+				enabled = true,
+			},
+		},
 		sources = {
 			default = { "lsp", "path", "snippets", "buffer" },
 		},

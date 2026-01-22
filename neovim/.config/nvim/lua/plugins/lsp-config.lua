@@ -6,8 +6,17 @@ return {
 	{
 		"mason-org/mason-lspconfig.nvim",
 		opts = {
-			ensure_installed = { "lua_ls", "jdtls", "ts_ls", "cssls", "tailwindcss", "clangd" },
 			automatic_enable = {
+				ensure_installed = {
+					"lua_ls",
+					"jdtls",
+					"clangd",
+
+					-- Javascript/Typescript + css
+					"eslint",
+					"cssls",
+					"tailwindcss",
+				},
 				exclude = {
 					"jdtls",
 				},
@@ -17,8 +26,8 @@ return {
 	{
 		"neovim/nvim-lspconfig",
 		config = function()
-			local capabilites = require("blink.cmp").get_lsp_capabilities()
-			vim.lsp.config("*", { capabilites = capabilites })
+			local capabilities = require("blink.cmp").get_lsp_capabilities()
+			vim.lsp.config("*", { capabilities = capabilities })
 
 			vim.diagnostic.config({
 				virtual_text = {
