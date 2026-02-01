@@ -48,4 +48,18 @@ return {
 			run_on_start = true,
 		},
 	},
+	{
+		"jay-babu/mason-nvim-dap.nvim",
+		dependencies = {
+			"williamboman/mason.nvim",
+			"mfussenegger/nvim-dap",
+		},
+		opts = {
+			ensure_installed = {
+				"js",
+				"codelldb",
+			},
+			handlers = {},
+		},
+	},
 }
