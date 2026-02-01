@@ -6,6 +6,7 @@ local function desc(description)
 	return vim.tbl_extend("force", opts, { desc = description })
 end
 
+-- Quick keys
 vim.keymap.set("n", "<leader>qq", ":qa<CR>", { desc = "Quit all" })
 vim.keymap.set("n", "<leader>W", ":wa<CR>", { desc = "Write all buffers" })
 
@@ -28,4 +29,3 @@ vim.keymap.set("n", "K", vim.lsp.buf.hover, desc("Shows Hover Info"))
 -- Remapping
 vim.keymap.set("n", "<C-d>", "<C-d>zz", { noremap = true, silent = true })
 vim.keymap.set("n", "<C-u>", "<C-u>zz", { noremap = true, silent = true })
-

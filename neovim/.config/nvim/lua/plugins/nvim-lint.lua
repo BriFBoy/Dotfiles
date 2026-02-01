@@ -2,12 +2,19 @@ return {
 	"mfussenegger/nvim-lint",
 	opts = {
 		linters_by_ft = {
+			-- Web developent
 			javascript = { "eslint" },
 			typescript = { "eslint" },
 			javascriptreact = { "eslint" }, -- for .jsx
 			typescriptreact = { "eslint" }, -- for .tsx
+			html = { "htmlhint" }, -- or "tidy"
+			css = { "stylelint" },
+
 			java = { "checkstyle" },
-			c = { "clangtidy" },
+			c = { "cpplint" },
+			cpp = { "cpplint" },
+
+			-- Shells
 			sh = { "shellcheck" },
 			bash = { "shellcheck" },
 			zsh = { "shellcheck" },

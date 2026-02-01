@@ -9,9 +9,15 @@ return {
 			javascriptreact = { "prettier" },
 			typescriptreact = { "prettier" },
 
+			-- Web markup & styles
+			html = { "prettier" },
+			css = { "prettier" },
+			scss = { "prettier" },
+
 			-- Strongly typed
 			java = { "google-java-format" },
 			c = { "clang-format" },
+			cpp = { "clang-format" },
 
 			-- Shells
 			bash = { "beautysh" },

@@ -6,7 +6,21 @@ return {
 			"nvim-lua/plenary.nvim",
 		},
 		opts = {
-			pickers = { find_files = { hidden = true } },
+			pickers = {
+				find_files = {
+					follow = true,
+					hidden = true,
+				},
+				live_grep = {
+					additional_args = function()
+						return {
+							"--hidden",
+							"--follow",
+							"--no-ignore",
+						}
+					end,
+				},
+			},
 			highlight = {
 				enable = true,
 			},
@@ -28,7 +42,6 @@ return {
 				extensions = {
 					["ui-select"] = {
 						require("telescope.themes").get_dropdown({}),
-
 					},
 				},
 			})
