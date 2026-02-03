@@ -1,8 +1,18 @@
 [[ $- != *i* ]] && return
-
 . "$HOME/.cache/wal/colors.sh"
 
+
+# Makes yazi change the CWD
+function y() {
+	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
+	command yazi "$@" --cwd-file="$tmp"
+	IFS= read -r -d '' cwd < "$tmp"
+	[ "$cwd" != "$PWD" ] && [ -d "$cwd" ] && builtin cd -- "$cwd"
+	rm -f -- "$tmp"
+}
+
 alias ls='ls --color=auto'
+alias y="yazi"
 alias grep='grep --color=auto'
 alias fastfetch='fastfetch --color-title "$foreground" --logo-color-1 "$color1" --logo-color-2 "$color1"'
 alias wallpaper="sh ~/.dotfiles/Scripts/wallpapermenu.sh"
