@@ -1,4 +1,3 @@
-
 [[ $- != *i* ]] && return
 
 . "$HOME/.cache/wal/colors.sh"
@@ -14,9 +13,10 @@ PS1='\[\e[0;33m\]\w ${PS1_CMD1}\n-> \[\e[0m\]'
 
 fastfetch
 
+# Used for the Node version manager
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 # Enviroment Variables
-export MINIWEB_SOURCE=./app
+export TERMINAL=ghostty
