@@ -3,5 +3,10 @@ use = "uhs-robert/recycle-bin"
 rev = "fa68711"
 hash = "8714306b5cac6359edbacbf545fbd691"
 
+[[plugin.deps]]
+use = "ourongxing/fast-enter"
+rev = "9fe77d8"
+hash = "7ac02a3fa73cd734ddf4ac85af4c0507"
+
 [flavor]
 deps = []
