@@ -6,3 +6,6 @@ font-size = 13
 
 window-padding-x = 5,5
 window-padding-y = 5,5
+
+# Behavior
+confirm-close-surface = false

@@ -1,8 +1,11 @@
 
 [mgr]
 append_keymap = [
-  { on = ["g" "h"], run = "cd ~", desc = "Go home"},
-  { on = ["g" "u"], run = "cd /run/media/$USER", desc = "Go to USB drives"},
-  { on = ["u" "m"], exec = "shell", run = "udiskie-mount ${1}", desc = "USB mount"},
-  { on = ["u" "u"], exec = "shell", run = "udiskie-unmount ${1}", desc = "USB unmount"}
+  { on = ["g", "h"], run = "cd ~", desc = "Go home"},
+  { on = ["g", "u"], run = "cd /run/media/$USER", desc = "Go to USB drives"},
+  { on = ["u", "m"], exec = "shell", run = "udiskie-mount ${1}", desc = "USB mount"},
+  { on = ["u", "u"], exec = "shell", run = "udiskie-unmount ${1}", desc = "USB unmount"}
+]
+prepend_keymap = [
+  { on = ["R","b"], run = "plugin recycle-bin", desc = "Open Recycle Bin menu" },
 ]
