@@ -4,6 +4,7 @@ return {
 		formatters_by_ft = {
 			-- Losely typed
 			lua = { "stylua" },
+			python = { "black" },
 			javascript = { "prettier" },
 			typescript = { "prettier" },
 			javascriptreact = { "prettier" },

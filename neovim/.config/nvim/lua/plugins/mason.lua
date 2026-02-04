@@ -11,6 +11,7 @@ return {
 					"lua_ls",
 					"jdtls",
 					"clangd",
+					"pylsp",
 
 					-- Javascript/Typescript + css
 					"eslint",
@@ -34,6 +35,7 @@ return {
 				"clang-format",
 				"google-java-format",
 				"beautysh",
+        "black",
 
 				-- Linters
 				"eslint_d",
@@ -42,6 +44,7 @@ return {
 				"shellcheck",
 				"luacheck",
 				"cpplint",
+        "pylint",
 			},
 
 			auto_update = false,

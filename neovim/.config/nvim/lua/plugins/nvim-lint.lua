@@ -14,6 +14,8 @@ return {
 			c = { "cpplint" },
 			cpp = { "cpplint" },
 
+			python = { "pylint" },
+
 			-- Shells
 			sh = { "shellcheck" },
 			bash = { "shellcheck" },
