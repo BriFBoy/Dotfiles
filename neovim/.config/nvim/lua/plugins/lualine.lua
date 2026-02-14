@@ -5,6 +5,12 @@ return {
 		options = {
 			theme = "auto",
 		},
+		sections = {
+
+			lualine_x = {
+				"overseer",
+				"filetype",
+			},
+		},
 	},
 }
-

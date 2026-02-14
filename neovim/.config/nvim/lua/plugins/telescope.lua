@@ -5,35 +5,48 @@ return {
 		dependencies = {
 			"nvim-lua/plenary.nvim",
 		},
-		opts = {
-			pickers = {
-				find_files = {
-					follow = true,
-					hidden = true,
-				},
-				live_grep = {
-					additional_args = function()
-						return {
-							"--hidden",
-							"--follow",
-							"--no-ignore",
-						}
-					end,
-				},
-			},
-			highlight = {
-				enable = true,
-			},
-		},
-		init = function()
-			local builtin = require("telescope.builtin")
+		opts = function()
+			local sorters = require("telescope.sorters")
 
-			vim.keymap.set("n", "<leader>ff", builtin.find_files, { desc = "Telescope find files" })
-			vim.keymap.set("n", "<leader>fg", builtin.live_grep, { desc = "Telescope live grep" })
-			vim.keymap.set("n", "<leader>fb", builtin.buffers, { desc = "Telescope buffers" })
-			vim.keymap.set("n", "<leader>fh", builtin.help_tags, { desc = "Telescope help tags" })
-			vim.keymap.set("n", "<leader>fo", builtin.oldfiles, { desc = "Telescope oldfiles" })
+			return {
+				defaults = {
+					file_ignore_patterns = {
+						"node_modules",
+						"build",
+						"dist",
+						".git",
+						"target",
+					},
+					path_display = { "smart" },
+					file_sorter = sorters.get_fuzzy_file,
+				},
+				pickers = {
+					find_files = {
+						follow = true,
+						hidden = true,
+					},
+					live_grep = {
+						additional_args = function()
+							return {
+								"--hidden",
+								"--follow",
+								"--no-ignore",
+							}
+						end,
+					},
+				},
+				highlight = {
+					enable = true,
+				},
+			}
 		end,
+		keys = {
+			{ "<leader>ff", function() require("telescope.builtin").find_files() end, desc = "Telescope find files" },
+			{ "<leader>fg", function() require("telescope.builtin").live_grep() end, desc = "Telescope live grep" },
+			{ "<leader>fb", function() require("telescope.builtin").buffers() end, desc = "Telescope buffers" },
+			{ "<leader>fh", function() require("telescope.builtin").help_tags() end, desc = "Telescope help tags" },
+			{ "<leader>fo", function() require("telescope.builtin").oldfiles() end, desc = "Telescope oldfiles" },
+		},
 	},
 	{
 		"nvim-telescope/telescope-ui-select.nvim",
