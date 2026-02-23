@@ -24,6 +24,9 @@ return {
 			bash = { "beautysh" },
 			zsh = { "beautysh" },
 			sh = { "beautysh" },
+
+			-- Config
+			xml = { "xmlformatter" },
 		},
 		format_on_save = {
 			timeout_ms = 500,

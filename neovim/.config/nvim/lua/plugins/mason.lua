@@ -29,13 +29,14 @@ return {
 		dependencies = { "williamboman/mason.nvim" },
 		opts = {
 			ensure_installed = {
-				-- Formatters
-				"prettier",
-				"stylua",
-				"clang-format",
-				"google-java-format",
-				"beautysh",
+        -- Formatters     
+        "prettier",
+        "stylua",
+        "clang-format",
+        "google-java-format",
+        "beautysh",
         "black",
+        "xmlformatter",
 
 				-- Linters
 				"eslint_d",
@@ -44,7 +45,7 @@ return {
 				"shellcheck",
 				"luacheck",
 				"cpplint",
-        "pylint",
+				"pylint",
 			},
 
 			auto_update = false,

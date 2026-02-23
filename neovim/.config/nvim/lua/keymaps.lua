@@ -2,9 +2,7 @@ vim.g.mapleader = " "
 vim.g.maplocalleader = "\\"
 
 local opts = { noremap = true, silent = true }
-local function desc(description)
-	return vim.tbl_extend("force", opts, { desc = description })
-end
+local function desc(description) return vim.tbl_extend("force", opts, { desc = description }) end
 
 -- Quick keys
 vim.keymap.set("n", "<leader>qq", ":qa<CR>", { desc = "Quit all" })
@@ -16,6 +14,12 @@ vim.keymap.set("n", "gi", vim.lsp.buf.implementation, desc("Go to Implementation
 vim.keymap.set("n", "gt", vim.lsp.buf.type_definition, desc("Go to Type Definition"))
 vim.keymap.set("n", "gr", vim.lsp.buf.references, desc("Find References"))
 vim.keymap.set("i", "<C-k>", vim.lsp.buf.signature_help, desc("Signature Help"))
+
+-- Window Navigation
+vim.keymap.set("n", "<C-h>", "<C-w>h")
+vim.keymap.set("n", "<C-j>", "<C-w>j")
+vim.keymap.set("n", "<C-k>", "<C-w>k")
+vim.keymap.set("n", "<C-l>", "<C-w>l")
 
 -- Code actions & edits
 vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, desc("Rename Symbol"))

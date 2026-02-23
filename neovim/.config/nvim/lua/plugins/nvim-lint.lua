@@ -5,9 +5,9 @@ return {
 			-- Web developent
 			javascript = { "eslint" },
 			typescript = { "eslint" },
-			javascriptreact = { "eslint" }, -- for .jsx
-			typescriptreact = { "eslint" }, -- for .tsx
-			html = { "htmlhint" }, -- or "tidy"
+			javascriptreact = { "eslint" },
+			typescriptreact = { "eslint" },
+			html = { "htmlhint" },
 			css = { "stylelint" },
 
 			java = { "checkstyle" },
@@ -25,10 +25,10 @@ return {
 	},
 	config = function()
 		local lint = require("lint")
+
+		-- lint on file save or insertmode leave
 		vim.api.nvim_create_autocmd({ "BufWritePost", "InsertLeave" }, {
-			callback = function()
-				lint.try_lint()
-			end,
+			callback = function() lint.try_lint() end,
 		})
 	end,
 }

@@ -1,23 +1,35 @@
 return {
 	"mfussenegger/nvim-jdtls",
 	ft = "java",
-	config = function()
+	opts = {
+		settings = {
+			java = {
+				contentProvider = { preferred = "fernflower" },
+				signatureHelp = {
+					enabled = true,
+				},
+				inlayHints = {
+					parameterNames = {
+						enabled = "all",
+					},
+				},
+			},
+		},
+	},
+
+	config = function(_, opts)
 		vim.api.nvim_create_autocmd("FileType", {
 			pattern = "java",
 			callback = function(args)
 				local jdtls = require("jdtls")
 				local root_dir = require("jdtls.setup").find_root({ ".git", "mvnw", "gradlew" })
 				local workspace_folder = vim.fn.stdpath("data") .. "/jdtls/" .. vim.fn.fnamemodify(root_dir, ":p:h:t")
+				local env = require("utils.env").load_env(root_dir .. "/.env")
 
 				local config = {
 					cmd = { "jdtls", "-data", workspace_folder },
 					root_dir = root_dir,
-					settings = {
-						java = {
-							signatureHelp = { enabled = true },
-							contentProvider = { preferred = "fernflower" },
-						},
-					},
+					settings = opts.settings,
 					init_options = {
 						bundles = {
 							vim.fn.glob(

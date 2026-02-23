@@ -10,3 +10,6 @@ vim.o.tabstop = 2
 vim.opt.linespace = 4
 
 vim.cmd("set clipboard+=unnamedplus")
+vim.api.nvim_create_autocmd("LspAttach", {
+	callback = function(args) vim.lsp.inlay_hint.enable(true) end,
+})

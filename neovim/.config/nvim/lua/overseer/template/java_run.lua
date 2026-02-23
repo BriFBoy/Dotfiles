@@ -2,7 +2,7 @@ return {
 	name = "Java: Run project",
 	condition = {
 		filetype = {
-			"javascript",
+			"java",
 		},
 	},
 	builder = function()
@@ -35,7 +35,7 @@ return {
 		-- Spring Boot (Maven)
 		if is_spring_boot and has_pom then
 			return {
-				cmd = { "mvn" },
+				cmd = { "./mvnw" },
 				args = { "spring-boot:run" },
 				cwd = cwd,
 				env = env,
@@ -57,7 +57,7 @@ return {
 		-- Maven Exec Plugin
 		if has_pom then
 			return {
-				cmd = { "mvn" },
+				cmd = { "./mvnw" },
 				args = { "exec:java" },
 				cwd = cwd,
 				env = env,
