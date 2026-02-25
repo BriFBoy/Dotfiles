@@ -24,6 +24,7 @@ vim.keymap.set("n", "<C-l>", "<C-w>l")
 -- Code actions & edits
 vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, desc("Rename Symbol"))
 vim.keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, desc("Code actions"))
+vim.keymap.set("n", "<leader>cd", vim.diagnostic.open_float, desc("Code Diagnostics"))
 
 -- Modes
 vim.api.nvim_set_keymap("t", "<Esc>", [[<C-\><C-n>]], { noremap = true })
