@@ -6,20 +6,22 @@ return {
 	{
 		"mason-org/mason-lspconfig.nvim",
 		opts = {
-			automatic_enable = {
-				ensure_installed = {
-					"lua_ls",
-					"jdtls",
-					"clangd",
-					"pylsp",
+			ensure_installed = {
+				"lua_ls",
+				"jdtls",
+				"clangd",
+				"pylsp",
+				"rust_analyzer",
 
-					-- Javascript/Typescript + css
-					"eslint",
-					"cssls",
-					"tailwindcss",
-				},
+				-- Javascript/Typescript + css
+				"eslint",
+				"cssls",
+				"tailwindcss",
+			},
+			automatic_enable = {
 				exclude = {
 					"jdtls",
+					"rust_analyzer",
 				},
 			},
 		},
@@ -29,14 +31,14 @@ return {
 		dependencies = { "williamboman/mason.nvim" },
 		opts = {
 			ensure_installed = {
-        -- Formatters     
-        "prettier",
-        "stylua",
-        "clang-format",
-        "google-java-format",
-        "beautysh",
-        "black",
-        "xmlformatter",
+				-- Formatters
+				"prettier",
+				"stylua",
+				"clang-format",
+				"google-java-format",
+				"beautysh",
+				"black",
+				"xmlformatter",
 
 				-- Linters
 				"eslint_d",
