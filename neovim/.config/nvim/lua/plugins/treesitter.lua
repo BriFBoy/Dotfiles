@@ -3,7 +3,7 @@ return {
 	build = ":TSUpdate",
 	lazy = false,
 	opts = {
-		ensure_installed = { "lua", "javascript", "java", "bash" },
+		ensure_installed = { "lua", "javascript", "java", "bash", "rust", "c", "typescript" },
 		auto_install = true,
 		highlight = { enable = true },
 		indent = { enable = true },
