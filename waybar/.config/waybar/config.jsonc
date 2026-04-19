@@ -3,7 +3,7 @@
   "position": "bottom",
   "spacing": 7,
   "reload_style_on_change": true,
-  "height": 40,
+  "height": 42,
   "modules-left": [
     "hyprland/workspaces"
   ],
