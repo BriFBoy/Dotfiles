@@ -14,11 +14,11 @@ add_newline = false
  
 
 [directory]
-style = "bg:yellow"
+style = "bg:yellow fg:black"
 format = '[ $path ]($style)[$read_only]($read_only_style)'
 
 [git_branch]
-style = "bg:cyan"
+style = "bg:cyan fg:black"
 format = '[$symbol$branch(:$remote_branch)]($style)'
 symbol = ' '
 
@@ -28,9 +28,12 @@ format = '[$time]($style)'
 time_format = '%H:%M'
 disabled = false
 
+[fill]
+symbol = " "
+
 [os]
 format = '[ $name ]($style)'
-style = "bg:green fg:bright-black"
+style = "bg:green fg:black"
 disabled = false
 
 [rust]
