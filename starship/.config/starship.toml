@@ -1,0 +1,42 @@
+format = """
+
+$directory[](bg:bright-cyan fg:yellow)\
+$git_branch[](fg:cyan bg:green)\
+$os[](fg:green)\
+$fill\
+$java\
+$rust
+$character
+"""
+
+# Inserts a blank line between shell prompts
+add_newline = false 
+ 
+
+[directory]
+style = "bg:yellow"
+format = '[ $path ]($style)[$read_only]($read_only_style)'
+
+[git_branch]
+style = "bg:cyan"
+format = '[$symbol$branch(:$remote_branch)]($style)'
+symbol = ' '
+
+[time]
+style = "bg:green fg:bright-black"
+format = '[$time]($style)'
+time_format = '%H:%M'
+disabled = false
+
+[os]
+format = '[ $name ]($style)'
+style = "bg:green fg:bright-black"
+disabled = false
+
+[rust]
+style = "bg:bright-black"
+format = '[](fg:bright-black)[$symbol($version )]($style)'
+
+[java]
+style = "bg:bright-black"
+format = '[](fg:bright-black)[${symbol}(${version} )]($style)'

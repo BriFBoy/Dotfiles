@@ -1,7 +1,7 @@
 config-file = ~/.cache/wal/ghostty.conf
 
 # Font conifguratin
-font-family = "JetBrainsMono Nerd Font Mono"
+font-family = "JetBrainsMono Nerd Font Propo"
 font-size = 13
 
 window-padding-x = 5,5
