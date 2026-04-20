@@ -1,12 +1,19 @@
 return {
 	"nvim-treesitter/nvim-treesitter",
-	build = ":TSUpdate",
 	lazy = false,
-	opts = {
-		ensure_installed = { "lua", "javascript", "java", "bash", "rust", "c", "typescript" },
-		auto_install = true,
-		highlight = { enable = true },
-		indent = { enable = true },
-		autotag = { enable = true },
-	},
+	build = ":TSUpdate",
+	config = function()
+		vim.api.nvim_create_autocmd("FileType", {
+			pattern = { "<filetype>" },
+			callback = function() vim.treesitter.start() end,
+		})
+		require("nvim-treesitter").install({
+			"rust",
+			"javascript",
+			"typescript",
+			"zig",
+			"c",
+			"java",
+		})
+	end,
 }
