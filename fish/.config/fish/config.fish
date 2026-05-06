@@ -58,3 +58,6 @@ alias ......='cd ../../../../..'
 # Enables Starship
 starship init fish | source
 enable_transience
+
+# opencode
+fish_add_path /home/brian/.opencode/bin
