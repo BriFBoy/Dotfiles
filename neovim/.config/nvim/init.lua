@@ -1,5 +1,14 @@
 require("keymaps")
-require("config.lazy")
+local urls = require("lua/utils/urls")
+
+vim.pack.add({
+  {	src = urls.gh("RedsXDD/neopywal.nvim"), name = "neopywal" },
+  { src = urls.gh("romus204/tree-sitter-manager.nvim"), name = "tree-sitter-manager" },
+  { src = urls.gh("folke/snacks.nvim"), name = "snacks"},
+  { src = urls.gh("nvim-tree/nvim-web-devicons") },
+  { src = urls.gh("lewis6991/gitsigns.nvim") },
+  { src = urls.gh("nvim-lualine/lualine.nvim") },
+})
 
 vim.cmd("set relativenumber")
 vim.o.smartindent = true
@@ -10,6 +19,16 @@ vim.o.tabstop = 2
 vim.opt.linespace = 4
 
 vim.cmd("set clipboard+=unnamedplus")
-vim.api.nvim_create_autocmd("LspAttach", {
-	callback = function(args) vim.lsp.inlay_hint.enable(true) end,
+
+-- Plugins
+require("neopywal").setup()
+vim.cmd.colorscheme("neopywal")
+
+require("tree-sitter-manager").setup({
+  ensure_installed = {"java", "c_sharp", "c", "rust", "javascript", "typescript", "lua",},
+  auto_install = true,
 })
+
+require("lua/plugins/snacks")
+require("gitsigns")
+require("lua/plugins/lualine")

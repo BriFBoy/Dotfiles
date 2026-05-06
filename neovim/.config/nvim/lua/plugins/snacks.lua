@@ -1,60 +1,20 @@
-return {
-	"folke/snacks.nvim",
-	priority = 1000,
-	lazy = false,
-	---@type snacks.Config
-	opts = {
-		picker = {
-			enabled = true,
-			formatters = {
-				file = {
-					filename_first = true,
-					truncate = "left",
-				},
-			},
-			sources = {
-				files = {
-					hidden = true,
-					exclude = {
-						"**/.git",
-						"**/node_modules",
-						"**/dist",
-						"**/build",
-					},
-				},
-			},
-		},
-		explorer = {
-			enabled = true,
-			sources = {
-				files = {
-					hidden = true,
-				},
-			},
-		},
-		statuscolumn = { enabled = true },
-		indent = { enabled = true },
-		dashboard = { enabled = true },
+require("snacks").setup({
+    explorer = { enabled = true },
+    indent = { enabled = true },
+    picker = { enabled = true },
+})
+-- Top Pickers & Explorer
+vim.keymap.set("n", "<leader><space>", function() Snacks.picker.smart() end, { desc = "Smart Find Files" })
+vim.keymap.set("n", "<leader>,",       function() Snacks.picker.buffers() end, { desc = "Buffers" })
+vim.keymap.set("n", "<leader>/",       function() Snacks.picker.grep() end, { desc = "Grep" })
+vim.keymap.set("n", "<leader>:",       function() Snacks.picker.command_history() end, { desc = "Command History" })
+vim.keymap.set("n", "<leader>n",       function() Snacks.picker.notifications() end, { desc = "Notification History" })
+vim.keymap.set("n", "<leader>e",       function() Snacks.explorer() end, { desc = "File Explorer" })
 
-		bigfile = { enabled = false },
-		input = { enabled = false },
-		notifier = { enabled = false },
-		quickfile = { enabled = false },
-		scope = { enabled = false },
-		scroll = { enabled = false },
-		words = { enabled = false },
-	},
-	keys = {
-		-- Top Pickers & Explorer
-		{ "<leader>:", function() require("snacks").picker.command_history() end, desc = "Command History" },
-		{ "<leader>n", function() require("snacks").picker.notifications() end, desc = "Notification History" },
-		{ "<leader>e", function() require("snacks").explorer() end, desc = "File Explorer" },
-
-		-- find
-		{ "<leader>fb", function() require("snacks").picker.buffers() end, desc = "Buffers" },
-		{ "<leader>fg", function() require("snacks").picker.grep() end, desc = "Find Grep" },
-		{ "<leader>ff", function() require("snacks").picker.files() end, desc = "Find Files" },
-		{ "<leader>fp", function() require("snacks").picker.projects() end, desc = "Projects" },
-		{ "<leader>fr", function() require("snacks").picker.recent() end, desc = "Recent" },
-	},
-}
+-- Find
+vim.keymap.set("n", "<leader>fb", function() Snacks.picker.buffers() end, { desc = "Buffers" })
+vim.keymap.set("n", "<leader>fc", function() Snacks.picker.files({ cwd = vim.fn.stdpath("config") }) end, { desc = "Find Config File" })
+vim.keymap.set("n", "<leader>ff", function() Snacks.picker.files() end, { desc = "Find Files" })
+vim.keymap.set("n", "<leader>fg", function() Snacks.picker.git_files() end, { desc = "Find Git Files" })
+vim.keymap.set("n", "<leader>fp", function() Snacks.picker.projects() end, { desc = "Projects" })
+vim.keymap.set("n", "<leader>fr", function() Snacks.picker.recent() end, { desc = "Recent" })
