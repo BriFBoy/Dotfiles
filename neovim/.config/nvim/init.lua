@@ -1,5 +1,5 @@
 require("keymaps")
-local urls = require("lua/utils/urls")
+local urls = require("utils.urls")
 
 vim.pack.add({
   {	src = urls.gh("RedsXDD/neopywal.nvim"), name = "neopywal" },
@@ -23,6 +23,7 @@ vim.cmd("set clipboard+=unnamedplus")
 -- Plugins
 require("neopywal").setup()
 vim.cmd.colorscheme("neopywal")
+vim.api.nvim_set_hl(0, "String", { fg = "#7bcc52" })
 
 require("tree-sitter-manager").setup({
   ensure_installed = {"java", "c_sharp", "c", "rust", "javascript", "typescript", "lua",},
