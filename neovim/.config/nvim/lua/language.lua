@@ -11,6 +11,13 @@ return {
 		formatter = "clang-format",
 		linter = "cpplint",
 	},
+	rust = {
+		formatter = "rustfmt",
+	},
+	java = {
+		lsp = "jdtls",
+		lsp_name = nil,
+	},
 	javascript = {
 		lsp = "typescript-language-server",
 		lsp_name = "ts_ls",

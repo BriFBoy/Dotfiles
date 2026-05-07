@@ -18,6 +18,7 @@ function M.install_mason_tools(languages)
 			-- has_package checks the registry exists before trying to get it
 			if not registry.has_package(tool) then
 				vim.notify("Unknown package: " .. tool, vim.log.levels.WARN)
+			elseif registry.is_installed(tool) then
 			else
 				vim.notify("Installing " .. tool .. "...", vim.log.levels.INFO)
 				registry.get_package(tool):install()
