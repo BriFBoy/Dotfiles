@@ -48,6 +48,25 @@ require("tree-sitter-manager").setup({
 require("lua.plugins.snacks")
 require("gitsigns")
 require("lua.plugins.lualine")
+-- Lsp
+vim.lsp.config["lua_ls"] = {
+	settings = {
+		Lua = {
+			diagnostics = {
+				globals = {
+					"vim",
+				},
+			},
+			workspace = {
+				-- Make the server aware of Neovim runtime files
+				library = vim.api.nvim_get_runtime_file("", true),
+			},
+			telemetry = {
+				enable = false,
+			},
+		},
+	},
+}
 -- Mason
 require("mason").setup()
 for _, lang in pairs(languages) do
@@ -68,7 +87,8 @@ require("blink.cmp").setup({
 })
 
 -- Custom commands
-vim.api.nvim_create_user_command("LangInstall", function()
-	local langs = require("language")
-	require("utils.install").install_mason_tools(langs)
-end, {})
+vim.api.nvim_create_user_command(
+	"LangInstall",
+	function() require("utils.install").install_mason_tools(languages) end,
+	{}
+)
