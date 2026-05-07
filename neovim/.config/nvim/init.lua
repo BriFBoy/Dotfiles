@@ -31,6 +31,8 @@ vim.pack.add({
 	urls.gh("MunifTanjim/nui.nvim"),
 	urls.gh("mfussenegger/nvim-dap"),
 	urls.gh("nvim-java/nvim-java"),
+	-- C#
+	{ src = urls.gh("seblj/roslyn.nvim"), name = "roslyn" },
 })
 
 vim.o.relativenumber = true
@@ -63,7 +65,12 @@ require("gitsigns")
 require("plugins.lualine")
 require("java").setup()
 -- Mason
-require("mason").setup()
+require("mason").setup({
+	registries = {
+		"github:mason-org/mason-registry",
+		"github:Crashdummyy/mason-registry",
+	},
+})
 for _, lang in pairs(languages) do
 	if type(lang.lsp_name) == "table" then
 		for _, name in ipairs(lang.lsp_name) do

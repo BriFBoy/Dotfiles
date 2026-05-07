@@ -24,4 +24,10 @@ return {
 		formatter = "prettier",
 		linter = "eslint_d",
 	},
+	csharp = {
+		lsp = "roslyn",
+		lsp_name = nil,
+		formatter = "csharpier",
+		linter = nil,
+	},
 }
