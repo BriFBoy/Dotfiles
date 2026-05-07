@@ -10,7 +10,14 @@ function M.install_mason_tools(languages)
 		for _, lang in pairs(languages) do
 			if lang.lsp_name then vim.lsp.enable(lang.lsp_name) end
 			for _, key in ipairs({ "lsp", "formatter", "linter" }) do
-				if lang[key] then tools[lang[key]] = true end
+				local value = lang[key]
+				if type(value) == "table" then
+					for _, tool in ipairs(value) do
+						tools[tool] = true
+					end
+				elseif type(value) == "string" then
+					tools[value] = true
+				end
 			end
 		end
 

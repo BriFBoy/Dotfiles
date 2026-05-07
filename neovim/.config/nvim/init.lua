@@ -18,12 +18,19 @@ vim.pack.add({
 	-- Autocompletion
 	{ src = urls.gh("saghen/blink.cmp"), version = vim.version.range("1.0") },
 	{ src = urls.gh("rafamadriz/friendly-snippets") },
-	-- Langs
+	-- Rust
 	{
 		src = urls.gh("mrcjkb/rustaceanvim"),
 		version = vim.version.range("^9"),
 	},
-	{ src = urls.gh("mfussenegger/nvim-jdtls") },
+	-- Java
+	{
+		src = urls.gh("JavaHello/spring-boot.nvim"),
+		version = "218c0c26c14d99feca778e4d13f5ec3e8b1b60f0",
+	},
+	urls.gh("MunifTanjim/nui.nvim"),
+	urls.gh("mfussenegger/nvim-dap"),
+	urls.gh("nvim-java/nvim-java"),
 })
 
 vim.o.relativenumber = true
@@ -54,11 +61,17 @@ require("tree-sitter-manager").setup({
 require("plugins.snacks")
 require("gitsigns")
 require("plugins.lualine")
-require("plugins.nvim-jdtls")
+require("java").setup()
 -- Mason
 require("mason").setup()
 for _, lang in pairs(languages) do
-	if lang.lsp_name then vim.lsp.enable(lang.lsp_name) end
+	if type(lang.lsp_name) == "table" then
+		for _, name in ipairs(lang.lsp_name) do
+			vim.lsp.enable(name)
+		end
+	elseif type(lang.lsp_name) == "string" then
+		vim.lsp.enable(lang.lsp_name)
+	end
 end
 -- Formatting and linting
 require("plugins.conform")

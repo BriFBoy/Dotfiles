@@ -37,6 +37,18 @@
       "rev": "95425eea6411eebc17c2fcdc46d1c45e57d99205",
       "src": "https://github.com/RedsXDD/neopywal.nvim"
     },
+    "nui.nvim": {
+      "rev": "de740991c12411b663994b2860f1a4fd0937c130",
+      "src": "https://github.com/MunifTanjim/nui.nvim"
+    },
+    "nvim-dap": {
+      "rev": "45a69eba683a2c448dd9ecfc4de89511f0646b5f",
+      "src": "https://github.com/mfussenegger/nvim-dap"
+    },
+    "nvim-java": {
+      "rev": "602a5f7fa92f9c1d425a2159133ff9de86842f0a",
+      "src": "https://github.com/nvim-java/nvim-java"
+    },
     "nvim-jdtls": {
       "rev": "77ccaeb422f8c81b647605da5ddb4a7f725cda90",
       "src": "https://github.com/mfussenegger/nvim-jdtls"
@@ -61,6 +73,11 @@
     "snacks": {
       "rev": "ad9ede6a9cddf16cedbd31b8932d6dcdee9b716e",
       "src": "https://github.com/folke/snacks.nvim"
+    },
+    "spring-boot.nvim": {
+      "rev": "218c0c26c14d99feca778e4d13f5ec3e8b1b60f0",
+      "src": "https://github.com/JavaHello/spring-boot.nvim",
+      "version": "'218c0c26c14d99feca778e4d13f5ec3e8b1b60f0'"
     },
     "tree-sitter-manager": {
       "rev": "69c48bff61d763280e472a3fe989338f949583e3",
