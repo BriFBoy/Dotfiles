@@ -15,7 +15,7 @@ return {
 		formatter = "rustfmt",
 	},
 	java = {
-		lsp = { "jdtls", "vscode-spring-boot-tools" },
+		lsp = "jdtls",
 		lsp_name = "jdtls",
 	},
 	javascript = {

@@ -1,4 +1,5 @@
 require("keymaps")
+require("config.neovim")
 local urls = require("utils.urls")
 local languages = require("language")
 
@@ -14,43 +15,17 @@ vim.pack.add({
 	{ src = urls.gh("neovim/nvim-lspconfig") },
 	-- Formatting and linting
 	{ src = urls.gh("stevearc/conform.nvim") },
-	{ src = urls.gh("mfussenegger/nvim-lint") },
 	-- Autocompletion
 	{ src = urls.gh("saghen/blink.cmp"), version = vim.version.range("1.0") },
-	{ src = urls.gh("rafamadriz/friendly-snippets") },
 	-- Rust
 	{
 		src = urls.gh("mrcjkb/rustaceanvim"),
 		version = vim.version.range("^9"),
 	},
 	-- Java
-	{
-		src = urls.gh("JavaHello/spring-boot.nvim"),
-		version = "218c0c26c14d99feca778e4d13f5ec3e8b1b60f0",
-	},
-	urls.gh("MunifTanjim/nui.nvim"),
-	urls.gh("mfussenegger/nvim-dap"),
-	urls.gh("nvim-java/nvim-java"),
+	{ src = urls.cb("mfussenegger/nvim-jdtls") },
 	-- C#
 	{ src = urls.gh("seblj/roslyn.nvim"), name = "roslyn" },
-})
-
-vim.o.relativenumber = true
-vim.o.number = true
-vim.o.smartindent = true
-vim.o.expandtab = true
-vim.o.shiftwidth = 2
-vim.o.tabstop = 2
-vim.o.linespace = 4
-vim.o.termguicolors = true
-vim.o.scrolloff = 12
-vim.o.signcolumn = "yes"
-vim.opt.clipboard:append("unnamedplus")
-vim.diagnostic.config({
-	virtual_text = true,
-	signs = true,
-	underline = true,
-	update_in_insert = false,
 })
 
 -- Plugins
@@ -63,7 +38,6 @@ require("tree-sitter-manager").setup({
 require("plugins.snacks")
 require("gitsigns")
 require("plugins.lualine")
-require("java").setup()
 -- Mason
 require("mason").setup({
 	registries = {
@@ -71,6 +45,20 @@ require("mason").setup({
 		"github:Crashdummyy/mason-registry",
 	},
 })
+-- Formatting and linting
+require("plugins.conform")
+-- Autocompletion
+local cmp = require("blink.cmp")
+cmp.setup({
+	keymap = { preset = "default" },
+	completion = { documentation = { auto_show = true } },
+	sources = {
+		default = { "lsp", "path", "snippets", "buffer" },
+	},
+	fuzzy = { implementation = "prefer_rust_with_warning" },
+})
+
+-- Enabling all LSPs
 for _, lang in pairs(languages) do
 	if type(lang.lsp_name) == "table" then
 		for _, name in ipairs(lang.lsp_name) do
@@ -80,18 +68,6 @@ for _, lang in pairs(languages) do
 		vim.lsp.enable(lang.lsp_name)
 	end
 end
--- Formatting and linting
-require("plugins.conform")
-require("plugins.nvim-lint")
--- Autocompletion
-require("blink.cmp").setup({
-	keymap = { preset = "default" },
-	completion = { documentation = { auto_show = true } },
-	sources = {
-		default = { "lsp", "path", "snippets", "buffer" },
-	},
-	fuzzy = { implementation = "prefer_rust_with_warning" },
-})
 
 -- Lsp
 vim.lsp.config["lua_ls"] = {
