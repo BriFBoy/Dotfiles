@@ -17,14 +17,12 @@ vim.pack.add({
 	{ src = urls.gh("stevearc/conform.nvim") },
 	-- Autocompletion
 	{ src = urls.gh("saghen/blink.cmp"), version = vim.version.range("1.0") },
-	-- Rust
+	-- languages
 	{
 		src = urls.gh("mrcjkb/rustaceanvim"),
 		version = vim.version.range("^9"),
 	},
-	-- Java
 	{ src = urls.cb("mfussenegger/nvim-jdtls") },
-	-- C#
 	{ src = urls.gh("seblj/roslyn.nvim"), name = "roslyn" },
 })
 
@@ -88,6 +86,20 @@ vim.lsp.config["lua_ls"] = {
 		},
 	},
 }
+local root_dir = vim.fs.root(0, { "gradlew", ".git", "mvnw" }) or vim.fn.getcwd()
+local project_name = vim.fn.fnamemodify(root_dir, ":p:h:t")
+local workspace_folder = vim.fn.stdpath("data") .. "/jdtls/" .. project_name
+vim.lsp.config("jdtls", {
+	cmd = { "jdtls", "-data", workspace_folder },
+	capabilities = require("blink.cmp").get_lsp_capabilities(),
+	settings = {
+		java = {
+			contentProvider = { preferred = "fernflower" },
+			signatureHelp = { enabled = true },
+			inlayHints = { parameterNames = { enabled = "all" } },
+		},
+	},
+})
 -- Custom commands
 vim.api.nvim_create_user_command(
 	"LangInstall",
