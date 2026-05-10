@@ -16,7 +16,7 @@ vim.pack.add({
 	-- Formatting and linting
 	{ src = urls.gh("stevearc/conform.nvim") },
 	-- Autocompletion
-	{ src = urls.gh("saghen/blink.cmp"), version = vim.version.range("1.0") },
+	{ src = urls.gh("saghen/blink.cmp"), version = vim.version.range(">=1.10") },
 	-- languages
 	{
 		src = urls.gh("mrcjkb/rustaceanvim"),
@@ -36,6 +36,7 @@ require("tree-sitter-manager").setup({
 require("plugins.snacks")
 require("gitsigns")
 require("plugins.lualine")
+require("plugins.nvim-jdtls")
 -- Mason
 require("mason").setup({
 	registries = {
@@ -49,13 +50,36 @@ require("plugins.conform")
 local cmp = require("blink.cmp")
 cmp.setup({
 	keymap = { preset = "default" },
-	completion = { documentation = { auto_show = true } },
+	completion = {
+		trigger = {
+			show_on_keyword = true,
+			show_on_trigger_character = true,
+			show_on_backspace = true,
+			show_on_backspace_in_keyword = true,
+			show_on_backspace_after_accept = true,
+			show_on_backspace_after_insert_enter = true,
+		},
+		ghost_text = {
+			enabled = true,
+		},
+		documentation = { auto_show = true },
+		keyword = {
+			range = "full",
+		},
+	},
+	signature = {
+		enabled = true,
+	},
 	sources = {
 		default = { "lsp", "path", "snippets", "buffer" },
+		providers = {
+			lsp = {
+				min_keyword_length = 0,
+			},
+		},
 	},
 	fuzzy = { implementation = "prefer_rust_with_warning" },
 })
-
 -- Enabling all LSPs
 for _, lang in pairs(languages) do
 	if type(lang.lsp_name) == "table" then
@@ -86,20 +110,6 @@ vim.lsp.config["lua_ls"] = {
 		},
 	},
 }
-local root_dir = vim.fs.root(0, { "gradlew", ".git", "mvnw" }) or vim.fn.getcwd()
-local project_name = vim.fn.fnamemodify(root_dir, ":p:h:t")
-local workspace_folder = vim.fn.stdpath("data") .. "/jdtls/" .. project_name
-vim.lsp.config("jdtls", {
-	cmd = { "jdtls", "-data", workspace_folder },
-	capabilities = require("blink.cmp").get_lsp_capabilities(),
-	settings = {
-		java = {
-			contentProvider = { preferred = "fernflower" },
-			signatureHelp = { enabled = true },
-			inlayHints = { parameterNames = { enabled = "all" } },
-		},
-	},
-})
 -- Custom commands
 vim.api.nvim_create_user_command(
 	"LangInstall",
