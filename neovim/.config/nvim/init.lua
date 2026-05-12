@@ -17,6 +17,7 @@ vim.pack.add({
 	{ src = urls.gh("stevearc/conform.nvim") },
 	-- Autocompletion
 	{ src = urls.gh("saghen/blink.cmp"), version = vim.version.range(">=1.10") },
+	{ src = urls.gh("rafamadriz/friendly-snippets") },
 	-- languages
 	{
 		src = urls.gh("mrcjkb/rustaceanvim"),
@@ -37,6 +38,7 @@ require("plugins.snacks")
 require("gitsigns")
 require("plugins.lualine")
 require("plugins.nvim-jdtls")
+require("plugins.blink")
 -- Mason
 require("mason").setup({
 	registries = {
@@ -46,40 +48,6 @@ require("mason").setup({
 })
 -- Formatting and linting
 require("plugins.conform")
--- Autocompletion
-local cmp = require("blink.cmp")
-cmp.setup({
-	keymap = { preset = "default" },
-	completion = {
-		trigger = {
-			show_on_keyword = true,
-			show_on_trigger_character = true,
-			show_on_backspace = true,
-			show_on_backspace_in_keyword = true,
-			show_on_backspace_after_accept = true,
-			show_on_backspace_after_insert_enter = true,
-		},
-		ghost_text = {
-			enabled = true,
-		},
-		documentation = { auto_show = true },
-		keyword = {
-			range = "full",
-		},
-	},
-	signature = {
-		enabled = true,
-	},
-	sources = {
-		default = { "lsp", "path", "snippets", "buffer" },
-		providers = {
-			lsp = {
-				min_keyword_length = 0,
-			},
-		},
-	},
-	fuzzy = { implementation = "prefer_rust_with_warning" },
-})
 -- Enabling all LSPs
 for _, lang in pairs(languages) do
 	if type(lang.lsp_name) == "table" then
@@ -110,6 +78,12 @@ vim.lsp.config["lua_ls"] = {
 		},
 	},
 }
+vim.lsp.config("jedi-language-server", {
+	cmd = { "jedi-language-server" },
+	filetypes = { "python" },
+	root_markers = { "pyproject.toml", "setup.py", "setup.cfg", ".git" },
+})
+
 -- Custom commands
 vim.api.nvim_create_user_command(
 	"LangInstall",

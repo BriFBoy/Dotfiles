@@ -26,4 +26,9 @@ return {
 		lsp_name = "roslyn",
 		formatter = "csharpier",
 	},
+	python = {
+		lsp = "jedi-language-server",
+		lsp_name = "jedi-language-server",
+		formatter = "black",
+	},
 }
