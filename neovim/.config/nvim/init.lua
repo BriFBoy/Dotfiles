@@ -18,12 +18,19 @@ vim.pack.add({
 	-- Autocompletion
 	{ src = urls.gh("saghen/blink.cmp"), version = vim.version.range(">=1.10") },
 	{ src = urls.gh("rafamadriz/friendly-snippets") },
+	-- Debugging
+	urls.gh("mfussenegger/nvim-dap"),
 	-- languages
 	{
 		src = urls.gh("mrcjkb/rustaceanvim"),
 		version = vim.version.range("^9"),
 	},
-	{ src = urls.cb("mfussenegger/nvim-jdtls") },
+	urls.gh("nvim-java/nvim-java"),
+	{
+		src = urls.gh("JavaHello/spring-boot.nvim"),
+		version = "218c0c26c14d99feca778e4d13f5ec3e8b1b60f0",
+	},
+	urls.gh("MunifTanjim/nui.nvim"),
 	{ src = urls.gh("seblj/roslyn.nvim"), name = "roslyn" },
 })
 
@@ -37,8 +44,8 @@ require("tree-sitter-manager").setup({
 require("plugins.snacks")
 require("gitsigns")
 require("plugins.lualine")
-require("plugins.nvim-jdtls")
 require("plugins.blink")
+require("java").setup()
 -- Mason
 require("mason").setup({
 	registries = {

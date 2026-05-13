@@ -15,6 +15,7 @@ return {
 	java = {
 		lsp = "jdtls",
 		lsp_name = "jdtls",
+		formatter = nil,
 	},
 	javascript = {
 		lsp = "typescript-language-server",
