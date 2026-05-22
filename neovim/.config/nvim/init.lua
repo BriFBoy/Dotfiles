@@ -1,40 +1,9 @@
 require("keymaps")
 require("config.neovim")
-local urls = require("utils.urls")
 local languages = require("language")
 
-vim.pack.add({
-	{ src = urls.gh("RedsXDD/neopywal.nvim"), name = "neopywal" },
-	{ src = urls.gh("romus204/tree-sitter-manager.nvim"), name = "tree-sitter-manager" },
-	{ src = urls.gh("folke/snacks.nvim"), name = "snacks" },
-	{ src = urls.gh("nvim-tree/nvim-web-devicons") },
-	{ src = urls.gh("lewis6991/gitsigns.nvim") },
-	{ src = urls.gh("nvim-lualine/lualine.nvim") },
-	{ src = urls.gh("mason-org/mason.nvim") },
-	-- Lsp
-	{ src = urls.gh("neovim/nvim-lspconfig") },
-	-- Formatting and linting
-	{ src = urls.gh("stevearc/conform.nvim") },
-	-- Autocompletion
-	{ src = urls.gh("saghen/blink.cmp"), version = vim.version.range(">=1.10") },
-	{ src = urls.gh("rafamadriz/friendly-snippets") },
-	-- Debugging
-	urls.gh("mfussenegger/nvim-dap"),
-	-- languages
-	{
-		src = urls.gh("mrcjkb/rustaceanvim"),
-		version = vim.version.range("^9"),
-	},
-	urls.gh("nvim-java/nvim-java"),
-	{
-		src = urls.gh("JavaHello/spring-boot.nvim"),
-		version = "218c0c26c14d99feca778e4d13f5ec3e8b1b60f0",
-	},
-	urls.gh("MunifTanjim/nui.nvim"),
-	{ src = urls.gh("seblj/roslyn.nvim"), name = "roslyn" },
-})
-
 -- Plugins
+require("plugins")
 require("neopywal").setup()
 vim.cmd.colorscheme("neopywal")
 vim.api.nvim_set_hl(0, "String", { fg = "#7bcc52" })
@@ -51,6 +20,12 @@ require("mason").setup({
 	registries = {
 		"github:mason-org/mason-registry",
 		"github:Crashdummyy/mason-registry",
+	},
+})
+require("nvim-autopairs").setup()
+require("nvim-ts-autotag").setup({
+	aliases = {
+		["rust"] = "html",
 	},
 })
 -- Formatting and linting

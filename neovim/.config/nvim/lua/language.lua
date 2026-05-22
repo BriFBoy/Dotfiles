@@ -32,4 +32,12 @@ return {
 		lsp_name = "jedi-language-server",
 		formatter = "black",
 	},
+	-- You will need to install these manualy with:
+	-- npm i -g vscode-langservers-extracted
+	html = {
+		lsp_name = "html",
+	},
+	css = {
+		lsp_name = "cssls",
+	},
 }

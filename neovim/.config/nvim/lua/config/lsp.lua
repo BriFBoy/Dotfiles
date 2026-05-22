@@ -23,6 +23,15 @@ vim.lsp.config("jedi-language-server", {
 })
 vim.lsp.config("html", {
 	filetypes = { "html", "rust" },
+	init_options = {
+		configurationSection = { "html", "css", "javascript", "rust" },
+		embeddedLanguages = {
+			css = true,
+			javascript = true,
+			rust = true,
+		},
+		provideFormatter = true,
+	},
 })
 
 vim.lsp.enable("html")
