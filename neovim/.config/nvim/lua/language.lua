@@ -11,6 +11,7 @@ return {
 	},
 	rust = {
 		formatter = "rustfmt",
+		lsp = "rust-analyzer",
 	},
 	java = {
 		lsp = "jdtls",
