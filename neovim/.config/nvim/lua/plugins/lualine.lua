@@ -1,16 +1,14 @@
-return {
-	"nvim-lualine/lualine.nvim",
-	dependencies = { "nvim-tree/nvim-web-devicons" },
-	opts = {
-		options = {
-			theme = "auto",
-		},
-		sections = {
+local has_lualine, lualine = pcall(require, "lualine")
+if not has_lualine then return end
 
-			lualine_x = {
-				"overseer",
-				"filetype",
-			},
-		},
-	},
-}
+local has_neopywal, neopywal_lualine = pcall(require, "neopywal.theme.plugins.lualine")
+if not has_neopywal then return end
+
+neopywal_lualine.setup()
+
+lualine.setup({
+    options = {
+        theme = "neopywal"
+        -- The rest of your lualine config ...
+    }
+})
