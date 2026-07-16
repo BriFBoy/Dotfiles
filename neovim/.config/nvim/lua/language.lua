@@ -41,4 +41,9 @@ return {
 	css = {
 		lsp_name = "cssls",
 	},
+	-- Docker files
+	docker = {
+		lsp = "docker-language-server",
+		lsp_name = "docker-language-server",
+	},
 }
