@@ -61,3 +61,5 @@ enable_transience
 
 # opencode
 fish_add_path /home/brian/.opencode/bin
+
+fish_add_path /home/brian/.spicetify

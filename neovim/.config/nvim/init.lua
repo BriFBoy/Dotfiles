@@ -4,8 +4,12 @@ local languages = require("language")
 
 -- Plugins
 require("plugins")
-require("neopywal").setup()
+
+-- Colorscheme
+local neopywal = require("neopywal")
+neopywal.setup()
 vim.cmd.colorscheme("neopywal")
+
 vim.api.nvim_set_hl(0, "String", { fg = "#7bcc52" })
 require("tree-sitter-manager").setup({
 	auto_install = true,

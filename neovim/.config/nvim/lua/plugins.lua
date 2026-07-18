@@ -1,7 +1,7 @@
 local urls = require("utils.urls")
 
 vim.pack.add({
-	{ src = urls.gh("RedsXDD/neopywal.nvim"), name = "neopywal" },
+	{ src = urls.gh("RedsXDD/neopywal.nvim") },
 	{ src = urls.gh("romus204/tree-sitter-manager.nvim"), name = "tree-sitter-manager" },
 	{ src = urls.gh("folke/snacks.nvim"), name = "snacks" },
 	{ src = urls.gh("nvim-tree/nvim-web-devicons") },

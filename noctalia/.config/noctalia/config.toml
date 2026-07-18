@@ -1,0 +1,186 @@
+[bar]
+order = [ "Hyprland", "default" ]
+
+    [bar.Hyprland]
+    background_opacity = 0.74999998323619366
+    enabled = true
+    end = [ "tray", "network", "bluetooth", "volume", "battery", "control-center" ]
+    font_weight = 600
+    radius = 8
+    start = [ "workspaces" ]
+
+    [bar.default]
+    enabled = false
+    end = [ "tray", "notifications", "network", "bluetooth", "volume", "battery", "control-center" ]
+    font_weight = 600
+    margin_edge = 5
+    margin_ends = 5
+    padding = 10
+    radius = 10
+    start = [ "workspaces" ]
+    thickness = 42
+
+[brightness]
+sync_all_monitors = true
+
+[control_center]
+width = 800
+
+    [control_center.calendar]
+    show_events_card = false
+
+[desktop_widgets]
+schema_version = 2
+widget_order = [ "desktop-widget-0000000000000001" ]
+
+    [desktop_widgets.grid]
+    cell_size = 16
+    major_interval = 4
+    visible = true
+
+    [desktop_widgets.widget.desktop-widget-0000000000000001]
+    box_height = 128.0
+    box_width = 608.0
+    cx = 320.0
+    cy = 1016.0
+    output = "DP-1"
+    rotation = 0.0
+    type = "audio_visualizer"
+
+        [desktop_widgets.widget.desktop-widget-0000000000000001.settings]
+        background = false
+        bands = 32
+        color_1 = "on_primary"
+        color_2 = "secondary"
+        show_when_idle = true
+
+[hooks]
+wallpaper_changed = "wal -i $NOCTALIA_WALLPAPER_PATH"
+
+[idle]
+behavior_order = [ "lock", "screen-off", "lock-and-suspend" ]
+
+    [idle.behavior.lock]
+    action = "lock"
+    enabled = true
+    timeout = 600.0
+
+    [idle.behavior.lock-and-suspend]
+    action = "lock_and_suspend"
+    enabled = true
+    timeout = 900.0
+
+    [idle.behavior.screen-off]
+    action = "screen_off"
+    enabled = true
+    timeout = 660.0
+
+[lockscreen_widgets]
+enabled = true
+schema_version = 2
+widget_order = [ "lockscreen-login-box@DP-1", "lockscreen-login-box@HDMI-A-1", "lockscreen-widget-0000000000000001" ]
+
+    [lockscreen_widgets.grid]
+    cell_size = 16
+    major_interval = 4
+    visible = true
+
+    [lockscreen_widgets.widget."lockscreen-login-box@DP-1"]
+    box_height = 70.0
+    box_width = 400.0
+    cx = 960.0
+    cy = 895.0
+    output = "DP-1"
+    rotation = 0.0
+    type = "login_box"
+
+        [lockscreen_widgets.widget."lockscreen-login-box@DP-1".settings]
+        background_color = "primary"
+        background_opacity = 0.0
+        background_radius = 20.0
+        input_opacity = 1.0
+        input_radius = 6.0
+        show_caps_lock = true
+        show_keyboard_layout = true
+        show_login_button = true
+        show_password_hint = false
+
+    [lockscreen_widgets.widget."lockscreen-login-box@HDMI-A-1"]
+    box_height = 70.0
+    box_width = 400.0
+    cx = 960.0
+    cy = 961.0
+    output = "HDMI-A-1"
+    rotation = 0.0
+    type = "login_box"
+
+        [lockscreen_widgets.widget."lockscreen-login-box@HDMI-A-1".settings]
+        background_color = "surface_variant"
+        background_opacity = 0.88
+        background_radius = 12.0
+        input_opacity = 1.0
+        input_radius = 6.0
+        show_caps_lock = true
+        show_keyboard_layout = true
+        show_login_button = true
+        show_password_hint = true
+
+    [lockscreen_widgets.widget.lockscreen-widget-0000000000000001]
+    box_height = 256.0
+    box_width = 768.0
+    cx = 960.0
+    cy = 284.0
+    output = "DP-1"
+    rotation = 0.0
+    type = "clock"
+
+        [lockscreen_widgets.widget.lockscreen-widget-0000000000000001.settings]
+        background = false
+        background_color = "on_secondary"
+        background_opacity = 0.5
+        background_radius = 20
+
+[shell]
+clipboard_history_max_entries = 50
+
+    [shell.panel]
+    control_center_position = "center"
+    open_near_click_control_center = true
+
+[theme]
+source = "wallpaper"
+
+    [theme.templates]
+    builtin_ids = [ "btop", "gtk3", "gtk4", "ghostty", "hyprland", "kcolorscheme", "qt" ]
+    community_ids = [ "pywalfox" ]
+
+[wallpaper]
+directory = "/home/brian/Pictures/Wallpapers"
+fill_mode = "crop"
+
+    [wallpaper.default]
+    path = "/home/brian/Pictures/Wallpapers/city.jpg"
+
+    [wallpaper.last]
+    path = "/home/brian/Pictures/Wallpapers/city.jpg"
+
+    [wallpaper.monitors.DP-1]
+    path = "/home/brian/Pictures/Wallpapers/city.jpg"
+
+    [wallpaper.monitors.HDMI-A-1]
+    path = "/home/brian/Pictures/Wallpapers/city.jpg"
+
+[widget.clock]
+capsule = true
+capsule_opacity = 0.5
+capsule_padding = 20
+capsule_radius = 12
+
+[widget.control-center]
+glyph = "navigation-filled"
+scale = 1.25
+
+[widget.workspaces]
+active_pill_size = 3.0
+focused_output_only = true
+inactive_pill_size = 1.5
