@@ -6,8 +6,10 @@
 local terminal = "ghostty"
 local browser = "firefox"
 local fileManager = "dolphin"
+local screenshot = "flameshot gui"
 local menu = "noctalia msg panel-toggle launcher"
 local wallswitcher = "noctalia msg panel-toggle wallpaper"
+
 ---------------------
 ---- Functions   ----
 ---------------------
@@ -28,11 +30,14 @@ hl.bind(
 	mainMod .. " + M",
 	hl.dsp.exec_cmd("command -v hyprshutdown >/dev/null 2>&1 && hyprshutdown || hyprctl dispatch 'hl.dsp.exit()'")
 )
+-- App Bindings
 hl.bind(mainMod .. " + E", hl.dsp.exec_cmd(fileManager))
-hl.bind(mainMod .. " + V", hl.dsp.window.float({ action = "toggle" }))
 hl.bind(mainMod .. " + SPACE", hl.dsp.exec_cmd(menu))
 hl.bind(mainMod .. "+ W", hl.dsp.exec_cmd(wallswitcher))
 hl.bind(mainMod .. "+ B", hl.dsp.exec_cmd(browser))
+hl.bind("Print", hl.dsp.exec_cmd(screenshot))
+
+hl.bind(mainMod .. " + V", hl.dsp.window.float({ action = "toggle" }))
 hl.bind(mainMod .. " + P", hl.dsp.window.pseudo())
 hl.bind(mainMod .. " + J", hl.dsp.layout("togglesplit")) -- dwindle only
 
