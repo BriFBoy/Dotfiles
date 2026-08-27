@@ -9,6 +9,8 @@ require("core.format").register("cs", "csharpier")
 
 require("roslyn").setup()
 
+-- plugin/roslyn.lua already calls vim.lsp.enable("roslyn") at startup;
+-- this only adds the server settings used at attach time
 vim.lsp.config("roslyn", {
 	settings = {
 		["csharp|inlay_hints"] = {
@@ -17,8 +19,6 @@ vim.lsp.config("roslyn", {
 		},
 	},
 })
-
-vim.lsp.enable("roslyn")
 
 -- DAP: debug the project open in the current directory.
 

@@ -1,13 +1,14 @@
 local fzf_lua = require("fzf-lua")
 fzf_lua.setup({
-	-- Route vim.ui.select through fzf, so plugins that use it for prompts
-	-- (e.g. nvim-dap's "Session active, but not stopped at breakpoint" menu)
-	-- get the fzf UI instead of the built-in numbered menu.
 	ui_select = {},
 })
 
 -- fzf-lua Keymaps
 vim.keymap.set("n", "ff", fzf_lua.files, { desc = "Find files" })
+vim.keymap.set("n", "fg", fzf_lua.live_grep, { desc = "Live grep" })
+vim.keymap.set("n", "<leader>fr", fzf_lua.oldfiles, { desc = "Recent files" })
+vim.keymap.set("n", "<leader>fh", fzf_lua.helptags, { desc = "Help tags" })
+vim.keymap.set("n", "<leader>fc", fzf_lua.commands, { desc = "Commands" })
 
 local oil = require("oil")
 oil.setup({

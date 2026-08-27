@@ -102,6 +102,4 @@ function M.offer_build(prompt, cmd, find)
 	return find()
 end
 
-function M.Build(cmd) vim.fn.system(cmd) end
-
 return M
