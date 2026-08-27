@@ -8,6 +8,7 @@ vim.o.linespace = 4
 vim.o.termguicolors = true
 vim.o.scrolloff = 12
 vim.o.signcolumn = "yes"
+vim.o.updatetime = 250
 vim.opt.clipboard:append("unnamedplus")
 vim.diagnostic.config({
 	virtual_text = true,
@@ -15,4 +16,3 @@ vim.diagnostic.config({
 	underline = true,
 	update_in_insert = false,
 })
-vim.lsp.inlay_hint.enable(false, { bufnr = nil })
