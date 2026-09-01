@@ -1,12 +1,13 @@
 local luasnip = require("luasnip")
 luasnip.config.set_config({
 	history = true,
-	updateevents = "TextChanged,TextChangedI",
+	updateevents = "InsertLeave",
 	enable_autosnippets = true,
 })
 
--- Build the native fuzzy library (no-op if already built for this revision)
-require("blink.cmp").build():pwait()
+-- Build the native fuzzy library in the background (no-op if already built).
+-- Not awaited: startup continues with the Lua matcher until Rust is ready.
+require("blink.cmp").build()
 
 require("blink.cmp").setup({
 	snippets = { preset = "luasnip" },
@@ -16,8 +17,7 @@ require("blink.cmp").setup({
 			border = "rounded",
 		},
 		documentation = {
-			-- keep the doc window out of the way; open manually with <C-/>
-			auto_show = false,
+			auto_show = true,
 		},
 	},
 })

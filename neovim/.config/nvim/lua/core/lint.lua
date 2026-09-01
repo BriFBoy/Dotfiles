@@ -13,7 +13,7 @@ function M.register(filetype, linters)
 	lint.linters_by_ft[filetype] = linters
 end
 
-vim.api.nvim_create_autocmd({ "BufWritePost", "InsertLeave" }, {
+vim.api.nvim_create_autocmd("BufWritePost", {
 	callback = function() lint.try_lint() end,
 })
 

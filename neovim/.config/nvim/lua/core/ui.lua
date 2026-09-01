@@ -1,4 +1,4 @@
--- UI layer: statusline, auto-pairing, and tree-sitter parser management.
+-- UI layer: statusline and tree-sitter parser management.
 -- This is a thin core module — individual languages don't register here,
 -- tree-sitter-manager handles parsers on demand via `auto_install`.
 
@@ -19,10 +19,6 @@ require("lualine").setup({
 		lualine_y = { "progress" },
 		lualine_z = { "location" },
 	},
-})
-
-require("nvim-autopairs").setup({
-	map_cr = true,
 })
 
 require("tree-sitter-manager").setup({
