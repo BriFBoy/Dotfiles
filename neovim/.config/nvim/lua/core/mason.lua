@@ -20,14 +20,10 @@ local M = {}
 --- Safe to call repeatedly (e.g. from every ftplugin); only acts once per session.
 ---@param name string  mason package name
 function M.ensure(name)
-	-- `require('mason-registry')` triggers package indexing; guard against a
-	-- not-yet-ready registry by checking availability first.
-	if not registry.has_package(name) then
-		return
-	end
-	if not registry.is_installed(name) then
-		registry.get_package(name):install()
-	end
+	if registry.is_installed(name) then return end
+	registry.refresh(function()
+		if not registry.is_installed(name) and registry.has_package(name) then registry.get_package(name):install() end
+	end)
 end
 
 return M
