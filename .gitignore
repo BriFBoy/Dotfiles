@@ -6,3 +6,9 @@ cava/.config/cava/themes/
 
 neovim/.config/nvim/lazy-lock.json
 .luarc.json
+
+# Enviroment variables
+fish/.config/fish/fish_variables
+fish/.config/fish/conf.d/secrets.fish
+fish/.config/fish/conf.d/local.fish
+fish/.config/fish/conf.d/*.local.fish

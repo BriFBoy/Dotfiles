@@ -44,6 +44,10 @@
       "rev": "95425eea6411eebc17c2fcdc46d1c45e57d99205",
       "src": "https://github.com/RedsXDD/neopywal.nvim"
     },
+    "nui.nvim": {
+      "rev": "10fc361835c856ba4233ef5ea135b919bf3dce97",
+      "src": "git@github.com:MunifTanjim/nui.nvim"
+    },
     "nvim-autopairs": {
       "rev": "430522f95fe4fb7c511ec64f8c1a90cc6a66c05c",
       "src": "https://github.com/windwp/nvim-autopairs"
@@ -55,6 +59,10 @@
     "nvim-dap-ui": {
       "rev": "cc9dd33aade7f20bae414d0cba163bc60d4d4b43",
       "src": "https://github.com/rcarriga/nvim-dap-ui"
+    },
+    "nvim-java": {
+      "rev": "9e8b842ea9eff3ebf25fb7360908ed4d4f87c56a",
+      "src": "git@github.com:nvim-java/nvim-java"
     },
     "nvim-lint": {
       "rev": "3d55c8f67c6ae5c15e1042571e107c7a3d5c5f4e",
@@ -80,6 +88,10 @@
       "rev": "b73018b75affd13fa38e2fc94ef753b465f770d7",
       "src": "https://github.com/stevearc/oil.nvim"
     },
+    "roslyn": {
+      "rev": "de9a98d61ed3fd01b5016eea5fe9e32f1a4c7cfb",
+      "src": "git@github.com:seblj/roslyn.nvim"
+    },
     "roslyn.nvim": {
       "rev": "de9a98d61ed3fd01b5016eea5fe9e32f1a4c7cfb",
       "src": "https://github.com/seblyng/roslyn.nvim"
@@ -87,6 +99,18 @@
     "rustaceanvim": {
       "rev": "8e5a9c3eaff437b3f987b9abd9403dfed324529d",
       "src": "https://github.com/mrcjkb/rustaceanvim"
+    },
+    "snacks": {
+      "rev": "882c996cf28183f4d63640de0b4c02ec886d01f2",
+      "src": "git@github.com:folke/snacks.nvim"
+    },
+    "spring-boot.nvim": {
+      "rev": "eea95b752bceb6ca410b3e2d87a1a02d08bd61a6",
+      "src": "git@github.com:JavaHello/spring-boot.nvim"
+    },
+    "tree-sitter-manager": {
+      "rev": "023590c8f068788a0513a4409bf37ff7f9d1deff",
+      "src": "git@github.com:romus204/tree-sitter-manager.nvim"
     },
     "tree-sitter-manager.nvim": {
       "rev": "023590c8f068788a0513a4409bf37ff7f9d1deff",
