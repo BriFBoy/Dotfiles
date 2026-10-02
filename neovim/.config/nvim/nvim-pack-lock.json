@@ -2,95 +2,95 @@
   "plugins": {
     "LuaSnip": {
       "rev": "0abc8f390b278c3b4aabc4c004ac8a088b65cf24",
-      "src": "https://github.com/L3MON4D3/LuaSnip"
+      "src": "git@github.com:L3MON4D3/LuaSnip"
     },
     "blink.cmp": {
       "rev": "61ffe3e9cedb59eac31484248a1de6a0e37f8d21",
-      "src": "https://github.com/saghen/blink.cmp"
+      "src": "git@github.com:saghen/blink.cmp"
     },
     "blink.lib": {
       "rev": "c8fdc12c8a2fab6cf786dd7141a283f8079f902b",
-      "src": "https://github.com/saghen/blink.lib"
+      "src": "git@github.com:saghen/blink.lib"
     },
     "conform.nvim": {
       "rev": "016802de402556da54c36bd7359b441266b01cdd",
-      "src": "https://github.com/stevearc/conform.nvim"
+      "src": "git@github.com:stevearc/conform.nvim"
     },
     "friendly-snippets": {
       "rev": "6cd7280adead7f586db6fccbd15d2cac7e2188b9",
-      "src": "https://github.com/rafamadriz/friendly-snippets"
+      "src": "git@github.com:rafamadriz/friendly-snippets"
     },
     "fzf-lua": {
       "rev": "05e44d38de0a79c11fba5f7bf8138791b1dbdd1e",
-      "src": "https://github.com/ibhagwan/fzf-lua"
+      "src": "git@github.com:ibhagwan/fzf-lua"
     },
     "gitsigns.nvim": {
       "rev": "5be654f2232c10ddcad19c1607a67b6b4b78fc29",
-      "src": "https://github.com/lewis6991/gitsigns.nvim"
+      "src": "git@github.com:lewis6991/gitsigns.nvim"
     },
     "lualine.nvim": {
       "rev": "221ce6b2d999187044529f49da6554a92f740a96",
-      "src": "https://github.com/nvim-lualine/lualine.nvim"
+      "src": "git@github.com:nvim-lualine/lualine.nvim"
     },
     "mason-nvim-dap.nvim": {
       "rev": "9a10e096703966335bd5c46c8c875d5b0690dade",
-      "src": "https://github.com/jay-babu/mason-nvim-dap.nvim"
+      "src": "git@github.com:jay-babu/mason-nvim-dap.nvim"
     },
     "mason.nvim": {
       "rev": "2a6940af80375532e5e9e7c1f2fc6319a1b7a69d",
-      "src": "https://github.com/mason-org/mason.nvim"
+      "src": "git@github.com:mason-org/mason.nvim"
     },
     "neopywal.nvim": {
       "rev": "95425eea6411eebc17c2fcdc46d1c45e57d99205",
-      "src": "https://github.com/RedsXDD/neopywal.nvim"
+      "src": "git@github.com:RedsXDD/neopywal.nvim"
     },
     "nvim-autopairs": {
       "rev": "430522f95fe4fb7c511ec64f8c1a90cc6a66c05c",
-      "src": "https://github.com/windwp/nvim-autopairs"
+      "src": "git@github.com:windwp/nvim-autopairs"
     },
     "nvim-dap": {
       "rev": "9e848e09a697ee95302a3ef2dd43fd6eb709e570",
-      "src": "https://github.com/mfussenegger/nvim-dap"
+      "src": "git@github.com:mfussenegger/nvim-dap"
     },
     "nvim-dap-ui": {
       "rev": "cc9dd33aade7f20bae414d0cba163bc60d4d4b43",
-      "src": "https://github.com/rcarriga/nvim-dap-ui"
+      "src": "git@github.com:rcarriga/nvim-dap-ui"
     },
     "nvim-lint": {
       "rev": "3d55c8f67c6ae5c15e1042571e107c7a3d5c5f4e",
-      "src": "https://github.com/mfussenegger/nvim-lint"
+      "src": "git@github.com:mfussenegger/nvim-lint"
     },
     "nvim-lspconfig": {
       "rev": "bbe6b383a1e85d3a84b54a43f7d9d83567c150cb",
-      "src": "https://github.com/neovim/nvim-lspconfig"
+      "src": "git@github.com:neovim/nvim-lspconfig"
     },
     "nvim-nio": {
       "rev": "edcc181a875301dd21840189aa2f2f9ad69fc172",
-      "src": "https://github.com/nvim-neotest/nvim-nio"
+      "src": "git@github.com:nvim-neotest/nvim-nio"
     },
     "nvim-ts-autotag": {
       "rev": "88c1453db4ba7dd24131086fe51fdf74e587d275",
-      "src": "https://github.com/windwp/nvim-ts-autotag"
+      "src": "git@github.com:windwp/nvim-ts-autotag"
     },
     "nvim-web-devicons": {
       "rev": "5f032a85be210cd1c6ac98861eb3b187ff3bd5eb",
-      "src": "https://github.com/nvim-tree/nvim-web-devicons"
+      "src": "git@github.com:nvim-tree/nvim-web-devicons"
     },
     "oil.nvim": {
       "rev": "b73018b75affd13fa38e2fc94ef753b465f770d7",
-      "src": "https://github.com/stevearc/oil.nvim"
+      "src": "git@github.com:stevearc/oil.nvim"
     },
     "roslyn.nvim": {
       "rev": "de9a98d61ed3fd01b5016eea5fe9e32f1a4c7cfb",
-      "src": "https://github.com/seblyng/roslyn.nvim"
+      "src": "git@github.com:seblyng/roslyn.nvim"
     },
     "rustaceanvim": {
       "rev": "8e5a9c3eaff437b3f987b9abd9403dfed324529d",
-      "src": "https://github.com/mrcjkb/rustaceanvim"
+      "src": "git@github.com:mrcjkb/rustaceanvim"
     },
     "tree-sitter-manager.nvim": {
       "rev": "023590c8f068788a0513a4409bf37ff7f9d1deff",
-      "src": "https://github.com/romus204/tree-sitter-manager.nvim"
+      "src": "git@github.com:romus204/tree-sitter-manager.nvim"
     }
   }
 }
