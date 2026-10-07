@@ -5,9 +5,20 @@ local ABORT = require("dap").ABORT
 mason.ensure("roslyn-language-server")
 mason.ensure("csharpier")
 
-require("core.format").register("cs", "csharpier")
+local format = require("core.format")
+format.register("cs", "csharpier")
+-- csharpier is a fresh .NET process per save (~0.5s in a real project before
+-- JIT warm-up), which regularly blew through the default 500ms timeout
+format.timeout("cs", 2000)
 
-require("roslyn").setup()
+-- skip conform's `dotnet csharpier --version` probe for a local tool; the
+-- mason binary is always the one we want
+require("conform").formatters.csharpier = { command = "csharpier", args = { "format", "--stdin-path", "$FILENAME" } }
+
+-- "roslyn": let the server watch files itself. Neovim's fallback watcher
+-- (no inotifywait installed) registers a libuv handle per directory, which
+-- crawls the whole tree incl. node_modules/obj on every attach
+require("roslyn").setup({ filewatching = "roslyn" })
 
 -- plugin/roslyn.lua already calls vim.lsp.enable("roslyn") at startup;
 -- this only adds the server settings used at attach time
