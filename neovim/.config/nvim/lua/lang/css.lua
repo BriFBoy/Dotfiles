@@ -1,11 +1,10 @@
 local mason = require("core.mason")
 
 mason.ensure("css-lsp")
-mason.ensure("prettier")
-mason.ensure("stylelint")
+mason.ensure("biome")
 
-require("core.format").register("css", "prettier")
-require("core.lint").register("css", "stylelint")
+-- biome-check = format + safe lint fixes on save.
+require("core.format").register("css", "biome-check")
 
 vim.lsp.config("cssls", {})
 vim.lsp.enable("cssls")
