@@ -1,22 +1,26 @@
 {
   "$schema": "https://opencode.ai/config.json",
-  "permission": {
-    "websearch": "allow"
+  "permissions": [
+    { "action": "websearch", "resource": "*", "effect": "allow" }
+  ],
+  "experimental": {
+    "policies": [
+      { "effect": "deny", "action": "provider.use", "resource": "*" },
+      { "effect": "allow", "action": "provider.use", "resource": "llama.cpp" },
+      { "effect": "allow", "action": "provider.use", "resource": "github-copilot" }
+    ]
   },
-  "provider": {
+  "providers": {
     "llama.cpp": {
-      "npm": "@ai-sdk/openai-compatible",
       "name": "llama-server (local)",
-      "options": {
-        "baseURL": "http://127.0.0.1:8080/v1"
+      "package": "aisdk:@ai-sdk/openai-compatible",
+      "settings": {
+        "baseURL": "http://127.0.0.1:8090/v1"
       },
       "models": {
-        "unsloth/Qwen3.8-27B-GGUF": {
-          "name": "Qwen3.8-GGUF (local)",
-          "limit": {
-            "context": 128000,
-            "output": 65536
-          }
+        "unsloth/Qwen3.8-27B-GGUF:UD-IQ3_XXS": {
+          "name": "Qwen3.8 27B (primary + subagents)",
+          "limit": { "context": 200000, "output": 16384 }
         }
       }
     }
