@@ -2,6 +2,11 @@
 
 Guidance for AI agents working in this repository.
 
+## Git
+
+**Never touch git** — no commits, pushes, or other git commands. Version
+control is the user's job: make and verify the changes, then report them.
+
 ## What this is
 
 Personal dotfiles for an **Arch Linux + Hyprland** setup. Each top-level
@@ -45,11 +50,16 @@ Two files are **generated** — edit the source, never the output:
 
 | Generated file (don't edit) | Edit this instead |
 | --- | --- |
-| `hyprland/.config/hypr/noctalia.lua` | `noctalia/.config/noctalia/config.toml` |
+| `hyprland/.config/hypr/noctalia.lua` (gitignored) | `noctalia/.config/noctalia/config.toml` |
 | `dunst/.config/dunst/dunstrc` (gitignored) | `dunst/.config/dunst/dunstrc.template` |
 
 The wallpaper switcher runs `Scripts/setWallpaper.sh`, which regenerates the
 pywal palette and `dunstrc`.
+
+On a fresh clone `noctalia.lua` doesn't exist until Noctalia runs — the
+`hyprland.start` autostart regenerates it from `config.toml`. `hyprland.lua`
+guards the `require("noctalia")` with `pcall`, so the first boot loads
+unthemed instead of erroring.
 
 ## Code style
 
