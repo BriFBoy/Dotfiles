@@ -10,7 +10,11 @@
 require("keybinds")
 require("autostart")
 require("look_and_feel")
-require("noctalia").apply_theme()
+
+-- Noctalia.lua is generated from the current palette, so it may not exist
+-- on a fresh clone until Noctalia has run once.
+local ok, noctalia = pcall(require, "noctalia")
+if ok then noctalia.apply_theme() end
 
 ------------------
 ---- MONITORS ----
@@ -121,4 +125,4 @@ hl.window_rule({
 })
 
 -- For Noctalia Color templates
-require("noctalia").apply_theme()
+if ok then noctalia.apply_theme() end
