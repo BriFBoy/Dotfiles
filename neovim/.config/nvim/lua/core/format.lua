@@ -14,11 +14,21 @@ function M.register(filetype, formatters)
 	conform.formatters_by_ft[filetype] = formatters
 end
 
+--- Per-filetype format-on-save timeouts, for formatters with a slow cold start.
+local timeouts = {}
+
+--- Override the format-on-save timeout for a filetype.
+---@param filetype string
+---@param ms integer
+function M.timeout(filetype, ms) timeouts[filetype] = ms end
+
 conform.setup({
-	format_on_save = {
-		timeout_ms = 500,
-		lsp_format = "fallback",
-	},
+	format_on_save = function(bufnr)
+		return {
+			timeout_ms = timeouts[vim.bo[bufnr].filetype] or 500,
+			lsp_format = "fallback",
+		}
+	end,
 })
 
 return M

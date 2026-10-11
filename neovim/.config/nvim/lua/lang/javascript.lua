@@ -1,34 +1,40 @@
--- Driver for the whole JavaScript/TypeScript family: one ts_ls server serves
+-- Driver for the whole JavaScript/TypeScript family: tsc + biome serve
 -- all four filetypes, so all of them load this module (Lua's module cache
 -- guarantees it runs once per session).
 
 local mason = require("core.mason")
 local dap = require("core.dap")
-local ABORT = require("dap").ABORT
 
 local filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact" }
 
-mason.ensure("typescript-language-server")
+mason.ensure("tsc")
 mason.ensure("biome")
 mason.ensure("js-debug-adapter")
 
+-- biome-check = format + organize imports + safe lint fixes on save.
 for _, ft in ipairs(filetypes) do
-	require("core.format").register(ft, "biome")
-	require("core.lint").register(ft, "biomejs")
+	require("core.format").register(ft, "biome-check")
 end
 
-vim.lsp.config("ts_ls", {
-	settings = {
-		completion = {
-			completeFunctionCalls = true,
-		},
-	},
+-- Biome LSP for live diagnostics + quick-fix code actions; tsc keeps
+-- completion/navigation. lspconfig's default only attaches when a biome.json
+-- exists, so root_dir is overridden to lint every project.
+vim.lsp.config("biome", {
+	filetypes = filetypes,
+	workspace_required = false,
+	root_dir = function(bufnr, on_dir)
+		on_dir(vim.fs.root(bufnr, { "biome.json", "biome.jsonc", "package.json", ".git" }) or vim.fn.getcwd())
+	end,
 })
-vim.lsp.enable("ts_ls")
+vim.lsp.enable("biome")
 
--- DAP: the js-debug DAP server picks the target from the launch config's
--- `type` (pwa-node / pwa-chrome) and nvim-dap looks up the adapter by the
--- same field, so the one adapter is registered under both keys.
+-- tsc = TypeScript 7's native language server. lspconfig uses the project's
+-- node_modules/.bin/tsc when it's 7+, else the Mason one on PATH.
+vim.lsp.enable("tsc")
+
+-- DAP: Node only — browser code is debugged with `debugger;` in DevTools
+-- (Vite serves source maps). nvim-dap looks up the adapter by the launch
+-- config's `type`, so it's registered as pwa-node.
 local adapter = {
 	type = "server",
 	port = "${port}",
@@ -37,12 +43,6 @@ local adapter = {
 		args = { "${port}" },
 	},
 }
-
---- Dev server URL (CRA/Next.js default), overridable on each run.
-local function dev_server_url()
-	local url = vim.fn.input("Dev server URL: ", "http://localhost:3000")
-	return url ~= "" and url or ABORT
-end
 
 local configurations = {
 	{
@@ -53,18 +53,11 @@ local configurations = {
 		cwd = vim.fn.getcwd(),
 		console = "internalConsole",
 	},
-	{
-		type = "pwa-chrome",
-		name = "Launch web app (Chrome)",
-		request = "launch",
-		url = dev_server_url,
-		webRoot = vim.fn.getcwd(),
-	},
 }
 
 for _, ft in ipairs(filetypes) do
 	dap.register(ft, {
-		adapters = { ["pwa-node"] = adapter, ["pwa-chrome"] = adapter },
+		adapters = { ["pwa-node"] = adapter },
 		configurations = configurations,
 	})
 end
