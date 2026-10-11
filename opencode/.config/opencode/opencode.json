@@ -12,14 +12,14 @@
   },
   "providers": {
     "llama.cpp": {
-      "name": "llama-server (local)",
+      "name": "llama serve (local)",
       "package": "aisdk:@ai-sdk/openai-compatible",
       "settings": {
         "baseURL": "http://127.0.0.1:8090/v1"
       },
       "models": {
         "unsloth/Qwen3.8-27B-GGUF:UD-IQ3_XXS": {
-          "name": "Qwen3.8 27B (primary + subagents)",
+          "name": "Qwen3.8-27B (UD-IQ3_XXS)",
           "limit": { "context": 200000, "output": 16384 }
         }
       }
