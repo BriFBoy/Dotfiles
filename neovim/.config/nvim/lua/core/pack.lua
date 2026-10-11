@@ -40,6 +40,9 @@ vim.pack.add({
 	"https://github.com/nvim-tree/nvim-web-devicons",
 	"https://github.com/RedsXDD/neopywal.nvim",
 
+	-- markdown
+	"https://github.com/MeanderingProgrammer/render-markdown.nvim",
+
 	-- per-language LSP plugins
 	"https://github.com/mrcjkb/rustaceanvim",
 	"https://github.com/seblyng/roslyn.nvim",
