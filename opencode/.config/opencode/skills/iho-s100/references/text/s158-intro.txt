@@ -1,0 +1,1484 @@
+# S-158 Validation Checks – Introduction and Structure — Edition 1.0.0
+# source: /home/johanneslj/Documents/S-100/S-100/S-158-100_Validation_Checks_Ed_1.0.0/S-158_Validation_Checks_Introduction_and_Structure_Ed_1.0.0.pdf
+# Page markers are PDF page numbers (1-based), not printed page numbers.
+
+<<<PAGE 1>>>
+S-158
+
+
+
+
+  Validation Checks –
+  Introduction and Structure
+
+  Edition 1.0.0 – February 2025
+
+
+
+
+                                                          Published by the
+                                  International Hydrographic Organization
+                                                       4b quai Antoine 1er
+                                                   Principauté de Monaco
+                                                    Tel: (377) 93.10.81.00
+                                                   Fax: (377) 93.10.81.40
+                                                               info@iho.int
+                                                                www.iho.int
+
+<<<PAGE 2>>>
+ii                                          Validation Checks
+
+
+
+
+                   © Copyright International Hydrographic Organization 2025
+
+        This work is copyright. Apart from any use permitted in accordance with the Berne
+        Convention for the Protection of Literary and Artistic Works (1886), and except in the
+        circumstances described below, no part may be translated, reproduced by any
+        process, adapted, communicated or commercially exploited without prior written
+        permission from the International Hydrographic Organization (IHO). Copyright in some
+        of the material in this publication may be owned by another party and permission for
+        the translation and/or reproduction of that material must be obtained from the owner.
+
+        This document or partial material from this document may be translated, reproduced
+        or distributed for general information, on no more than a cost recovery basis. Copies
+        may not be sold or distributed for profit or gain without prior written agreement of the
+        IHO Secretariat and any other copyright holders.
+
+        In the event that this document or partial material from this document is reproduced,
+        translated or distributed under the terms described above, the following statements are
+        to be included:
+
+           “Material from IHO publication [reference to extract: Title, Edition] is reproduced
+           with the permission of the IHO Secretariat (Permission No ……./…) acting for the
+           International Hydrographic Organization (IHO), which does not accept responsibility
+           for the correctness of the material as reproduced: in case of doubt, the IHO’s
+           authentic text shall prevail. The incorporation of material sourced from IHO shall
+           not be construed as constituting an endorsement by IHO of this product.”
+
+           “This [document/publication] is a translation of IHO [document/publication] [name].
+           The IHO has not checked this translation and therefore takes no responsibility for its
+           accuracy. In case of doubt the source version of [name] in [language] should be
+           consulted.”
+        The IHO Logo or other identifiers shall not be used in any derived product
+        without prior written permission from the IHO Secretariat.
+
+
+
+
+S-158                                         February 2025                                         Edition 1.0.0
+
+<<<PAGE 3>>>
+                                             Validation Checks                                            iii
+
+
+
+
+                                        Document History
+Changes to this Specification are coordinated by the S-100 Working Group (S-100 WG). New editions
+will be made available via the IHO web site. Maintenance of the Specification shall conform to IHO
+Resolution 2/2007 (as amended).
+
+ Version         Date           Author/Editor      Purpose
+ Number
+ 0.1.0           Aug 2024       RM                 Initial draft
+ 0.2.0           Nov 2024       RM                 Applied review comments and S-100 WG9
+                                                   decisions; revised wording for check classification;
+                                                   revisions to maintenance regime for S-158:1xx
+ 1.0.0 Draft 1   Feb 2025       RM                 Updated references and specification metadata
+ 1.0.0           Feb 2025       HSSC17             First implementation and testing Edition of S-158 –
+                                                   Introduction and Structure.
+
+
+
+
+                    Summary of Substantive Changes in Edition x.x
+Bold references in the Clauses Affected column indicate the principal sections/clauses that are affected
+by the described change.
+
+
+                              Change Summary                                       Clauses Affected
+
+ (To be populated for editions following Edition 1.0.0)
+
+
+
+
+S-158                                         February 2025                                    Edition 1.0.0
+
+<<<PAGE 4>>>
+iv                                                               Validation Checks
+
+
+
+
+Contents                                                                                                                                          Page
+1      Introduction ......................................................................................................................... 1
+     1.1 Scope .............................................................................................................................. 1
+     1.2 References ...................................................................................................................... 1
+        1.2.1   Normative references ............................................................................................ 1
+        1.2.2   Informative references ........................................................................................... 1
+     1.3 Terms, definitions and abbreviations............................................................................... 1
+        1.3.1   Terms and definitions ............................................................................................ 1
+        1.3.2   Abbreviations ......................................................................................................... 4
+        1.3.3   Symbols ................................................................................................................. 5
+     1.4 Use of language .............................................................................................................. 5
+     1.5 General description ......................................................................................................... 6
+     1.6 Specification metadata and maintenance ....................................................................... 6
+        1.6.1   Specification metadata .......................................................................................... 6
+        1.6.2   Specification maintenance..................................................................................... 6
+2      Structure of S-158 Publication Series............................................................................... 7
+     2.1 Overview of S-158 specification series ........................................................................... 7
+     2.2 Specification title and cover page.................................................................................... 8
+     2.3 Conformance statement .................................................................................................. 8
+     2.4 Specification maintenance .............................................................................................. 8
+3       Check Structure .................................................................................................................. 9
+4      Check Syntax..................................................................................................................... 11
+     4.1 Syntax for generic S-100 checks................................................................................... 11
+     4.2 Syntax for product-specific checks................................................................................ 11
+        4.2.1  Comparison and Logical Operators..................................................................... 11
+        4.2.2  Spatial Operators................................................................................................. 12
+        4.2.3  Values .................................................................................................................. 12
+        4.2.4  Statements........................................................................................................... 13
+5       Outline of Validation ......................................................................................................... 13
+6       Check Application Sequence........................................................................................... 15
+7      Check Classification ......................................................................................................... 16
+     7.1 Minimum check standard .............................................................................................. 16
+8      Geometry and Spatial Operators in Checks for Vector Products ................................ 16
+     8.1 Definitions for ISO 19125-1:2004 Geometry ................................................................. 16
+     8.2 ISO 19125-1:2004 Geometric Operator Relationships ................................................. 17
+     8.3 How the Relationships Apply to S-100 Feature Geometry............................................ 18
+     8.4 Geometric Operator Definitions ..................................................................................... 18
+
+
+
+
+S-158                                                              February 2025                                                        Edition 1.0.0
+
+<<<PAGE 5>>>
+                                             Validation Checks                                            1
+
+
+
+1       Introduction
+This document describes a common foundation for the structure and content of specifications which
+define validation checks for S-100 data products. It also describes the basic structure of such validation
+checks.
+
+
+1.1      Scope
+This document, designated as “S-158” by the IHO, defines a framework for the structure and content of
+a series of publications which specify validation checks for different S-100 data products. Publications
+in this series are identified by S-158:1xx designators, where “1xx” represents the official number
+assigned to an S-100-based data product by the IHO (for example, S-158:101 includes the validation
+checks specific to the S-101 ENC Product Specification). Any specification designated “S-158:1xx”
+must conform to the S-158 specification.
+
+
+1.2      References
+1.2.1     Normative references
+CLE93                ClementinI, E., Di Felice, P., Van Oostrom, P. A Small Set of Formal Topological
+                     Relationships Suitable for End-User Interaction, in D. Abel and B. C. Ooi (Ed.),
+                     Advances in Spatial Databases — Third International Symposium. SSD 1993.
+                     LNCS 692, pp. 277-295. Springer Verlag. Singapore (1993)
+ISO 19107:2003       Geographic Information – Spatial Schema
+ISO 19125-1:2004     Geographic information – Simple Feature Access – Part 1 Common Architecture
+OGC 99-049           OpenGIS Simple Features Specification for SQL, Revision 1.1 (OpenGIS Project
+                     Document 99-049, Release Date: May 5, 1999)
+S-98                 S-100 ECDIS and Interoperability Specification, IHO Publication S-98, Edition
+                     2.0.0, ??? 2025. In Preparation.
+S-100                IHO Universal Hydrographic Data Model, Edition 5.2.0, June 2024
+S-101                Electronic Navigational Chart (ENC) Product Specification, Edition 2.0.0,
+                     December 2024.
+S-102                Bathymetric Surface Product Specification, Edition 3.0.0, December 2024.
+S-104                Water Level Information for Surface Navigation Product Specification, Edition
+                     2.0.0, December 2024.
+S-111                Surface Currents Product Specification, Edition 2.0.0, December 2024.
+S-124                Navigational Warnings, Edition 2.0.0, ??? 2025. In preparation.
+S-128                Catalogue of Nautical Products, Edition 2.0.0, ??? 2025. In preparation.
+S-129                Under Keel Clearance Management Product Specification, Edition 2.0.0,
+                     December 2024.
+1.2.2     Informative references
+ISO 19157:2013       Geographic information – Data Quality. As amended by Amendment 1, 2018
+
+
+1.3      Terms, definitions and abbreviations
+1.3.1     Terms and definitions
+For the purposes of this document, the following terms and definitions apply:
+
+application schema
+conceptual schema for data required by one or more applications [ISO 19101]
+
+
+S-158                                          February 2025                                   Edition 1.0.0
+
+<<<PAGE 6>>>
+2                                              Validation Checks
+
+
+
+boundary
+set that represents the limit of an entity [ISO 19107]
+NOTE Boundary is most commonly used in the context of geometry, where the set is a collection of
+points or a collection of objects that represent those points.
+class
+description of a set of objects that share the same attributes, operations, methods, relationships, and
+semantics [ISO/TS 19103:2005]
+NOTE 1 A class represents a concept within the system being modelled. Depending on the kind of
+model, the concept may be real-world (for an analysis model), or it may also contain algorithmic and
+computer implementation concepts (for a design model). A classifier is a generalization of class that
+includes other class-like elements, such as data type, actor and component.
+NOTE 2 A class may use a set of interfaces to specify collections of operations it provides to its
+environment. See: interface (S-100 Annex A)..
+conformance
+fulfilment of specified requirements [ISO 19105]
+coordinate
+one of a sequence of numbers designating the position of a point in N-dimensional space
+NOTE: In a coordinate reference system, the coordinate numbers are qualified by units.
+coordinate reference system
+coordinate system that is related to an object by a datum
+NOTE: For geodetic and vertical datums, the object will be the Earth.
+coverage
+feature that acts as a function to return values from its range for any direct position within its spatial,
+temporal, or spatiotemporal domain
+EXAMPLE: Examples include a raster image, polygon overlay, or digital elevation matrix.
+NOTE: In other words, a coverage is a feature that has multiple values for each attribute type, where
+each direct position within the geometric representation of the feature has a single value for each
+attribute type.
+curve
+1-dimensional geometric primitive, representing the continuous image of a line [ISO 19107]
+NOTE The boundary of a curve is the set of points at either end of the curve. If the curve is a cycle, the
+two ends are identical, and the curve (if topologically closed) is considered to not have a boundary. The
+first point is called the start point, and the last is the end point. Connectivity of the curve is guaranteed
+by the "continuous image of a line" clause. A topological theorem states that a continuous image of a
+connected set is connected.
+curve segment
+1-dimensional geometric object used to represent a continuous component of a curve using
+homogeneous interpolation and definition methods [ISO 19107]
+NOTE The geometric set represented by a single curve segment is equivalent to a curve.
+data product
+dataset or dataset series that conforms to a data product specification
+NOTE: The S-111 data product consists of metadata and one or more sets of speed and direction
+values.
+data quality
+a set of elements describing aspects of quality, including a measure of quality, an evaluation procedure,
+a quality result, and a scope
+data quality element
+quantitative component documenting the quality of a dataset [ISO 19101:2002]
+NOTE: The applicability of a data quality element to a dataset depends on both the dataset’s content
+and its product specification, the result being that all data quality elements may not be applicable to all
+datasets
+
+
+
+S-158                                           February 2025                                     Edition 1.0.0
+
+<<<PAGE 7>>>
+                                               Validation Checks                                             3
+
+
+
+data quality measure
+an evaluation of a data quality sub-element [ISO 19113]
+
+data quality overview element
+the non-quantitative component documenting the quality of a dataset. Information about the purpose,
+usage, and lineage of a dataset is non-quantitative quality information
+NOTE Information about the purpose, usage and lineage of a dataset is non-quantitative quality
+information. [ISO 19101]
+
+data quality scope
+the extent or characteristic(s) of the data for which quality information is reported [ISO 19113]
+NOTE: A data quality scope for a dataset can comprise a dataset series to which the dataset belongs,
+the dataset itself, or a smaller grouping of data located physically within the dataset sharing common
+characteristics. Common characteristics can be an identified feature type, feature attribute, or feature
+relationship; data collection criteria; original source; or a specified geographic or temporal extent. [S-100
+Annex A]
+
+data quality sub-element
+a component of a data quality element describing a certain aspect of that data quality element
+[ISO 19103]
+
+dataset
+identifiable collection of data [ISO 19115]
+NOTE A dataset may be a smaller grouping of data which, though limited by some constraint such as
+spatial extent or feature type, is located physically within a larger dataset. Theoretically, a dataset may
+be as small as a single feature or feature attribute contained within a larger dataset. A hardcopy map
+or chart may be considered a dataset.
+dataset series
+collection of datasets sharing the same product specification [ISO 19115:2003]
+domain
+well-defined set. Domains are used to define the domain set and range set of attributes, operators,
+and functions
+NOTE: Well-defined means that the definition is both necessary and sufficient, as everything that
+satisfies the definition is in the set and everything that does not satisfy the definition is necessarily
+outside the set.
+feature
+abstraction of real-world phenomena
+EXAMPLE: The phenomenon named Eiffel Tower may be classified with other similar phenomena into
+a feature type named tower.
+NOTE 1: A feature may occur as a type or an instance. Feature type or feature instance shall be used
+when only one is meant.
+NOTE 2: In UML 2, a feature is a property, such as an operation or attribute, which is encapsulated
+as part of a list within a classifier, such as an interface, class, or data type.
+feature attribute
+characteristic of a feature
+EXAMPLE 1: A feature attribute named colour may have an attribute value green which belongs to
+the data type text.
+EXAMPLE 2: A feature attribute named length may have an attribute value 82.4 which belongs to the
+data type real.
+NOTE 1: A feature attribute may occur as a type or an instance. Feature attribute type or feature
+attribute instance is used when only one is meant.
+NOTE 2: A feature attribute type has a name, a data type, and a domain associated to it. A feature
+attribute instance has an attribute value taken from the domain of the feature attribute type.
+
+
+
+
+S-158                                           February 2025                                     Edition 1.0.0
+
+<<<PAGE 8>>>
+4                                            Validation Checks
+
+
+
+NOTE 3: In a Feature Catalogue, a feature attribute may include a value domain but does not specify
+attribute values for feature instances.
+feature catalogue
+a catalogue containing definitions and descriptions of the feature types, feature attributes, and feature
+associations occurring in one or more sets of geographic data [ISO 19110]
+geometric object
+spatial object representing a geometric set
+NOTE: A geometric object consists of a geometric primitive, a collection of geometric primitives,
+or a geometric complex treated as a single entity. A geometric object may be the spatial
+representation of an object such as a feature or a significant part of a feature.
+instance
+entity to which a set of operations can be applied and which has a state that stores the effects of the
+operations [ISO 19103]
+NOTE See: object.
+measurement
+The (detailed) dimensions of a physical quantity [S-32]
+object
+entity with a well-defined boundary and identity that encapsulates state and behaviour
+NOTE State is represented by attributes and relationships, behaviour is represented by operations,
+methods, and state machines. An object is an instance of a class. See: class, instance. [S-100
+Annex A]
+observation
+The act or practice of noting and recording facts and events as for some scientific study. The measure
+of a quantity whose value is desired. The DATA so noted and recorded. A single measure, at a single
+setting of an apparatus [S-32]
+
+point
+zero-dimensional geometric primitive, representing a position
+NOTE: The boundary of a point is the empty set [ISO 19107]
+record
+finite, named collection of related items (objects or values)
+NOTE: Logically, a record is a set of pairs <name, item>.
+surface
+connected 2-dimensional geometric primitive, representing the continuous image of a region of a plane
+[ISO 19107]
+NOTE The boundary of a surface is the set of oriented, closed curves that delineate the limits of the
+surface
+type
+stereotype of class that is used to specify a domain of instances (objects) together with the operations
+applicable to the objects [S-100 Annex A]
+NOTE A type may have attributes and associations.
+1.3.2    Abbreviations
+This Product Specification adopts the following convention for symbols and abbreviated terms:
+CRS        Coordinate Reference System
+CNP        Catalogue of Nautical Products
+DCEG       Data Classification and Encoding Guide
+ECDIS      Electronic Chart Display Information System
+ENC        Electronic Navigational Chart
+
+
+
+S-158                                          February 2025                                  Edition 1.0.0
+
+<<<PAGE 9>>>
+                                               Validation Checks                                           5
+
+
+
+EPSG         European Petroleum Survey Group
+HDF          Hierarchical Data Format
+IEC          International Electrotechnical Commission
+IEEE         Institute of Electrical and Electronics Engineers
+IMO          International Maritime Organization
+IHO          International Hydrographic Organization
+ISO          International Organization for Standardization
+S100WG S-100 Working Group
+TWCWG        Tides, Water Levels, and Currents Working Group
+UML          Unified Modelling Language
+UTC          Coordinated Universal Time
+1.3.3      Symbols
+The following symbols are used in logical and spatial expressions:
+
+I            interior of a geometric object
+E            exterior of a geometric object
+B            boundary of a geometric object
+∩            the set theoretic intersection
+
+∪            the set theoretic union
+∧            logical AND
+∨            logical OR
+≠            not equal
+∅            the empty or null set
+a            first geometry, interior and boundary (the topological definition)
+b            second geometry, interior and boundary (the topological definition)
+dim          geometric dimension – 2 for Polygons (Surfaces), 1 for Curves or Composite Curves and 0
+             for Points
+             dim(x) returns the maximum dimension (-1, 0, 1, or 2) of the geometric objects in x, with a
+             numeric value of -1 corresponding to dim(∅).
+NOTES:
+      1) Neither interior nor exterior include the boundary (that is I, E and B are mutually exclusive).
+      2) The boundary of a Polygon or Surface includes its set of outer and inner rings.
+      3) The boundary of a Curve is its end points except for a closed Curve, which has no boundary;
+         the rest of the Curve is its interior.
+      4) A Point does not have a boundary.
+
+
+1.4       Use of language
+Within this document:
+•     “Must” indicates a mandatory requirement.
+•     “Should” indicates an optional requirement, that is the recommended process to be followed, but
+      is not mandatory.
+
+
+
+
+S-158                                            February 2025                                  Edition 1.0.0
+
+<<<PAGE 10>>>
+6                                              Validation Checks
+
+
+
+•     “May” means “allowed to” or “could possibly”, and is not mandatory.
+
+
+1.5       General description
+Since S-158 is a foundational specification on which specifications describing validation checks for S-
+100 and Product Specifications based on S-100 are based, there are no data products based directly
+on S-158 and therefore no general information applicable to data products conforming to it.
+
+
+
+1.6       Specification metadata and maintenance
+1.6.1      Specification metadata
+This information uniquely identifies this Specification and provides information about its creation and
+maintenance.
+Title:              Validation Checks – Information and Structure
+Version:            1.0.0
+Date:               February 2025
+Language:           English
+Classification: Unclassified
+Contact:            International Hydrographic Organization.
+                    4 quai Antoine 1er,
+                    B.P.445 MC 98011 MONACO CEDEX
+                    Telephone: +377 93 10 81 00
+                    B.P. 445 Fax: + 377 93 10 81 40
+                    Email: info@iho.int
+Role:               Owner
+URL:                https://registry.iho.int
+Identifier:         S-158
+Maintenance:        Changes to this Specification are coordinated by the S-100 Working Group (S-100
+                    WG) of the IHO and made available via the IHO Publications website. Maintenance
+                    of the Product Specification must conform to IHO Technical Resolution 2/2007
+                    (revised 2010). For reporting issues which need correction, use the contact
+                    information.
+1.6.2      Specification maintenance
+1.6.2.1     Introduction
+Changes to S-158 will be released by the IHO as a New Edition, revision, or clarification.
+S-158 is a framework document describing the content and basis for derived specifications containing
+validation checks for S-100 level, cross product validation and for individual Product Specifications. The
+descriptions of new editions, revisions, and clarifications in this clause reflect its special role.
+S-158 is not accompanied by separate artefacts such as an XML Schema, Feature or Portrayal
+Catalogue and therefore this clause does not address the question of changes to such derived artefacts.
+1.6.2.2     New Edition
+New Editions of S-158 introduce significant changes. New Editions enable new concepts, such as the
+ability to support new functions or applications, or the introduction of new constructs or data types, or
+significant changes to the basic information or check structure required to be used by derived
+specifications. New Editions are likely to have a significant impact on either existing users or future
+users of S-158 and its derived specifications. All cumulative revisions and clarifications must be included
+with the release of approved New Editions.
+
+
+
+S-158                                           February 2025                                   Edition 1.0.0
+
+<<<PAGE 11>>>
+                                               Validation Checks                                           7
+
+
+
+1.6.2.3      Revision
+Revisions are defined as substantive semantic changes to S-158. Typically, revisions will change S-
+158 to correct factual errors or introduce necessary changes that have become evident as a result of
+practical experience or changing circumstances. A revision must not be classified as a clarification.
+Revisions could have an impact on either existing users or future users of S-158 or its derived
+specifications. All cumulative clarifications must be included with the release of approved revisions.
+Changes in a revision are minor and ensure backward compatibility of derived specifications with their
+previous versions within the same Edition. New revisions, for example, introduce new optional structural
+elements or additional recommendations for derived documents.
+1.6.2.4      Clarification
+Clarifications are non-substantive changes to S-158. Typically, clarifications: remove ambiguity; correct
+grammatical and spelling errors; amend or update cross references; and insert improved graphics. A
+clarification must not cause any substantive semantic change to S-158 or its derived specifications.
+Changes in a clarification are minor and ensure backward compatibility with the previous versions within
+the same Edition.
+1.6.2.5      Version numbers
+The associated version control numbering to identify changes (n) to S-158 must be as follows:
+
+New Editions denoted as n.0.0
+
+Revisions denoted as n.n.0
+
+Clarifications denoted as n.n.n
+
+
+2       Structure of S-158 Publication Series
+2.1       Overview of S-158 specification series
+The S-158 series of publications defines checks for verifying the correctness, completeness and
+integrity of S-100-based datasets and exchange sets. It consists of the following:
+1.        A framework publication (S-158 – this document), which explains the roles of the different
+          publications belonging to the S-158 series, defines a basic structure for specifying validation
+          checks, and provides foundational material shared by publications specifying validation checks
+          for different data products.
+2.        A specification (S-158:100) containing a set of common checks derived from the S-100
+          standard itself, defining a set of validation checks which are applicable to all S-100 based data
+          products which conform to Product Specifications based on a particular version of the S-100
+          standard. (Not all checks will apply to every S-100 product, for example checks relating to the
+          GML data format will not apply to data products like S-101 which use the ISO 8211 data format.)
+          Generic checks for feature catalogues are defined in this document, except for product-specific
+          checks deriving from constraints in individual Product Specifications
+3.        Specifications containing product-specific checks (designated S-158:1xx, where “1xx” denotes
+          the data product according to the official number assigned by the IHO). Each S-158:1xx
+          specification defines validation checks for verifying conformance to constraints defined in
+          individual Product Specifications. For example, S-158:101 specifies validation checks for the
+          S-101 (ENC) Product Specification.
+          The product-specific validation check specifications only contain checks that are not mandated
+          by S-100, for example, checks that constrain application schemas and feature catalogues in
+          ways not specified in S-100.
+4.        Interoperability and cross-product validation checks (S-158:98). These checks are derived from
+          considerations for interoperability of different S-100 data products as described in S-98.
+
+
+
+
+S-158                                           February 2025                                   Edition 1.0.0
+
+<<<PAGE 12>>>
+8                                             Validation Checks
+
+
+
+Each of the above specifications is a separate publication maintained by the appropriate responsible
+group. The S100WG maintains S-158 and S-158:100. Specifications for different S-1xx products are
+maintained by the ‘owner groups’ responsible for the corresponding Product Specification.
+S-158 and the S-158:1xx publications are published separately by the IHO. Each publication has its
+own maintenance and update regime.
+
+
+2.2     Specification title and cover page
+The title of each S-158:1xx publication must be of the form: “S-158:1xx (Name of Product as in PS title)
+Validation Checks”. It is not necessary that “(Name of Product)” replicate the entire title of the Product
+Specification – the name of the product suffices.
+The cover page of each validation check publication corresponding to a Product Specification must
+contain the statement “Aligned to S-1xx Edition x.x.x”.
+
+
+2.3     Conformance statement
+Each S-158:1xx specification must contain a conformance statement according to the template below
+(replacing “1.0.0” with the appropriate edition):
+        X.Y Conformance
+        This specification conforms to Edition 1.0.0 of IHO specification S-158 (Validation Checks –
+        Introduction and Structure).
+For Edition 1.0.0 of any S-158:1xx specification, and later editions preceding the first operational edition
+(which will normally be Edition 2.0.0) the following statement must also be included (replacing “1.0.0”
+with the appropriate edition):
+        Edition 1.0.0 is an Implementation version in accordance with IHO TR 2/2007 and there may
+        be revisions issued by the Working Group prior to the Operational Edition 2.0.0 being published.
+
+
+2.4     Specification maintenance
+The S-158:1xx specifications must use the criteria for new editions, revisions, and clarifications
+described according to the template below. Additional product-specific details may be added where
+appropriate but the basic principles for classifying releases as new editions, revisions, and clarifications
+must be followed.
+        X.Y.Z Specification maintenance
+        X.Y.Z.1 Introduction
+        Changes to S-158:1xx will be released by the IHO as a New Edition, revision, or
+        clarification.
+        The list of checks, which accompanies this document is considered part of this
+        Specification and changes to it are considered changes to this Specification.
+        S-158:1xx is not accompanied by separate artefacts such as an XML Schema, Feature
+        or Portrayal Catalogue and therefore this clause does not address the question of
+        changes to such derived artefacts.
+        [OR]
+        S-158:1xx includes the following separate artifacts, which form an integrated part of
+        the Specification.
+        -   Artifact A (describe)
+        -   Artifact B (describe)
+        X.Y.Z.2 New Edition
+
+
+
+
+S-158                                           February 2025                                    Edition 1.0.0
+
+<<<PAGE 13>>>
+                                               Validation Checks                                             9
+
+
+
+         New Editions of S-158:1xx include at least one of the following changes:
+             •   introduce a new validation check (of any classification);
+             •   remove an existing validation check (of any classification);
+             •   change the classification of a validation check, whether upgrade (such as Error
+                 to Critical) or downgrade (such as Error to Warning);
+             •   extend a validation check to include new features, conditions, etc., in a way
+                 that requires validation software manufacturers to change their software;
+         New Editions are likely to require validation software manufacturers to change their
+         software or invalidate datasets which passed validation according to the previous
+         Edition of S-158:1xx.
+         All cumulative revisions and clarifications must be included with the release of
+         approved New Editions.
+         X.Y.Z.3 Revision
+         Revisions are defined as substantive semantic changes to S-158:1xx. Typically,
+         revisions will change S-158:1xx to correct factual errors or introduce necessary
+         changes that have become evident as a result of practical experience or changing
+         circumstances. Revisions include corrections of misinterpretations of S-100 or the
+         relevant Product Specification, or extensions to checks that do not require changes to
+         validation software..
+         A revision must not be classified as a clarification. All cumulative clarifications must be
+         included with the release of approved revisions.
+         X.Y.Z.3 Clarification
+         Clarifications are changes to S-158:1xx arising from non-substantive reasons.
+         Typically clarifications for non-substantive reasons remove ambiguity; correct
+         grammatical and spelling errors; amend or update cross references; revise check
+         messages or clarify check descriptions without requiring manufacturers to change their
+         software.
+
+
+3       Check Structure
+Validation checks are specified in a columnar format with at least the columns listed in Table 3-1. All S-
+158:... validation checks publications must include at least the columns specified in the table below.
+The columns must follow the order in Table 3-1. Additional columns may be added following these
+columns at the discretion of the responsible group or project team.
+The first column in Table 3-1 also defines recommended XML tags for potential XML formulations of
+the validation checks.
+                                      Table 3-1 - Structure of checks
+
+ Column Name (Tag)          Description
+
+ Dev ID                     Temporary number for checks under development. This column may be
+                            included for tracking of checks under development but should be deleted
+ (Dev_ID)
+                            from finalized documents, when no longer required. May be structured as
+                            decided by the development team for the specification. Must consist only of
+                            alphanumeric characters in the ISO basic Latin alphabet, hyphen and
+                            underscore characters (A-Z, a-z, 0-9, - and _ characters).
+                            EXAMPLES: S101_Dev_0029, P1-4, 1, 100_Dev0001
+
+
+
+
+S-158                                           February 2025                                     Edition 1.0.0
+
+<<<PAGE 14>>>
+10                                           Validation Checks
+
+
+
+
+ Column Name (Tag)        Description
+
+ Check ID                 Identifier for check. Must be structured as 1XX_nnnn where “1XX” is the
+                          Product Specification number and “nnnn” a four digit number assigned by
+ (Check_ID)
+                          the development team for the specification. An optional single-letter lower-
+                          case alpha suffix in the range a-z may be added when a check is split into
+                          two or more checks. Check identifiers are unique and are not reused after
+                          a check is deleted, but may be re-introduced if the original check is revived
+                          either with or without modification
+                          EXAMPLES: 101_1005, 102_2012, 102_2012a
+
+ Classification           Whether check failure is a critical, error, or warning issue. See clause 7
+ (Classification)
+
+ Check message            Message to emit if the dataset or exchange set fails the check. This must
+                          be a message that provides the user with meaningful information.
+ (Check_Message)
+
+ Check description        Check description written in a defined syntax (wherever feasible) as defined
+                          in this document (see clause 4).
+ (Check_Description)
+
+ Check solution           Suggested action to rectify a warning or error
+ (Check_Solution)
+
+ Standards document       Reference to the S-100 standard or a Product Specification.
+ reference
+                          Must include the Part, Annex or component, if any.
+ (Document)
+                          EXAMPLES: S-100 Part 10a; S-101 PS; S-101 Annex A; S-129 DCEG
+
+ Clause reference         The clause number in the cited document. If derived from a numbered table,
+                          the table number may be cited instead (with the “Table” prefix).
+ (Reference)
+                          Examples: 15.9.1; Table 10.2
+
+ Data quality measure     Quality measure from the Data Quality clause of the PS or S-97 Part C if
+                          not identified in the PS. This column is optional.
+ (DQMeasure)
+                          EXAMPLES:        “Thematic      accuracy”;   “Logical    consistency/Format
+ Optional
+                          consistency”
+
+ Introduced               The earliest edition of the cited standard or PS from which the check is
+                          derived.
+ (Introduced)
+
+ Modified                 The latest edition of the cited standard or PS in which the requirement or
+                          recommendation on which the check is based was modified.
+ (Modified)
+                          Empty if no modifications.
+
+ Deleted                  The earliest edition of the cited standard or PS in which the requirement or
+                          recommendation on which the check is based was removed or modified so
+ (Deleted)
+                          as to no longer require the check.
+                          Empty if the check is still applicable.
+
+
+The columnar structure is designed to be “machine-readable” in the limited sense that it can be
+automatically transformed into other formats which distinguish between the elements of the validation
+checks set forth in Table 3-1. Note that a such transformation would require pre- or post-processing to
+restructure or rearrange multiple “Document/Reference” entries or combinations applying to the same
+
+
+S-158                                         February 2025                                   Edition 1.0.0
+
+<<<PAGE 15>>>
+                                               Validation Checks                                          11
+
+
+
+validation check to produce correct results in the transformed artifact (for example, an XML document
+conforming to an XML schema or DTD devised by the implementer).
+
+
+4       Check Syntax
+In order to ensure that checks can be interpreted clearly and consistently a defined syntax must be
+used wherever possible.
+
+
+
+4.1       Syntax for generic S-100 checks
+Generic checks (S-158:100) have their descriptions stated in one of two ways:
+
+      1) As either positive requirements (“must”, “shall”) or negative requirements (“must not”, “shall
+         not”, etc.) which must be satisfied by the subject of the test; that is, the check generates a
+         Critical Error, Error, or Warning if the statement in the check description is not satisfied by the
+         dataset or exchange set.
+      2) As non-imperative conditions (“For each X where Y”; “IF P and Q...”) where the check is
+         triggered if the condition is satisfied.
+The syntax of S-100 checks is explained in S-158:100.
+
+
+
+4.2       Syntax for product-specific checks
+Each check is a statement which generates a Critical Error, Error or Warning if the condition described
+in the check description returns ‘true’.
+
+In the example below the check would return true and give an error for each Building feature instance
+that is in or overlaps a DepthArea or UnsurveyedArea feature instance and which does not have the
+attribute inTheWater=true.
+
+                                    Table 4-1 - Example of check syntax
+
+Check message                       Check description                     Check solution
+
+Building over navigable water For each Building feature object            Set attribute
+does not have attribute in the which OVERLAPS OR is                       inTheWater = TRUE
+water equal to TRUE.           COVERED_BY a DepthArea or
+                               UnsurveyedArea feature object
+                               and the attribute inTheWater is
+                               Not equal to TRUE.
+
+
+The elements of the syntax are defined next.
+
+4.2.1      Comparison and Logical Operators
+The following comparison and logical operators are used:
+
+1.        Equal
+2.        Not equal
+3.        Less than
+4.        Less than or equal to
+5.        Greater than
+
+
+
+S-158                                            February 2025                                   Edition 1.0.0
+
+<<<PAGE 16>>>
+12                                               Validation Checks
+
+
+
+6.        Greater than or equal to
+7.        AND
+8.        OR (inclusive OR)
+4.2.2      Spatial Operators
+Within this document the spatial operators (EQUALS, DISJOINT, TOUCHES, WITHIN, OVERLAPS,
+CROSSES, INTERSECTS, CONTAINS, and COINCIDENT), based on those laid out in the ISO
+standard 19125-1, are used to describe spatial relationships tested within the checks. They are
+described in clause 8.
+
+For all spatial operators a default tolerance specified in the S-158:1xx document should be applied in
+validation software.
+
+4.2.3      Values
+The following terms are used for types of values:
+
+1.        Present – The attribute is present and may or may not be populated with a value.
+2.        Known – The attribute is Present and has been populated with a value.
+3.        Unknown – The attribute is Present, but has not been populated with a value.
+4.        Optional – The encoding of the attribute is optional. It may be Present or not Present.
+The following terms may be used to combine the above terms for brevity:
+
+1.        Missing: The attribute is either not present, or present and either null or nilled (cf. clause 4.2.3.2)
+2.        Populated: The attribute is present and has been assigned a value conforming to its datatype.
+4.2.3.1        Conventions for value descriptors in Part 10a formats
+The following terms are used in relation to ISO 8211 unsigned 8-bit integer sub-fields (i.e., datasets
+using the S-100 Part 10a data format).
+
+1.        Null – The sub-field has a value of null (255).
+2.        notNull – The sub-field value is not Null.
+Note that in the ISO 8211 format, “unknown” is distinguished from “Null”. “Unknown” values for thematic
+attributes are represented by the empty string (S-100 10a-5.1.3).
+
+4.2.3.2        Conventions for value descriptors in exchange catalogues and Part 10b (GML)
+               formats
+The following terms are used in relation to XML element content or for values of instance attributes in
+datasets (thus applying to both Part 10b GML data formats and Part 17 exchange catalogues):
+
+1.        Whitespace: One or more of the characters defined as white space in the W3C XML
+          specification: space, tab, carriage return or line feed.
+2.        Null: The XML element or XML attribute has no content or value, or the content/value is the
+          empty (0-length) string.
+          1.       String type attributes consisting of only whitespace characters are not considered to be
+                   empty.
+          2.       URI, URL, or URN type attributes consisting of only whitespace characters are
+                   considered to be empty.
+          3.       Numeric, enumeration, date, time, dateTime, or Boolean types consisting of only
+                   whitespace characters are considered to be empty. This situation is an error (unless
+                   the attribute is declared nillable in the GML application schema). Such errors should
+                   be detected by XML validation software when the file is validated against its XML
+                   schema.
+
+
+
+S-158                                             February 2025                                       Edition 1.0.0
+
+<<<PAGE 17>>>
+                                                 Validation Checks                                             13
+
+
+
+3.        Nilled: The XML element has no content and the element has the XML attribute xsi:nil=”true”.
+          A nillable attribute is one which the GML application schema or GML profile allows to be nilled.
+4.        notNull: The XML element content or XML attribute value is not Whitespace or Null.
+4.2.3.3      Conventions for value descriptors in Part 10c (HDF5) formats
+HDF5 array elements (used for coverage data in S-100 coverage products) use “fill values” when the
+value is unknown or missing. Fill values are values conforming to the basic datatype but specially
+designated as signifying “no data”. Product Specifications using the HDF5 format define the fill values
+for attributes. Different attributes may have different fill values.
+
+S-158:1xx publications for data products using the S-100 Part 10c format use the following conventions:
+
+1.        Null: The value of the field is the designated fill value, or null/empty if allowed by the datatype
+2.        notNull: The value of the field is not Null and is not equal to the fill value designated for the field
+          in the Product Specification.
+4.2.4      Statements
+The checks must be structured using the following statements:
+
+1.        If – A conditional statement which determines whether a further statement should be executed.
+2.        For – Repeat a statement until a statement is met (evaluates to “true”). For the purposes of the
+          checks the statement being met generates the error or warning specified.
+Conditions beginning with “For each <item>…” are applied to every instance of the designated item.
+Items may be features, information type, attributes, associations, roles, etc. Box brackets are used for
+grouping phrases where the interpretation may be ambiguous (for example, “X AND [Y OR Z]”).
+
+
+
+5        Outline of Validation
+Validation consists of the following discrete groups of activities.
+     •    Intra-dataset validation – validation checks to ensure a dataset is intrinsically valid. Validation
+          for this group of activities consists of checking datasets in isolation.
+     •    Inter-dataset, intra-product validation – checks to ensure the dataset validates against those it
+          spatially intersects, touches or joins with. Validation for this group of activities consists of
+          checking datasets against other datasets for the same data product.
+     •    Inter-product validation – checks to ensure the dataset is compatible with other products.
+          Validation for this group of activities will compare datasets from different data products.
+     •    Package validation – checks to ensure the packaging is consistent with the dataset. This group
+          of activities checks the structure and integrity of exchange sets and discovery metadata in
+          CATALOG.XML files.
+In addition, the contents of product catalogue datasets – specifically, S-128 (Catalogue of Nautical
+Products) datasets must match the datasets they describe.
+
+Figure 5-1 depicts the validation activities as connections between data product components and the
+specification or product components against which they are validated. Specifications are depicted in
+red; data product components in black. The validation activities are labelled with lower-case letters, and
+described in Table 5-1. The S-100 feature catalogue and portrayal schemas, portrayal specification, S-
+98 interoperability, user experience guidelines and data management influence validation checks
+indirectly, via requirements which are captured in different components of the Product Specifications
+(feature catalogue, DCEG, and portrayal catalogue).
+
+
+
+
+S-158                                             February 2025                                       Edition 1.0.0
+
+<<<PAGE 18>>>
+14                                                                   Validation Checks
+
+
+
+                                                                                                                          
+                                                                                     
+                                                                                                     
+                                                                           
+
+                                                                 
+                                                                                                       
+     
+                                                                                                                                   
+
+
+                                                                                                       
+                                                                              
+                                                                                                 
+
+                         
+
+                                                                    
+      
+                                                                
+                                                                                                                       
+                                                                                         
+      
+                                                                           
+                                                                      
+
+
+
+                                                      Figure 5-1 - Outline of Validation
+
+
+
+                                                       Table 5-1 - Validation activities
+ Validation           Thing Validated                Controlling                       Validator(s)                    Examples
+ Activity                                            Specification
+                                                     or Artifact
+ a                    Dataset in                     S-1xx PS                          dataset                         Non-conformant file names,
+                      isolation                                                        producer                        incorrect ordering of features
+                                                     S-100 generic
+                                                     structuring in
+                                                     Parts 10a, 10b,
+                                                     10c (e.g., 10a-4-
+                                                     7)
+ b                    Dataset in                     S-100 Part 7                      dataset                         Things which contravene the
+                      isolation                                                        producer                        geometry model, e.g., CCW
+                                                     S-100 Part 10c
+                                                                                                                       exterior rings, unused curves
+ c                    Dataset in                     S-100 Data                        dataset                         Formatting problems with
+                      isolation                      Format (Parts                     producer                        encodings, non-conformant
+                                                     10a, 10b, 10c)                                                    GML, incorrect HDF5 group
+                                                                                                                       names, incorrectly formatted
+                                                                                                                       attributes (e.g., dates,
+                                                                                                                       Booleans, unknowns)
+ d                    Dataset in                     S-1xx feature                     dataset                         Presence of attributes or
+                      isolation                      catalogue                         producer                        features not defined in the
+                                                                                                                       FC, missing mandatory
+                                                                                                                       attributes
+ e                    Dataset in                     S-1xx DCEG                        dataset                         Bad combination of attributes
+                      isolation                                                        producer
+ f                    Dataset against                S-1xx PS                          dataset                         Horizontal/vertical datum
+                      other datasets                                                   producer,                       consistency, excessive
+                      for same product                                                 aggregator                      overlap
+
+
+
+
+S-158                                                                    February 2025                                                                 Edition 1.0.0
+
+<<<PAGE 19>>>
+                                            Validation Checks                                              15
+
+
+
+ Validation    Thing Validated    Controlling          Validator(s)       Examples
+ Activity                         Specification
+                                  or Artifact
+ g             Datasets for       S-98                 dataset            Vertical datum compatibility
+               different                               producer,          between S-101, S-102, S-104
+               products                                aggregator,        and S-129; ENC land area
+                                                       application        features partially of wholly
+                                                                          obscured by S-102 data
+ h             Exchange           S-100 Part 17,       dataset            Bad digital signatures, extent
+               catalogue,         S-100 Part 15        producer,          of dataset does not match
+               exchange set                            aggregator,        bounding box or data
+               structure,                              application        coverage in exchange
+               signatures                                                 catalogue discovery
+                                                                          metadata, incorrect encoding
+                                                                          or mismatch of producer
+                                                                          code, missing support files,
+                                                                          mis-located files in exchange
+                                                                          set
+ i             Corresponding      S-128                distributor,       Mismatch of coverage or
+               S-128 dataset                           aggregator,        dataset name.
+                                                       producer of
+                                                       CNP dataset
+
+
+6       Check Application Sequence
+A dataset is validated using generic checks derived from S-100, product-specific checks derived from
+the relevant Product Specification, and interoperability checks derived from the interoperability
+specification S-98. Further, after datasets which pass validation are packaged into exchange sets, the
+structure of the exchange sets, accompanying metadata, and signatures must also be validated. The
+following sequence of validation checks is therefore suggested:
+                     Table 6-1 - Suggested application order of validation checks
+ Order     Check Collection                                  Defined in        Apply to
+ 1         S-100 generic checks for datasets                 S-158:100         Dataset, in isolation
+ 2         Product-specific checks for datasets              S-158:1xx         Dataset, in isolation
+ 3         Interoperability checks for single S-1xx          S-158:98          Dataset, in isolation
+           dataset
+ 4         Inter-dataset, intra-product checks               S-158:1xx         Adjacent or intersecting
+                                                                               datasets for the same
+                                                                               data product
+ 5         Inter-version checks(?)                           S-158:1xx         Related datasets for
+                                                                               different versions of the
+                                                                               same Product
+                                                                               Specification
+ 6         Interoperability checks for combinations of       S-158:98          Dataset in combination
+           datasets from different products                                    with relevant datasets
+                                                                               from other products
+ 7         S-100 generic checks for exchange sets            S-158:100         Exchange set
+ 8         Product-specific checks for exchange sets         S-158:1xx         Exchange set
+ 9         Product catalogue checks                          S-158:128         S-128 datasets with
+                                                                               other S-1xx products
+
+
+
+
+S-158                                        February 2025                                     Edition 1.0.0
+
+<<<PAGE 20>>>
+16                                              Validation Checks
+
+
+
+S-158:1xx publications may recommend a check application order for different subsets of product-
+specific checks. Developers of validation software may use a different check application order.
+
+
+7         Check Classification
+All S-158:1xx specifications must use the check classifications and minimum check standard described
+in this clause. Specifications need not reproduce this clause but must include a statement that this
+classification and minimum standard described here apply to the checks defined in the S-158:1xx
+specification.
+The check classification is intended to ensure that published data products are free of errors which
+would affect their use in an an end-user system such as ECDIS. In some cases it may be necessary to
+diverge from the strength of wording used in the S-100 Universal Hydrographic Data Model or its derived
+Product Specifications. In such cases the impact on the user should be the overriding factor for
+consideration. The classifications have the following meanings:
+                                      Table 7-1 - Classification of checks
+    Indicator    Type        Description
+    C            Critical    An error which would make an S-100 based dataset or exchange set
+                 Error       unusable in the end-user system through not loading; or causing an end-user
+                             system to crash; or presenting data which is unsafe or unintelligible for the
+                             intended purpose of the product, for example navigation.
+    E            Error       An error which may degrade the quality of the S-100 based dataset or
+                             exchange set through appearance or usability but which will not pose a
+                             significant danger when used to support the intended purpose of the product.
+    W            Warning     An error which may be duplication or an inconsistency which will not
+                             noticeably degrade the usability of the S-100 based dataset or exchange set
+                             in the end-user system.
+
+
+At a minimum validation software must group validation reports using these categories. They may also
+support sub-grouping of related checks such as those relating to geometric validity or attribute
+consistency. Software may allow checks of type Error or Warning to be deselected completely or by
+such categories.
+
+
+7.1        Minimum check standard
+The critical checks included in S-158:100 and associated S-158:1xx constitute the minimum check
+standard for S-100 based data products. All published S-100 based data products must conform to the
+checks classified as Critical within these documents.
+
+
+8         Geometry and Spatial Operators in Checks for Vector Products
+8.1        Definitions for ISO 19125-1:2004 Geometry
+This Section defines ISO 19125-1:2004 geometric terms used in this document.
+Note that these definitions are for the primitives defined by ISO 19125-1:2004 which are single Point,
+single Line and single Area geometry objects.
+•       Polygon – A Polygon has a geometric dimension of 2. It consists of a boundary and its interior, not
+        just a boundary on its own. It is a simple planar surface defined by 1 exterior boundary and 0 or
+        more interior boundaries. The geometry used by an Area feature is equivalent to a Polygon. The
+        ISO 19125-1 Polygon corresponds to the S-100 surface spatial primitive type in S-100 feature
+        catalogues.
+
+
+
+
+S-158                                             February 2025                                  Edition 1.0.0
+
+<<<PAGE 21>>>
+                                              Validation Checks                                       17
+
+
+
+•     Polygon boundary – A Polygon boundary has a geometric dimension of 1 and is equivalent to the
+      outer and inner rings used by an S-100 Area feature.
+•     LineString – A LineString is a Curve with linear interpolation between Points. A LineString has a
+      geometric dimension of 1. It is composed of one or more segments – each segment is defined by
+      a pair of points. The geometry used by an S-100 Curve feature is equivalent to a LineString.
+•     Line - An ISO 19125-1:2004 line is a LineString with exactly 2 points. Note that the geometry used
+      by an S-100 Curve feature is equivalent to a LineString, not a line in ISO 19125-1:2004 terms. In
+      this document the term Line refers to an S-100 Curve feature or a LineString which can have more
+      than two points.
+•     Point – Points have a geometric dimension of 0. The geometry used by an S-100 Point feature is
+      equivalent to an ISO 19125-1:2004 point.
+•     Reciprocal – inversely related or opposite.
+The following table matches 19125-1:2004 geometric terms to S-100 geometry terms:
+    ISO 19125-1:2004                                      S-100 dataset
+
+    Polygon                                               Area feature geometry OR Surface
+
+    Polygon boundary                                      Exterior and interior boundaries
+
+    LineString                                            Curve OR Composite Curve
+
+    Point                                                 Point feature geometry
+
+
+
+8.2         ISO 19125-1:2004 Geometric Operator Relationships
+For symbols used in the relationships, see clause 1.3.3 (Symbols).
+
+In ISO 19125-1:2004, the dimensionally extended nine-intersection model (DE-9IM) defines 5 mutually
+exclusive geometric relationships between two objects (Polygons, LineStrings and/or Points). One and
+only one relationship will be true for any two given objects (see CLE93):
+      1.    WITHIN
+      2.    CROSSES
+      3.    TOUCHES
+      4.    DISJOINT
+      5.    OVERLAPS
+There are others that help further define the relationship:
+      6. CONTAINS
+          - the reciprocal of WITHIN
+          - within is the primary operator; however, if a is not within b then a may contain b so
+             CONTAINS may be the unique relationship between the objects
+      7. EQUALS
+          - a special case of WITHIN / CONTAINS
+      8. INTERSECTS
+          - reciprocal of DISJOINT
+          - have at least one point in common
+      9. COVERS and is COVERED_BY
+          - reciprocal operators
+          - extends CONTAINS and WITHIN respectively
+      10. COINCIDENT
+Note that COVERS, COVERED_BY and COINCIDENT relational operators are not described in the
+ISO 19125-1:2004 document.
+
+
+
+
+S-158                                           February 2025                                Edition 1.0.0
+
+<<<PAGE 22>>>
+18                                           Validation Checks
+
+
+
+The formulas given in this Section (for example a.Disjoint(b)  a  b = ) are the generalized ones
+given for ISO 19125-1:2004, not the more specific DE-9IM formulas (that is, DE-9IM predicates). The
+generalized formulas use topologically closed notation (that is, geometry includes the interior and
+boundary unless otherwise stated), whereas the DE-91M formulas refer to the interior and boundary of
+geometry separately. Note that different versions of documents describing ISO 19125-1 give different
+generalized formulas – this Section is using the formulas that are the most consistent with the DE-9IM
+predicates. If a generalized formula appears to contradict a DE-9IM predicate as defined in ISO
+19125-1:2004, the DE-9IM predicate takes precedence. Software is expected to be consistent with DE-
+9IM predicates.
+
+
+8.3     How the Relationships Apply to S-100 Feature Geometry
+Geometric relationships will be tested on an entire feature object as a single geometric entity. Note that
+Point, Curve and Area feature geometry is equivalent in ISO 19125-1:2004 terms to Point, LineString
+and Polygon geometry respectively.
+A Curve feature in S-100 datasets may be made up of several individual curves. The geometric
+relationship operators used with a curve feature will consider the sequence of edges as a single
+geometry (LineString).
+A test on an Area feature will operate on the entire Polygon (Surface).
+In an S-100 dataset a Curve or Surface feature may be split into pieces as a result of a cutting operation
+from a data source. In that case each feature record in the dataset is treated as a separate Curve
+(LineString) or Surface (Polygon) when testing geometric relationships.
+If a test intends to operate only on a feature’s specific components (Polygon boundary (all rings),
+Polygon outer ring, Polygon inner rings, edges, vertexes or nodes) then it must make this explicit in the
+description of the test. When a specific linear portion is specified in a test (Polygon boundary, edge)
+then it is treated as a Curve while individual vertexes or points will be treated as points.
+For example a test to look for cases where object class A OVERLAPS object class B would operate on
+the entire geometry. While a test to see if boundary of Area object class A OVERLAPS an edge of Line
+class B will be comparing Area boundaries to edges using Line to Line comparisons.
+
+
+8.4     Geometric Operator Definitions
+The ISO 19125-1:2004 definitions referenced in this section, refer to section 6.1.14.3 entitled “Named
+spatial relationship predicates based on the DE-9IM” in the ISO 19125-1:2004 document.
+(In the diagrams within this Section LineString corresponds to the S-100 curve spatial primitive.)
+
+EQUALS – Geometric object a is spatially equal to geometric object b.
+The two geometric objects are the same. This is a special case of WITHIN.
+
+
+
+
+                            Figure 8-1 - Examples of the Equals relationship
+Note: ISO 19107:2003 describes equality more formally as:
+        Two different GM_Objects are equal if they return the same Boolean value for the
+        operation GM_Object::contains for every tested DirectPosition within the valid range of
+        the coordinate reference system associated to the object.
+        NOTE: Since an infinite set of direct positions cannot be tested, the internal
+        implementation of equal must test for equivalence between two, possibly quite different,
+
+
+
+S-158                                          February 2025                                   Edition 1.0.0
+
+<<<PAGE 23>>>
+                                               Validation Checks                                             19
+
+
+
+        representations. This test may be limited to the resolution of the coordinate system or
+        the accuracy of the data. Application schemas may define a tolerance that returns true
+        if the two GM_Objects have the same dimension and each direct position in this
+        GM_Object is within a tolerance distance of a direct position in the passed GM_Object
+        and vice versa.
+For the purposes of geometric operators in S-158, a GM_Object is any vector spatial object as
+described in S-100 Part 7 (Polygons, Curves, and Points – coverages and multipoints are not
+considered for the purposes of these geometric operators). A spatial object is always equal to itself; that
+is, a EQUALS a is always true.
+
+DISJOINT – Geometric object a and geometric object b do not intersect.
+The two geometric objects have no common points.
+The ISO 19125-1:2004 definition of DISJOINT is:
+        a.Disjoint(b)  a  b = 
+This translates to: a is disjoint from b if the intersection of a and b is the empty set.
+
+
+
+
+                            Figure 8-2 - Examples of the DISJOINT relationship
+
+TOUCHES – Geometric object a intersects with geometric object b but they do not share interior points.
+
+Only the boundary of one geometry intersects with the boundary of another geometry.
+
+The only thing the geometric objects have in common is contained in the union of their boundaries.
+The ISO 19125-1:2004 definition of TOUCHES is:
+        a.Touch(b)  (I(a)I(b) = )  (a  b) 
+This translates to: a touches b if the intersection of the interior of a and the interior of b is the empty set
+AND the intersection of a and b is not the empty set.
+Note: This operator applies to the Area/Area, Line/Line, Line/Area, Point/Area and Point/Line
+relationships. It does not apply to a Point/Point relationship since points do not have a boundary.
+
+
+
+
+S-158                                            February 2025                                      Edition 1.0.0
+
+<<<PAGE 24>>>
+20                                             Validation Checks
+
+
+
+
+                            Figure 8-3 - Examples of the TOUCHES relationship
+Note the Polygon touches Polygon example (a) is also a case where the Polygon boundaries are
+COINCIDENT. In the Polygon/LineString example two of the LineStrings that share a linear portion of
+the Polygon boundary are also COINCIDENT with the Polygon boundary.
+
+WITHIN – Geometric object a is completely contained in geometric object b.
+WITHIN includes EQUALS.
+The definition of WITHIN is:
+        a. Within(b) ⇔ (a ∩ b = a) ∧ (I(a) ∩ I(b) ≠ )
+This translates to: a is within b if the intersection of a and b equals a AND the intersection of the interior
+of a and the interior of b is not the empty set.
+Note that this formula matches the one given in the OpenGIS Simple Features Specification for SQL,
+Revision 1.1 (OpenGIS Project Document 99-049, Release Date: May 5, 1999) which is the
+precursor to ISO 19125-1:2004.
+
+
+
+
+     Figure 8-4 - Examples of the WITHIN relationship — Polygon/Polygon (a), Polygon/LineString (b),
+                   LineString/LineString (c), Polygon/Point (d), and LineString/Point (e)
+
+
+
+
+S-158                                           February 2025                                      Edition 1.0.0
+
+<<<PAGE 25>>>
+                                               Validation Checks                                          21
+
+
+
+Note that a Line that completely falls on a Polygon boundary is not WITHIN the Polygon, it TOUCHES
+it. In that case it would also be COINCIDENT with the Polygon boundary and COVERED_BY the
+Polygon.
+
+OVERLAPS - The intersection of two geometric objects with the same dimension results in an object
+of the same dimension but is different from both of them.
+ For two Polygons or two LineStrings, part of each geometry, but not all, is shared with the other.
+The OVERLAPS relationship is defined for Area/Area and Line/Line relationships. Points are either
+equal or disjoint.
+Note that this does not include lines that cross.
+The ISO 19125-1:2004 definition of OVERLAPS is:
+          a.Overlaps(b)  (dim(I(a)) = dim(I(b)) = dim(I(a)  I(b)))  (a  b  a)  (a  b  b)
+This translates to: a overlaps b if the geometric dimension of:
+
+(1) the interior of a
+(2) the interior of b
+(3) the intersection of the interiors of a and b
+are all equal AND the intersection of a and b does not equal either a or b.
+
+
+
+
+                           Figure 8-5 - Examples of the OVERLAPS relationship
+Note Lines that OVERLAP are also COINCIDENT.
+
+CROSSES – The intersection of geometric object a and geometric object b returns geometry with a
+dimension less than the largest dimension between a and b but is not the same as geometric object a
+or b.
+Two LineStrings cross each other if they meet on an interior point. A LineString crosses a Polygon if the
+LineString is partly inside the Polygon and partly outside.
+The definition of CROSSES is:
+          a.Cross(b)  (I(a)  I(b) )  (dim(I(a)  I(b)) < max(dim(I(a)), dim(I(b))))  (a  b a )  (a
+ b b)
+This translates to: a crosses b if the intersection of the interiors of a and b is not the empty set AND the
+dimension of the result of the intersection of the interiors of a and b is less than the largest dimension
+between the interiors of a and b AND the intersection of a and b does not equal either a or b.
+Note that “(I(a)  I(b) ) “ was added to the beginning of the ISO 19125-1:2004 formula so that it
+would not be true for disjoint geometry.
+The CROSSES operator only applies to Line/Line and Line/Area relationships.
+
+
+
+
+S-158                                           February 2025                                    Edition 1.0.0
+
+<<<PAGE 26>>>
+22                                            Validation Checks
+
+
+
+
+                           Figure 8-6 - Examples of the CROSSES relationship
+Note that example c) shows one solid line and one dashed line – their interiors intersect. If any Line
+were split into two separate Line features at the intersection point then the relationship would be
+TOUCHES because a boundary would be involved.
+
+INTERSECTS is the reciprocal of DISJOINT.
+The two geometric objects cross, overlap or touch, or one is within (or is contained by) the other. They
+have at least one common point.
+
+CONTAINS is the reciprocal of WITHIN.
+Given two geometric objects, a and b, if a is within b then b must contain a.
+
+COVERED_BY (not a standard ISO 19125-1:2004 operator)
+No point of geometry a is outside geometry b.
+The definition of COVERED_BY is:
+        a. Covered_by (b) ⇔ (a ∩ b = a)
+This translates to: a is covered_by b if the intersection of a and b equals a.
+The following expressions are equivalent to a is COVERED_BY b:
+        1. Polygon (a) is COVERED_BY Polygon (b): Polygon a is WITHIN a polygon b (WITHIN
+           includes EQUALS)
+        2. Point (a) is COVERED_BY Polygon (b): Point a is WITHIN or TOUCHES polygon b
+        3. Line (a) is COVERED_BY Polygon (b): Line a is WITHIN polygon b or WITHIN the
+           boundary of Polygon b
+        4. Line (a) is COVERED_BY Line (b): Line a is WITHIN Line b (WITHIN includes EQUALS)
+        5. Point (a) is COVERED_BY Line (b): Point a is WITHIN or TOUCHES Line b
+        6. Point (a) is COVERED_BY Point (b): Point a EQUALS Point b
+Note that the figure below on the left is an example of Lines that are COVERED_BY a polygon.
+The figure on the right is not an example of a Line that is covered by a Polygon – it is an example of a
+Line that TOUCHES a Polygon. In both cases the Lines are COINCIDENT with the Polygon boundary.
+
+
+
+
+S-158                                          February 2025                                 Edition 1.0.0
+
+<<<PAGE 27>>>
+                                              Validation Checks                                          23
+
+
+
+
+               Figure 8-7 - Example and counterexample of the COVERED_BY relationship
+
+COVERS (not a standard ISO 19125-1:2004 operator)
+COVERS is the reciprocal of COVERED_BY.
+Given two geometric objects, a and b, if a is COVERED_BY b then b must cover a.
+
+COINCIDENT (not an ISO 19125-1:2004 operator)
+Two geometric Lines OVERLAP or one geometric Line is WITHIN the other. Note that EQUAL Lines are
+also COINCIDENT by this definition.
+The intersection of two geometric Lines results in one or more Lines.
+This operator is only to be used to compare a Line with another Line. Note that normally the boundary of
+a Polygon is not the same as a Line but for this operation the boundary of a Polygon, exterior and interior
+rings, is treated as Lines for the COINCIDENT test.
+The following expressions are equivalent to a is COINCIDENT with b:
+    1. Polygon (a) is COINCIDENT with Polygon (b): The boundary of Polygon a OVERLAPS or is
+       WITHIN the boundary of Polygon b.
+    2. Line (a) is COINCIDENT WITH Polygon (b): Line a OVERLAPS or is WITHIN the boundary of
+       Polygon b.
+    3. Line (a) is COINCIDENT WITH Line (b): Line a OVERLAPS or is WITHIN Line b.
+
+
+
+
+                          Figure 8-8 - Example of the COINCIDENT relationship
+
+
+
+
+S-158                                          February 2025                                    Edition 1.0.0
+
+<<<PAGE 28>>>
+24                                         Validation Checks
+
+
+
+
+                       Figure 8-9 - Additional examples of COINCIDENT objects
+
+
+
+Above are other examples of objects COINCIDENT with the boundary of a Polygon. LineStrings
+following a portion of a Polygon boundary or Polygons sharing a boundary portion.
+Note that by definition a Line can be COINCIDENT with an interior boundary of a Polygon.
+Note that other relationships may also be true such as COVERED_BY or TOUCHES since
+COINCIDENT is not mutually exclusive.
+
+
+
+
+S-158                                       February 2025                                  Edition 1.0.0

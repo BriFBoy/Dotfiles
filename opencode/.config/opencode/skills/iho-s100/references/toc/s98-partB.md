@@ -1,0 +1,84 @@
+# S-98 Part B — Edition 2.0.0
+
+PDF pages: 22. Page numbers below are PDF pages; open with `scripts/s100.py page s98-partB <n>`.
+
+## Detected clause headings, tables and figures
+
+- p.1 `S-100` ECDIS and
+- p.7 `B-1` Introduction
+- p.7 `B-1.1` How to read this Part
+- p.7 `B-2` Specification Scope for Part B
+- p.8 `B-3` Data Content and Structure
+- p.8 `B-3.1` Application Schema
+- p.8 `B-3.1.1` Overview of Application Schema
+- p.9 `Figure B-3.1` Level 2 Interoperability Catalogue
+- p.9 `B-3.1.2` Operations in pre-defined combinations
+- p.9 `B-3.1.3` Enhanced selection of feature instances
+- p.10 `B-3.1.4` Interoperability levels
+- p.10 `B-3.1.5` Hybridization rules
+- p.10 `B-3.1.6` Hybrid Feature and Portrayal Catalogues
+- p.10 `B-3.1.7` Progression of Interoperability Levels
+- p.10 `Figure B-3.2` below shows the components of the model subset used by this Level compared to lower Levels.
+- p.10 `Figure B-3.2` Progressive use of Interoperability Catalogue model
+- p.10 `B-3.2` Interoperability Catalogue
+- p.10 `B-3.2.1` Conceptual types for Level 2 interoperability
+- p.10 `B-3.2.1.1` Display plane (S100_IC_DisplayPlane)
+- p.11 `B-3.2.1.2` Feature type display information (S100_IC_Feature)
+- p.11 `B-3.2.1.3` Feature layer (S100_IC_SuppressedFeatureLayer)
+- p.11 `B-3.2.1.4` Drawing instruction (S100_IC_DrawingInstruction)
+- p.11 `B-3.2.1.4.1` Comparison and use of S100_IC_Feature and S100_IC_DrawingInstruction
+- p.11 `B-3.2.1.5` Predefined combination (S100_IC_PredefinedCombination)
+- p.12 `B-3.2.2` Use of S-100 types
+- p.12 `B-3.3` UML model documentation
+- p.12 `Table B-3-1` Allowed values for requirementType
+- p.13 `B-4` Level-Specific Data Quality Considerations
+- p.13 `B-4.1` Quality of displayed data
+- p.13 `B-4.2` Quality of interoperability catalogues
+- p.13 `B-4.2.1` Test methods
+- p.13 `B-4.2.2` Data quality testing
+- p.13 `B-5` Level-specific Guidance on Making Product Specifications Interoperable
+- p.13 `B-5.1` Duplicated features
+- p.14 `B-5.1.1` Duplicated features same model
+- p.14 `B-5.1.2` Duplicated features, different models
+- p.14 `B-5.1.3` Duplicate feature domains
+- p.14 `B-5.2` Geometry
+- p.14 `B-5.2.1` Combined geometry
+- p.14 `B-5.2.2` Spatial discrepancy, unrelated to scaled or cartographic smoothing
+- p.14 `B-5.2.3` Spatial discrepancies, related to scale or cartographic smoothing
+- p.14 `B-5.3` Display of text
+- p.15 `B-5.4` Skin-of-the-earth feature operations
+- p.15 `B-5.4.1` Skin-of-the earth feature replacement
+- p.15 `B-5.4.2` Skin-of-the earth feature adjusting
+- p.15 `B-5.5` Blended feature concepts
+- p.15 `B-5.6` Hierarchy of data
+- p.15 `B-5.6.1` Hierarchy by stacking of display planes
+- p.15 `B-5.6.2` Predefined combinations
+- p.15 `B-5.7` New datasets
+- p.15 `B-5.8` Dataset scales, loading, and unloading
+- p.16 `B-5.9` Metadata
+- p.16 `B-5.10` Meta-features
+- p.16 `B-5.11` Quality considerations
+- p.16 `B-6` Portrayal
+- p.16 `B-6.1` Display of significant features
+- p.16 `B-6.2` Display of significant features - switching to original
+- p.16 `B-6.3` Portrayal distinguishability - colour set-asides
+- p.16 `B-6.4` Day/night/dusk modes
+- p.17 `B-6.5` Impacts on viewing groups
+- p.17 `B-6.6` Impacts on Portrayal Catalogues
+- p.17 `B-6.7` Meta-features
+- p.17 `B-6.8` Display of text
+- p.17 `B-6.9` Skin-of-the-earth operations and portrayal
+- p.17 `B-6.9.1` Skin-of-the-earth feature replacement and portrayal
+- p.17 `B-6.9.2` Skin-of-the-earth feature adjusting and portrayal
+- p.18 `B-6.10` Blended portrayals
+- p.18 `B-6.11` Hierarchy of data
+- p.18 `B-6.11.1` Interacting gridded information
+- p.18 `B-6.12` Pick Reports
+- p.18 `B-7` Processing Model
+- p.18 `Figure B-7.1` below shows the processing steps and input to each step from parts of the Interoperability
+- p.19 `Figure B-7.1` Interoperability processing flow (portrayal processing after interoperability)
+- p.20 `Figure B-7.2` Interoperability processing (drawing instructions generated before interoperability processing)
+- p.20 `Table B-7.1` Stages in Level 2 interoperability processing
+- p.21 `B-8` Normative Implementation Guidance
+- p.21 `B-9` Feature Catalogue
+- p.21 `B-10` Portrayal Catalogue

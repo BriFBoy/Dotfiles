@@ -1,0 +1,651 @@
+# S-158:111 Surface Currents Validation Checks – Introduction — Edition 1.0.0
+# source: /home/johanneslj/Documents/S-100/S-111/S-158-111_Validation_Checks_Ed_1.0.0/S-158_111_ENC_Validation_Checks_Introduction_Ed 1.0.0.pdf
+# Page markers are PDF page numbers (1-based), not printed page numbers.
+
+<<<PAGE 1>>>
+S-158:111
+
+
+
+
+  Surface Currents Validation
+  Checks
+
+  (Draft) Edition 1.0.0 – May 2025
+
+  Aligned to S-111 Edition 2.0.0
+
+
+
+
+                                                             Published by the
+                                     International Hydrographic Organization
+                                                          4b quai Antoine 1er
+                                                      Principauté de Monaco
+                                                       Tel: (377) 93.10.81.00
+                                                      Fax: (377) 93.10.81.40
+                                                                  info@iho.int
+                                                                   www.iho.int
+
+<<<PAGE 2>>>
+ii                                         SURFCUR Validation Checks
+
+
+
+
+                       © Copyright International Hydrographic Organization 2025
+
+            This work is copyright. Apart from any use permitted in accordance with the Berne
+            Convention for the Protection of Literary and Artistic Works (1886), and except in the
+            circumstances described below, no part may be translated, reproduced by any
+            process, adapted, communicated or commercially exploited without prior written
+            permission from the International Hydrographic Organization (IHO). Copyright in some
+            of the material in this publication may be owned by another party and permission for
+            the translation and/or reproduction of that material must be obtained from the owner.
+
+            This document or partial material from this document may be translated, reproduced
+            or distributed for general information, on no more than a cost recovery basis. Copies
+            may not be sold or distributed for profit or gain without prior written agreement of the
+            IHO Secretariat and any other copyright holders.
+
+            In the event that this document or partial material from this document is reproduced,
+            translated or distributed under the terms described above, the following statements are
+            to be included:
+
+               “Material from IHO publication [reference to extract: Title, Edition] is reproduced
+               with the permission of the IHO Secretariat (Permission No ……./…) acting for the
+               International Hydrographic Organization (IHO), which does not accept responsibility
+               for the correctness of the material as reproduced: in case of doubt, the IHO’s
+               authentic text shall prevail. The incorporation of material sourced from IHO shall
+               not be construed as constituting an endorsement by IHO of this product.”
+
+               “This [document/publication] is a translation of IHO [document/publication] [name].
+               The IHO has not checked this translation and therefore takes no responsibility for its
+               accuracy. In case of doubt the source version of [name] in [language] should be
+               consulted.”
+            The IHO Logo or other identifiers shall not be used in any derived product
+            without prior written permission from the IHO Secretariat.
+
+
+
+
+S-158:111                                           May 2025                                            Edition 1.0.0
+
+<<<PAGE 3>>>
+                                        SURFCUR Validation Checks                                      iii
+
+
+
+
+                                        Document History
+Changes to this Specification are coordinated by the IHO Tides, Water Level, and Currents Working
+Group S-111 Project Team. New editions will be made available via the IHO web site. Maintenance of
+the Specification shall conform to IHO Resolution 2/2007 (as amended).
+
+ Version    Date            Author/Editor     Purpose
+ Number
+ 0.1.0      2024-10-23      RM                Initial draft for S100 Validation Checks GitHub
+                                              repository. Based on the 2023 “combined” checks from
+                                              the S-111 PT, which are aligned to S-111 Edition 1.1.0
+                                              and S-111 Edition 1.2.0.
+ 0.2.0      2024-12-09      RM                Extended conformance statement; revised
+                                              maintenance clause; revised clause about other
+                                              applicable checks; removed language in clause 1.1
+                                              about considering all checks as warnings.
+ 1.0.0      2025-05-08      GS                Aligned to S-111 Edition 2.0.0; removed generic S-100
+                                              checks
+
+
+
+
+                    Summary of Substantive Changes in Edition x.x
+Bold references in the Clauses Affected column indicate the principal sections/clauses that are affected
+by the described change.
+
+
+                              Change Summary                                      Clauses Affected
+
+ (To be populated for editions following Edition 1.0.0)
+
+
+
+
+S-158:111                                       May 2025                                     Edition 1.0.0
+
+<<<PAGE 4>>>
+iv                                                        SURFCUR Validation Checks
+
+
+
+
+Contents                                                                                                                                          Page
+1      Introduction ......................................................................................................................... 1
+     1.1 Scope .............................................................................................................................. 1
+     1.2 Conformance ................................................................................................................... 1
+     1.3 References ...................................................................................................................... 1
+        1.3.1   Normative references ............................................................................................ 1
+        1.3.2   Informative references ........................................................................................... 1
+     1.4 Terms, definitions and abbreviations............................................................................... 1
+        1.4.1   Terms and definitions ............................................................................................ 1
+        1.4.2   Abbreviations ......................................................................................................... 2
+        1.4.3   Symbols ................................................................................................................. 3
+     1.5 Use of language .............................................................................................................. 3
+     1.6 General description ......................................................................................................... 3
+     1.7 Specification metadata and maintenance ....................................................................... 3
+        1.7.1   Specification metadata .......................................................................................... 3
+        1.7.2   Specification maintenance ..................................................................................... 3
+2       Check Structure .................................................................................................................. 4
+3       Check Syntax....................................................................................................................... 5
+4       Organisation ........................................................................................................................ 5
+5      Other Applicable Checks ................................................................................................... 6
+     5.1 Generic S-100 checks ..................................................................................................... 6
+     5.2 Interoperability checks ..................................................................................................... 7
+6       Check Application Sequence ............................................................................................. 7
+7       Check Classification ........................................................................................................... 8
+8       Geometry and Spatial Operators ....................................................................................... 8
+9       Other Components of this Specification .......................................................................... 9
+
+
+
+
+S-158:111                                                            May 2025                                                           Edition 1.0.0
+
+<<<PAGE 5>>>
+                                        SURFCUR Validation Checks                                        1
+
+
+
+1       Introduction
+This document specifies a set of checks that producers of S-111 Surface Currents validation tools must
+implement in their validation software. Validation software is used to ensure that S-111 data are
+compliant with the S-111 Product Specification. The initial list of checks for S-111 was compiled by the
+IHO S-111 Project Team of the IHO Tides, Water Level and Currents Working Group (TWCWG).
+The checks listed in this document are product-specific. They supplement but do not replace the generic
+S-100 validation checks applicable to all S-100 products which are defined in a separate IHO publication
+(S-158:100 – Universal Hydrographic Model Validation Checks).
+1.1      Scope
+This document, designated as “S-158:111” by the IHO, specifies validation checks for data products
+conforming to Edition(s) 2.0.x of the S-111 (Surface Currents) Product Specification.
+This document specifies product-specific validation checks for both S-111 datasets and exchange sets
+containing S-111 datasets.
+The checks specified in this document supplement the checks described in Edition 1.0.0 of S-158:100
+(Universal Hydrographic Data Model Validation Checks). Both sets of validation checks, those
+described in S-158:100 as well as those defined in S-158:111, must be applied to test the validity of S-
+111 datasets and exchange sets. For datasets and exchange sets intended for use on ECDIS,
+additional cross-product checks, defined in S-158:98, must also be applied.
+The checks described are intended for production systems designed to produce S-111 datasets. The
+checks can be administered at any time during the production phase.
+1.2     Conformance
+
+This specification conforms to Edition 1.0.0 of IHO specification S-158 (Validation Checks – Introduction
+and Structure).
+The validation checks described herein conform to Edition(s) 2.0.x of IHO Product Specification S-111
+(Surface Currents).
+Edition 1.0.0 is an Implementation version in accordance with IHO TR 2/2007 and there may be
+revisions issued by the Working Group prior to the Operational Edition 2.0.0 being published.
+1.3      References
+1.3.1       Normative references
+S-98                  Data Product Interoperability in S-100 Navigation Systems, IHO Publication S-98,
+                      Edition 2.0.0, March 2025. In Preparation.
+S-100                 IHO Universal Hydrographic Data Model, Edition 5.2.0, June 2024
+S-111                 Surface Currents Product Specification, Edition 2.0.0, December 2024.
+S-158                 Validation Checks – Introduction and Structure, Edition 1.0.0, February 2025.
+S-158:100             Universal Hydrographic Data Model Validation Checks, Edition 1.0.0, February
+                      2025.
+
+
+1.3.2       Informative references
+ISO 19157:2013        Geographic information – Data Quality. As amended by Amendment 1, 2018
+
+
+1.4      Terms, definitions and abbreviations
+1.4.1       Terms and definitions
+
+The terms and definitions listed in S-158 apply to this document. In addition, the following terms and
+definitions are used:
+
+
+
+S-158:111                                       May 2025                                      Edition 1.0.0
+
+<<<PAGE 6>>>
+2                                        SURFCUR Validation Checks
+
+
+
+enumeration
+a fixed list of valid identifiers of named literal values. Attributes of an enumerated type may only take
+values from this list
+
+exterior
+difference between the universe and the closure [ISO 19107]
+NOTE The concept of exterior is applicable to both topological and geometric complexes
+
+feature attribute
+characteristic of a feature [ISO 19101]
+NOTE: A feature attribute may occur as a type or an instance. Feature attribute type or feature attribute
+instance is used when only one is meant.
+NOTE: A feature attribute type has a name, a data type and a domain associated to it. A feature attribute
+instance has an attribute value taken from the value domain of the feature attribute type.
+NOTE: In a Feature Catalogue, a feature attribute may include a value domain but does not specify
+attribute values for feature instances.
+EXAMPLE 1: A feature attribute named communication channel may have an attribute value VHF0007
+which belongs to the data type text
+EXAMPLE 2: A feature attribute named length may have an attribute value 82.4 which belongs to the
+data type real
+
+multiplicity
+specification of the number of possible occurrences of a property, or the number of allowable elements
+that may participate in a given relationship [ISO 19103]
+EXAMPLES: 1..* (one to many); 1 (exactly one); 0..1 (zero or one)
+
+1.4.2       Abbreviations
+This Specification uses the abbreviated terms defined in S-158.
+In addition, this Specification uses the following abbreviated terms:
+DCF          Data Coding Format. Indicates the coverage type (see S-100 Part 10c clause 10c-10.1 –
+             Data Coding Format). For S-111 Edition 2.0.0 the only coverage type is regular grids (DCF
+             2).
+FDG          Feature Data Group. The values group specified in S-100 Part 10c and represented by Level
+             3 and Level 4 in S-111 Table 10-2 (Overview of an S-111 data product).
+FIDS         Feature Information Dataset in “Group_F” - see S-100 Part 10c. See S-111 Table 10-2
+             (Overview of an S-111 data product) and clause 10.2.2.2.
+FINST        Feature Instance. Instance of SurfaceCurrent in S-111. Represents the SurfaceCurrent.nn
+             groups within the SurfaceCurrent feature type group.
+FTYPE        Feature Type. Represents the container group SurfaceCurrent in S-111. See Level 1 of S-
+             111 Table 10-2 (Overview of an S-111 data product).
+FTYPE.N Feature instance groups. “N” denotes the N-th Feature instance group in the dataset. See
+        Level 2 of S-111 Table 10-2 (Overview of an S-111 data product).
+FX           Feature code. The alphanumeric code for a feature type, as specified in the feature
+             catalogue. For S-111 Edition 2.0.0 there is a single feature type, whose feature code is
+             “SurfaceCurrent”.
+<code>       The code for a particular attribute in the values record. Codes for attributes defined in the
+             Product Specification can also be found in the feature catalogue as well as in Group_F in
+             the HDF5 file. (Mismatches between the values record and the feature catalogue or
+             Group_F are errors.)
+<name>       The name of an attribute. Can be found in the feature catalogue as well as Group_F in the
+             HDF5 file.
+
+
+
+
+S-158:111                                        May 2025                                      Edition 1.0.0
+
+<<<PAGE 7>>>
+                                           SURFCUR Validation Checks                                    3
+
+
+
+1.4.3     Symbols
+
+The symbols used in logical and spatial expressions are defined in S-158 clause 1.3.3 (Symbols).
+
+1.5       Use of language
+Within this document:
+•     “Must” indicates a mandatory requirement.
+•     “Should” indicates an optional requirement, that is the recommended process to be followed, but
+      is not mandatory.
+•     “May” means “allowed to” or “could possibly”, and is not mandatory.
+
+
+1.6       General description
+S-158:111 is a specification describing product-specific validation checks for S-111 products. There are
+no data products based directly on this edition of S-158:111 and therefore no general information
+applicable to data products conforming to it.
+
+The validation checks are intended for production systems designed to produce S-111 Surface Currents
+datasets. The checks can be administered at any time during the production phase.
+
+1.7       Specification metadata and maintenance
+1.7.1       Specification metadata
+This information uniquely identifies this Specification and provides information about its creation and
+maintenance.
+Title:              Surface Currents Validation Checks
+Version:            1.0.0
+Date:               2025-05-08
+Language:           English
+Classification: Unclassified
+Contact:            International Hydrographic Organization.
+                    4 quai Antoine 1er,
+                    B.P.445 MC 98011 MONACO CEDEX
+                    Telephone: +377 93 10 81 00
+                    B.P. 445 Fax: + 377 93 10 81 40
+                    Email: info@iho.int
+Role:               Owner
+URL:                https://registry.iho.int
+Identifier:         S-158:111
+Maintenance:        Changes to this Specification are coordinated by the IHO S-111 Project Team of the
+                    IHO Tides, Water Level and Currents Working Group and made available via the
+                    IHO Publications website. Maintenance of the Product Specification must conform
+                    to IHO Technical Resolution 2/2007 (revised 2010). For reporting issues which need
+                    correction, use the contact information.
+1.7.2       Specification maintenance
+1.7.2.1      Introduction
+Changes to S-158:111 will be released by the IHO as a New Edition, revision, or clarification.
+
+
+
+
+S-158:111                                          May 2025                                  Edition 1.0.0
+
+<<<PAGE 8>>>
+4                                         SURFCUR Validation Checks
+
+
+
+The list of checks, which accompanies this document is considered part of this Specification and
+changes to it are considered changes to this Specification.
+S-158:111 is not accompanied by separate artefacts such as an XML Schema, Feature or Portrayal
+Catalogue and therefore this clause does not address the question of changes to such derived artefacts.
+1.7.2.2      New Edition
+New Editions of S-158:111 include at least one of the following changes:
+    •     introduce a new validation check (of any classification);
+    •     remove an existing validation check (of any classification);
+    •     change the classification of a validation check, whether upgrade (such as Error to Critical) or
+          downgrade (such as Error to Warning);
+    •     extend a validation check to include new features, conditions, etc., in a way that requires
+          validation software manufacturers to change their software.
+New Editions are likely to require validation software manufacturers to change their software or
+invalidate datasets which passed validation according to the previous Edition of S-158:111.
+1.7.2.3      Revision
+Revisions are defined as substantive semantic changes to S-158:111. Typically, revisions will change
+S-158:111 to correct factual errors or introduce necessary changes that have become evident as a
+result of practical experience or changing circumstances. Revisions include corrections of
+misinterpretations of S-100 or S-111, or extensions to checks that do not require changes to validation
+software..
+A revision must not be classified as a clarification. All cumulative clarifications must be included with
+the release of approved revisions.
+1.7.2.4      Clarification
+Clarifications are changes to S-158:111 arising from non-substantive reasons.
+Typically clarifications for non-substantive reasons remove ambiguity; correct grammatical and spelling
+errors; amend or update cross references; revise check messages or clarify check descriptions without
+requiring manufacturers to change their software.
+1.7.2.5      Version numbers
+The associated version control numbering to identify changes (n) to S-158:111 must be as follows:
+
+New Editions denoted as n.0.0
+
+Revisions denoted as n.n.0
+
+Clarifications denoted as n.n.n
+
+2   Check Structure
+
+Check structure in S-158:111 includes the fields specified in S-158 plus the additional fields specified
+in Table 2-1.
+[If S-158:104 omits the “Data Quality …” column from the template (made optional at S-100 WG9) add
+a phrase to the previous sentence saying that column is omitted.]
+
+
+
+
+S-158:111                                         May 2025                                    Edition 1.0.0
+
+<<<PAGE 9>>>
+                                         SURFCUR Validation Checks                                          5
+
+
+
+                                Table 2-1 - Extensions to check structure
+
+ Column Name               Description
+
+ Prerequisites             Checks which must succeed (check condition evaluates to FALSE) before
+                           this check can be executed.
+                           Trivial prerequisites are omitted from this column (such as requiring the
+                           presence of an attribute before using it in a condition).
+
+ Terminate if failure      Whether failure of the check (the check condition evaluates to TRUE) will
+                           force termination of check processing before all validation checks can be
+                           executed. Valid values are TRUE, FALSE, or none (equivalent to FALSE).
+                           The HDF5 format is hierarchical and the validity or even the existence of
+                           certain parts of the dataset depends on structure or content required to be
+                           provided in the dataset. Validation checks for such fundamental structure
+                           or content have this field set to TRUE so that subsequent checks which
+                           depend on that structure or content are not unnecessarily attempted if the
+                           fundamental structure or content fails its own validation check.
+                           For example, checks on groups which are members of another group are
+                           not attempted if the container group is missing.
+
+ Context                   Sets the context for a check, such as a particular coverage type (which is
+                           indicated by the value of an HDF5 attribute as specified in S-100), a group,
+                           or other element (e.g., an HDF5 array), or test the value of a metadata
+                           attribute.
+
+
+Termination of check processing need not be immediate, but is recommended at the end of the
+validation phase during which the failure occurs. Validation phases are explained in clause 4.
+
+3    Check Syntax
+
+The check syntax conforms to the syntax and operators for product-specific checks described in S-158
+clause 4.2.
+
+4    Organisation
+The list of validation checks for this edition of S-158:111 is available separately (see clause 9). The list
+of checks accompanies this specification and forms an integral part of it.
+
+The numeric component of the check ID is a 4-digit number whose first digit indicates the phase to
+which the check belongs (see Table 4-1 below).
+
+                 Table 4-1 - Division of product-specific checks into processing phases
+ Phase      Check Numbers          Name                  Description
+
+ 1          111_1xxx               Validate Dataset      Validation of root group of HDF5 file and
+                                   Root and Feature      feature type information.
+                                   Information
+
+ 2          111_2xxx               Validate Feature      Validation of metadata and structure for each
+                                   Container Groups      feature type (“Feature Container”). In S-111
+                                                         there is one feature container so this set of
+                                                         checks is executed only once.
+
+
+
+
+S-158:111                                         May 2025                                       Edition 1.0.0
+
+<<<PAGE 10>>>
+6                                      SURFCUR Validation Checks
+
+
+
+    Phase   Check Numbers         Name                 Description
+
+    3       111_3xxx              Validate Feature     Validation of feature instances. This set of
+                                  Instance Groups      checks, along with Phase 4 checks, must be
+                                                       executed once for each feature instance group
+                                                       contained within a feature container.
+
+    4       111_4xxx              Validate             There are no positioning information. Only for
+                                  Positioning          coverage types which encode position
+                                  Groups               information as explicit coordinates for each
+                                                       point in the coverage, e.g., fixed platform
+                                                       coverages.
+
+    5       111_5xxx              Validate Values      Validation of data values. This set of checks is
+                                  Datasets             applied to the values group in a feature
+                                                       instance group.
+
+    6       111_9xxx              Validate             This set of checks relates to product-specific
+                                  Exchange             requirements for exchange catalogues
+                                  Catalogue
+
+
+
+Dataset validation checks the structure and content of individual HDF5 data files. The checks for each
+HDF5 dataset file are divided into four phases
+
+5       Other Applicable Checks
+
+5.1      Generic S-100 checks
+
+S-111 datasets and exchange sets must also be validated using the following subset of the generic S-
+100 validation checks defined in S-158:100:
+
+Document Checks                      Apply to                               Remarks
+reference
+in
+S-158:100
+list
+Part 1         N/A                   Product Specification                  No direct implementation
+                                                                            on datasets or exchange
+                                                                            sets
+Part 2 / 2a    N/A                   Product Specification                  No direct implementation
+                                                                            on datasets or exchange
+                                                                            sets
+Part 4a        All   Collection   A Exchange catalogue
+               checks
+Part 4b        N/A                   Product Specification                  No direct implementation
+                                                                            on datasets or exchange
+                                                                            sets
+Part 5 / 5a    100_0001              Datasets                               Inapplicable:
+               100_0002                                                     100_0009
+               100_0003                                                     100_0010
+               100_0004                                                     100_0011
+               100_0005
+               100_0006
+
+
+
+
+S-158:111                                       May 2025                                     Edition 1.0.0
+
+<<<PAGE 11>>>
+                                            SURFCUR Validation Checks                                       7
+
+
+
+Document Checks                           Apply to                               Remarks
+reference
+in
+S-158:100
+list
+Part 6          Only     checks      in Datasets
+                Collection A, if any
+Part 7          None                      N/A                                    S-111 does not use vector
+                                                                                 geometry.
+Part 8          Only Collection A         Dataset
+                checks applicable to
+                coverage types
+                permitted in S-111
+Part 9 / 9a / N/A                         Product Specification                  Validation checks       for
+13                                                                               Portrayal Catalogue
+Part 10a        None                      N/A                                    S-111 does not use the
+                                                                                 ISO 8211 format
+Part 10b        None                      N/A                                    S-111 does not use the S-
+                                                                                 100 GML format
+Part 10c        Only Collection A         Dataset                                S-111 uses only a subset
+                checks applicable to                                             of   S-100    Part   10c
+                coverages permitted                                              coverage types
+                in S-111
+Part 11         S100_Dev0466              Dataset                                There is only one Part 11
+                                                                                 generic check, for dataset
+                                                                                 size
+Part 15         100_Dev0476               Exchange catalogue
+                through                   Exchange set
+                100_Dev0490
+Part 17         All    Collection  A Exchange catalogue
+                checks except those Exchange set
+                applying to metadata
+                elements not used in
+                S-111
+
+
+5.2    Interoperability checks
+
+S-111 datasets and exchange sets intended for use on ECDIS must also pass the applicable
+interoperability checks from those listed in S-158:98.
+
+6     Check Application Sequence
+
+The check application sequence expands and modifies the application sequence described in S-158.
+
+                        Table 6-1 - Suggested application order of validation checks
+ Order      Check Collection                        Defined in          Apply to
+ 1          S-100 generic checks for                S-158:100           Dataset, in isolation
+            datasets
+ 2          Product-specific checks for             S-158:111           Dataset, in isolation
+            datasets
+
+
+
+
+S-158:111                                            May 2025                                    Edition 1.0.0
+
+<<<PAGE 12>>>
+8                                            SURFCUR Validation Checks
+
+
+
+    Order     Check Collection                     Defined in            Apply to
+    2.1       Root group checks                    S-158:111 checks      Dataset, in isolation
+                                                   numbered
+                                                   111_1xxx
+    2.2       Feature Container group checks       S-158:111 checks      Dataset, in isolation
+                                                   numbered
+                                                   111_2xxx
+    2.3       Feature Instance group checks        S-158:111 checks      Dataset, in isolation
+                                                   numbered
+                                                   111_3xxx
+    2.4       Positioning group checks             S-158:111 checks      Dataset, in isolation
+                                                   numbered
+                                                   111_4xxx
+    2.5       Values group checks                  S-158:111 checks      Dataset, in isolation
+                                                   numbered
+                                                   111_5xxx
+    3         Interoperability checks for single   S-158:98              Dataset, in isolation
+              S-111 dataset
+    4         Inter-dataset, intra-product         S-158:111 checks      Adjacent or intersecting datasets
+              checks                               numbered Nxxx
+    ?         Inter-version checks(?)              S-158:111             Related datasets for different
+                                                   checked               versions of S-111
+                                                   numbered Nxxx
+    5         Interoperability checks for          S-158:98              S-111 dataset in combination with
+              combinations of datasets from                              relevant datasets from other
+              different products                                         products (e.g., S-104)
+
+    6         S-100 generic checks for             S-158:100             Exchange set
+              exchange sets
+    7         Product-specific checks for          S-158:111 checks      Exchange set
+              exchange sets                        numbered
+                                                   111_9xxx
+    8         Product catalogue checks             S-158:128             S-128 datasets describing S-111
+                                                                         datasets
+
+
+
+7         Check Classification
+
+The check classification conforms to the scheme described in S-158.
+
+8         Geometry and Spatial Operators
+
+S-111 Edition 2.0.0 datasets use coverage spatial types and do not use vector geometry (points, curves,
+or surface spatial primitives, except that points are used in point coverages). Any spatial operators
+mentioned in checks pertaining to positioning information or grid coordinates or extent must conform to
+the operators for vector products described in S-158.
+
+For all spatial operators the default tolerance provided in S-158:100 should be applied in validation
+software.
+
+
+
+
+S-158:111                                            May 2025                                      Edition 1.0.0
+
+<<<PAGE 13>>>
+                                   SURFCUR Validation Checks                                  9
+
+
+
+9   Other Components of this Specification
+The other components of this Specification listed below are provided as separate documents or
+artefacts accompanying this document and form an integral part of this Specification.
+
+    1) Spreadsheet of S-111 validation checks named S158_111_1_0_0_YYYYMMDD of the latest
+       build date. (The build date is the YYYYMMDD suffix in the file name.)
+
+
+
+
+S-158:111                                  May 2025                                Edition 1.0.0

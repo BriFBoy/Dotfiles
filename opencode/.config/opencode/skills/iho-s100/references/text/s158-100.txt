@@ -1,0 +1,631 @@
+# S-158:100 Universal Hydrographic Data Model Validation Checks — Edition 1.0.0
+# source: /home/johanneslj/Documents/S-100/S-100/S-158-100_Validation_Checks_Ed_1.0.0/S-158_100_Universal_Hydrographic_Data_Model_Validation_Checks_Ed_1.0.0.pdf
+# Page markers are PDF page numbers (1-based), not printed page numbers.
+
+<<<PAGE 1>>>
+S-158:100
+
+
+
+
+  Universal Hydrographic
+  Data Model Validation
+  Checks
+
+  Edition 1.0.0 – February 2025
+  Aligned to S-100 Edition 5.2.0
+
+
+
+
+                                                           Published by the
+                                   International Hydrographic Organization
+                                                        4b quai Antoine 1er
+                                                    Principauté de Monaco
+                                                     Tel: (377) 93.10.81.00
+                                                    Fax: (377) 93.10.81.40
+                                                                info@iho.int
+                                                                 www.iho.int
+
+<<<PAGE 2>>>
+ii                                           S-100 Validation Checks
+
+
+
+
+                       © Copyright International Hydrographic Organization 2025
+
+            This work is copyright. Apart from any use permitted in accordance with the Berne
+            Convention for the Protection of Literary and Artistic Works (1886), and except in the
+            circumstances described below, no part may be translated, reproduced by any
+            process, adapted, communicated or commercially exploited without prior written
+            permission from the International Hydrographic Organization (IHO). Copyright in some
+            of the material in this publication may be owned by another party and permission for
+            the translation and/or reproduction of that material must be obtained from the owner.
+
+            This document or partial material from this document may be translated, reproduced
+            or distributed for general information, on no more than a cost recovery basis. Copies
+            may not be sold or distributed for profit or gain without prior written agreement of the
+            IHO Secretariat and any other copyright holders.
+
+            In the event that this document or partial material from this document is reproduced,
+            translated or distributed under the terms described above, the following statements are
+            to be included:
+
+               “Material from IHO publication [reference to extract: Title, Edition] is reproduced
+               with the permission of the IHO Secretariat (Permission No ……./…) acting for the
+               International Hydrographic Organization (IHO), which does not accept responsibility
+               for the correctness of the material as reproduced: in case of doubt, the IHO’s
+               authentic text shall prevail. The incorporation of material sourced from IHO shall
+               not be construed as constituting an endorsement by IHO of this product.”
+
+               “This [document/publication] is a translation of IHO [document/publication] [name].
+               The IHO has not checked this translation and therefore takes no responsibility for its
+               accuracy. In case of doubt the source version of [name] in [language] should be
+               consulted.”
+            The IHO Logo or other identifiers shall not be used in any derived product
+            without prior written permission from the IHO Secretariat.
+
+
+
+
+S-158:100                                         February2025                                          Edition 1.0.0
+
+<<<PAGE 3>>>
+                                          S-100 Validation Checks                                           iii
+
+
+
+
+                                        Document History
+Changes to this Specification are coordinated by the IHO S-100 working Group (S-100 WG). New
+editions will be made available via the IHO web site. Maintenance of the Specification shall conform to
+IHO Resolution 2/2007 (as amended).
+
+ Version         Date                Author/Editor              Purpose
+ Number
+ 0.1.0           2024-08-23          RM                         Initial draft
+ 0.2.0           2024-12-01          RM                         Removed checks whose deletion was
+                                                                agreed by S-100 Validation subgroup
+                                                                (see GitHub issues); source document
+                                                                references in list of checks edited to
+                                                                conform to currently agreed format; split
+                                                                checks into specification and data
+                                                                sections, added Part 10b checks;
+                                                                added Part15 checks from PRIMAR;
+                                                                commenced addition of generic checks
+                                                                from S-158:102, 104, 111 and S-158:98
+                                                                98 lists; elaborated language on
+                                                                tolerances for spatial operators.
+ 1.0.0 Draft 1   February 2025       RM                         Apply feedback; use standard language
+                                                                for more checks
+ 1.0.0           February 2025       HSSC17                     First implementation and testing Edition
+                                                                of S-158:100.
+
+
+
+
+                    Summary of Substantive Changes in Edition x.x
+Bold references in the Clauses Affected column indicate the principal sections/clauses that are affected
+by the described change.
+
+
+                              Change Summary                                         Clauses Affected
+
+ (To be populated for editions following Edition 1.0.0)
+
+
+
+
+S-158:100                                     February 2025                                     Edition 1.0.0
+
+<<<PAGE 4>>>
+iv                                                           S-100 Validation Checks
+
+
+
+
+Contents                                                                                                                                          Page
+1      Introduction ......................................................................................................................... 1
+     1.1 Scope .............................................................................................................................. 1
+     1.2 Conformance ................................................................................................................... 1
+     1.3 References ...................................................................................................................... 1
+        1.3.1   Normative references ............................................................................................ 1
+        1.3.2   Informative references ........................................................................................... 1
+     1.4 Terms, definitions and abbreviations............................................................................... 2
+        1.4.1   Terms and definitions ............................................................................................ 2
+        1.4.2   Abbreviations ......................................................................................................... 3
+        1.4.3   Symbols ................................................................................................................. 3
+     1.5 Use of language .............................................................................................................. 3
+     1.6 General description ......................................................................................................... 4
+     1.7 Specification metadata and maintenance ....................................................................... 4
+        1.7.1   Specification metadata .......................................................................................... 4
+        1.7.2   Specification maintenance ..................................................................................... 4
+2       Check Structure .................................................................................................................. 5
+3       Check Syntax....................................................................................................................... 5
+4      Organisation ........................................................................................................................ 5
+     4.1 Check numbers ............................................................................................................... 5
+     4.2 Checks for datasets and exchange sets versus checks for specifications ..................... 6
+5      Check Application Sequence ............................................................................................. 6
+     5.1 Applicable subset ............................................................................................................ 6
+     5.2 Application sequence ...................................................................................................... 6
+     5.3 Check messages ............................................................................................................. 7
+6       Check Classification ........................................................................................................... 7
+7      Geometry and Spatial Operators ....................................................................................... 7
+     7.1 Operators ......................................................................................................................... 7
+     7.2 Tolerances ....................................................................................................................... 8
+8       Other Components of this Specification .......................................................................... 8
+
+
+
+
+S-158:100                                                          February2025                                                         Edition 1.0.0
+
+<<<PAGE 5>>>
+                                          S-100 Validation Checks                                        1
+
+
+
+1       Introduction
+This document specifies a set of checks that producers of validation tools for S-100 based data products
+must implement in their validation software. Validation software is used to ensure that data are
+compliant with the S-100 Universal Hydrographic Data Model and Product Specifications based on S-
+100. The initial list of checks for S-100 was compiled by the IHO S-100 Validation Checks sub-group
+for the IHO. This list of checks derives in part original material in the S-100 standard and in part from
+validation checks for S-57 ENCs defined in IHO S-58 (ENC Validation Checks), which were provided
+by a number of hydrographic offices and software companies.
+The checks listed in this document are generic checks applicable to all S-100 products which include
+the relevant S-100 concepts.
+
+
+1.1      Scope
+This document, designated as “S-158:100” by the IHO, specifies validation checks for data products
+conforming to Product Specifications based on Edition 5.2.0 and subsequent editions of the S-100
+(Universal Hydrographic Data Model) Standard.
+This document specifies validation checks for both datasets and exchange sets.
+The checks specified in this document are intended to be supplemented by product-specific checks
+described in publications specific to each S-100 based Product Specification, designated as S-158:1xx
+publications, where “1xx” indicates the IHO number assigned to the data product. Both sets of validation
+checks, those described in S-158:100 as well as those defined in the applicable S-158:1xx publication,
+must be applied to test the validity of S-100 based datasets and exchange sets. For datasets and
+exchange sets intended for use on ECDIS, additional cross-product checks, defined in S-158:98, must
+also be applied.
+
+
+1.2      Conformance
+
+This specification conforms to Edition 1.0.0 of IHO specification S-158 (Validation Checks – Introduction
+and Structure).
+The validation checks described herein conform to Edition 5.2.0 of S-100 (Universal Hydrographic Data
+Model).
+Edition 1.0.0 is an Implementation version in accordance with IHO TR 2/2007 and there may be
+revisions issued by the Working Group prior to the Operational Edition 2.0.0 being published.
+
+
+1.3      References
+1.3.1       Normative references
+S-98                  S-100 ECDIS and Interoperability Specification, IHO Publication S-98, Edition
+                      2.0.0, ??? 2025. In Preparation.
+S-100                 IHO Universal Hydrographic Data Model, Edition 5.2.0, June 2024
+S-158                 Validation Checks – Introduction and Structure, Edition 1.0.0, ??? 2025. In
+                      preparation.
+1.3.2       Informative references
+ISO 19157:2013        Geographic information – Data Quality. As amended by Amendment 1, 2018
+
+
+
+
+S-158:100                                     February 2025                                   Edition 1.0.0
+
+<<<PAGE 6>>>
+2                                         S-100 Validation Checks
+
+
+
+1.4     Terms, definitions and abbreviations
+1.4.1       Terms and definitions
+
+The terms and definitions listed in S-158 apply to this document. In addition, the following terms and
+definitions are used:
+
+aggregation
+special form of association that specifies a whole-part relationship between the aggregate (whole) and
+a component part (see composition) [ISO 19103]
+
+association
+semantic relationship between two or more classifiers that specifies connections among their instances
+[ISO 19103]
+NOTE: A binary association is an association among exactly two classifiers (including the possibility of
+an association from a classifier to itself)
+
+association link
+the record, field, or tag in the dataset which encodes an association between instances of feature,
+information, or spatial types. The format of an association link depends on the S-100 data format.
+
+carrier metadata
+metadata encoded within HDF5 datasets, as either HDF5 attributes or datasets
+
+composition
+form of aggregation association with strong ownership and coincident lifetime as part of the whole [ISO
+19103]
+NOTE: Parts with non-fixed multiplicity may be created after the composite itself, but once created they
+live and die with it (that is, they share lifetimes). Such parts can also be explicitly removed before the
+death of the composite. Composition may be recursive. Synonym: Composite aggregation.
+
+embedded metadata
+See carrier metadata.
+
+enumeration
+a fixed list of valid identifiers of named literal values. Attributes of an enumerated type may only take
+values from this list
+
+exterior
+difference between the universe and the closure [ISO 19107]
+NOTE The concept of exterior is applicable to both topological and geometric complexes
+
+feature association
+relationship that links instances of one feature type with instances of the same or a different feature
+type [ISO 19110]
+
+feature attribute
+characteristic of a feature [ISO 19101]
+NOTE: A feature attribute may occur as a type or an instance. Feature attribute type or feature attribute
+instance is used when only one is meant.
+NOTE: A feature attribute type has a name, a data type and a domain associated to it. A feature attribute
+instance has an attribute value taken from the value domain of the feature attribute type.
+NOTE: In a Feature Catalogue, a feature attribute may include a value domain but does not specify
+attribute values for feature instances.
+EXAMPLE 1: A feature attribute named communication channel may have an attribute value VHF0007
+which belongs to the data type text
+EXAMPLE 2: A feature attribute named length may have an attribute value 82.4 which belongs to the
+data type real
+
+
+S-158:100                                      February 2025                                   Edition 1.0.0
+
+<<<PAGE 7>>>
+                                          S-100 Validation Checks                                         3
+
+
+
+local name (XML)
+the part of a name following the namespace prefix. The local name follows the final : in a qualified
+name. Also called local part
+
+multiplicity
+specification of the number of possible occurrences of a property, or the number of allowable elements
+that may participate in a given relationship [ISO 19103]
+EXAMPLES: 1..* (one to many); 1 (exactly one); 0..1 (zero or one)
+
+registry
+The IHO Geospatial Information Registry (https://registry/iho.int). May be referred to as “GI Registry” or
+simply “Registry”.
+
+relationship
+semantic connection among model elements [ISO 19103]
+NOTE: Kinds of relationships include association, generalization, metarelationship, flow, and several
+kinds grouped under dependency.
+
+tag (XML)
+delimiters marking the beginning and end of an XML element, consisting of a name enclosed by < and
+> for a “start tag” and </ and > for an “end tag”. Empty elements may consist of a name enclosed by <
+and />.
+
+1.4.2       Abbreviations
+This Product Specification uses the abbreviated terms defined in S-158. In addition, the following
+abbreviations are used:
+FC       Feature Catalogue
+GI Registry IHO Geospatial Information Registry (https://registry.iho.int)
+PC       Portrayal Catalogue
+PS       Product Specification
+S-1xx    S-100 based data product, where “1xx” stands for the product number assigned by the IHO
+         (which may begin with numbers other than “1”)
+SRS      Spatial Reference System. GML-specific term for the GML attribute that indicates the
+         coordinate reference system.
+NOTE: The Part 10a checks use the field tags defined in S-100 Part 10a for ISO 8211 fields instead of
+      the full field names. There are too many fields named in the checks to list individually in this
+      clause. S-100 Part 10a should be consulted to identify ISO 8211 fields from the tag names.
+1.4.3       Symbols
+
+The symbols used in logical and spatial expressions are defined in S-158 clause 1.3.3 (Symbols).
+
+
+
+1.5      Use of language
+Within this document:
+•     “Must” indicates a mandatory requirement.
+•     “Should” indicates an optional requirement, that is the recommended process to be followed, but
+      is not mandatory.
+•     “May” means “allowed to” or “could possibly”, and is not mandatory.
+
+
+
+
+S-158:100                                      February 2025                                   Edition 1.0.0
+
+<<<PAGE 8>>>
+4                                               S-100 Validation Checks
+
+
+
+1.6       General description
+S-158:100 is a specification describing generic validation checks for S-100 based products. There are
+no data products based directly on this edition of S-158:100 and therefore no general information
+applicable to data products conforming to it.
+
+
+
+1.7       Specification metadata and maintenance
+1.7.1       Specification metadata
+This information uniquely identifies this Specification and provides information about its creation and
+maintenance.
+Title:               Universal Hydrographic Model Validation Checks
+Version:             1.0.0
+Date:                February 2025
+Language:            English
+Classification: Unclassified
+Contact:             International Hydrographic Organization.
+                     4 quai Antoine 1er,
+                     B.P.445 MC 98011 MONACO CEDEX
+                     Telephone: +377 93 10 81 00
+                     B.P. 445 Fax: + 377 93 10 81 40
+                     Email: info@iho.int
+Role:                Owner
+URL:                 https://registry.iho.int
+Identifier:          S-158:100
+Maintenance:         Changes to this Specification are coordinated by the S-100 Validation Checks sub-
+                     group under the S-100 Working Group (S-100 WG) of the IHO and made available
+                     via the IHO Publications website. Maintenance of the Product Specification must
+                     conform to IHO Technical Resolution 2/2007 (revised 2010). For reporting issues
+                     which need correction, use the contact information.
+1.7.2       Specification maintenance
+1.7.2.1      Introduction
+Changes to S-158:100 will be released by the IHO as a New Edition, revision, or clarification.
+The list of checks, which accompanies this document is considered part of this Specification and
+changes to it are considered changes to this Specification.
+S-158:100 is not accompanied by separate artefacts such as an XML Schema, Feature or Portrayal
+Catalogue and therefore this clause does not address the question of changes to such derived artefacts.
+1.7.2.2      New Edition
+New Editions of S-158:100 include at least one of the following changes:
+      •   introduce a new validation check (of any classification);
+      •   remove an existing validation check (of any classification);
+      •   change the classification of a validation check, whether upgrade (such as Error to Critical) or
+          downgrade (such as Error to Warning);
+      •   extend a validation check to include new features, conditions, etc., in a way that requires
+          validation software manufacturers to change their software.
+
+
+
+
+S-158:100                                           February 2025                             Edition 1.0.0
+
+<<<PAGE 9>>>
+                                             S-100 Validation Checks                                        5
+
+
+
+New Editions are likely to require validation software manufacturers to change their software or
+invalidate datasets which passed validation according to the previous Edition of S-158:100.
+All cumulative revisions and clarifications must be included with the release of approved New Editions.
+1.7.2.3       Revision
+Revisions are defined as substantive semantic changes to S-158:100. Typically, revisions will change
+S-158:100 to correct factual errors or introduce necessary changes that have become evident as a
+result of practical experience or changing circumstances. Revisions include corrections of
+misinterpretations of S-100, or extensions to checks that do not require changes to validation software..
+A revision must not be classified as a clarification. All cumulative clarifications must be included with
+the release of approved revisions.
+1.7.2.4       Clarification
+Clarifications are changes to S-158:100 arising from non-substantive reasons.
+Typically clarifications for non-substantive reasons remove ambiguity; correct grammatical and spelling
+errors; amend or update cross references; revise check messages or clarify check descriptions without
+requiring manufacturers to change their software.
+1.7.2.5       Version numbers
+The associated version control numbering to identify changes (n) to S-158:100 must be as follows:
+
+New Editions denoted as n.0.0
+
+Revisions denoted as n.n.0
+
+Clarifications denoted as n.n.n
+
+
+
+2         Check Structure
+
+Check structure in S-158:100 includes the fields specified in S-158.
+The “Standards document reference” column is used to indicate the S-100 Part.
+
+
+
+3         Check Syntax
+
+The check syntax conforms to the syntax and operators for validation checks described in S-158 clause
+4.2 with the following modifications for Edition 1.0.0:
+      •    Imperative language ("shall", "shall not", "must", "must not", "allowed ... as long as", etc.) is
+           used when the check is triggered (the message is temitted) if the condition IS NOT satisfied.
+      •    Non-imperative language ("For each", "If x") is used when the check is triggered when the
+           condition IS satisfied (evaluates to TRUE).
+
+
+
+4         Organisation
+
+The list of validation checks for this edition of S-158:100 is available separately (see clause 8). The list
+of checks accompanies this specification and forms an integral part of it.
+
+
+
+4.1        Check numbers
+
+Checks are assigned unique check identifiers in the format 100_<checkNumber><optionalAlphaSuffix>.
+
+
+
+S-158:100                                        February 2025                                   Edition 1.0.0
+
+<<<PAGE 10>>>
+6                                             S-100 Validation Checks
+
+
+
+      •    The prefix “100_” is common to all the S-100 generic checks defined in this Specification.
+      •    <checkNumber> is a 4-digit number assigned to each check. There is no significance attached
+           to the value of this number.
+      •    A modified check will generally retain the same <checkNumber> as their predecessor.
+      •    If a check is deleted, its number is not reused for later different checks, but may be re-introduced
+           if the original check is revived either with or without modification.
+      •    <optionalAlphaSuffix> is an optional single lower case alphabetic letter suffix in the range a-z.
+           It is used only when a check is split into two or more checks.
+EXAMPLES: 100_1002, 100_2036a, 100_2036b.
+
+
+
+4.2        Checks for datasets and exchange sets versus checks for specifications
+
+The S-100 list of checks is split into two collections:
+
+Collection A checks apply directly to datasets and exchange sets, in that they are expected to be
+implemented by software that takes one or more datasets or exchange sets as input and tests
+conformance of the dataset(s) or exchange set(s) to each relevant check (allowing for omission of
+irrelevant checks such as checks for a different data format). They will normally be applied whenever it
+is necessary to verify conformance of the dataset, exchange catalogue, or exchange set to S-100
+requirements for the structure, content, and format of datasets, exchange catalogues, and exchange
+sets. Checks in this collection are expected to be implemented in validation software for datasets,
+exchange sets, and exchange catalogues.
+
+Collection B checks are not directly applied to datasets or exchange sets, but are checklist items
+relevant for Product Specifications and related artefacts such as XML Feature Catalogues. They will
+normally be used by Product Specification developers in the process of preparing a Product
+Specification, Feature and Portrayal Catalogues, and GML schemas. Checks in this collection are not
+expected to be implemented in validation software for datasets, exchange sets, and exchange
+catalogues.
+
+
+
+
+5         Check Application Sequence
+
+5.1        Applicable subset
+
+The S-100 standard defines alternative frameworks for certain portions of Product Specifications, such
+as data formats (Parts 10a/10b/10c). Where a Product Specification makes a choice between alternate
+S-100 framework concepts, only the checks relating to the alternative selected by the Product
+Specification need be applied.
+
+
+
+5.2        Application sequence
+
+The check application sequence expands and modifies the application sequence described in S-158.
+The order below is recommended, not mandatory.
+
+                   Table 5.1 - Suggested application order of Collection A validation checks
+           Order    Check Collection                            Apply to
+           1        S-100 generic checks for datasets           Dataset, in isolation
+
+
+
+
+S-158:100                                         February 2025                                     Edition 1.0.0
+
+<<<PAGE 11>>>
+                                             S-100 Validation Checks                                           7
+
+
+
+        Order     Check Collection                             Apply to
+        1a        Spatial integrity checks                     CRS information and spatial
+                                                               primitives in single dataset
+        1b        Thematic integrity checks                    Features and information types in
+                                                               single dataset
+        1c        Association integrity checks                 Feature and information
+                                                               associations in single dataset
+        1d        Dataset structural conformance               Single dataset
+        2         Product-specific and interoperability        Dataset, in isolation. See the
+                  checks for single datasets                   relevant S-158:1xx publication and
+                                                               S-158:98 for recommended order
+        3         S-100 generic checks for exchange            Exchange set
+                  sets
+        3a        Exchange set structural                      Structure of exchange set
+                  conformance
+        3c        Signature validity                           Signatures
+        3b        Discovery metadata value                     Values in CATALOG.XML
+                  conformance
+        3c        Discovery metadata/exchange set              Match contents of exchange set to
+                  content conformance                          discovery metadata in
+                                                               CATALOG.XML
+        4         Product-specific checks for                  Exchange set
+                  exchange sets
+        5         Product catalogue checks                     S-128 datasets. See S-158:128 for
+                                                               recommended order
+
+
+The application sequence for Collection B checks is left to the discretion of Product Specification Project
+Teams.
+
+
+5.3     Check messages
+
+Application software is expected to identify the location in the file where the error was detected, and
+indicate the location in addition to the check message. The method used to identify and indicate the
+location will depend on the format and is left to the application software developer.
+
+
+
+6     Check Classification
+
+The check classification conforms to the scheme described in S-158.
+
+
+
+7     Geometry and Spatial Operators
+
+7.1     Operators
+
+Geometry and spatial operators conform to the operators for vector products described in S-158.
+
+
+
+
+S-158:100                                        February 2025                                      Edition 1.0.0
+
+<<<PAGE 12>>>
+8                                          S-100 Validation Checks
+
+
+
+7.2        Tolerances
+
+If comparisons of spatial coordinates are necessary, a tolerance factor must be applied. The default
+tolerances for the S-100 generic tests are described below. To ensure that all tests for a given data
+product, whether generic or product-specific, use the same tolerances, S-158:100 only provides default
+tolerances, which are overridden by any product-specific tolerances provided in the S-158:1xx
+specification.
+      •    For Product Specifications which use coordinate multiplication factors, all spatial operators
+           should use a default tolerance of 1/CMFX, 1/CMFY, or 1/CMFZ (corresponding to the
+           coordinate axis) as appropriate in validation software.
+      •    For Product Specification which do not use coordinate multiplication factors, the default
+           tolerance should be 10-7 degrees if the axis unit is decimal degrees and 10-2 metres when the
+           axis unit is metres.
+      •    The tolerance should be increased to match the precision when either of the coordinate fields
+           being compared uses a lower precision. For example, comparisons involving bounding boxes
+           in discovery metadata should use a precision of 0.01 degrees since that is the precision of
+           coordinate values for bounding boxes in discovery metadata.
+In all cases, the respective S-158:1xx may override the default precision described above.
+
+
+
+8         Other Components of this Specification
+
+The other components of this Specification listed below are provided as separate documents or
+artefacts accompanying this document and form an integral part of this Specification.
+
+      1) Spreadsheet of S-100 validation checks named S-158_100_1_0_0_YYYYMMDD. The build
+         date is the YYYYMMDD suffix in the file name, whereas the “1_0_0” component represents the
+         edition, revision, and clarification number. The file with the same edition and revision number
+         as this document but with the most recent build date must be used..
+
+
+
+
+S-158:100                                      February 2025                                  Edition 1.0.0

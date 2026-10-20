@@ -1,0 +1,61 @@
+# S-158 Validation Checks – Introduction and Structure — Edition 1.0.0
+
+PDF pages: 28. Page numbers below are PDF pages; open with `scripts/s100.py page s158-intro <n>`.
+
+## Detected clause headings, tables and figures
+
+- p.5 `1` Introduction
+- p.5 `1.1` Scope
+- p.5 `1.2` References
+- p.5 `1.2.1` Normative references
+- p.5 `1.2.2` Informative references
+- p.5 `1.3` Terms, definitions and abbreviations
+- p.5 `1.3.1` Terms and definitions
+- p.8 `1.3.2` Abbreviations
+- p.9 `1.3.3` Symbols
+- p.9 `1.4` Use of language
+- p.10 `1.5` General description
+- p.10 `1.6` Specification metadata and maintenance
+- p.10 `1.6.1` Specification metadata
+- p.10 `1.6.2` Specification maintenance
+- p.10 `1.6.2.1` Introduction
+- p.10 `1.6.2.2` New Edition
+- p.11 `1.6.2.3` Revision
+- p.11 `1.6.2.4` Clarification
+- p.11 `1.6.2.5` Version numbers
+- p.11 `2` Structure of S-158 Publication Series
+- p.11 `2.1` Overview of S-158 specification series
+- p.12 `2.2` Specification title and cover page
+- p.12 `2.3` Conformance statement
+- p.12 `2.4` Specification maintenance
+- p.13 `3` Check Structure
+- p.13 `Table 3-1` Structure of checks
+- p.15 `4` Check Syntax
+- p.15 `4.1` Syntax for generic S-100 checks
+- p.15 `4.2` Syntax for product-specific checks
+- p.15 `Table 4-1` Example of check syntax
+- p.15 `4.2.1` Comparison and Logical Operators
+- p.16 `4.2.2` Spatial Operators
+- p.16 `4.2.3` Values
+- p.16 `4.2.3.1` Conventions for value descriptors in Part 10a formats
+- p.16 `4.2.3.2` Conventions for value descriptors in exchange catalogues and Part 10b (GML)
+- p.17 `4.2.3.3` Conventions for value descriptors in Part 10c (HDF5) formats
+- p.17 `4.2.4` Statements
+- p.17 `5` Outline of Validation
+- p.17 `Figure 5-1` depicts the validation activities as connections between data product components and the
+- p.19 `6` Check Application Sequence
+- p.19 `Table 6-1` Suggested application order of validation checks
+- p.20 `Table 7-1` Classification of checks
+- p.20 `7.1` Minimum check standard
+- p.20 `8.1` Definitions for ISO 19125-1:2004 Geometry
+- p.22 `8.3` How the Relationships Apply to S-100 Feature Geometry
+- p.22 `8.4` Geometric Operator Definitions
+- p.22 `Figure 8-1` Examples of the Equals relationship
+- p.23 `Figure 8-2` Examples of the DISJOINT relationship
+- p.24 `Figure 8-3` Examples of the TOUCHES relationship
+- p.24 `Figure 8-4` Examples of the WITHIN relationship — Polygon/Polygon (a), Polygon/LineString (b),
+- p.25 `Figure 8-5` Examples of the OVERLAPS relationship
+- p.26 `Figure 8-6` Examples of the CROSSES relationship
+- p.27 `Figure 8-7` Example and counterexample of the COVERED_BY relationship
+- p.27 `Figure 8-8` Example of the COINCIDENT relationship
+- p.28 `Figure 8-9` Additional examples of COINCIDENT objects

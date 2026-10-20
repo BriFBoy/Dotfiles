@@ -1,0 +1,2206 @@
+# S-128 Catalogue of Nautical Products Product Specification — Edition 2.0.0
+# source: /home/johanneslj/Documents/S-100/S-128/S-128_Catalogue_of_Nautical_Products_Product_Specification_Ed_2.0.0.pdf
+# Page markers are PDF page numbers (1-based), not printed page numbers.
+
+<<<PAGE 1>>>
+S-128
+
+
+
+
+  Catalogue of Nautical
+  Products
+
+
+
+  Edition 2.0.0 – March 2025
+
+
+
+
+                                                       Published by the
+                               International Hydrographic Organization
+                                                    4b quai Antoine 1er
+                                                Principauté de Monaco
+                                                 Tel: (377) 93.10.81.00
+                                                Fax: (377) 93.10.81.40
+                                                            info@iho.int
+                                                             www.iho.int
+
+<<<PAGE 2>>>
+ii                                   Catalogue of Nautical Products
+
+
+
+
+                    © Copyright International Hydrographic Organization 2025
+
+        This work is copyright. Apart from any use permitted in accordance with the Berne
+        Convention for the Protection of Literary and Artistic Works (1886), and except in the
+        circumstances described below, no part may be translated, reproduced by any process,
+        adapted, communicated or commercially exploited without prior written permission from
+        the International Hydrographic Organization (IHO). Copyright in some of the material in
+        this publication may be owned by another party and permission for the translation and/or
+        reproduction of that material must be obtained from the owner.
+
+        This document or partial material from this document may be translated, reproduced or
+        distributed for general information, on no more than a cost recovery basis. Copies may
+        not be sold or distributed for profit or gain without prior written agreement of the IHO
+        Secretariat and any other copyright holders.
+
+        In the event that this document or partial material from this document is reproduced,
+        translated or distributed under the terms described above, the following statements are
+        to be included:
+
+           “Material from IHO publication [reference to extract: Title, Edition] is reproduced with
+           the permission of the IHO Secretariat (Permission No ……./…) acting for the
+           International Hydrographic Organization (IHO), which does not accept responsibility
+           for the correctness of the material as reproduced: in case of doubt, the IHO’s
+           authentic text shall prevail. The incorporation of material sourced from IHO shall
+           not be construed as constituting an endorsement by IHO of this product.”
+
+           “This [document/publication] is a translation of IHO [document/publication] [name].
+           The IHO has not checked this translation and therefore takes no responsibility for its
+           accuracy. In case of doubt the source version of [name] in [language] should be
+           consulted.”
+        The IHO Logo or other identifiers shall not be used in any derived product without
+        prior written permission from the IHO Secretariat.
+
+
+
+
+S-128                                        March 2025                                           Edition 2.0.0
+
+<<<PAGE 3>>>
+                                                     Catalogue of Nautical Products                                                                  iii
+
+
+
+
+Contents
+
+1        Overview ............................................................................................................................. 1
+1.1      Introduction ......................................................................................................................... 1
+1.2      References .......................................................................................................................... 1
+1.3      Terms, definitions and abbreviations .................................................................................. 1
+1.3.1    Use of Language................................................................................................................. 1
+1.3.2    Terms and definitions ......................................................................................................... 2
+1.3.3    Abbreviations ...................................................................................................................... 3
+1.4      General S-128 data product description ............................................................................. 4
+1.5      Data product specification metadata .................................................................................. 4
+1.6      IHO Product Specification maintenance ............................................................................. 5
+1.6.1    Introduction ......................................................................................................................... 5
+1.6.2    New Edition ......................................................................................................................... 5
+1.6.3    Revision .............................................................................................................................. 5
+1.6.4    Clarification ......................................................................................................................... 5
+1.6.5    Version numbers ................................................................................................................. 5
+2        Specification Scopes .......................................................................................................... 5
+3        Dataset Identification .......................................................................................................... 6
+4        Data Content and Structure ................................................................................................ 6
+4.1      Introduction ......................................................................................................................... 6
+4.2      Application Schema ............................................................................................................ 7
+4.3      Feature Catalogue ............................................................................................................ 12
+4.3.1    Introduction ....................................................................................................................... 12
+4.3.2    Feature types .................................................................................................................... 12
+4.3.3    Feature relationship .......................................................................................................... 12
+4.3.4    Information types .............................................................................................................. 12
+4.3.5    Attributes ........................................................................................................................... 12
+4.4      Geometric representation ................................................................................................. 13
+5        Coordinate Reference Systems (CRS) ............................................................................. 14
+5.1      Introduction ....................................................................................................................... 14
+5.2      Horizontal reference system ............................................................................................. 14
+5.3      Projection .......................................................................................................................... 14
+5.4      Vertical coordinate reference system ............................................................................... 14
+5.5      Temporal reference system .............................................................................................. 14
+5.6      Coverage of nautical products data and scale ................................................................. 15
+6        Data Quality ...................................................................................................................... 15
+6.1      Introduction ....................................................................................................................... 15
+7        Data Capture and Classification ....................................................................................... 15
+8        Maintenance ..................................................................................................................... 16
+8.1      Introduction ....................................................................................................................... 16
+8.2      Production process for base and update datasets ........................................................... 16
+8.3      Dataset updates and cancellation..................................................................................... 16
+8.4      Support file updates .......................................................................................................... 16
+8.5      Feature and Portrayal Catalogues .................................................................................... 16
+8.6      Feature history, version, and change tracking .................................................................. 16
+8.7      Dataset encryption ............................................................................................................ 17
+9        Portrayal ............................................................................................................................ 17
+9.1      Portrayal Catalogue .......................................................................................................... 17
+10       Data Product Format (Encoding) ...................................................................................... 17
+10.1     Introduction ....................................................................................................................... 17
+10.2     Coordinate encoding in spatial primitives ......................................................................... 18
+10.2.1   Encoding of coordinates as decimals ............................................................................... 18
+10.3     Numeric attribute encoding ............................................................................................... 18
+10.4     Text attribute values.......................................................................................................... 18
+
+
+
+
+S-128                                                           March 2025                                                              Edition 2.0.0
+
+<<<PAGE 4>>>
+iv                                                   Catalogue of Nautical Products
+
+
+
+10.5     Mandatory attribute values ............................................................................................... 18
+10.6     Data overlap...................................................................................................................... 18
+10.7     Data extent ........................................................................................................................ 19
+11       Data Product Delivery ....................................................................................................... 19
+11.1     Data product delivery information ..................................................................................... 19
+11.1.1   Dataset loading ................................................................................................................ 19
+11.1.2   New Editions ..................................................................................................................... 19
+11.1.3   Update .............................................................................................................................. 19
+11.2     Dataset .............................................................................................................................. 19
+11.2.1   Datasets ............................................................................................................................ 19
+11.2.2   Dataset file naming ........................................................................................................... 20
+11.2.3   Update dataset file naming ............................................................................................... 21
+11.3     Support files ...................................................................................................................... 21
+11.3.1   Support file naming ........................................................................................................... 21
+11.4     Exchange Set.................................................................................................................... 22
+12       Metadata ........................................................................................................................... 22
+12.1     Introduction ....................................................................................................................... 22
+12.2     Discovery metadata .......................................................................................................... 22
+12.2.1   S100_ExchangeCatalogue ............................................................................................... 25
+12.2.2   S100_DatasetDiscoveryMetadata .................................................................................... 26
+12.2.3   S100_SupportFileDiscoveryMetadata .............................................................................. 33
+12.2.4   S100_CatalogueDiscoveryMetadata ................................................................................ 36
+12.2.5   Miscellaneous metadata types ......................................................................................... 37
+
+
+
+
+S-128                                                           March 2025                                                              Edition 2.0.0
+
+<<<PAGE 5>>>
+                                     Catalogue of Nautical Products                                       v
+
+
+
+
+                                     Document History
+Changes to this Product Specification are coordinated by the IHO Nautical Information Provision Working
+Group (NIPWG). New editions will be made available via the IHO web site. Maintenance of theProduct
+Specification shall conform to IHO Technical Resolution 2/2007 (as amended).
+
+  Version          Date            Approved By          Purpose
+  Number
+  0.0.1            28 Dec 2018     KHOA                 First Draft
+  0.7.5            20 Nov 2019     KHOA                 Working Draft
+  1.0.0            11 Mar 2022     KHOA                 Release 1.0.0
+  1.0.0            May 2022        HSSC                 Initial published version for evaluation and
+                                                        testing.
+ 1.1.0             Oct 2023        KHOA                 Updated to align with S-100 Edition 5.0.0
+
+ 1.2.0             Feb 2024        KHOA                 Revised Data Modeling
+
+ 2.0.0             Mar 2024        KHOA                 Updated to align with S-100 Edition 5.2.0
+                                                        and Applied feedback from NIPWG
+ 2.0.0             July 2024       KHOA                 Applied feedback from NIPWG
+ 2.0.0             Mar 2025        IHO CL 31/2025 First operational version of S-128
+
+
+
+
+S-128                                        March 2025                                        Edition 2.0.0
+
+<<<PAGE 6>>>
+vi      Catalogue of Nautical Products
+
+
+
+
+           Page intentionally left blank
+
+
+
+
+S-128           March 2025                 Edition 2.0.0
+
+<<<PAGE 7>>>
+                                          Catalogue of Nautical Products                                          1
+
+
+
+
+1       Overview
+1.1      Introduction
+This document has been produced by the IHO Nautical Information Provision Working Group (NIPWG)
+in response to a requirement to produce a data product that can be used as a Nautical Publication
+Information Overlay (NPIO) within an Electronic Chart Display and Information System (ECDIS). It is
+based on the IHO S-100 framework Specification and the ISO 19100 series of standards. It is a vector
+Product Specification that is primarily intended for encoding the content of Catalogues of Nautical
+Products, for navigational purposes.
+Catalogue of Nautical Products (CNP) datasets describe the availability of paper charts, ENCs and other
+nautical products, applications for navigational purposes, online services and e-Navigation services. This
+includes their issue date, status, producing agency, and coverage.
+
+
+1.2      References
+S-100: IHO Universal Hydrographic Data Model, Edition 5.2.0
+ISO 8601:2004: Data elements and interchange formats - Information interchange - Representation of dates and times.
+ISO 19101-1:2014: Geographic Information - Reference Model - Part 1- Fundamentals
+ISO 19101-2:2018: Geographic Information - Reference model.
+ISO/TS 19103:2005: Geographic Information - Conceptual schema language.
+ISO 19106:2004: Geographic Information – Profiles.
+ISO 19107:2019: Geographic Information – Spatial schema.
+ISO 19108:2002: Geographic Information – Temporal Schema.
+ISO 19109:2005: Geographic Information - Rules for Application Schema.
+ISO 19110:2005: Geographic Information - Methodology for Feature Cataloguing
+ISO 19111:2007: Geographic information - Spatial referencing by coordinates.
+ISO 19115-1:2018: Geographic information – Metadata, Amended by Amendment 1.
+ISO 19115-2:2019: Geographic information - Metadata: Extensions for imagery and gridded data.
+ISO 19117:2012: Geographic information - Portrayal
+ISO 19123:2005: Geographic information - Schema for coverage geometry and functions.
+ISO 19129:2009: Geographic information - Imagery gridded and coverage data framework.
+ISO 19131:2008: Geographic information - Data product specifications.
+ISO 19136:2020: Geographic Information – Geography Markup Language.
+ISO 19136-2:2015: Geographic Information – Geography Markup Language.
+ISO/TS 19139:2007 Geographic Information – Metadata – XML schema implementation.
+ISO 19157:2013: Geographic Information – Data Quality
+
+
+1.3      Terms, definitions and abbreviations
+1.3.1     Use of Language
+Within this document:
+    • “Must” indicates a mandatory requirement.
+    • “Should” indicates an optional requirement, that is the recommended process to be followed, but
+      is not mandatory.
+
+
+
+
+S-128                                              March 2025                                          Edition 2.0.0
+
+<<<PAGE 8>>>
+2                                       Catalogue of Nautical Products
+
+
+
+    • “May” means “allowed to” or “could possibly”, and is not mandatory.
+1.3.2   Terms and definitions
+The S-100 framework is based on the ISO 19100 series of geographic standards. The terms and
+definitions provided here are used to standardize the nomenclature found within that framework,
+whenever possible. They are taken from the references cited in clause 1.2. Modifications have been
+made when necessary.
+Application
+Manipulation and processing of data in support of user requirements (ISO 19101).
+Application Schema
+Conceptual schema for data required by one or more applications (ISO 19101).
+Conceptual Model
+Model that defines concepts of a universe of discourse (ISO 19101).
+Conceptual Schema
+Formal description of a conceptual model (ISO 19101).
+Coverage
+Feature that acts as a function to return values from its range for any direct position within its spatial,
+temporal or spatiotemporal domain (ISO 19123).
+EXAMPLE: Raster image, polygon overlay, digital elevation matrix.
+Data Product
+Dataset or dataset series that conforms to a data Product Specification.
+Data Product Specification
+Detailed description of a dataset or dataset series together with additional information that will enable
+it to be created, supplied to, and used by another party.
+NOTE: A data Product Specification provides a description of the universe of discourse and a
+specification for mapping the universe of discourse to a dataset. It may be used for production, sales,
+end-use, or other purpose.
+Dataset
+Identifiable collection of data (ISO 19115).
+NOTE: A dataset may be a smaller grouping of data which, though limited by some constraint such as
+spatial extent or feature type, is located physically within a larger dataset. Theoretically, a dataset may
+be as small as a single feature or feature attribute contained within a larger dataset. A hardcopy map or
+chart may be considered a dataset.
+Dataset Series
+Collection of datasets sharing common characteristics (ISO c19115).
+Domain
+Well-defined set (ISO/TS 19103).
+NOTE: Well-defined means that the definition is both necessary and sufficient, as everything that
+satisfies the definition is in the set and everything that does not satisfy the definition is necessarily outside
+the set.
+Feature
+Abstraction of real world phenomena (ISO 19101).
+NOTE: A feature can occur as a type or an instance. Feature type or feature instance will be used when
+only one is meant.
+Feature Association
+Relationship that links instances of one feature type with instances of the same or a different feature
+type (ISO19110).
+Feature Attribute
+Characteristic of a feature (ISO 19101-1:2014, 4.1.12).
+EXAMPLE 1: A feature attribute named “colour” can have an attribute value “green” which belongs to
+the data type “text”.
+
+
+
+
+S-128                                            March 2025                                        Edition 2.0.0
+
+<<<PAGE 9>>>
+                                       Catalogue of Nautical Products                                      3
+
+
+
+EXAMPLE 2: A feature attribute named length can have an attribute value “82.4” which belongs to the
+data type “real”.
+NOTE 1: A feature attribute has a type name, a data type and a value domain associated to it. A feature
+attribute for a feature instance also has an attribute value taken from the value domain.
+NOTE 2: In a Feature Catalogue a feature attribute can include a value domain but does not specify
+attribute values for feature instance.
+NOTE 3: In UML, attribute associations and operations are representation types and are not fundamental
+to the type of a characteristic nor to the type of feature. All three are equally capable of representing the
+same characteristics of a feature. Every implementation of a characteristic is allowed to use the
+representation type that is most appropriate and can use several different representations for a single
+characteristic if required.
+Feature associations and feature operations therefore are different types of feature attribute, the
+distinction between them being based on storage and access mechanism rather than semantics.
+Geographic Data
+Data with implicit or explicit reference to a location relative to the Earth (ISO 19109).
+NOTE: Geographic information is also used as a term for information concerning phenomena implicitly
+or explicitly associated with a location relative to the Earth.
+Metadata
+Information about a resource (ISO 19115 – 1: 2014, 4.10).
+Model
+Abstraction of some aspects of reality (ISO 19109).
+Portrayal
+Presentation of information to humans (ISO 19117).
+NOTE: Within the scope of this International Standard Portrayal is restricted to the portrayal of
+geographic information” (ISO 19117:2012; 4.20).
+Quality
+Totality of characteristics of a product that bear on its ability to satisfy stated and implied needs (ISO
+19101).
+Universe of Discourse
+View of the real or hypothetical world that includes everything of interest (ISO 19101).
+1.3.3     Abbreviations
+This Product Specification adopts the following convention for symbols and abbreviated terms:
+ASCII       American Standard Code for Information Interchange
+CNP         Catalogue of Nautical Products
+DCEG        Data Classification and Encoding Guide
+ECDIS       Electronic Chart Display and Information Systems
+ENC         Electronic Navigational Chart
+GML         Geography Markup Language
+IHO         International Hydrographic Organization
+IOC         International Oceanographic Commission
+ISO         International Organization for Standardization
+NIPWG       IHO Nautical Information Provision Working Group
+NPIO        Nautical Publication Information Overlay
+UML         Unified Modeling Language
+URI         Uniform Resource Identifier
+URL         Uniform Resource Locator
+WMS         Web Map Service
+
+
+
+
+S-128                                           March 2025                                      Edition 2.0.0
+
+<<<PAGE 10>>>
+4                                    Catalogue of Nautical Products
+
+
+
+WFS         Web Feature Service
+www         World Wide Web
+WGS         World Geodetic System
+XML         eXtensible Markup Language
+XSLT        eXtensible Stylesheet Language Transformations
+
+
+1.4      General S-128 data product description
+NOTE: This clause contains general information about the data product
+Title:             Catalogue of Nautical Products Product Specification
+Abstract:          Catalogue of Nautical Products (CNP) datasets describe the availability and reliability
+                   of paper chart, ENC, S-100 based nautical products, application for navigational
+                   purpose, online service and e-Navigation services. This includes their issue date,
+                   publication status, producing agency, and source indication. CNP is intended to
+                   exchange status of nautical products and to be a supplement to ENC, and therefore
+                   does not describe the geographic information in detail equal to ENC, rather it is
+                   shown as a coverage of nautical products.
+Content:           Datasets conforming to this Specification will contain Catalogues of some of relevant
+                   nautical products information for the area of coverage such as paper chart, ENC,
+                   Nautical Publication, S-100 based nautical products and e- Navigation service.
+Spatial Extent:
+                   Description: Global coverage of maritime areas.
+                   East Bounding Longitude: 180°
+                   West Bounding Longitude: -180°
+                   North Bounding Latitude: 90°
+                   South Bounding Latitude: -90°
+Purpose:           Describing status of nautical products, and to allow the producer to exchange
+                   catalogue of nautical products with interested stakeholders.
+
+
+1.5      Data product specification metadata
+NOTE: This information uniquely identifies this Product Specification and provides information about its
+creation and maintenance. For further information on dataset metadata see clause 12.
+Title:             Catalogue of Nautical Products
+S-100 Version: 5.2.0
+S-128 Version: 2.0.0
+Date:              March 2025
+Language:          English
+Classification: Unclassified
+Contact:           International Hydrographic Organization (IHO)
+                   4b quai Antoine 1er,
+                   B.P 445
+                   MC 98011 MONACO CEDEX
+                   Telephone : +377 93 10 81 00
+                   Fax : + 377 93 10 81 40
+                   Email : info@iho.int
+URL:               https://iho.int
+
+
+
+
+S-128                                         March 2025                                     Edition 2.0.0
+
+<<<PAGE 11>>>
+                                      Catalogue of Nautical Products                                    5
+
+
+
+Identifier:          S-128
+Maintenance:         Amendments to this Specification will be produced on a needs basis. For reporting
+                     issues with this Specification which need correction, use the contact information.
+
+
+1.6      IHO Product Specification maintenance
+1.6.1     Introduction
+Changes to S-128 will be released by the IHO as a new edition, revision, or clarification.
+1.6.2     New Edition
+New Editions of S-128 introduce significant changes. New Editions enable new concepts, such as the
+ability to support new functions or applications, or the introduction of new constructs or data types. New
+Editions are likely to have a significant impact on either existing users or future users of S-10n.
+1.6.3     Revision
+Revisions are defined as substantive semantic changes to S-128. Typically, revisions will change S-128
+to correct factual errors; introduce necessary changes that have become evident as a result of practical
+experience or changing circumstances. A revision must not be classified as a clarification. Revisions
+could have an impact on either existing users or future users of S-128. All cumulative clarifications must
+be included with the release of approved corrections revisions.
+Changes in a revision are minor and ensure backward compatibility with the previous versions within the
+same Edition. Newer revisions, for example, introduce new features and attributes. Within the same
+Edition, a dataset of one version could always be processed with a later version of the feature and
+portrayal catalogues.
+In most cases a new feature or portrayal catalogue will result in a revision of S-128.
+1.6.4     Clarification
+Clarifications are non-substantive changes to S-128. Typically, clarifications: remove ambiguity; correct
+grammatical and spelling errors; amend or update cross references; insert improved graphics in spelling,
+punctuation and grammar. A clarification must not cause any substantive semantic change to S-128.
+Changes in a clarification are minor and ensure backward compatibility with the previous versions within
+the same Edition. Within the same Edition, a dataset of one clarification version could always be
+processed with a later version of the feature and portrayal catalogues, and a Portrayal Catalogue can
+always rely on earlier versions of the Feature Catalogues.
+1.6.5     Version numbers
+The associated version control numbering to identify changes (n) to S-128 must be as follows:
+
+New Editions denoted as      n.0.0
+Revisions denoted as n.n.0
+
+Clarifications denoted as n.n.n
+
+
+2       Specification Scopes
+This Product Specification describes one data product and therefore requires only one scope which is
+described below:
+Scope ID:            Catalogue of Nautical Products
+Level:               005-dataset
+Level name:          CNP Dataset
+
+
+
+
+S-128                                          March 2025                                    Edition 2.0.0
+
+<<<PAGE 12>>>
+6                                     Catalogue of Nautical Products
+
+
+
+
+3        Dataset Identification
+This section describes how to identify data sets that conform to the Specification. A dataset that conforms
+to this Product Specification may be identified by its discovery metadata as defined in clause 12 of this
+Specification. The information identifying the data product may include the following items from S-100
+Edition 5.2.0, clause 11-6 (adapted from ISO 19131).
+Title:                             Catalogue of Nautical Products
+Alternate Title:                   CNP
+
+Abstract:                          Catalogue of Nautical Product (CNP) is a vector dataset containing
+                                   all relevant information regarding Catalogue of Nautical Products like
+                                   nautical charts and nautical publications.
+Geographic Description:            EX_GeographicDescription: For example, official name of region
+Spatial Resolution:                MD_Resolution>equivalentScale.denominator       (integer)    or
+                                   MD_Resolution>levelOfDetail (CharacterString). For example, “All
+                                   scales”
+Purpose:                           Describing status of nautical products, and to allow the producer to
+                                   exchange Catalogue of Nautical Products with interested
+                                   stakeholders
+Language:                          English
+Classification:                    Data can be classified as one of the following:
+                                      1) Unclassified
+                                      2) Restricted
+                                      3) Confidential
+                                      4) Secret
+                                      5) Top Secret
+                                      6) Sensitive But Unclassified
+                                      7) For Official Use Only
+                                      8) Protected
+                                      9) Limited Distribution
+
+
+Spatial Representation Type:           MD_SpatialRepresentationTypeCode: vector
+Point of Contact:                  Producing Agency
+
+
+4        Data Content and Structure
+4.1       Introduction
+The S-128 product is based on the S-100 General Feature Model (GFM), and is a feature-based vector
+product. Figure 4-1 below shows how the S-128 Application Schema is realized from the S-100 GFM.
+All S-128 features and information classes are derived from the abstract classes like CatalogueElement
+and NavigationalProduct defined in the S-128 Application Schema, which realize the GFM meta-classes
+S100_GF_FeatureType and S100_GF_InformationType respectively.
+This section contains the Application Schema expressed in UML and an associated Feature Catalogue.
+The Feature Catalogue is included in Annex B, and provides a full description of each feature type
+including its attributes, attribute values, and relationships in the data product.
+The class comprising the S-128 Application Schema is the S-128 Domain model containing the features
+and information types that model the CNP application domain specifically. Geographic features in all
+three packages use the spatial types from S-100 Part 7, which are imported as-is into the S-128 spatial
+type package and therefore can be used as types for S-128 spatial attributes. The spatial types package
+also contains definitions of ‘union types’ (combinations of the S-100 spatial types), since S-100 allows
+features to have different kinds of geometry but UML does not allow an attribute of a class to have
+multiple types. The S-128 Application Schema models spatial attributes as attributes of feature classes.
+
+
+
+
+S-128                                          March 2025                                     Edition 2.0.0
+
+<<<PAGE 13>>>
+                                       Catalogue of Nautical Products                                      7
+
+
+
+
+                                  Figure 4-1 – S-128 data model overview
+
+
+4.2     Application Schema
+The UML models shown in the Figures below are the overall CNP Application Schema.
+This section contains a general overview of the classes and relationships in the S-128 Application
+Schema. Detailed information about how to use the feature types and information types to encode CNP
+information is provided in the S-128 Data Classification and Encoding Guide (DCEG).
+The following conventions are used in the UML diagrams depicting the Application Schema:
+   • Standard UML conventions for classes, associations, inheritance, roles, and multiplicities apply.
+     These conventions are described in Part 1 of S-100.
+   • Italic font for a class name indicates an abstract class.
+   • Feature classes are depicted with green background; the dark shade for abstract feature classes
+     and the light shade for ordinary (non-abstract) feature classes.
+   • Information type classes are depicted with blue background; the dark shade for abstract
+     information type classes and the light shade for ordinary information types.
+   • Association classes are depicted with a white background.
+   • Complex attributes are depicted with a pink background.
+   • Enumeration lists and codelists are depicted with a tan background. The numeric code
+     corresponding to each listed value is shown to its right following an ‘=’ sign.
+   • No significance attaches to the colour of associations.
+   • Where the association role or name is not explicitly shown, the default rules for roles and names
+     apply:
+     o The role name is ‘the<CLASSNAME>’ where <CLASSNAME> is the name of the class to
+        which that association end is linked.
+     o The association name is ‘<CLASSNAME1>_<CLASSNAME2>’ where <CLASSNAME1> isthe
+        source and <CLASSNAME2> the target. In case of a feature/information association the feature
+        is the source. For feature/feature or information/information associations without explicit names the
+        source/target are indicated by an arrowhead.
+The class for geographic features is feature type and the class for information types is information type.
+The geographic features included in the S-128 are:
+
+
+
+
+S-128                                           March 2025                                      Edition 2.0.0
+
+<<<PAGE 14>>>
+8                                      Catalogue of Nautical Products
+
+
+
+    • Electronic Product: Electronic navigation products like S-57 ENC, S-101 ENC, digital charts for special
+      purposes and digital publications based upon such physical publications.
+    • Physical Product: Navigation products published in paper format.
+    • S-100 Service: A service that makes use of S-100 based product specifications to support data
+      transfer.
+CatalogueElement and NavigationalProduct is an abstract classes from which the geographic feature
+classes in the Application Schema are derived. CatalogueElement has common attributes which are
+inherited by all S-128 geographic feature types NavigationalProduct has common attributes product type
+products. To make sense a derived class may impose additional constraints, which will be described in
+the definition of the derived class or the S-128 DCEG.
+Geographic features use spatial types defined in the geometry package for spatial attributes. Datasets
+comprised of S-128 features are described by metadata as defined in the S-128 metadata package.
+Metadata uses selected spatial types (specifically, it uses the polygon type to describe the coverage of
+a dataset).
+ContactDetails is the information type in the S-128 domain model. ContactDetails has attributes for
+contactInstructions, contactAddress, information, onlineResource, and telecommunications and
+sourceIndication. Information types may be associated to other information types or referenced by
+associations from feature types. A derived class may impose additional constraints, which will be
+described in the definition of the derived class or in the S-128 DCEG.
+Figures 4-4 show all S-128 enumerations and codelists. The EPSG codelist are not directly implemented
+in the data model, and full code list can be found at epsg.org. Local datums that can't be found in the
+code list is encoded using the wildcard and maybe add an example.
+
+
+
+
+S-128                                           March 2025                                      Edition 2.0.0
+
+<<<PAGE 15>>>
+                                                                                                                    Catalogue of Nautical Products                                                                                                                                                                                      9
+
+
+
+   class S-128 Model v2.0.0
+
+
+                                                                                                                                                                                                                       ECDIS loading strategies (as specified in S-52/57 or S-98/101)
+                                       «InformationType»                                                               «S100_AssociationClass»                                                                         determined scale to use based on screen scale. S-128 only assists in
+                                IndicationOfCarriageRequirement                                                            ProductMapping                                                                              determine what product to load into SENC/ENDS.
+
+                       «simpleAttribute»                                                               «simpleAttribute»                                                                                               example: S-57 ENC scale 22k, usable from 11k to 90k mapped to two
+                   +     domesticCarriageRequirements: text [0..1]                                 +     categoryOfProductMapping: categoryOfProductMapping [0..1]                                                     S-101 ENC scale 25k to 50k and 50k to 250k. ECDIS will pick which one is
+                   +     internationalCarriageRequirements: text [0..1]                                                                                                                                                appropriate based on the user selected screen scale.
+                       «complexAttribute»
+                   +     featureName: featureName [0..*]
+                                                                                               MappingBetweenProducts
+                               +theRequirement        0..*
+                                         CarriageRequirement                  +theSource
+
+
+                                      +theElement     1..*
+                                                                                                                                                                                                                                                                                               «InformationType»
+                                           «AbstractFeature»                                                                                                                                                                                                                                  DistributorInformation
+                                           CatalogueElement                                       +theReference                                                                                     «InformationType»
+                                                                                                       0..*                                                                                          PriceInformation                                                          «simpleAttribute»
+           «simpleAttribute»                                                                                                                                                                                                                                                  + distributorName: text
+                                                                                           +theCatalogueElemnt                                    +thePriceInformation
+       +     agencyResponsibleForProduction: text [0..1]                                                                                                                            «complexAttribute»
+       +     catalogueElementClassification: catalogueElementClassification [1..*]         0..1                                  PriceOfElement                            0..* +     information: information [0..*]
+       +     catalogueElementIdentifier: URN [0..1]                                                                                                                             +     onlineResource: onlineResource [0..*]
+       +     classification: text [0..1]                                                                                                                                        +     pricing: pricing [0..*]
+       +     iMOMaritimeService: iMOMaritimeService [0..*]                                                                                                                      +     sourceIndication: sourceIndication [0..*]
+       +     notForNavigation: boolean                                                                                                                                                                                                                          +theDistributor        0..*                 0..1      +theDistributor
+                                                                                                                                                                                     +thePriceInformation         0..*
+           «complexAttribute»
+                                                                                                                                                                                                                    PriceOfNauticalProduct
+       +     featureName: featureName [0..*]
+       +     information: information [0..*]                                                                                                                         +theCatalogueOfNauticalProduct             0..*
+                                                                                                                                                                                                                                                        DistributionDetails
+       +     onlineResource: onlineResource [0..*]                                                                                                                                                    «InformationType»                 +catalogueHeader                                         Distributor
+       +     sourceIndication: sourceIndication [0..1]                                                                                                                                             CatalogueSectionHeader                                                                         Contact
+       +     supportFile: supportFile [0..*]
+                                                                                                                                                                                                                                        0..*
+       +     timeIntervalOfProduct: timeIntervalOfProduct [0..1]                                                                                                                      «simpleAttribute»
+                                                                                           +theCatalogueElement                                              +elementContainer
+           «SpatialAttribute»                                                                                                                                                        + catalogueSectionNumber: int
+       +     geometry: GM_Surface [0..*]                                                   1                                    ProductPackage                                  1..* + catalogueSectionTitle: text [0..1]
+                                                                                                                                                             +catalogueHeader               «complexAttribute»                                                                       +theContactDetails        0..*
+                                                                                                                                                                                        +     information: information [0..1]
+                                                                                                                                                                                0..*                                                               +theContactDetails                            «InformationType»
+                                                                                                                                                                                                                                                                                                   ContactDetails
+                                                                                                                                                                                                                                           ProducerContact             0..*
+                                                                                                                                                                                                                                                                                  «complexAttribute»
+                                                                                                                                            ProductionDetails                                                                                                                 +     contactAddress: contactAddress [0..*]
+                                                                                                                                                                                                                           +theProducer 0..1                                  +     information: information [0..*]
+                                                                                                                                                                                                                                                                              +     onlineResource: onlineResource [0..*]
+                                                                                                                                                                                                        «InformationType»                                                     +     sourceIndication: sourceIndication [0..*]
+                                                                                                                                                                                                       ProducerInformation                                                    +     telecommunications: telecommunications [0..*]
+                                                                                                                                                                +theProducer
+                                                                                                                                                                                       «simpleAttribute»                                                                          «simpleAttribute»
+                                                                                                                                                                    0..1                                                                                                      +     contactInstructions: text
+                                                                                                                                                                                      + agencyName: text [0..1]
+                                                                                                                                                                                      + agencyResponsibleForProduction: text
+
+                                                                                                                                                                                                                                               Correlated
+                                                                                                                                                                                                                       +theMain 0..*
+
+                                                                                                                                                                                                 «AbstractFeature»
+                                                                                                                                                                                                NavigationalProduct                                         +thePanel
+                                                                                                                                                                                                                                                               0..*
+                                                                                                                                                                    «simpleAttribute»
+                                                                                                                                                                +     approximateGridResolution: real [0..*]
+                                                                                                                                                                +     compilationScale: int [0..*]
+                                                                                                                                                                +     distributionStatus: distributionStatus [0..1]
+                                                                                                                                                                +     editionNumber: int [0..1]
+                                                                                                                                                                +     horizontalDatumEPSGCode: horizontalDatumEPSGCode [0..1]
+                                                                                                                                                                +     maximumDisplayScale: int [0..1]
+                                                                                                                                                                +     minimumDisplayScale: int [0..1]
+                                                                                                                                  If updateNumber >=1 then      +     navigationPurpose: navigationPurpose [0..3]
+                                                                                                                                  updateDate is mandatory       +     optimumDisplayScale: int [0..1]
+                                                                                                                                                                +     originalProductNumber: text [0..1]
+                                                                                                                                                                +     producerNation: URN [0..1]
+                                    «FeatureType»                                                                                                               +     productNumber: text [0..1]                                                                                   «FeatureType»
+                                     S100Service                                                              «FeatureType»                                     +     specificUsage: specificUsage [0..1]                                                                          PhysicalProduct
+                                                                                                            ElectronicProduct                                   +     updateDate: date [0..1]
+            «simpleAttribute»                                                                                                                                   +     updateNumber: int [0..1]                                                               «simpleAttribute»
+           + compressionFlag: boolean [0..1]                                             «simpleAttribute»                                                      +     verticalDatum: verticalDatum [0..1]                                                   + editionDate: date
+           + serviceName: text [0..1]                                                +     compressionFlag: boolean [0..1]                                                                                                                                  + iSBN: text [0..1]
+           + serviceStatus: serviceStatus [0..1]                                     +     datasetName: text [0..1]                                                                                                                                         + publicationNumber: text [0..1]
+           + typeOfProductFormat: typeOfProductFormat                                +     issueDate: date                                                                                                                                                  + referenceToNM: referenceToNM [0..1]
+               «complexAttribute»                                                    +     issueTime: date [0..1]                                                                                                                                           + typeOfPhysicalProduct: text [0..1]
+           +     productSpecification: productSpecification                          +     typeOfProductFormat: typeOfProductFormat                                                                                                                             «complexAttribute»
+           +     serviceSpecification: serviceSpecification [0..1]                       «complexAttribute»                                                                                                                                                 +     printInformation: printInformation [0..1]
+                                                                                     +     productSpecification: productSpecification
+
+
+
+
+                                                     Figure 4-2 – S-128 Application Schema (feature type, information type)
+
+
+
+
+S-128                                                                                                                                      March 2025                                                                                                                                                            Edition 2.0.0
+
+<<<PAGE 16>>>
+10                      Catalogue of Nautical Products
+
+
+
+
+        Figure 4-3 – S-128 Application Schema (complex attribute type)
+
+
+
+
+S-128                            March 2025                              Edition 2.0.0
+
+<<<PAGE 17>>>
+                                                                  Catalogue of Nautical Products                                                                           11
+
+
+
+  class S-128 Model v2.0.0
+
+
+               «Enumeration»                          «Enumeration»                     «Enumeration»                        «Enumeration»               «Enumerati...
+             categoryOfAuthority                    supportFilePurpose             telecommunicationService                 navigationPurpose               iSO216
+
+            Border control = 2                  New = 1                              Voice = 1                              Port = 1                       A0 = 1
+            Police = 3                          Replacement = 2                      Facsimile = 2                          Transit = 2                    A1 = 2
+            Port = 4                            Deletion = 3                         SMS = 3                                Overview = 3                   A2 = 3
+            Immigration = 5                                                          Data = 4                                                              A3 = 4
+            Health = 6                                                               Streamed Data = 5                                                     A4 = 5
+            Coast guard = 7                                                          Telex = 6                                                             A5 = 6
+            Agricultural = 8                         «Enumeration»                   Telegraph = 7                                                         A6 = 7
+            Military = 9                          typeOfProductFormat                Email = 8                                                             A7 = 8
+            Private Company = 10
+            Maritime Police = 11               GML = 1
+            Environmental = 12                 ISO/IEC 8211 = 2
+                                               PDF = 3                                                «Enumeration»                                   «Enumeration»
+            Fishery = 13
+                                               HTML = 4                                         categoryOfProductMapping                          typeOfTimeIntervalUnit
+            Finance = 14
+            Maritime= 15                       ePub = 5
+                                                                                          Higher Priority Alternative = 1                             Hour = 1
+            Customs = 16                       Paper = 6
+                                                                                          Lower Priority Alternative = 2                              Day = 2
+            Hydrographic Office = 17           HDF-5 = 7
+                                                                                          Recommended Enhancement Provider = 3                        Month = 3
+            RENC = 18                          BSB = 8
+                                                                                          Recommended Enhancement User = 4                            Year = 4
+            VARs = 19                          Application = 10
+                                               GeoTiff = 9
+                                               XML = 11
+                                               PNG = 12                                           «S100_Codelist»
+               «Enumeration»                                                                 horizontalDatumEPSGCode                            «Enumeration»
+             supportFileFormat                                                                                                                    nameUsage
+                                                        «enumeration»                    «enum»
+            ASCII = 1                                                                                                                      Default Name Display = 1
+                                                         specificUsage               +     EPSG3395 (World Mercator) = 3395
+            JPEG2000 = 2                                                                                                                   Alternate Name Display = 2
+                                                                                     +     EPSG3857 (Pseudo-Mercator) = 3857
+            HTML = 3                           Navigational Purpose Overview = 1                                                           No Chart Display = 3
+                                                                                     +     EPSG4326 (WGS84) = 4326
+            XML = 4                            Navigational Purpose General = 2
+            XSLT = 5                           Navigational Purpose Coastal = 3                        tags
+            Video = 6                          Navigational Purpose Approach = 4     codelistType = open enumeration                          «Enumeration»
+            TIFF = 7                           Navigational Purpose Harbour = 5      encoding = other:[something]                      catalogueElementClassification
+            PDF/AorUA = 8                      Navigational Purpose Berthing = 6
+            LUA = 9                                                                                                                        ENC = 1
+            Other = 100                                                                                                                    Bathymetric Chart = 2
+                                                                                                  «Enumeration»                            Water Level Product = 3
+                                                                                               digitalSignatureValue                       Surface Current Product = 4
+                                                                                                                                           MSI Service = 5
+                                       «Enumeration»                                      ID = 1                                           AtoN Information = 6
+                                        verticalDatum                                     Digital Signature Reference = 2                  Catalogue Service = 7
+                                                                                                                                           Routeing Service = 8
+          Mean Low Water Springs = 1                                                                                                       Ice Information = 9
+          Mean Lower Low Water Springs = 2                                                         «Enumeration»                           Routeing Information = 10
+          Mean Sea Level = 3                                                                 digitalSignatureReference                     Special Purpose Chart = 11
+          Lowest Low Water = 4                                                                                                             Nautical Publication = 12
+          Mean Low Water = 5                                                              ECDSA-384-SHA2 = 8
+                                                                                                                                           Printed Nautical Chart = 13
+          Lowest Low Water Springs = 6
+          Approximate Mean Low Water Springs = 7
+          Indian Spring Low Water = 8
+          Low Water Springs = 9                                                                    «Enumeration»                               «Enumeration»
+          Approximate Lowest Astronomical Tide = 10                                                  sourceType                               distributionStatus
+          Nearly Lowest Low Water = 11
+          Mean Lower Low Water = 12                                                       Law or Regulation = 1                                Production = 1
+          Low Water = 13                                                                  Official Publication = 2                             Withdrawn = 2
+          Approximate Mean Low Water = 14                                                 Mariner Report, Confirmed = 7
+          Approximate Mean Lower Low Water = 15                                           Mariner Report, Not Confirmed = 8
+          Mean High Water = 16                                                            Industry Publications and Reports = 9
+          Mean High Water Springs = 17                                                    Remotely Sensed Images = 10                          «Enumeration»
+          High Water = 18                                                                 Photographs = 11                                      serviceStatus
+          Approximate Mean Sea Level = 19                                                 Products Issued by HO Service = 12
+                                                                                          News Media = 13                                        Provisional = 1
+          High Water Springs = 20
+                                                                                          Traffic Data = 14                                      Released = 2
+          Mean Higher High Water = 21
+                                                                                          Maritime= 15                                           Deprecated = 3
+          Equinoctial Spring Low Water = 22
+                                                                                                                                                 Deleted = 4
+          Lowest Astronomical Tide = 23
+          Local Datum = 24
+          International Great Lakes Datum 1985 = 25
+          Mean Water Level = 26
+          Lower Low Water Large Tide = 27
+          Higher High Water Large Tide = 28                                                                           «Enumeration»
+          Nearly Highest High Water = 29                                                                            iMOMaritimeService
+          Highest Astronomical Tide = 30
+          Local Low Water Reference Level = 31                                              Vessel Traffic Service = 1
+          Local High Water Reference Level = 32                                             Aids to Navigation Service = 2
+          Local Mean Water Reference Level = 33                                             Reserved for Future Use = 3
+          Equivalent Height of Water (German GIW) = 34                                      Port Support Service = 4
+          Highest Shipping Height of Water (German HSW) = 35                                Maritime Safety Information Service = 5
+          Reference Low Water Level According to Danube Commission = 36                     Pilotage Service = 6
+          Highest Shipping Height of Water According to Danube Commission = 37              Tug Service = 7
+          Dutch River Low Water Reference Level (OLR) = 38                                  Vessel Shore Reporting = 8
+          Russian Project Water Level = 39                                                  Telemedical Assistance Service = 9
+          Russian Normal Backwater Level = 40                                               Maritime Assistance Service = 10
+          Ohio River Datum = 41                                                             Nautical Chart Service = 11
+          Dutch High Water Reference Level = 43                                             Nautical Publications Service = 12
+          Baltic Sea Chart Datum 2000 = 44                                                  Ice Navigation Service = 13
+          Dutch Estuary Low Water Reference Level (OLW) = 45                                Meteorological Information Service = 14
+          International Great Lakes Datum 2020 = 46                                         Real-time Hydrographic and Environmental Information Services = 15
+          Sea Floor = 47                                                                    Search and Rescue Service = 16
+          Sea Surface = 48
+          Hydrographic Zero = 49
+
+
+
+
+                                        Figure 4-4 – S-128 Application Schema (enumeration type)
+
+
+
+
+S-128                                                                      March 2025                                                                           Edition 2.0.0
+
+<<<PAGE 18>>>
+12                                      Catalogue of Nautical Products
+
+
+
+4.3        Feature Catalogue
+4.3.1       Introduction
+The Feature Catalogue describes the feature types, information types, attributes, attribute values,
+associations and roles which may be used in the product. The S-128 Feature Catalogue is available in
+an XML document which conforms to the S-100 XML Feature Catalogue Schema and can be
+downloaded from the IHO Geospatial Information Registry (https://registry.iho.int).
+4.3.2       Feature types
+Feature types contain descriptive attributes that characterize real-world entities. The word ‘feature’ may
+be used in one of two senses – feature type and feature instance. A feature type is a class and is defined
+in a Feature Catalogue. A feature instance is a single occurrence of the feature type and represented as
+an object in a dataset. A feature instance is located by a relationship to one or more spatial instances.
+A feature instance may exist without referencing a spatial instance.
+4.3.2.1      Geographic
+Geographic (Geo) feature types carry the descriptive characteristics of a real world entity.
+4.3.2.2      Meta
+Meta features contain information about other features within a data set. Information defined by meta
+features override the default metadata values defined by the data set descriptive records. Metaattribution
+on individual features overrides attribution on meta features.
+4.3.3       Feature relationship
+A feature relationship links instances of one feature type with instances of the same or a different feature
+type.
+4.3.4       Information types
+Information types are identifiable pieces of information in a dataset that can be shared between other
+features. They have attributes but have no relationship to any geometry; information types may reference
+other information types.
+4.3.5       Attributes
+S-128 defines attributes as either simple or complex.
+4.3.5.1      Simple attributes
+S-128 uses eleven types of simple attributes; they are listed in the Table 4-1 below.
+                                    Table 4-1 – Simple feature attributes
+
+ Type                        Definition
+ Boolean                     A logical value, either ‘True’ or ‘False’
+ Real                        A signed Real (floating point) number consisting of a mantissa and an exponent
+ Enumeration                 One of a list of predefined values
+ Integer                     A signed integer number. The representation of an integer is encapsulation and
+                             usage dependent
+ Text or CharacterString     General text
+ Date                        A date provides values for year, month and day according to the Gregorian
+                             Calendar. Character encoding of a date is a string which must follow the calendar
+                             date format (complete representation, basic format) for date specified by ISO
+                             8601:1988
+                             EXAMPLE       19980918 (YYYYMMDD)
+ Truncated Date              A S100_TruncatedDate allows a date or partial date to be given. At least one of the
+                             year/month/day components must be present. Since S-128 uses XML formats for
+                             both dataset and metadata, the XML encoding of truncated dates must be used
+                             (that is, the ISO 8601 basic format is not used in S-128). Components:
+
+
+
+
+S-128                                            March 2025                                           Edition 2.0.0
+
+<<<PAGE 19>>>
+                                      Catalogue of Nautical Products                                              13
+
+
+
+                            YYYY Year integer between 0000 and 9999
+                            MM Month integer between 01 – 12 (inclusive)
+                            DD Day integer between 01 and 28, 29, 30, or 31 (inclusive), consistent with year
+                            and month values if these are specified
+                            This type can be used to encode recurring instants (see S-100 Part 3, clause 3-8).
+                            EXAMPLE: The appropriate XML Schema type should be used: --12-17
+                            representing 17 December of any year (conforming to the XML type gMonthDay)
+                            S-100 Part 10b provides further details about encoding in GML datasets
+ Time                       A time is given by an hour, minute and second. Character encoding of a time is a
+                            string that follows the local time (complete representation, basic format) format
+                            defined in ISO 8601:1988
+                            EXAMPLE          183059 or 183059+0100 or 183059Z
+ Codelist                   A type of flexible enumeration. A code list type is a list of literals which may be
+                            extended only in conformance with specified rules
+ URL                        A uniform resource locator (URL) is a URI that provides a means of locating the
+                            resource by describing its primary access mechanism (RFC 3986). EXAMPLE:
+                            https://registry.iho.int/
+ URN                        A persistent, location-independent, resource identifier that follows the syntax and
+                            semantics for URNs specified in RFC 2141
+                            EXAMPLE: urn:iho:s101:1:0:0:AnchorageArea
+
+
+4.3.5.2     Complex attributes
+Complex attributes are aggregations of other attributes that are either simple or complex. The
+aggregation is defined by means of attribute bindings.
+
+
+
+
+                         Figure 4-5 – timeIntervalOfProduct (complex attribute)
+
+
+4.4       Geometric representation
+Geometric representation is the digital description of the spatial component of an object as described in
+S-100 and ISO 19107. This Product Specification uses type of geometry: GM_Surface.
+CNPs are encoded as vector entities which conform to S-100 geometry configuration level 3a (S-100
+Part 7). S-128 further constrains Level 3a with the following: The distance between two consecutive
+control points must not be less than 0.3 mm at a permitted display scale.
+The following exception applies to S-128:
+   • Soundings features which use GM_Point or GM_Multipoint with three dimensional coordinates
+     are not currently included in S-128.
+
+
+
+
+S-128                                          March 2025                                             Edition 2.0.0
+
+<<<PAGE 20>>>
+14                                    Catalogue of Nautical Products
+
+
+
+
+5       Coordinate Reference Systems (CRS)
+5.1      Introduction
+The location of an object in the S-100 Standard is defined by means of coordinates which relate a feature
+to a position. The coordinate reference system used for this Product Specification is World Geodetic
+System 1984 (WGS 84) which is defined by the European Petroleum Survey Group (EPSG) code 4326,
+(or similar - North American Datum 1983 / Canadian Spatial Reference System).
+Spatial data is expressed as latitude (φ) and longitude (λ) geographic coordinates. Latitude values are
+stored as a negative number to represent a position south of the Equator. Longitude values are stored
+as a negative number to represent a position west of the International Prime Meridian. Coordinates are
+expressed as real value, degree / degree decimal format. Datasets conforming to this product
+specification are not projected.
+Horizontal coordinate reference system: WGS84
+Projection:                                          None
+Vertical coordinate reference system:                Although all coordinates in a data set must refer to the
+                                                     same horizontal CRS different Vertical Datums can
+                                                     beused for the depth component of a coordinate tuple.
+                                                     Therefore the vertical CRS can be repeated. For each
+                                                     Vertical CRS a unique identifier is defined. Those
+                                                     identifiers will be used to indicate which Vertical CRS
+                                                     is used. Units must be in meters.
+
+Temporal reference system:                           Gregorian calendar
+Coordinate reference system registry:                EPSG Geodetic Parameter Registry
+Date type (according to ISO 19115):                  002 - publication
+Responsible party:                                   International Organisation of Oil and Gas Producers
+                                                     (IOGP)
+URL:                                                 https://epsg.org/home.html
+
+
+5.2      Horizontal reference system
+Positional data is expressed in latitude and longitude geographic coordinates to one of the reference
+horizontal reference systems defined in the horizontalDatum attribute. Unless otherwise defined, the
+World Geodetic System 84 (WGS 84) will be used for CNP data products.
+
+
+5.3      Projection
+CNP data products are un-projected.
+
+
+5.4      Vertical coordinate reference system
+Although all coordinates in a data set must refer to the same horizontal CRS different Vertical Datums
+can be used for the depth component of a coordinate tuple. Therefore the vertical CRS can be repeated.
+For each Vertical CRS a unique identifier is defined. Those identifiers will be used to indicate which
+Vertical CRS is used. Units must be in meters.
+
+
+5.5      Temporal reference system
+Time is measured by reference to Calendar dates and Clock time in accordance with ISO 19108:2002
+Temporal Schema, clause 5.4.4.
+
+
+
+
+S-128                                          March 2025                                      Edition 2.0.0
+
+<<<PAGE 21>>>
+                                        Catalogue of Nautical Products                                     15
+
+
+
+
+5.6      Coverage of nautical products data and scale
+CNP data must be compiled in the best applicable scale. The use of the data itself is "scale independent".
+That means that the data can be used at any scale. S-100 allows the association of multiple spatial
+attributes to a single feature instance. Each of these spatial attributes can in principle be qualified by
+maximum and minimum scales.
+For example, it is possible, within one dataset, to have a single instance of a feature that has more than
+one area geometry. Each of these geometries has different scale max/min attributes. Moreover, due to
+cluttering in smaller scales, the scale minimum attribute may be used to turn off portrayal of some
+features at smaller scales.
+
+
+6       Data Quality
+6.1      Introduction
+Data quality allows users and user systems to assess fitness for use of the provided data. Data quality
+measures and the associated evaluation are reported as metadata of a data product. This metadata
+improves interoperability with other data products and provides usage by user groups that the data
+product was not originally intended for. The secondary users can make assessments of the data product
+usefulness in their application based on the reported data quality measures.
+For S-128 the following data quality elements have been included:
+    • Conformance to this Product Specification;
+    • Intended purpose of the data product;
+    • Completeness of the data product in terms of coverage;
+    • Logical Consistency;
+    • Positional uncertainty and accuracy;
+    • Thematic accuracy;
+    • Temporal quality;
+    • Aggregation measures;
+    • Elements specifically required for the data product (none currently identified for S-128);
+    • Validation checks or conformance checks including:
+      o General tests for dataset integrity;
+      o Specific tests for a specific data model.
+
+
+7       Data Capture and Classification
+S-128 products must be generated from data obtained from the product creator and released by an
+appropriate CNP defining authority such as Hydrographic Offices. The product creator can be described
+for each product within a CNP.
+The production process used to generate CNP products may be described in the dataset metadata.
+                                     Table 7-1 – Data capture information
+
+ Item Name                Description                                     Multiplicity   Type
+ dataSource               Identification of the kinds of data sources          0..*      CharacterString
+                          usable to product datasets compliant with the
+                          considering Specification
+ productionProcess        Link to a textual description of the                 0..*      CharacterString
+                          production process (including encoding                         (URL)
+                          guide) applicable to the datasets compliant
+                          with the considering Specification
+
+
+
+
+S-128                                            March 2025                                      Edition 2.0.0
+
+<<<PAGE 22>>>
+16                                     Catalogue of Nautical Products
+
+
+
+
+8       Maintenance
+8.1      Introduction
+Datasets are maintained as needed and must include mechanisms for CNP updating. Data updates will
+be made by New Editions or updates. The maintenance and update frequency of CNP datasets should
+be defined by the producers (official national authority) implementing this Specification.
+Data Producers must use applicable sources to maintain and update data and provide a brief description
+of the sources that were used to produce the dataset in the appropriate metadata field.
+
+
+8.2      Production process for base and update datasets
+Data Producers should follow their established production processes for maintaining and updating
+datasets. Data is produced against the DCEG and checked against the appropriate set of validation
+checks in IHO Publication S-158:128.
+
+
+8.3      Dataset updates and cancellation
+The purpose of issue of the dataset is indicated in the “purpose” field of the dataset discovery metadata.
+In order to terminate a dataset, an update dataset file is created for which the Edition number must be
+set to 0 (000). This convention is only used to cancel a base dataset file.
+Where a dataset is cancelled and its name is reused at a later date, the issue date must be greater than
+the issue date of the cancelled dataset.
+When the dataset is cancelled, it must be removed from the system.
+An Exchange Set may contain base dataset files and update dataset files for the same datasets. Under
+these circumstances the update dataset files must follow in the correct sequential order from the last
+update applied to the base dataset file.
+
+
+8.4      Support file updates
+The purpose of issue is indicated in the “purpose” field of the support file discovery metadata. Support
+files carrying the “deletion” flag in metadata must be removed from the system. When a feature or
+information type pointing to a text, picture, or application file is deleted or updated so that it no longer
+references the file, the system software must check to see whether any other feature or information type
+references the same file, before that file is deleted.
+Updates, in form of a New Edition or a replacement, or deletions of a support file may require concurrent
+updates to feature or information type instance attributes that depend on the file; for example,
+fileReference, and fileLocator attributes.
+
+
+8.5      Feature and Portrayal Catalogues
+For each new version of the S-128 Product Specification a new Feature and Portrayal Catalogue may
+be released. The system must be able to manage datasets and their Catalogues that are created on
+different versions of the S-128 Product Specification.
+
+
+8.6      Feature history, version, and change tracking
+If applications or production systems require versioning of individual instances of feature or information
+types, maintenance of histories, or change tracking, the methods for versioning, history management,
+and change tracking and display are left to the application or production system.
+
+
+
+
+S-128                                           March 2025                                     Edition 2.0.0
+
+<<<PAGE 23>>>
+                                         Catalogue of Nautical Products                                             17
+
+
+
+8.7       Dataset encryption
+Dataset encryption should follow S-100 Edition 5.2, Part 15.
+
+
+9        Portrayal
+S-128 portrayal is covered by the portrayal model as defined in S-100. The Portrayal Catalogue defines
+symbology and the portrayal rules for each feature/attribute combination contained in the Feature
+Catalogue.
+S-128 uses the portrayal process defined in S-100 Part 9.
+
+
+9.1       Portrayal Catalogue
+Citation information for the Portrayal Catalogue is provided in Table 9-1 below
+                                     Table 9-1 – S-128 Portrayal Catalogue
+
+ No.       ISO class or attribute      Type                    Value
+ --        CI_Citation                Class                    --
+ 1           title                    CharacterString          S-128 Portrayal Catalogue
+ 2           date                     CI_Date (class)          --
+ 2.1           date                   DateTime                 2024-02-16 (or later - see note)
+ 2.2           dateType               CI_DateTypeCode          publication
+                                      (ISO codelist)
+ 3           edition                  CharacterString          1.0.0
+ 4           editionDate              DateTime                 2024-02-16 (or later - see note)
+ 5           citedResponsibleParty    CI_Responsibility        --
+                                      (class)
+ 5.1           role                   CI_RoleCode              publisher
+                                      (ISO codelist)
+ 5.2           party                  CI_Organisation          --
+                                      (class)
+ 5.2.1               name             CharacterString          International Hydrographic Organization
+ 6           otherCitationDetails     CharacterString          (reserved)
+ 7           onlineResource           CI_OnlineResource        --
+                                      (class)
+ 7.1           linkage                CharacterString          https://registry.iho.int/
+                                      (URL)
+ 7.2           name                   CharacterString          S-128 Portrayal Catalogue
+ 7.3           description            CharacterString          XML Portrayal Catalogue accompanied by
+                                                               related files for symbols, colour profiles, rules,
+                                                               etc
+
+
+10       Data Product Format (Encoding)
+10.1      Introduction
+The principal encoding will be the Open Geospatial Consortium (OGC), Geography Markup Language
+(GML) format. GML is an XML grammar designed to express geographical features. It serves as a
+modelling language for geographic systems as well as an open interchange format for geographic
+transactions.
+
+
+
+
+S-128                                             March 2025                                             Edition 2.0.0
+
+<<<PAGE 24>>>
+18                                     Catalogue of Nautical Products
+
+
+
+Format Name: GML
+Version:             3.2.1
+Character Set: UTF-8
+Specification:       https://www.ogc.org
+
+
+10.2     Coordinate encoding in spatial primitives
+Values of latitude and longitude must not be more accurate than 7 decimal places. Coordinates must be
+encoded as decimals in the format described in clause 10.2.1.
+Geometry may be encoded either inline or by reference to a spatial primitives located elsewhere in the
+dataset that encodes the actual coordinate values. The GML conventions for references and axis order
+must be followed. The CRS shall be identified using the URI convention for SRS specified by OGC,
+which is http://www.opengis.net/def/crs/EPSG/0/4326 (S-100 Part 10b). The axis order is
+latitude/longitude.
+10.2.1     Encoding of coordinates as decimals
+Values should be coded as decimal numbers with 7 or fewer digits after the decimal. The normative
+encoding is in degrees, with an accuracy of 10-7 degrees; that is, 7 digits after the decimal point.
+The decimal point must be indicated by the “.” character.
+Trailing zeroes after the decimal point (and the decimal point itself if appropriate) may be omitted at
+producer discretion, but the accuracy must still be as indicated (for example, 10 -7 degrees for coordinates
+of default accuracy).
+
+
+10.3     Numeric attribute encoding
+Floating point and integer attribute values must not contain leading zeros. Floating point attribute values
+must not contain non-significant trailing zeros.
+
+
+10.4     Text attribute values
+Character strings must be encoded using the character set defined in ISO 10646-1, in Unicode
+Transformation Format-8 (UTF-8).
+
+
+10.5     Mandatory attribute values
+There are four reasons why attribute values may be considered mandatory:
+     • They determine whether a feature is in the display base.
+     • Certain features make no logical sense without specific attributes.
+     • Some attributes are necessary to determine which symbol is to be displayed.
+     • Some attributes are required for safety of navigation.
+All mandatory attributes are identified in the Feature Catalogue and summarized in Annex A – Data
+Classification and Encoding Guide.
+
+
+10.6     Data overlap
+S-128 datasets can overlap other S-128 datasets.
+
+
+
+
+S-128                                           March 2025                                     Edition 2.0.0
+
+<<<PAGE 25>>>
+                                       Catalogue of Nautical Products                                         19
+
+
+
+10.7      Data extent
+Datasets must not cross the 180° meridian of longitude.
+
+
+11       Data Product Delivery
+11.1      Data product delivery information
+This data Product Specification defines GML as the primary format in which CNP data products are
+delivered. The delivery format is described by the following items (from ISO 19131:2008) format name,
+version, specification, language, and character set.
+
+* GML is an XML encoding for the transport and storage of geographic information, including both the
+geometry and the properties of geographic features, between distributed systems. The XML Schema for
+the GML Application Schema is provided in a Schema document 128_2.0.0.xsd which imports other
+Schema(s) defining common types. (All files are available on the S-100 distribution site
+https://github.com/IHO-S100WG). Feature instances shall validate against 128_2.0.0.xsd and conform
+to all other requirements specified in this data Product Specification including all constraints not captured
+in the XML Schema document.
+11.1.1     Dataset loading
+Datasets must always be loaded in the order of base dataset first, then update datasets in the corrected
+sequential order. Systems are not to load updates out of order, for example if update 1-5 is present and
+update 6 is missing, update 7 must not be loaded.
+11.1.2     New Editions
+When a New Edition of a dataset is received, the system must replace the previous Edition, along with
+any updates, with the New Edition of the dataset. Loading of subsequent updates follows the same rule
+as above.
+11.1.3     Update
+When an update to a dataset is received by the system it must add new features or replace definitions
+but it’s not possible to delete features. For full details of the updating procedure please refer to S-100
+Edition 5.2, Part 10b, clause 10b-11.5 Updating.
+Data servers can create a single S-128 catalogue per S-100 product type, for example an S-128 for S-
+101 and an S-128 for S-102, or a mixed S-128 catalogue file with multiple products. When an S-128 is
+created for one product type, the S-128 should not alter the revision status of the other products in the
+ECDIS.
+Not every S-100 Exchange Set will contain an S-128 file. If an S-128 file has not been received and
+updated within 4 weeks of the last S-128 file loaded, the ECDIS update status of all products must be
+set to ‘Not Up To Date’.
+
+
+11.2      Dataset
+11.2.1     Datasets
+A dataset is a grouping of features, attributes, geometry, and metadata which comprises a specific
+coverage. The types of CNP datasets produces and contained within an Exchange Set are listed in Table
+11-1 below:
+                                      Table 11-1 – CNP dataset types
+
+ Dataset                              Explanations
+ New dataset (base dataset)           No data has previously been produced for this area or there is a significant
+                                      change from the existing, for example, coverage or extent.
+ New Edition of a dataset             No data has previously been produced for this area. Each New Edition of
+ (base dataset)                       a dataset must have the same name as the dataset that it replaces and
+                                      should have the same spatial extents. TheEdition number in the dataset
+
+
+
+
+S-128                                           March 2025                                          Edition 2.0.0
+
+<<<PAGE 26>>>
+20                                      Catalogue of Nautical Products
+
+
+
+                                       discovery metadata shall increment up by one from the previous Edition.
+ Update dataset                        A delta change of the latest Edition of a dataset. If there is more than one
+                                       update dataset, the subsequent update will be a delta of the base dataset
+                                       + earlier update datasets.
+ Re-issue (base dataset)               Including all the updates applied to the original dataset up to the date of
+                                       the reissue. A Re-issue does not contain any new information additional to
+                                       that previously issued by updates.
+ Cancellation                          Indicates the dataset or Catalogue should no longer be used and can be
+                                       deleted.
+                                       For a cancellation, set:
+                                       • fileName = fileName of the cancelled dataset
+                                       • purpose = cancellation
+                                       • issueDate and issueTime = the issue date and time of the cancellation
+                                       • replacedData = true if and only if the cancelled dataset is replaced by
+                                       another dataset; otherwise false. This attribute must be populated for a
+                                       cancellation.
+                                       • dataReplacement = fileName of the replacement dataset (if and only
+                                       if the cancelled dataset is replaced by another dataset). This attribute
+                                       must be populated when replacedData = true.
+                                       • all other mandatory attributes to the same values as in the discovery
+                                       metadata block for the dataset being cancelled.
+
+Where the limit of a Data Coverage feature for a base CNP dataset is to be changed, this must be done
+by issuing a New Edition of the dataset.
+11.2.1.1     Content of update datasets
+Update datasets can only contain replacements, deletions, and additions of whole feature instances or
+information instances. This means that when a feature or information instance is updated, the new
+version must contain all the attributes of the old instance, including any inline spatial attributes (that is,
+inline geometry), except those attributes that are being removed.
+An association to an instance of a feature or information type is treated as an attribute of the referring
+instance, and therefore adding or deleting an association means the original referring instance must be
+replaced with a new version. The instance at the other end of the association needs to be replaced if
+and only if it contains a reference to the first instance.
+Spatial objects that are not inline (that is, geometry that is encoded as an independent spatial object in
+the dataset) are treated like any other object; that is, it needs to be updated if and only if the primitive
+has changed (for example, a coordinate is updated).
+Feature and information type instances are deleted without replacement by setting the
+fixedDateRange.dateEnd attribute of the instance to the date of deletion, which will usually be the issue
+date of the update.
+11.2.1.2     Dataset size
+CNP datasets should not exceed 100MB.
+
+11.2.2     Dataset file naming
+All dataset files will have unique world-wide file identifiers. The file identifier of the dataset should not be
+used to describe the physical content of the file. The dataset file metadata that accompanies the file will
+inform the user of the name and purpose of the file (new, replacement or deletion).
+In this encoding the dataset files are named according to the specifications given below:
+         128CCCCXXXXXXXXXXXXXX.GML
+The main part forms an identifier where:
+     • The first three characters are always “128” and identify the dataset as an S-128 dataset.
+     • The next four characters identify the issuing agency by its alphanumeric agency code in
+       the S-100 tab of the IHO Producer Code Register in the IHO GI Registry (that is, the IHO
+
+
+
+
+S-128                                            March 2025                                           Edition 2.0.0
+
+<<<PAGE 27>>>
+                                          Catalogue of Nautical Products                                         21
+
+
+
+         is identified as “00AA”, not “1810”).
+   • The eighth up to the twenty-first characters can be used in any way by the producer to
+     provide a unique file name for the dataset. The following characters are allowed in the
+     dataset name: A to Z, 0 to 9 and the special character _ (underscore). The ninth through
+     twenty-first characters are optional (that is, at least one character must be used).
+11.2.3      Update dataset file naming
+All Update dataset files will have an identical name to the base dataset, aside from the separator and
+update number sequence.
+In this encoding the Update dataset files are named according to the specifications given below:
+         128CCCCXXXXXXXXXXXXXX_XXX.GML
+The main part forms an identifier where:
+   • The first up to the twenty-first characters are the same as the dataset being updated and therefore
+     conform to the rules described in clause 11.2.2.
+   • The next character must be an underscore “_”.
+   • The next three characters must be numerical (000-999) to indicate the place of the update dataset
+     in the update sequence.
+
+
+11.3       Support files
+Support files contain ancillary textual or graphic information in separate (linked to the dataset) files. The
+following formats are allowed for support files:
+   • Plain text files must contain only general text as defined in this Standard. Files must use the UTF-
+     8 character set encoding.
+   • HTML and XML files must contain only text and markup as defined in the relevant W3C standards.
+     Files must use the UTF-8 character set encoding. References in datasets to HTML and XML
+     support files must treat them as text files (that is, they should not be referenced using attributes
+     intended for picture files).
+   • Picture files must be in the Tagged Image File Format (TIFF) [Edition 6.0].
+Support files shall be used for data management and additional information to users. Portraying and
+using support files in ECDIS or other systems is not mandatory. Table 11-2 describes the constraints on
+support file formats and provides the corresponding file extensions.
+                               Table 11-2 – Support file formats and extensions
+
+ File type       Extension       Description
+ Text            TXT             Plain-text files
+                 HTM             HTML files must only include inline or embedded Cascading Style Sheet (CSS)
+                                 information and must not contain embedded Javascript or other dynamic content;
+                                 for example DHTML, Flash etc
+                 XML             XML documents must only be included in accordance with guidance provided
+                                 within the Data Classification and Encoding Guide (Annex A) and must not contain
+                                 embedded Javascript or other dynamic content
+ Picture         TIF             Baseline TIFF 6.0
+
+
+11.3.1      Support file naming
+All support files will have unique world-wide file identifiers. The file identifier of support information should not
+be used to describe the physical content of the file. The support file metadata that accompanies the file
+will inform the user of the name and purpose of the file (new, replacement or deletion).
+In this encoding the support files are named according to the specifications given below:
+         128CCCCXXXXXXXXXXXXXX.YYY
+The main part forms an identifier where:
+
+
+
+
+S-128                                               March 2025                                         Edition 2.0.0
+
+<<<PAGE 28>>>
+22                                     Catalogue of Nautical Products
+
+
+
+     • The first three characters are always “128” and identify the dataset as an S-128 dataset.
+     • The next four characters identify the issuing agency by its alphanumeric agency code in the S-
+       100 tab of the IHO Producer Code Register in the IHO GI Registry (that is, the IHO is identified as
+       “00AA”, not “1810”).
+     • The eighth up to the twenty-first characters can be used in any way by the producer to provide a
+       unique file name for the dataset. The following characters are allowed in the dataset name: A toZ,
+       0 to 9, and the special character _ (underscore). The ninth through twenty-first characters are
+       optional (that is, at least one character must be used).
+     • .YYY – support file extension. The YYY portion must conform to the file format as described in
+       Table 11-3 above.
+
+
+11.4     Exchange Set
+Data which conforms to this product specification must be delivered by means of an Exchange Set.
+An Exchange Set will consist of one or more CNP datasets. An Exchange Set may also include one or
+more support files containing supplementary information encoded in separate files. These are linked to
+the CNP dataset features, by feature and information type attributes defined in the Application Schema;
+for example, fileReference. Each Exchange Set will include a single (XML) Catalogue file. S-128
+Exchange Set Catalogues conform to S-100 Edition 5.2.0, Part 17, Figure 17-6 without modification,
+containing discovery metadata for each CNP dataset as well as support files. S-128 Exchange Set
+structure conforms to S-100 Edition 5.2.0, Part 17, Figure 17-2 without modification.
+
+
+12      Metadata
+12.1     Introduction
+The CNP metadata specification conforms to the S-100 metadata specification in Part 4a, which is a
+profile of the ISO 19115-1 Standard. These documents provide a structure for describing digital
+geographic data and define metadata elements, a common set of metadata terminology, definitions, and
+extension procedures.
+
+
+12.2     Discovery metadata
+The overall structure of metadata in S-128 Exchange Sets is the same as in S-100, and is depicted in
+Figure 12-1 below. Metadata in Exchange Sets consists of discovery metadata for the datasets and
+support   files    in   the   Exchange     Set  (classes    S100_DatasetDiscoveryMetadata       and
+S100_SupportFileDiscoveryMetadata); metadata in ISO 19115-1 format for datasets; and metadata
+about any Feature, Portrayal, or Interoperability Catalogues which are in the Exchange Set
+(S100_CatalogueMetadata).
+The discovery metadata classes have numerous attributes which enable important information about the
+datasets and accompanying support files to be examined without the need to process the data, for
+example decrypt, decompress, load, etc. Other Catalogues such as Feature and Portrayal Catalogues
+can be included in the Exchange Set in support of the datasets.
+More detailed information for the classes is depicted in Figure 12-2 and details about the metadata
+classes are provided in clauses 12.2 - 12.5.
+
+
+
+
+S-128                                           March 2025                                   Edition 2.0.0
+
+<<<PAGE 29>>>
+                                      Catalogue of Nautical Products                                   23
+
+
+
+
+  Figure 12-1 Relationship between Exchange Catalogue, discovery metadata, and dataset (from S-100
+                                      Edition 5.2.0, Figure 17-6)
+The detailed structure of the S-128 Exchange Catalogue is depicted in Figure 12-2. This figure is derived
+from S-100 Edition 5.2.0, Part 17, Figure 17-7 with the following restriction:
+   • Elements that are optional in the generic S-100 Catalogue model but not used in S-128 are not
+     shown; for example, the ISO 8211 and HDF5 formats in S100_EncodingFormat.
+
+
+
+
+ Figure 12-2 – Details of Exchange Set Catalogue classes. (Derived from S-100 Edition 5.2.0, Figure 17-7)
+
+
+
+
+S-128                                          March 2025                                    Edition 2.0.0
+
+<<<PAGE 30>>>
+24                                       Catalogue of Nautical Products
+
+
+
+The following clauses define the mandatory and optional metadata needed for S-128. In some cases the
+metadata may be repeated in a national language. If this is the case it is noted in the Remarks column.
+In the following clauses, wherever S-128 makes an optional S-100 metadata attribute mandatory (that
+is, restricts multiplicity from 0.. to 1..), the restricted multiplicity is shown in place of the multiplicity given
+in S-100 Part 17. When this is done, the Remarks column contains a note about the restriction. Further,
+enumerations in the Figure and the following clauses show only the values allowed in S-128 Exchange
+Catalogues.
+For Product Specifications to be used in S-100 ECDIS, covered by S-98, a third principle is that the S-
+100 Exchange Catalogue profile cannot be extended at the Product Specification level. This principle
+exists so that implementers of the S-100 Exchange Catalogue profile are not required to consider product
+specific extensions.
+
+
+
+
+S-128                                             March 2025                                          Edition 2.0.0
+
+<<<PAGE 31>>>
+                                                                              Catalogue of Nautical Products                                                                             25
+
+
+
+
+12.2.1         S100_ExchangeCatalogue
+Each exchange set has a single S100_ExchangeCatalogue which contains meta information for the data and support files in the Exchange Set.
+Name                           Description                                                      Mult      Type                                Remarks
+S100_ExchangeCatalogue         An exchange catalogue contains the discovery metadata              -       -
+                               about the exchange datasets and support files
+identifier                     Uniquely identifies this Exchange Catalogue                      0..1      S100_ExchangeCatalogueIdentifier
+
+contact                        Details about the issuer of this Exchange Catalogue              0..1      S100_CataloguePointOfContact
+
+productSpecification           Details about the Product Specifications used for the             0..*     S100_ProductSpecification
+                               datasets contained in the Exchange Catalogue
+defaultLocale                  Default language and character set used for all metadata         0..1      PT_Locale                           Default is English and UTF-8
+                               records in this Exchange Catalogue
+otherLocale                    Other languages and character sets used for the localized         0..*     PT_Locale                           Required if any localized entries are present
+                               metadata records in this Exchange Catalogue                                                                    in the Exchange Catalogue
+exchangeCatalogueDescription   Description of what the Exchange Catalogue contains              0..1      CharacterString
+
+
+exchangeCatalogueComment       Any additional Information                                       0..1      CharacterString
+
+
+certificates                   Signed public key certificates referred to by digital             0..*     S100_SE_CertificateContainerType    Content defined in S-100 Part 15. All
+                               signatures in the Exchange Set                                                                                 certificates used, except the SA root
+                                                                                                                                              certificate (installed separately by the
+                                                                                                                                              implementing system) shall be included
+dataServerIdentifier           Identifies the data server for the permit                        0..1      CharacterString
+
+
+datasetDiscoveryMetadata       Exchange Catalogues may include or reference discovery            0..*     Aggregation
+                               metadata for the datasets in the Exchange Set                              S100_DatasetDiscoveryMetadata
+catalogueDiscoveryMetadata     Metadata for Catalogue                                            0..*     Aggregation                         Metadata for the feature, portrayal, and
+                                                                                                          S100_CatalogueDiscoveryMetadata     interoperability catalogues, if any
+
+supportFileDiscoveryMetadata   Exchange Catalogues may include or reference discovery            0..*     Aggregation
+                               metadata for the support files in the Exchange Set                         S100_SupportFileDiscoveryMetadata
+
+
+
+
+S-128                                                                                  March 2025                                                                            Edition 2.0.0
+
+<<<PAGE 32>>>
+26                                                                                Catalogue of Nautical Products
+
+
+
+
+12.2.1.1       S100_ExchangeCatalogueIdentifier
+Role Name       Name                                     Description                                          Mult   Type                     Remarks
+Class           S100_ExchangeCatalogueIdentifier         An identifier for an Exchange Catalogue                -    -                        The concatenation of identifier, editionNumber
+                                                                                                                                              and dateTime form the unique name
+Attribute       identifier                               Uniquely identifies this Exchange Catalogue            1    CharacterString          <S100XC:identifier>US_101_20200101_120101
+                                                                                                                                              _01</S100XC:identifier>
+Attribute       dateTime                                 Creation date and time of the Exchange                 1    DateTime                 Format: yyyy-mm-ddThh:mm:ssZ
+                                                         Catalogue, including time zone
+
+
+12.2.1.2       S100_CataloguePointofContact
+Role Name       Name                                     Description                                          Mult   Type                     Remarks
+Class           S100_CataloguePointOfContact             Contact details of the issuer of this Exchange         -    -                        -
+                                                         Catalogue
+Attribute       organization                             The organization distributing this Exchange            1    CharacterString          This could be an individual producer, value
+                                                         Catalogue                                                                            added reseller, etc
+Attribute       phone                                    The phone number of the organization                 0..1   CI_Telephone
+Attribute       address                                  The address of the organization                      0..1   CI_Address
+
+
+12.2.2        S100_DatasetDiscoveryMetadata
+Name                                 Description                                                Mult      Type                         Remarks
+S100_DatasetDiscoveryMetadata        Metadata about the individual datasets in the                 -      -                            -
+                                     Exchange Catalogue
+fileName                             Dataset file name                                             1      URI                          See Part 1, clause 1-4.6
+description                          Short description giving the area or location              0..1      CharacterString              For example: A harbour or port name, between two
+                                     covered by the dataset                                                                            named locations etc
+datasetID                            Dataset ID expressed as a Maritime Resource                0..1      URN                          The URN must be an MRN
+                                     Name
+compressionFlag                      Indicates if the resource is compressed                       1      Boolean                      True indicates a compressed dataset resource
+                                                                                                                                       False indicates an uncompressed dataset resource
+
+
+
+
+S-128                                                                                       March 2025                                                                        Edition 2.0.0
+
+<<<PAGE 33>>>
+                                                                          Catalogue of Nautical Products                                                                                27
+
+
+
+
+dataProtection              Indicates if the data is encrypted                             1       Boolean                          True indicates an encrypted dataset resource
+                                                                                                                                    False indicates an unencrypted dataset resource
+protectionScheme            Specification or method used for data protection             0..1      S100_ProtectionScheme
+
+digitalSignatureReference   Specifies the algorithm used to compute                        1       S100_SE_DigitalSignatureRefere
+                            digitalSignatureValue                                                  nce (see S-100 Part 15)
+digitalSignatureValue       Value derived from the digital signature                      1..*     S100_SE_DigitalSignature         The value resulting from application of
+                                                                                                   (see S-100 Part 15)              digitalSignatureReference
+                                                                                                                                    Implemented as the digital signature format specified
+                                                                                                                                    in S-100 Part 15
+copyright                   Indicates if the dataset is copyrighted                        1       Boolean                          True indicates the resource is copyrighted
+                                                                                                                                    False Indicates the resource is not copyrighted
+classification              Indicates the security classification of the dataset         0..1      Class                            1. unclassified
+                                                                                                   MD_SecurityConstraints>MD_Cla    2. restricted
+                                                                                                   ssificationCode (codelist)       3. confidential
+                                                                                                                                    4. secret
+                                                                                                                                    5. top secret
+                                                                                                                                    6. sensitive but unclassified
+                                                                                                                                    7. for official use only
+                                                                                                                                    8. protected
+                                                                                                                                    9. limited distribution
+purpose                     The purpose for which the dataset has been issued            0..1      S100_Purpose
+notForNavigation            Indicates the dataset is not intended to be used for           1       Boolean                          True indicates the dataset is not intended to be used
+                            navigation                                                                                              for navigation
+                                                                                                                                    False indicates the dataset is intended to be used for
+                                                                                                                                    navigation
+specificUsage               The use for which the dataset is intended                    0..1      MD_USAGE>specificUsage
+                                                                                                   (character string)
+editionNumber               The edition number of the dataset                            0..1      Integer                          When a data set is initially created, the edition number
+                                                                                                                                    1 is assigned to it. The edition number is increased by
+                                                                                                                                    1 at each new edition. Edition number remains the
+                                                                                                                                    same for a re-issue
+updateNumber                Update number assigned to the dataset and                    0..1      Integer                          Update number 0 is assigned to a new dataset
+                            increased by one for each subsequent update
+updateApplicationDate       This date is only used for the base cell files (that is      0..1      Date
+                            new data sets, re-issue and new edition), not
+                            update cell files. All updates dated on or before this
+                            date must have been applied by the producer
+
+
+
+
+S-128                                                                                 March 2025                                                                              Edition 2.0.0
+
+<<<PAGE 34>>>
+28                                                                 Catalogue of Nautical Products
+
+
+
+
+referenceID            Reference back to the datasetID                          0..1      URN                                Update metadata refers to the datasetID of the dataset
+                                                                                                                             metadata. This is used if and only if the dataset is an
+                                                                                                                             update The URN must be an MRN
+issueDate              Date on which the data was made available by the           1       Date
+                       data producer
+issueTime              Time of day at which the data was made available         0..1      Time                               The S-100 datatype Time
+                       by the data producer
+boundingBox            The extent of the dataset limits                         0..1      EX_GeographicBoundingBox
+
+temporalExtent         Specification of the temporal extent of the dataset      0..1      S100_TemporalExtent                The temporal extent is encoded as the date/time of the
+                                                                                                                             earliest and latest data records (in coverage datasets)
+                                                                                                                             or date/time ranges (in vector datasets)
+                                                                                                                             If there is more than one feature in a dataset, the
+                                                                                                                             earliest and latest time values of records in all features
+                                                                                                                             are used, which means the earliest and latest values
+                                                                                                                             may be from different features
+                                                                                                                             If date/time information for a feature is not encoded in
+                                                                                                                             the dataset, it is treated for the purposes of this
+                                                                                                                             attribute as extending indefinitely in the appropriate
+                                                                                                                             direction on the time axis, limited by the issue
+                                                                                                                             date/time or the cancellation or supersession of the
+                                                                                                                             dataset
+                                                                                                                             This attribute is encoded if and only if at least one of
+                                                                                                                             the start and end of the temporal extent is known
+productSpecification   The Product Specification used to create this              1       S100_ProductSpecification
+                       dataset
+producingAgency        Agency responsible for producing the data                  1       CI_Responsibility>CI_Organisatio   See S-100 Part 17, Table 17-3
+                                                                                          n
+producerCode           The official IHO Producer Code from the IHO GI           0..1      CharacterString
+                       Registry, Producer Code Register
+encodingFormat         The encoding format of the dataset                         1       S100_EncodingFormat
+
+dataCoverage           Provides information about data coverages within          0..*     S100_DataCoverage
+                       the dataset
+comment                Any additional information                               0..1      CharacterString
+
+defaultLocale          Default language and character set used in the            0..*     PT_Locale                          In absence of defaultLocale the
+                       Exchange Catalogue                                                                                    language is English, UTF-8
+
+
+
+
+S-128                                                                        March 2025                                                                                Edition 2.0.0
+
+<<<PAGE 35>>>
+                                                                                   Catalogue of Nautical Products                                                                                      29
+
+
+
+
+otherLocale                          Other languages and character sets used in the              0..*     PT_Locale
+                                     Exchange Catalogue
+metadataPointOfContact               Point of contact for metadata                               0..1     CI_Responsibility>CI_Individual or    Only if metadataPointOfContact is different to
+                                                                                                          CI_Responsibility>CI_Organisatio      producingAgency
+                                                                                                          n
+metadataDateStamp                    Date stamp for metadata                                     0..1     Date                                  May or may not be the issue date
+
+replacedData                         If a data file is cancelled is it replaced by another       0..1     Boolean
+                                     data file
+dataReplacement                      Cell name                                                   0..*     CharacterString                       A dataset may be replaced by 1 or more datasets
+
+navigationPurpose                    Classification of intended navigation purpose (for          0..3     S100_NavigationPurpose                If Product Specification is intended for creation of
+                                     Catalogue indexing purposes)                                                                               navigational products this attribute should be
+                                                                                                                                                mandatory
+resourceMaintenance                  Information about the frequency of resource                 0..1     MD_MaintenanceInformation             S-100 restricts the multiplicity to 0..1 and adds specific
+                                     updates, and the scope of those updates                                                                    restrictions on the ISO
+                                                                                                                                                19115 structure and content. See clause
+                                                                                                                                                MD_MaintenanceInformation later in this Part
+                                                                                                                                                Format: PnYnMnDTnHnMnS (XML built in type for ISO
+                                                                                                                                                8601 duration). See clause 17-4.9
+
+
+12.2.2.1       S100_NavigationPurpose
+Item                Name                                    Description                                          Code    Remarks
+Enumeration         S100_NavigationPurpose                  The navigational purpose of the dataset                 -    -
+Value               port                                    For port and near shore operations                    1      -
+Value               transit                                 For coast and planning purposes                       2      -
+Value               overview                                For ocean crossing and planning purposes              3      -
+
+
+12.2.2.2       S100_DataCoverage
+Name                                 Description                                                Mult      Type                               Remarks
+S100_DataCoverage                    A spatial extent where data is provided; and the             -       -                                  This field is used by user systems as part of the data
+                                     display scale information for the provided data                                                         loading and unloading algorithms and it is strongly
+                                                                                                                                             encouraged that Product Specifications mandate the use
+
+
+
+
+S-128                                                                                        March 2025                                                                                   Edition 2.0.0
+
+<<<PAGE 36>>>
+30                                                                          Catalogue of Nautical Products
+
+
+
+
+                                                                                                                                     of one or more of the displayScale provided as part of
+                                                                                                                                     S100_DataCoverage
+boundingPolygon                  A polygon which defines the actual data limit               1       EX_BoundingPolygon              (See Note 1)
+temporalExtent                   Specification of the temporal extent of the coverage      0..1      S100_TemporalExtent             The remarks for temporalExtent in the dataset discovery
+                                                                                                                                     block (S100_DatasetDiscoveryMetadata) apply, except
+                                                                                                                                     that their scope is the individual coverage and not the
+                                                                                                                                     dataset as a whole
+optimumDisplayScale              The scale with which the data is optimally displayed      0..1      Integer                         Example: A scale of 1:25000 is encoded as 25000
+maximumDisplayScale              The maximum scale with which the data is                  0..1      Integer                         Example: 22000 for a maximum display scale of 1:22000
+                                 displayed
+minimumDisplayScale              The minimum scale with which the data is displayed        0..1      Integer
+approximateGridResolution        The resolution of gridded or georeferenced data (in       0..1      Real                            A single value may be provided when all axes have a
+                                 metres)                                                                                             common resolution For multiple value provision, use axis
+                                                                                                                                     order as specified in dataset May be approximate for
+                                                                                                                                     ungeorectified data
+                                                                                                                                     For example, for 5 metre resolution. The value 5 must be
+                                                                                                                                     encoded
+                                                                                                                                     (See Note 2)
+
+
+NOTE 1: boundingPolygon is restricted to a single GML Polygon with one exterior and 0 or more interiors expressed as Linear Rings using SRS EPSG:4326.
+The exterior and optional interiors shall be composed of a closed sequence of >=4 coordinate positions expressed individually or as a list (posList). The GML
+polygon shall have a valid GML identifier.
+NOTE 2: approximateGridResolution: If the grid cell size varies over the extent of the grid, an approximated value based on model parameters or production
+metadata should be used.
+
+12.2.2.3      S100_Purpose
+
+Item              Name                                 Description                                          Code   Remarks
+Enumeration       S100_Purpose                         The purpose of the dataset                              -
+Value             newDataset                           Brand new dataset                                       1   No data has previously been produced for this area
+Value             newEdition                           New edition of the dataset or Catalogue                 2   Includes new information which has not been previously distributed by
+                                                                                                                   updates
+Value             update                               Dataset update                                          3   Changing some information in an existing dataset
+
+
+
+
+S-128                                                                                   March 2025                                                                              Edition 2.0.0
+
+<<<PAGE 37>>>
+                                                             Catalogue of Nautical Products                                                                                     31
+
+
+
+
+Value            reissue               Dataset that has been re-issued                    4          Includes all the updates applied to the original dataset up to the date of the
+                                                                                                     re-issue. A re-issue does not contain any new information additional to that
+                                                                                                     previously issued by updates
+Value            cancellation          Dataset or catalogue that has been                 5          Indicates the dataset or catalogue should no longer be used and can be
+                                       cancelled                                                     deleted
+Value            delta                 Dataset difference                                 6          Reserved for future use
+
+
+12.2.2.4      S100_TemporalExtent
+Role Name        Name                  Description                                            Mult     Type                           Remarks
+Class            S100_TemporalExtent   Temporal extent                                         -                                      At least one of the timeInstantBegin and
+                                                                                                                                      timeInstantEnd attributes must be populated;
+                                                                                                                                      if both are known, both must be populated.
+                                                                                                                                      The absence of either begin or end indicates
+                                                                                                                                      indefinite validity in the corresponding
+                                                                                                                                      direction, limited by the issue date/time or
+                                                                                                                                      the cancellation or supersession of the
+                                                                                                                                      dataset
+Attribute        timeInstantBegin      The instant at which the temporal extent               0..1     Date Time
+                                       begins
+Attribute        timeInstantEnd        The instant at which the temporal extent ends          0..1     Date Time
+
+
+12.2.2.5      S100_EncodingFormat
+Item             Name                  Description                                        Code         Remarks
+Enumeration      S100_DataFormat       The encoding format                                     -       -
+Value            ISO/IEC 8211          The ISO/IEC 8211 data format as defined in              1       -
+                                       Part 10a
+Value            GML                   The GML data format as defined in Part 10b              2       -
+Value            HDF5                  The HDF5 data format as defined in Part 10c             3       -
+Value            undefined             The encoding is defined in the Product                 100      Use Product Specification specific encoding means the data product and
+                                       Specification                                                   Product Specification is not intended for an IHO S-100 compliant system
+
+
+
+
+S-128                                                                 March 2025                                                                                     Edition 2.0.0
+
+<<<PAGE 38>>>
+32                                                                Catalogue of Nautical Products
+
+
+
+
+12.2.2.6      S100_ProductSpecification
+Role Name        Name                        Description                                           Mult   Type                               Remarks
+Class            S100_ProductSpecification   The Product Specification contains the                 -     -                                  -
+                                             information needed to build the specified
+                                             product
+Attribute        name                        The name of the Product Specification used to         0..1   CharacterString                    The name in the GI Registry should be
+                                             create the datasets                                                                             used for this field.
+Attribute        version                     The version number of the Product                     0..1   CharacterString                    TR 2/2007 specifies versioning of
+                                             Specification                                                                                   Product Specifications
+Attribute        date                        The version date of the Product Specification         0..1   Date
+Attribute        productIdentifier           Machine readable unique identifier of a                1     CharacterString                    For example, “S-101”
+                                             product type                                                 (Restricted to Product ID values
+                                                                                                          from the IHO Product
+                                                                                                          Specification Register, in the
+                                                                                                          IHO Geospatial Information (GI)
+                                                                                                          Registry)
+Attribute        number                      The number used to lookup the product in the           1     Integer                            For IHO Product Specifications these
+                                             Product Specification Register of the IHO GI                                                    should be taken from the IHO Product
+                                             Registry                                                                                        Specification Register in the IHO
+                                                                                                                                             Geospatial Information (GI) Registry
+Attribute        compliancyCategory          The level of compliance of the Product                0..1   S100_CompliancyCategory            See S-100 Part 4a, clause 4a-5.5
+                                             Specification to S-100
+
+
+
+12.2.2.7      S100_CompliancyCategory
+Item             Name                        Description                                       Code       Remarks
+Enumeration      S100_CompliancyCategory                                                            -     -
+Value            category1                   IHO S-100 object model compliant                       1
+Value            category2                   IHO S-100 compliant with non-standard                  2
+                                             encoding
+Value            category3                   IHO S-100 compliant with standard encoding             3
+Value            category4                   IHO S-100 and IMO harmonized display                   4
+                                             compliant
+
+
+
+
+S-128                                                                      March 2025                                                                               Edition 2.0.0
+
+<<<PAGE 39>>>
+                                                                                   Catalogue of Nautical Products                                                                               33
+
+
+
+
+12.2.2.8         S100_ProtectionScheme
+Item                Name                                   Description                                             Code    Remarks
+Enumeration         S100_ProtectionScheme                  Data protection schemes                                  -      -
+Value               S100p15                                IHO S-100 Part 15                                        1      See S-100 Part 15
+
+
+12.2.3      S100_SupportFileDiscoveryMetadata
+Name                                  Description                                               Mult     Type                             Remarks
+S100_SupportFileDiscoveryMetadata     Metadata about the individual support files in the          -      -                                -
+                                      exchange catalogue
+fileName                              Name of the support file                                    1      URI                              See S-100 Part 1, clause 1-4.6
+
+revisionStatus                        The purpose for which the support file has been             1      S100_SuppoirtFileRevisionStat    For example new, replacement, etc
+                                      issued                                                             us
+editionNumber                         The Edition number of the support file                      1      Integer                          When a data set is initially created, the Edition number 1
+                                                                                                                                          is assigned to it. The Edition number is increased by 1 at
+                                                                                                                                          each new Edition. Edition number remains the same for a
+                                                                                                                                          re-issue
+issueDate                             Date on which the data was made available by              0..1     Date
+                                      the Data Producer
+supportFileSpecification              The specification used to create this file                0..1     S100_SupportFileSpecification
+
+dataType                              The format of the support file                              1      S100_SupportFileFormat
+otherDataTypeDescription              Support file format other than those listed               0..1     CharacterString
+comment                               Optional comment                                          0..1     CharacterString
+compressionFlag                       Indicates if the resource is compressed                     1      Boolean                          True indicates a compressed resource
+                                                                                                                                          False indicates an uncompressed resource
+digitalSignatureReference             Specifies the algorithm used to compute                     1      S100_SE_DigitalSignatureRef      Reference to the appropriate digital signature algorithm
+                                      digitalSignatureValue                                              erence (see S-100 Part 15)
+digitalSignatureValue                 Value derived from the digital signature                   1..*    S100_DigitalSignature (see S-    The value resulting from application of
+                                                                                                         100 Part 15)                     digitalSignatureReference
+                                                                                                                                          Implemented as the digital signature format specified in S-
+                                                                                                                                          100 Part 15
+
+
+
+
+S-128                                                                                       March 2025                                                                               Edition 2.0.0
+
+<<<PAGE 40>>>
+34                                                                              Catalogue of Nautical Products
+
+
+
+
+defaultLocale                         Default language and character set used in the         0..1      PT_Locale                         In absence of defaultLocale the language is English in
+                                      support file                                                                                       UTF-8
+                                                                                                                                         A support file is expected to use only one as locale,
+                                                                                                                                         Additional support files can be created for other locales
+supportedResource                     Identifier of the resource supported by this            0..*     CharacterString                   Conventions for identifiers are detailed in S-100 Part 15.
+                                      support file                                                                                       S-100 allows file URI, digital signature or cryptographic
+                                                                                                                                         hash checksums to be used
+resourcePurpose                       The purpose of the supporting resource                 0..1      S100_ResourcePurpose              Identifies how the supporting resource is used
+
+
+
+12.2.3.1        S100_SupportFileFormat
+Item              Name                                Description                                            Code        Remarks
+Enumeration       S100_SupportFileFormat              The format used for the support file                        -      -
+Value             ASCII                               UTF-8 text excluding control codes                         1
+Value             JPEG2000                            JPEG2000 format                                            2       ISO 15444
+Value             HTML                                Hypertext Markup Language                                  3
+Value             XML                                 Extensible Markup Language                                 4
+Value             XSLT                                Extensible Stylesheet Language Transformations             5
+Value             VIDEO                               Representation of moving images in unspecified             6
+                                                      format
+Value             TIFF                                Tagged Image File Format                                   7
+Value             PDF/AorUA                           Portable Document Format                                   8       ISO 19005, ISO 32000
+                                                                                                                         Product Specification developers should take careful consideration in using
+                                                                                                                         PDF as a support file format. It is recommended that PDF never be used in
+                                                                                                                         products that will be used on a navigation system as it may impair night
+                                                                                                                         vision
+                                                                                                                         Must be PDF/A or UA
+Value             LUA                                 Lua programming language                                   9
+Value             other                               Other format                                               100
+
+
+
+
+S-128                                                                                    March 2025                                                                                  Edition 2.0.0
+
+<<<PAGE 41>>>
+                                                                                   Catalogue of Nautical Products                                                                         35
+
+
+
+
+12.2.3.2      S100_SupportFileRevisionStatus
+Item            Name                                    Description                                                Code   Remarks
+Enumeration     S100_ SupportFileRevisionStatus         The reason for inclusion of the support file in this         -    -
+                                                        Exchange Set
+Value           new                                     A file which is new                                         1     Signifies a new file
+Value           replacement                             A file which replaces an existing file                      2     Signifies a replacement for a file of the same name
+Value           deletion                                Deletes an existing file                                    3     Signifies deletion of a file of that name
+
+
+12.2.3.3      S100_ResourcePurpose
+Item            Name                                    Description                                                Code   Remarks
+Enumeration     S100_ResourcePurpose                    Defines the purpose of the supporting resource               -    -
+Value           supportFile                             A support file                                              1
+Value           ISOMetadata                             Dataset metadata in ISO format                              2
+Value           languagePack                            A Language pack                                             3
+Value           GMLSchema                               GML Application Schema                                      4
+Value           other                                   A type of resource not otherwise described                  100
+
+
+12.2.3.4      S100_SupportFileSpecification
+Role Name       Name                              Description                                          Mult    Type                        Remarks
+
+Class           S100_SupportFileSpecification     The standard or specification to which a               -     -                           -
+                                                  support file conforms
+Attribute       name                              The name of the specification used to create           1     CharacterString
+                                                  the support file
+Attribute       version                           The version number of the specification              0..1    CharacterString
+Attribute       date                              The version date of the specification                0..1    Date
+
+
+
+
+S-128                                                                                        March 2025                                                                         Edition 2.0.0
+
+<<<PAGE 42>>>
+36                                                                                 Catalogue of Nautical Products
+
+
+
+
+12.2.4        S100_CatalogueDiscoveryMetadata
+Name                                    Description                                            Mult    Type                                  Remarks
+S100_CatalogueMetadata                  Class for S-100 Catalogue metadata                      -      -                                     -
+filename                                The name for the Catalogue                              1      URI
+purpose                                 The purpose for which the Catalogue has been           0..1    S100_Purpose                          The values must be on of the following:
+                                        issued                                                         (codelist)                            2 new edition
+                                                                                                                                             5 cancellation
+                                                                                                                                             Default is new edition
+editionNumber                           The Edition number of the Catalogue                     1      Integer                               Initially set to 1 for a given productSpecification.number
+                                                                                                                                             Increased by 1 for each subsequent new Edition
+                                                                                                                                             Uniquely identifies the version of the Catalogue
+scope                                   Subject domain of the Catalogue                         1      S100_CatalogueScope
+versionNumber                           The version identifier of the Catalogue                 1      CharacterString                       Human readable version identifier
+issueDate                               The issue date of the Catalogue                         1      Date
+productSpecification                    The Product Specification used to create this file      1      S100_ProductSpecification
+digitalSignatureReference               Specifies the algorithm used to compute                 1      S100_SE_DigitalSignatureReference     Reference to the appropriate digital signature
+                                        digitalSignatureValue                                          (see S-100 Part 15)                   algorithm
+digitalSignatureValue                   Value derived from the digital signature               1..*    S100_SE_DigitalSignature (see S-100   The value resulting from application of
+                                                                                                       Part 15)                              digitalSignatureReference
+                                                                                                                                             Implemented as the digital signature format specified
+                                                                                                                                             in S-100 Part 15
+compressionFlag                         Indicates if the resource is compressed                 1      Boolean                               True indicates a compressed resource
+                                                                                                                                             False indicates an uncompressed resource
+defaultLocale                           Default language and character set used in the         0..1    PT_Locale                             In absence of defaultLocale the language is English
+                                        Catalogue                                                                                            in UTF-8
+otherLocale                             Other languages and character sets used in the         0..*    PT_Locale
+                                        catalogue
+
+
+12.2.4.1        S100_CatalogueScope
+Item              Name                                  Description                                                 Code   Remarks
+Enumeration       S100_CatalogueScope                   The scope of the Catalogue                                   -     -
+
+
+
+
+S-128                                                                                        March 2025                                                                                 Edition 2.0.0
+
+<<<PAGE 43>>>
+                                                                        Catalogue of Nautical Products                                                                           37
+
+
+
+
+Value          featureCatalogue                 S-100 Feature Catalogue                                      1
+Value          portrayalCatalogue               S-100 Portrayal Catalogue                                    2
+Value          interoperabilityCatalogue        S-100 Interoperability Catalogue                             3
+
+
+12.2.5      Miscellaneous metadata types
+12.2.5.1     MD_MaintenanceInformation
+Role Name     Name                               Description                                        Mult         Type                         Remarks
+Class         MD_MaintenanceInformation          Information about the scope and frequency of            -       -                            S-100 restricts the ISO 19115-class to:
+                                                 updating                                                                                     •   prohibit maintenanceScope,
+                                                                                                                                                  maintenanceNote, and contact
+                                                                                                                                                  attributes;
+                                                                                                                                              •   define restrictions on
+                                                                                                                                                  maintenanceAndUpdateFrequency,
+                                                                                                                                                  maintenanceDate, and
+                                                                                                                                                  userDefinedMaintenanceFrequency
+                                                                                                                                                  attributes
+Attribute     maintenanceAndUpdateFrequency      Frequency with which changes and additions         0..1         MD_MaintenanceFrequencyCod   Must be populated if
+                                                 are made to the resource after the initial                      e (codelist)                 userDefinedMaintenanceFrequency is
+                                                 resource is completed                                                                        not present, otherwise optional.
+                                                                                                                                              See Table MD_Maintenance
+                                                                                                                                              FrequencyCode in this Part for values
+                                                                                                                                              allowed in S-100 metadata
+Attribute     maintenanceDate                    Date information associated with maintenance       0..1         CI_Date                      Exactly one of maintenanceDate and
+                                                 of the resource                                                                              userDefinedMaintenanceFrequency
+                                                                                                                                              must be populated Allowed value for
+                                                                                                                                              dateType: nextUpdate
+Attribute     userDefinedMaintenanceFrequency    Maintenance period other than those defined        0..1         TM_PeriodDuration            Exactly one of maintenanceDate and
+                                                                                                                                              userDefinedMaintenanceFrequency
+                                                                                                                                              must be populated Only positive
+                                                                                                                                              durations allowed
+
+
+
+
+S-128                                                                              March 2025                                                                          Edition 2.0.0
+
+<<<PAGE 44>>>
+38                                                                      Catalogue of Nautical Products
+
+
+
+
+12.2.5.2      MD_MaintenanceFrequencyCode
+S-100 uses a subset of the values allowed in ISO 19115-1.
+Item            Name                          Description                                          Code      Remarks
+Enumeration     MD_MaintenanceFrequencyCode   Frequency with which modifications and                     -   S-100 is restricted to only the following values from the ISO 19115-1
+                                              deletions are made to the data after it is first               codelist. The conditions for the use of a particular value are described in its
+                                              produced                                                       Remarks
+Value           asNeeded                      Resource is updated as deemed necessary                1       Use only for datasets which normally use a regular interval for update or
+                                                                                                             supersession, but will have the next update issued at an interval different from
+                                                                                                             the usual
+                                                                                                             Allowed if and only if userDefinedMaintenanceFrequency is not populated
+Value           irregular                     Resource is updated in intervals that are              2       Use only for datasets which do not use a regular schedule for update or
+                                              uneven in duration                                             supersession
+                                                                                                             Allowed if and only if userDefinedMaintenanceFrequency is not populated
+
+
+12.2.5.3      PT_Locale
+Role Name       Name                          Description                                           Mult     Type                                  Remarks
+Class           PT_Locale                     Description of a locale                                    -   -                                     From ISO 19115-1
+Attribute       language                      Designation of the locale language                     1       LanguageCode                          ISO 639-2 3-letter language codes.
+Attribute       country                       Designation of the specific country of the            0..1     CountryCode                           ISO 3166-2 2-letter country codes
+                                              locale language
+Attribute       characterEncoding             Designation of the character set to be used to         1       MD_CharacterSetCode                   UTF-8 is used in S-100
+                                              encode the textual value of the locale
+
+
+
+
+S-128                                                                            March 2025                                                                                   Edition 2.0.0

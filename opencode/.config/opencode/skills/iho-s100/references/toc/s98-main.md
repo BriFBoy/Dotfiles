@@ -1,0 +1,274 @@
+# S-98 Data Product Interoperability in S-100 Navigation Systems – Main — Edition 2.0.0
+
+PDF pages: 104. Page numbers below are PDF pages; open with `scripts/s100.py page s98-main <n>`.
+
+## Detected clause headings, tables and figures
+
+- p.1 `S-100` ECDIS and
+- p.6 `D-2.6` Implementation of WLA Option 2 – WLA for a datetime range specified by the user as a
+- p.6 `D-2.7` Implementation of WLA Option 3 – linking of WLA to a defined route with planned
+- p.10 `S-100` Part 16. Part A and B of this specification define levels 1 and 2 respectively.
+- p.10 `2` References
+- p.10 `2.1` Normative references
+- p.11 `2.2` Informative references
+- p.11 `3` Abbreviations and Notation
+- p.11 `3.1` Abbreviations
+- p.11 `3.2` Notation
+- p.12 `3.3` Normative vs informative within this document.
+- p.12 `4` Background - System Concepts and Limitations
+- p.12 `4.1` The concepts of ENC, ENDS and system database
+- p.12 `4.2` ECDIS concept, limitations, and challenges
+- p.14 `4.2.1` Depth Related Functionality
+- p.14 `4.3` Integrated Navigation System (INS) concept, limitations and challenges
+- p.15 `6.1.1` Basic product specifications and layers
+- p.15 `6.1.2` Projected data
+- p.16 `6.1.3` Other data products
+- p.17 `7.2.1` Pixmaps
+- p.17 `7.2.2` Colour coding scheme
+- p.17 `7.2.3` Symbols
+- p.17 `7.2.4` Area fills
+- p.17 `7.2.5` Line styles
+- p.17 `7.2.6` Portrayal of shared edges
+- p.18 `Figure 7-1` Shared edges – rendering – incorrect/correct
+- p.18 `Figure 7-2` Shared edges – rendering – incorrect/correct (2)
+- p.18 `7.2.7` Text
+- p.18 `7.2.8` Style sheets
+- p.18 `7.2.9` Display planes
+- p.18 `7.2.10` Display (drawing) priorities
+- p.19 `7.2.11` Viewing groups
+- p.19 `7.2.12` Viewing group layers
+- p.19 `7.2.13` Display modes
+- p.19 `7.2.14` Rules
+- p.19 `7.2.15` Context
+- p.19 `7.2.16` Validity times
+- p.19 `7.3` Alerts
+- p.19 `8` Interoperability
+- p.20 `9.1.1` Distinguishing between official S-100 data and additional data
+- p.21 `9.1.2` Supplemental display items
+- p.21 `9.1.3` Navigational Warning functions
+- p.21 `9.1.4` Units
+- p.21 `9.1.5` Legend
+- p.21 `9.2` Priority of information [Informative1]
+- p.21 `9.2.1` Priority layers
+- p.22 `9.2.2` Radar priority
+- p.22 `9.3` Displaying ECDIS updates
+- p.22 `9.4` Display functions
+- p.23 `10` General Rules for Symbols and Text
+- p.23 `10.1` Symbol specifications
+- p.23 `10.2` Reproduction of lines, symbols and text
+- p.23 `10.2.1` Introduction
+- p.23 `10.2.2` Minimum requirement for size and resolution
+- p.23 `10.2.3` Zooming
+- p.23 `10.3` Common text and information attributes
+- p.24 `11` Text and Graphics
+- p.24 `11.1` Arrangement of viewing group layers.
+- p.24 `Table 11-1` Viewing group layers (example
+- p.25 `12.1` Elements related to data and display scales
+- p.25 `12.1.1` ENC scale
+- p.25 `Table 12-1` minimumDisplayScale and optimumDisplayScale values
+- p.26 `12.2` Display of non-ENC data layers
+- p.26 `12.3` Overscale
+- p.26 `12.3.1` Overscale indication
+- p.26 `12.3.2` Chart scale boundary
+- p.26 `12.3.3` Overscale pattern
+- p.27 `Figure 12-1` Illustration of overscale display
+- p.27 `12.3.4` Larger scale data available
+- p.27 `12.4` Graphical indexes
+- p.27 `12.4.1` Graphical indexes of ENCs
+- p.28 `12.4.2` Graphical indexes of other S-100 products
+- p.28 `12.5` Limits of data
+- p.28 `12.5.1` ENC no data areas
+- p.28 `12.5.2` Limit of official S-101 data and non official S-101 data
+- p.28 `12.5.3` Limits of other S-100 product data
+- p.28 `12.6` Special ECDIS chart symbols to identify unsafe depths
+- p.29 `12.6.1` Safety contour
+- p.29 `12.7` Date-dependent features
+- p.29 `12.7.1` Display of date-dependent features by mariner-selected date
+- p.29 `12.7.2` Indication of date adjustment
+- p.29 `12.8` Decluttering the screen
+- p.30 `12.9` IMO presentation elements
+- p.30 `12.9.1` Scale bar and latitude scale
+- p.30 `Table 12-2` Scale bar presentation parameters
+- p.30 `12.9.2` North arrow
+- p.30 `Table 12-3` North Arrow presentation parameters
+- p.30 `12.9.3` Graticule
+- p.31 `12.9.4` Display mode
+- p.31 `12.9.5` Black level adjustment symbol
+- p.31 `12.9.6` Detection and notification of navigational hazards
+- p.31 `Figure 12-2Figure` depicts indication highlights for points, curves, and surfaces.
+- p.31 `Figure 12-2` Examples of indication highlights
+- p.32 `12.9.7` Detection of areas for which special conditions exist
+- p.32 `12.9.8` Definition of safety contour
+- p.32 `12.9.9` Detection of safety contour
+- p.32 `Figure 12-3` Examples of danger highlights in ECDIS
+- p.33 `12.9.10` Indications related to ENC accuracy
+- p.33 `12.9.10.1` Check area extension value – S-101 only
+- p.33 `12.9.10.2` Check area extension value – S-102 depth substitution
+- p.33 `12.9.10.3` Check area extension value – S-102 depth substitution and S-104 adjustment
+- p.34 `Figure 12-4` Example Danger Highlight extended by underlaying value of categoryOfZoneOfConfidence,
+- p.34 `Figure 12-5` Example Extension of check-area by multiple underlaying QualityOfBathymetricData areas
+- p.34 `12.9.11` Enhanced Safety Contour and Water Level Adjustment.
+- p.35 `12.10` Other specified display features
+- p.35 `12.10.1` Legend
+- p.35 `12.10.2` Legend details
+- p.35 `12.10.3` ECDIS legend
+- p.35 `Table 12-5` Legend elements
+- p.37 `12.11` Displaying manual and automatic updates and added information
+- p.37 `12.11.1` Manual updates
+- p.37 `12.11.2` Additional Mariner’s Information
+- p.37 `12.11.3` Automatic updates
+- p.37 `12.11.4` Identifying automatic chart corrections on demand
+- p.38 `12.11.5` Update Information
+- p.38 `12.11.6` Non-official (non-ENC) chart Information
+- p.38 `12.12` Display and management of Navigational Warnings
+- p.38 `12.12.1` Additional portrayal requirements of the Graphical User Interface
+- p.39 `12.12.2` Filtering Navigational Warning information
+- p.39 `12.12.3` Cancelled datasets
+- p.40 `12.12.4` Portrayal of feature types
+- p.40 `13.1` Thinning
+- p.40 `13.2` Temporal variation
+- p.41 `14` Colours
+- p.41 `14.1` Colour palettes implemented by the Portrayal Catalogue
+- p.41 `15` Cursor Pick Reports and Displays in Interface Panels
+- p.41 `15.1` Cursor pick rules
+- p.42 `15.2` Display of dataset support files
+- p.42 `15.3` Pick report organisation.
+- p.42 `15.3.1` Sorting order of results
+- p.42 `15.3.2` Hover-over function
+- p.42 `15.4` Tidal stream data panels
+- p.42 `Table 15-1` below shows the layout that must be used for displaying the values, encoded in the Tidal
+- p.42 `Table 15-1` Template for tidal stream values table
+- p.43 `16` Alerts and Indications
+- p.43 `16.1` Multiple spatial objects.
+- p.43 `17` Use of Context Parameters
+- p.43 `18` Dual-Fuel Systems
+- p.44 `18.1` Display of additional information layers
+- p.44 `18.2` Concurrent applicability of S-52 and S-57
+- p.44 `19.1` Physical display requirements
+- p.45 `19.2` Colour reproduction
+- p.45 `19.3` Display requirements for colours
+- p.45 `19.3.1` General
+- p.45 `19.3.2` Display calibration and verification
+- p.45 `19.3.3` Colour control, contrast and brightness controls
+- p.45 `19.3.4` Effect of controls
+- p.46 `19.3.5` Use of the controls
+- p.46 `19.3.6` Setting the controls for route monitoring
+- p.47 `19.4` Colour display capability
+- p.47 `19.4.1` Colour conversion tolerances and tests
+- p.47 `19.4.1.1` Tolerances
+- p.47 `Table 19-1` Tolerance exceptions
+- p.48 `19.4.1.2` Instrumental calibration verification test
+- p.48 `19.5` ECDIS Chart 1 and Colour (Differentiation) Test Diagram
+- p.48 `19.6` Use of ECDIS Chart 1 and Colour Test Diagram
+- p.48 `19.6.1` Specification for ECDIS Chart 1 and the colour test diagram
+- p.48 `19.6.1.1` Definition
+- p.48 `19.6.1.2` Description and purpose
+- p.49 `19.6.1.3` Mode of use
+- p.49 `19.6.1.4` Content and encoding
+- p.49 `19.6.1.5` Revisions
+- p.49 `19.6.1.6` Presentation and parameter settings
+- p.49 `19.6.2` The Colour Test Diagram
+- p.50 `Figure 19-1` Colour differentiation diagram - Day
+- p.50 `19.6.2.1` Providing the diagram
+- p.51 `19.6.3` Relationship to S-57 Chart 1
+- p.51 `19.6.4` The black-adjust symbol
+- p.51 `20.1` Multiple Feature and Portrayal Catalogues
+- p.52 `Table 20-1` Versioning of Feature and Portrayal Catalogues
+- p.53 `20.3` Dataset overlaps and gaps
+- p.53 `20.3.1` Overlaps and gaps in ENC coverage
+- p.53 `20.3.2` Overlaps and gaps between other data products
+- p.53 `20.4` Updating datasets on ECDIS
+- p.53 `20.4.1` Introduction
+- p.53 `57` ENC updates. S-52 Appendix I continues to apply to the processing of S-57 updates on ECDIS.
+- p.53 `20.4.2` General requirements
+- p.53 `20.4.3` Automatic Update
+- p.54 `20.5` New editions, re-issues, cancellations and updates of datasets
+- p.55 `21.1` Exchange Set delivery
+- p.55 `21.2` Management of automatic updates to dataset support files
+- p.55 `21.3` Dataset support file formats.
+- p.56 `48` S-100 ECDIS and Interoperability Specification
+- p.57 `A-1` Introduction
+- p.57 `Table A-1` Manual update point symbols
+- p.58 `Table A-2` Manual update: Curve symbols
+- p.59 `Table A-3` Manual update: Surface symbols
+- p.59 `A-2` Attribution of Manual Update Features
+- p.60 `52` S-100 ECDIS and Interoperability Specification
+- p.61 `B-1` Introduction
+- p.61 `Table B-1` Error codes and messages
+- p.62 `B-2` Error Code Descriptions
+- p.63 `B-3` Exchange Set Installation on ECDIS
+- p.64 `Figure B-1` Verification of CATALOG.SIGN
+- p.64 `Figure B-2` Verification of PERMIT.SIGN
+- p.65 `Figure B-3` Check for permit validity prior to dataset decryption
+- p.65 `Figure B-4` Authentication of Exchange Set dataset components
+- p.66 `Figure B-5` Authentication of Feature and Portrayal Catalogues
+- p.67 `C-1` Purpose
+- p.69 `Figure C-1` Update Status Report – current report example
+- p.69 `Figure C-2` Update Status Report - notional example for S-100 datasets
+- p.70 `Table C-1` Data content of header fields
+- p.74 `66` S-100 ECDIS and Interoperability Specification
+- p.75 `D-1` Enhanced Safety Contour
+- p.75 `Figure D-1` Boundary line of S-102 coverage
+- p.75 `D-1.1` Data constraints
+- p.76 `Figure D-2` The extents of the S-102 points overlaid on the S-102 grid (grid spacing = ‘d’)
+- p.76 `Figure D-3` Extents of each S-102 points showing nearest neighbour interpolation (S-100 Part 8-7.1.4)
+- p.77 `D-1.2` Enhanced safety contour selection and implementation
+- p.77 `Figure D-4` Common edges from rectangular extents
+- p.77 `Figure D-5` Edges from rectangular extents and at boundaries
+- p.78 `D-2` Water Level Adjustment (WLA)
+- p.78 `D-2.1` Scope
+- p.78 `D-2.2` Constraints on input data
+- p.78 `D-2.3` User inputs
+- p.79 `D-2.4` Implementation - general
+- p.79 `Figure D-6` WLA can only be computed in areas where there is S-104 and S-102 data
+- p.80 `Figure D-7` Boundary line of WLA coverage
+- p.80 `D-2.5` Implementation of WLA Option 1 – WLA for a single datetime instant
+- p.80 `Figure D-8` Selection of time-varying value
+- p.81 `Figure D-9` Adjustment of S-102 values by S-104
+- p.81 `D-2.6` Implementation of WLA Option 2 – WLA for a datetime range specified by the user as a
+- p.81 `Figure D-10` Examples of S-104 data selection
+- p.82 `D-2.7` Implementation of WLA Option 3 – linking of WLA to a defined route with planned
+- p.82 `Figure D-11` WLA adjustment polygon
+- p.83 `Figure D-12` WLA adjustment polygon along curved section
+- p.83 `Figure D-13` Grid cell selection
+- p.84 `Figure D-14` Selection of S-104 data
+- p.84 `Figure D-15` Time-dependent adjustment of S-102 data with S-104 data
+- p.84 `Figure D-16` shows a boundary line around all the WLA processed S-102 grid cells. This marks the
+- p.85 `Figure D-16` Boundary of adjusted area
+- p.85 `Figure D-17` below shows how the rectangle is positioned in the middle of S-104 coverage area and at
+- p.85 `Figure D-17` Positioning in interior and at edge
+- p.86 `D-3` Treatment of Depth and Water Level Related S-101 Features
+- p.86 `D-3.1` Substitution and adjustment of depth values
+- p.86 `D-3.2` Areas covered by S-102 only or by both S-102 and S-104
+- p.86 `Figure D-18` Substitution of sounding value from S-102
+- p.87 `Figure D-19` Substitution of valueOfSounding attribute in S-101 Obstruction from S-102 data
+- p.87 `D-3.3` Adjustment of heights and vertical clearance values
+- p.88 `D-3.4` Alerts and indication details
+- p.88 `Figure D-20` Graphical highlight for intersected safety contour
+- p.88 `D-3.5` Legend details
+- p.89 `E-1` Introduction
+- p.89 `E-1.1` Dataset loading algorithm
+- p.89 `E-1.1.1` Prerequisites
+- p.89 `E-1.2` Scale bands
+- p.90 `Table E-1` Scale band definitions
+- p.91 `E-1.3` Dataset selection process
+- p.92 `E-1.4` Data display algorithm
+- p.92 `E-1.4.1` Rendering algorithm
+- p.93 `E-1.5` The RenderInstruction algorithm
+- p.94 `86` S-100 ECDIS and Interoperability Specification
+- p.95 `F-1` GML Coverage Polygons
+- p.95 `F-1.1` Introduction
+- p.95 `F-1.2` Specification
+- p.96 `88` S-100 ECDIS and Interoperability Specification
+- p.97 `G-1` Introduction
+- p.97 `G-1.1` Regularly gridded data
+- p.97 `Figure G-2` depicts the same data thinned with Rmax = 0.5 (outline-only arrows are suppressed). Figure
+- p.98 `Figure G-1` Grid without thinning
+- p.98 `Figure G-2` Grid thinned with Rmax = 0.5
+- p.99 `Figure G-3` Grid thinned with Rmax = 0.33
+- p.100 `92` S-100 ECDIS and Interoperability Specification
+- p.101 `H-1` Introduction
+- p.101 `H-1.1` Conversion from UTM to WGS 84
+- p.102 `H-1.2` Conversion from UPS North to WGS 84
+- p.103 `H-1.3` Conversion from UPS South to WGS 84
+- p.104 `H-1.4` References [Informative]

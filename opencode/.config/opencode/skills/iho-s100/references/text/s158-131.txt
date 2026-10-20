@@ -1,0 +1,548 @@
+# S-158:131 Marine Harbour Infrastructure Validation Checks — Edition 1.0.0
+# source: /home/johanneslj/Documents/S-100/S-131/S-158-131_Validation_Checks_Ed_1.0.0/S-158_131_Validation_Checks.pdf
+# Page markers are PDF page numbers (1-based), not printed page numbers.
+
+<<<PAGE 1>>>
+S-158:131
+
+
+
+
+  Marine Harbour
+  Infrastructure Validation
+  Checks
+
+  Edition 1.0.0 – December 2025
+  Aligned to S-131 Edition 2.0.0
+
+
+
+
+                                                           Published by the
+                                   International Hydrographic Organization
+                                                        4b quai Antoine 1er
+                                                    Principauté de Monaco
+                                                     Tel: (377) 93.10.81.00
+                                                    Fax: (377) 93.10.81.40
+                                                                info@iho.int
+                                                                 www.iho.int
+
+<<<PAGE 2>>>
+ii                                 Marine Harbour Infrastructure Validation Checks
+
+
+
+
+                       © Copyright International Hydrographic Organization 2025
+
+            This work is copyright. Apart from any use permitted in accordance with the Berne
+            Convention for the Protection of Literary and Artistic Works (1886), and except in the
+            circumstances described below, no part may be translated, reproduced by any
+            process, adapted, communicated or commercially exploited without prior written
+            permission from the International Hydrographic Organization (IHO). Copyright in some
+            of the material in this publication may be owned by another party and permission for
+            the translation and/or reproduction of that material must be obtained from the owner.
+
+            This document or partial material from this document may be translated, reproduced
+            or distributed for general information, on no more than a cost recovery basis. Copies
+            may not be sold or distributed for profit or gain without prior written agreement of the
+            IHO Secretariat and any other copyright holders.
+
+            In the event that this document or partial material from this document is reproduced,
+            translated or distributed under the terms described above, the following statements are
+            to be included:
+
+               “Material from IHO publication [reference to extract: Title, Edition] is reproduced
+               with the permission of the IHO Secretariat (Permission No ……./…) acting for the
+               International Hydrographic Organization (IHO), which does not accept responsibility
+               for the correctness of the material as reproduced: in case of doubt, the IHO’s
+               authentic text shall prevail. The incorporation of material sourced from IHO shall
+               not be construed as constituting an endorsement by IHO of this product.”
+
+               “This [document/publication] is a translation of IHO [document/publication] [name].
+               The IHO has not checked this translation and therefore takes no responsibility for its
+               accuracy. In case of doubt the source version of [name] in [language] should be
+               consulted.”
+            The IHO Logo or other identifiers shall not be used in any derived product
+            without prior written permission from the IHO Secretariat.
+
+
+
+
+S-158:131                                         December 2025                                         Edition 1.0.0
+
+<<<PAGE 3>>>
+                                 Marine Harbour Infrastructure Validation Checks                         iii
+
+
+
+
+                                         Document History
+Changes to this Specification are coordinated by the IHO S-131 Project Team. New editions will be
+made available via the IHO web site. Maintenance of the Specification shall conform to IHO Resolution
+2/2007 (as amended).
+
+ Version    Date            Author/Editor       Purpose
+ Number
+ 1.0.0      2025-12-29      Raphael             Initial draft for S-131 Validation Checks.
+ Draft 1                    Malyankar
+
+
+
+
+                   Summary of Substantive Changes in Edition 1.X.X
+Bold references in the Clauses Affected column indicate the principal sections/clauses that are affected
+by the described change.
+
+
+                              Change Summary                                          Clauses Affected
+
+ (To be populated for editions after Edition 1.0.0)
+
+
+
+
+S-158:31                                        December 2025                                  Edition 1.0.0
+
+<<<PAGE 4>>>
+iv                                             Marine Harbour Infrastructure Validation Checks
+
+
+
+
+Contents                                                                                                                                          Page
+1      Introduction ......................................................................................................................... 1
+     1.1 Scope .............................................................................................................................. 1
+     1.2 Conformance ................................................................................................................... 1
+     1.3 References ...................................................................................................................... 1
+        1.3.1   Normative references ............................................................................................ 1
+        1.3.2   Informative references ........................................................................................... 1
+     1.4 Terms, definitions and abbreviations............................................................................... 2
+        1.4.1   Terms and definitions ............................................................................................ 2
+        1.4.2   Abbreviations ......................................................................................................... 2
+        1.4.3   Symbols ................................................................................................................. 2
+     1.5 Use of language .............................................................................................................. 2
+     1.6 General description ......................................................................................................... 3
+     1.7 Specification metadata and maintenance ....................................................................... 3
+        1.7.1   Specification metadata .......................................................................................... 3
+        1.7.2   Specification maintenance ..................................................................................... 3
+2       Check Structure .................................................................................................................. 4
+3       Check Syntax....................................................................................................................... 5
+4       Organisation ........................................................................................................................ 5
+5      Other Applicable Checks ................................................................................................... 5
+     5.1 Generic S-100 checks ..................................................................................................... 5
+     5.2 Interoperability checks ..................................................................................................... 6
+     5.3 Check messages ............................................................................................................. 6
+6       Check Application Sequence (informative) ...................................................................... 6
+7       Check Classification ........................................................................................................... 7
+8       Geometry and Spatial Operators ....................................................................................... 7
+9       Other Components of this Specification .......................................................................... 7
+
+
+
+
+S-158:131                                                         December 2025                                                         Edition 1.0.0
+
+<<<PAGE 5>>>
+                                 Marine Harbour Infrastructure Validation Checks                         1
+
+
+
+1       Introduction
+This document specifies a set of checks that producers of S-131 Marine Harbour Infrastructure
+validation tools must implement in their validation software in order to ensure conformance of S-131
+datasets and exchange sets with requirements specified in the S-131 Product Specification. The initial
+list of checks for S-131 was compiled by the IHO S-131 Project Team.
+The checks listed in this document are product-specific. They supplement but do not replace the generic
+S-100 validation checks applicable to all S-100 products which are defined in a separate IHO publication
+(S-158:100 – Universal Hydrographic Model Validation Checks).
+
+
+1.1      Scope
+This document, designated as “S-158:131” by the IHO, specifies validation checks for data products
+conforming to Edition 2.0.0 of IHO Product Specification S-131 (Marine Harbour Infrastructure).
+This document specifies product-specific validation checks for both datasets and exchange sets
+containing datasets conforming to the listed Product Specifications.
+The checks specified in this document supplement the checks described in Edition 1.0.0 of S-158:100
+(Universal Hydrographic Data Model Validation Checks). Both sets of validation checks, those
+described in S-158:100 as well as those defined in S-158:131, must be applied to test the validity of S-
+131 datasets and exchange sets. Since S-131 IS intended for use on ECDIS, any applicable additional
+cross-product checks defined in S-158:98 (and only the applicable cross-product checks), MUSTalso
+be applied.
+The validation checks described in S-158:100, S-158:131, and S-158:98 do not cover all aspects of
+data quality; for example, these validation checks do not test whether encoded values are accurate
+compared with “ground truth” reality or observed values. These checks only cover adherence to
+requirements in relevant specifications (S-131, S-100, or S-98) and consistency within datasets,
+exchange sets, or (for the S-98 checks) with other datasets or data products.
+
+
+1.2      Conformance
+This specification conforms to Edition 1.0.0 of IHO specification S-158 (Validation Checks – Introduction
+and Structure).
+The validation checks described herein are intended for use with Edition 2.0.0 of IHO Product
+Specification S-131 (Marine Harbour Infrastructure).
+
+
+1.3      References
+1.3.1       Normative references
+S-100                 IHO Universal Hydrographic Data Model, Edition 5.2.0, June 2024
+S-131                Marine Harbour Infrastructure, Edition 2.0.0. In preparation.
+S-158                 Validation Checks – Introduction and Structure, Edition 1.0.0, February 2025.
+S-158:100             Universal Hydrographic Data Model Validation Checks, Edition 1.0.0, February
+                      2025.
+1.3.2       Informative references
+ISO 19157-1:2023      Geographic information – Data Quality – Part 1: General Requirements.
+S-98                  Data Product Interoperability in S-100 Navigation Systems, IHO Publication S-98,
+                      Edition 2.0.0, October 2025. (Use the most recent published edition conforming to
+                      S-100 5.2.x, when available.)
+
+
+
+
+S-158:131                                       December 2025                                 Edition 1.0.0
+
+<<<PAGE 6>>>
+2                                Marine Harbour Infrastructure Validation Checks
+
+
+
+S-158:98              Data Product Interoperability Validation Checks, Edition 1.0.0, February 2025.
+                      (Use the most recent published edition applying to the above-referenced edition of
+                      S-98, when available.)
+
+
+1.4     Terms, definitions and abbreviations
+1.4.1       Terms and definitions
+The terms and definitions listed in S-158 apply to this document. In addition, the following terms are
+used in this document or Annex A:
+
+known (attribute)
+The XML element representing the attribute is found in the dataset and has been populated with a value.
+NOTE: Validity of the attribute is not implied even if it is known.
+missing (attribute)
+The attribute is either not present, or is present but not populated..
+optional (attribute)
+The Product Specification permits the XML element to be omitted altogether from the dataset.
+populated (attribute)
+The attribute has a non-null value. String or text attributes whose value is the 0-length (empty) string
+are not considered populated, though empty strings are still valid strings and may be valid values for
+the attribute.
+precede
+To go before in time; to happen or exist before; to be earlier than.
+present
+The XML element representing the attribute is found in the dataset; it may or may not be populated with
+a value.
+unknown (attribute)
+The XML element representing the attribute is found in the dataset but has not been populated with a
+value.
+valid (attribute)
+The value of the attribute conforms to its value domain.
+Antonym: invalid
+NOTE: The empty string (0-length string) is prima facie a valid value for attributes of type text or
+CharacterString, though there may be additional requirements on string length imposed in the Product
+Specification, DCEG or Feature Catalogue.
+value domain
+set of accepted values [ISO/TS 19103:2005; from S-100 Edition 5.2.0 Annex A]
+EXAMPLE The numeric range [3, 28]; all integers; any ASCII character; an enumeration of all accepted
+values, for example (green, blue, white).
+
+
+1.4.2       Abbreviations
+This Specification uses the abbreviated terms defined in S-158.
+1.4.3   Symbols
+The symbols used in logical and spatial expressions are defined in S-158 clause 1.3.3 (Symbols).
+
+
+
+1.5     Use of language
+Within this document:
+
+
+
+S-158:131                                       December 2025                                Edition 1.0.0
+
+<<<PAGE 7>>>
+                                  Marine Harbour Infrastructure Validation Checks                       3
+
+
+
+•     “Must” indicates a mandatory requirement.
+•     “Should” indicates an optional requirement, that is the recommended process to be followed, but
+      is not mandatory.
+•     “May” means “allowed to” or “could possibly”, and is not mandatory.
+
+
+1.6       General description
+S-158:131 is a specification describing validation checks for S-131 data products. There are no data
+products based directly on this edition of S-158:131 and therefore no general information applicable to
+data products conforming to it.
+
+
+
+1.7       Specification metadata and maintenance
+1.7.1       Specification metadata
+This information uniquely identifies this Specification and provides information about its creation and
+maintenance.
+Title:              Marine Harbour Infrastructure Validation Checks
+Version:            1.0.0
+Date:               December 2025
+Language:           English
+Classification: Unclassified
+Contact:            International Hydrographic Organization.
+                    4 quai Antoine 1er,
+                    B.P.445 MC 98011 MONACO CEDEX
+                    Telephone: +377 93 10 81 00
+                    B.P. 445 Fax: + 377 93 10 81 40
+                    Email: info@iho.int
+Role:               Owner
+URL:                https://registry.iho.int
+Identifier:         S-158:131
+Maintenance:        Changes to this Specification are coordinated by the IHO Nautical Information
+                    Provision Working Group and made available via the IHO Publications website.
+                    Maintenance of the Product Specification must conform to IHO Technical Resolution
+                    2/2007 (revised 2010). For reporting issues which need correction, use the contact
+                    information. Please use the contact information above if amendments to this
+                    specification need to be reported.
+1.7.2       Specification maintenance
+1.7.2.1      Introduction
+Changes to S-158:131 will be released by the IHO as a New Edition, revision, or clarification.
+The list of checks, which accompanies this document is considered part of this Specification and
+changes to it are considered changes to this Specification.
+S-158:131 is not accompanied by separate artefacts such as an XML Schema, Feature or Portrayal
+Catalogue and therefore this clause does not address the question of changes to such derived artefacts.
+Note that the version numbering for S-158:131 conforms to the principles specified in S-158 Edition
+1.0.0, which do not mandate a 1/1 correspondence between version numbers for S-131 and S-158:131.
+
+
+
+
+S-158:131                                        December 2025                               Edition 1.0.0
+
+<<<PAGE 8>>>
+4                                    Marine Harbour Infrastructure Validation Checks
+
+
+
+1.7.2.2        New Edition
+New Editions of S-158:131 include at least one of the following changes:
+      •    introduce a new validation check (of any classification);
+      •    remove an existing validation check (of any classification);
+      •    change the classification of a validation check, whether upgrade (such as Error to Critical) or
+           downgrade (such as Error to Warning);
+      •    extend a validation check to include new features, conditions, etc., in a way that requires
+           validation software manufacturers to change their software.
+New Editions are likely to require validation software manufacturers to change their software or
+invalidate datasets which passed validation according to the previous Edition of S-158:131.
+All cumulative revisions and clarifications must be included with the release of approved New Editions.
+1.7.2.3        Revision
+Revisions are defined as substantive semantic changes to S-158:131. Typically, revisions will change
+S-158:131 to correct factual errors or introduce necessary changes that have become evident as a
+result of practical experience or changing circumstances. Revisions include corrections of
+misinterpretations of S-131, or extensions to checks that do not require changes to validation software.
+A revision must not be classified as a clarification. All cumulative clarifications must be included with
+the release of approved revisions.
+1.7.2.4        Clarification
+Clarifications are changes to S-158:131 arising from non-substantive reasons.
+Typically clarifications for non-substantive reasons remove ambiguity; correct grammatical and spelling
+errors; amend or update cross references; revise check messages or clarify check descriptions without
+requiring manufacturers to change their software.
+1.7.2.5        Version numbers
+The associated version control numbering to identify changes (boldface n) to S-158:131 must be as
+follows:
+
+New Editions denoted as n.0.0
+
+Revisions denoted as n.n.0
+
+Clarifications denoted as n.n.n
+
+
+2         Check Structure
+Check structure in S-158:131 includes the fields specified in S-158, with the following additional
+columns:
+                 Table 2.1 - Product-specific additions to the generic validation checks template
+
+    Column       Name     Description
+    (Tag)
+
+    Apply To              Whether the check applies to a base, update, or post-update dataset. These
+                          terms are defined in Table 2.2 following.
+    (Apply_To)
+
+    Remarks               Optional notes pertaining to the check.
+    (Remarks)
+
+
+
+
+S-158:131                                           December 2025                                   Edition 1.0.0
+
+<<<PAGE 9>>>
+                                 Marine Harbour Infrastructure Validation Checks                              5
+
+
+
+
+                                 Table 2.2 - Check application indicators
+ Indicator    Applies to          Description
+ B            Base                Apply check to new dataset, new edition, and post-update dataset
+                                  (after updates have been applied to the base).
+ U            Update              Apply check to update datasets in isolation.
+ S            Post-update         Apply check only to a post-update dataset, i.e., subsequent to
+                                  application of all available updates.
+
+
+
+
+3     Check Syntax
+The check syntax conforms to the syntax and operators for product-specific checks described in S-158
+clause 4.2.
+4     Organisation
+The list of validation checks for this edition of S-158:131 is available separately (see clause 9). The list
+of checks accompanies this specification and forms an integral part of it.
+
+
+5     Other Applicable Checks
+5.1      Generic S-100 checks
+S-131 datasets and exchange sets must also be validated using the following subset of the generic S-
+100 validation checks defined in S-158:100 Collection A.
+                       Table 5.1 - Applicability of generic Collection A S-100 checks
+
+Document               Checks                Apply to                      Remarks
+reference in
+S-158:100 list
+Part 1                 N/A                   N/A                           No direct implementation on
+                                                                           datasets or exchange sets
+Part 2 / 2a            N/A                   N/A                           No direct implementation on
+                                                                           datasets or exchange sets
+Part 4a                N/A                   N/A                           No direct implementation on
+                                                                           datasets or exchange sets
+Part 4b                N/A                   N/A                           No direct implementation on
+                                                                           datasets or exchange sets
+Part 5 / 5a            All Collection A   Datasets                         The S-158:100 checks in
+                       checks for Parts 5                                  Collection A compare datasets to
+                       and 5a                                              the Feature Catalogue
+Part 6                 N/A                   Datasets                      No direct implementation on
+                                                                           datasets or exchange sets
+Part 7                 All Collection A      Datasets                      Except checks applicable only to
+                       checks                                              spatial types not used by S-131
+                                                                           (for example multipoint)
+Part 8                 None                  N/A                           Part 8 does not apply to S-131
+
+
+
+
+S-158:131                                       December 2025                                      Edition 1.0.0
+
+<<<PAGE 10>>>
+6                                  Marine Harbour Infrastructure Validation Checks
+
+
+
+
+Document                 Checks                Apply to                      Remarks
+reference in
+S-158:100 list
+Part 9 / 9a / 13         None                  N/A                           (Checks for Parts 9 / 9a / 13 are
+                                                                             not defined in S-158:100 Edition
+                                                                             1.0.0)
+Part 10b                 All Collection A      Dataset
+                         checks
+Part 10a / 10c           None                  N/A                           Parts 10a and 10c do not apply to
+                                                                             S-131
+Part 11                  All Collection A      Dataset                       Checks for dataset size and CRS
+                         checks                                              validity
+Part 15                  All Collection A      Exchange Catalogue            Checks for validity of digital
+                         checks                Dataset                       signatures, which are mandatory
+                                                                             in S-100 Edition 5.2.0
+Part 17                  All Collection A      Exchange catalogue            Except checks for constructs not
+                         checks                Exchange set                  used in S-131:
+                                                                             •       ISO metadata files
+                                                                             •       File-based cancellation (S-
+                                                                                     131 Edition 2.0.0 uses file-
+                                                                                     less cancellation).
+                                                                             •       Metadata prohibited for S-131
+
+NOTE: Checks in S-158:100 Collection B apply to various components of Product Specification
+packages (application schema, feature catalogue, GML Schema, etc.). They do not apply directly to
+datasets or exchange sets and are not expected to be implemented for the purposes of validating
+datasets or exchange sets.
+
+
+5.2         Interoperability checks
+Since S-131 datasets and exchange sets ARE intended for use on ECDIS, the applicable
+interoperability checks (and only the applicable checks) listed in S-158:98 MUST also be applied.
+
+
+5.3         Check messages
+Application software is expected to identify the location in the file where the error was detected, and
+indicate the location in addition to the check message. The method used to identify and indicate the
+location will depend on the format and is left to the application software developer.
+
+
+6       Check Application Sequence (informative)
+The suggested check application sequence is described in Table 6-1. Check developers and testers
+are free to apply the checks in a different order.
+                         Table 6.1 - Suggested application order of validation checks
+    Order    Check Collection                            Defined in              Apply to
+    1        S-100 generic checks for datasets           S-158:100               Dataset, in isolation
+    2        Product-specific checks for datasets        S-158:131               Dataset, in isolation
+    3        S-100 generic checks for exchange           S-158:100               Exchange set
+             sets
+
+
+
+S-158:131                                         December 2025                                            Edition 1.0.0
+
+<<<PAGE 11>>>
+                                   Marine Harbour Infrastructure Validation Checks                              7
+
+
+
+ Order      Check Collection                             Defined in              Apply to
+ 4          Product-specific checks for exchange         S-158:131               Exchange set
+            sets
+ 5          Any applicable interoperability checks       S-158:98                Dataset or exchange set
+ Note: “Exchange set” in the above includes the exchange catalogue (CATALOG.XML),
+ signatures, and any dataset or support files contained in an exchange set.
+
+
+
+7        Check Classification
+The check classification conforms to the scheme described in S-158.
+                         Table 7.1 - Classification of checks by severity (from S-158)
+ Indicator     Type                 Description
+ C             Critical Error       An error which would make a dataset unusable in ECDIS through not
+                                    loading or causing an ECDIS to crash or presenting data which is
+                                    unsafe for navigation.
+ E             Error                An error which may degrade the quality of the dataset through
+                                    appearance or usability but which will not pose a significant danger
+                                    when used to support navigation.
+ W             Warning              An error which may be a duplication or an inconsistency which will
+                                    not noticeably degrade the usability of a dataset in ECDIS.
+
+
+
+
+8        Geometry and Spatial Operators
+S-131 products use vector geometry. Any spatial operations mentioned in checks pertaining to vector
+spatial primitives must conform to the operations for vector products described in S-158:100.
+For all spatial operators a default tolerance should be applied in validation software as follows:
+     •    For coordinates in decimal degrees – a tolerance of 10-7 degrees or the precision of the lowest-
+          precision coordinate field, whichever is greater.
+     •    For coordinates in metres (UTM or UPS) – a tolerance of 0.01 m or the precision of the lowest-
+          precision coordinate field being compared, whichever is greater.
+
+
+9        Other Components of this Specification
+The other components of this Specification listed below are provided as separate documents or
+artefacts accompanying this document and form an integral part of this Specification.
+     1) Spreadsheet of S-131 validation checks named S158_131_1_0_0_YYYYMMDD. The build
+        date is the YYYYMMDD suffix in the file name, whereas the “1_0_0” component represents the
+        edition, revision, and clarification number. The file with the same edition and revision number
+        as this document but with the most recent build date must be used.
+
+
+
+
+S-158:131                                         December 2025                                      Edition 1.0.0

@@ -1,0 +1,79 @@
+# S-98 Part A — Edition 2.0.0
+
+PDF pages: 18. Page numbers below are PDF pages; open with `scripts/s100.py page s98-partA <n>`.
+
+## Detected clause headings, tables and figures
+
+- p.1 `S-100` ECDIS and
+- p.7 `A-1` Introduction
+- p.7 `A-1.1` How to read this Part
+- p.7 `A-2` Specification Scope for Part A
+- p.8 `A-3` Data Content and Structure
+- p.8 `A-3.1` Application Schema
+- p.8 `A-3.1.1` Overview of Application Schema
+- p.8 `Figure A-3.1` Level 1 Interoperability Catalogue
+- p.8 `A-3.1.2` Operations in pre-defined combinations
+- p.8 `A-3.1.3` Enhanced selection of feature instances
+- p.8 `A-3.1.4` Interoperability Levels
+- p.8 `A-3.1.5` Hybridization rules
+- p.9 `A-3.1.6` Hybrid Feature and Portrayal Catalogues
+- p.9 `A-3.1.7` Progression of Interoperability Levels
+- p.9 `A-3.2` Interoperability Catalogue
+- p.9 `A-3.2.1` Conceptual types for Level 1 interoperability
+- p.9 `A-3.2.1.1` Display plane (S100_IC_DisplayPlane)
+- p.9 `A-3.2.1.2` Feature type display information (S100_IC_Feature)
+- p.9 `A-3.2.1.3` Drawing instruction (S100_IC_DrawingInstruction)
+- p.9 `A-3.2.1.3.1` Comparison and use of S100_IC_Feature and S100_IC_DrawingInstruction
+- p.10 `A-3.2.2` Use of S-100 types
+- p.10 `A-3.3` UML model documentation
+- p.10 `Table A-3.1` Allowed values for requirementType
+- p.11 `A-4` Level-Specific Data Quality Considerations
+- p.11 `A-4.1` Quality of displayed data
+- p.11 `A-4.2` Quality of interoperability catalogues
+- p.11 `A-4.2.1` Test methods
+- p.11 `A-4.2.2` Data quality testing
+- p.11 `A-5` Level-Specific Guidance on Making Product Specifications Interoperable
+- p.11 `A-5.1` Duplicated features
+- p.11 `A-5.1.1` Duplicated features same model
+- p.11 `A-5.1.2` Duplicated features, different models
+- p.12 `A-5.1.3` Duplicate feature domains
+- p.12 `A-5.2` Geometry
+- p.12 `A-5.2.1` Combined geometry
+- p.12 `A-5.2.2` Spatial discrepancy, unrelated to scaled or cartographic smoothing
+- p.12 `A-5.2.3` Spatial discrepancies, related to scale or cartographic smoothing
+- p.12 `A-5.3` Display of text
+- p.12 `A-5.4` Skin-of-the-earth feature operations
+- p.12 `A-5.4.1` Skin-of-the earth feature replacement
+- p.12 `A-5.4.2` Skin-of-the earth feature adjusting
+- p.12 `A-5.5` Blended feature concepts
+- p.12 `A-5.6` Hierarchy of data
+- p.12 `A-5.6.1` Hierarchy by stacking of display planes
+- p.13 `A-5.6.2` Predefined combinations
+- p.13 `A-5.7` New datasets
+- p.13 `A-5.8` Dataset scales, loading, and unloading
+- p.13 `A-5.9` Metadata
+- p.13 `A-5.10` Meta-features
+- p.13 `A-5.11` Quality considerations
+- p.13 `A-6` Portrayal
+- p.13 `A-6.1` Display of significant features
+- p.14 `A-6.2` Display of significant features - switching to original
+- p.14 `A-6.3` Portrayal distinguishability - colour set-asides
+- p.14 `A-6.4` Day/night/dusk modes
+- p.14 `A-6.5` Impacts on viewing groups
+- p.14 `A-6.6` Impacts on Portrayal Catalogues
+- p.14 `A-6.7` Meta-features
+- p.14 `A-6.8` Display of text
+- p.14 `A-6.9` Skin-of-the-earth operations and portrayal
+- p.14 `A-6.9.1` Skin-of-the-earth feature replacement and portrayal
+- p.15 `A-6.9.2` Skin-of-the-earth feature adjusting and portrayal
+- p.15 `A-6.10` Blended portrayals
+- p.15 `A-6.11` Hierarchy of data
+- p.15 `A-6.11.1` Interacting gridded information
+- p.15 `A-6.12` Pick Reports
+- p.15 `A-7` Processing Model
+- p.16 `Figure A-7.1` Interoperability processing flow (portrayal processing after interoperability)
+- p.17 `Figure A-7.2` Interoperability processing (drawing instructions generated before interoperability processing)
+- p.17 `Table A-7.1` Stages in Level 1 interoperability processing
+- p.17 `A-8` Normative Implementation Guidance
+- p.18 `A-9` Feature Catalogue
+- p.18 `A-10` Portrayal Catalogue

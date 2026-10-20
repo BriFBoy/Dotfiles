@@ -1,0 +1,253 @@
+# S-131 Ed 1 Annex C Feature Catalogue — Edition 1.0.0
+
+PDF pages: 120. Page numbers below are PDF pages; open with `scripts/s100.py page s131-ed1-fc <n>`.
+
+## Detected clause headings, tables and figures
+
+- p.13 `1` Catalogue header information
+- p.14 `2` Definition Sources
+- p.15 `3` Simple Attributes
+- p.15 `3.1` Administrative Division
+- p.15 `3.2` Applicable Load Line Zone
+- p.15 `3.3` Application Profile
+- p.15 `3.4` Approach Description
+- p.15 `3.5` Associated Feature Name
+- p.15 `3.6` Available Berthing Length
+- p.16 `3.7` Berthing Assistance
+- p.16 `3.8` Bollard Description
+- p.16 `3.9` Bollard Number
+- p.16 `3.10` Bollard Pull
+- p.17 `3.11` Call Name
+- p.17 `3.12` Call Sign
+- p.17 `3.13` Cardinal Direction
+- p.18 `3.14` Cargo Service
+- p.19 `3.15` Category of Authority
+- p.20 `3.16` Category of Berth Location
+- p.20 `3.17` Category of Cargo
+- p.21 `3.18` Category of Communication Preference
+- p.21 `3.19` Category Of Dangerous Or Hazardous Cargo
+- p.23 `3.20` Category of Depths Description
+- p.23 `3.21` Category of Harbour Facility
+- p.24 `3.22` Category of Mooring/Warping Facility
+- p.25 `3.23` Category of Port Section
+- p.25 `3.24` Category of Relationship
+- p.26 `3.25` Category of Schedule
+- p.26 `3.26` Category of Temporal Variation
+- p.27 `3.27` Category of Text
+- p.27 `3.28` Category of Vessel Registry
+- p.27 `3.29` Cathodic Protection System
+- p.28 `3.30` City Name
+- p.28 `3.31` Communication Channel
+- p.28 `3.32` Comparison Operator
+- p.28 `3.33` Condition
+- p.29 `3.34` Contact Instructions
+- p.29 `3.35` Country Name
+- p.29 `3.36` Date End
+- p.29 `3.37` Date Fixed
+- p.29 `3.38` Date Start
+- p.30 `3.39` Date Variable
+- p.30 `3.40` Day of Week
+- p.30 `3.41` Day of Week is Range
+- p.31 `3.42` Delivery Point
+- p.31 `3.43` Development
+- p.31 `3.44` Display Name
+- p.31 `3.45` Distance
+- p.31 `3.46` Dynamic Resource
+- p.32 `3.47` Elevation
+- p.32 `3.48` Entrance Description
+- p.32 `3.49` File Locator
+- p.33 `3.50` File Reference
+- p.33 `3.51` Firefighting Service
+- p.33 `3.52` Frequency Shore Station Receives
+- p.33 `3.53` Frequency Shore Station Transmits
+- p.34 `3.54` GLN Extension
+- p.34 `3.55` Global Location Number
+- p.34 `3.56` Headline
+- p.34 `3.57` Heaving Lines From Shore
+- p.35 `3.58` Horizontal Distance Uncertainty
+- p.35 `3.59` ID Code
+- p.35 `3.60` In Ballast
+- p.35 `3.61` ISPS Level
+- p.36 `3.62` Language
+- p.36 `3.63` Local Knowledge Description
+- p.36 `3.64` Location by Text
+- p.36 `3.65` Location Maritime Resource Name
+- p.36 `3.66` Logical Connectives
+- p.37 `3.67` Manifold Number
+- p.37 `3.68` Maximum Display Scale
+- p.37 `3.69` Medical Service
+- p.38 `3.70` Membership
+- p.38 `3.71` Method of Securing
+- p.39 `3.72` Metre Mark Number
+- p.39 `3.73` Minimum Berth Depth
+- p.40 `3.74` Minimum Display Scale
+- p.40 `3.75` MMSI Code
+- p.40 `3.76` Name
+- p.40 `3.77` Name of Resource
+- p.40 `3.78` Nationality
+- p.41 `3.79` Online Function
+- p.41 `3.80` Online Resource Description
+- p.41 `3.81` Online Resource Linkage URL
+- p.41 `3.82` Orientation Uncertainty
+- p.42 `3.83` Orientation Value
+- p.42 `3.84` Pictorial Representation
+- p.42 `3.85` Picture Caption
+- p.42 `3.86` Picture Information
+- p.42 `3.87` Port Facility Number
+- p.43 `3.88` Postal Code
+- p.43 `3.89` Product
+- p.44 `3.90` Protocol
+- p.44 `3.91` Protocol Request
+- p.44 `3.92` Quality of Horizontal Measurement
+- p.45 `3.93` Ramp Number
+- p.45 `3.94` Repair Service
+- p.46 `3.95` Reported Date
+- p.46 `3.96` Scale Minimum
+- p.46 `3.97` Sector Bearing
+- p.47 `3.98` Ship Sanitation Control
+- p.47 `3.99` Signal Frequency
+- p.67 `4` Complex Attributes
+- p.67 `4.1` Bearing Information
+- p.67 `4.2` Cargo Services Description
+- p.68 `4.3` Construction Information
+- p.68 `4.4` Contact Address
+- p.68 `4.5` Depths Description
+- p.69 `4.6` Facilities Layout Description
+- p.69 `4.7` Feature Name
+- p.69 `4.8` Fixed Date Range
+- p.70 `4.9` Frequency Pair
+- p.70 `4.10` General Harbour Information
+- p.70 `4.11` General Port Description
+- p.70 `4.12` Graphic
+- p.71 `4.13` Horizontal Position Uncertainty
+- p.71 `4.14` Information
+- p.71 `4.15` Landmark Description
+- p.72 `4.16` Limits Description
+- p.72 `4.17` Major Light Description
+- p.72 `4.18` Marked By
+- p.72 `4.19` Offshore Mark Description
+- p.73 `4.20` Online Resource
+- p.73 `4.21` Orientation
+- p.74 `4.22` Periodic Date Range
+- p.74 `4.23` RxN Code
+- p.75 `4.24` Schedule by Day of Week
+- p.75 `4.25` Spatial Accuracy
+- p.76 `4.26` Survey Date Range
+- p.76 `4.27` Telecommunications
+- p.76 `4.28` Text Content
+- p.77 `4.29` Time Intervals by Day of Week
+- p.78 `4.30` Useful Mark Description
+- p.78 `4.31` Vertical Uncertainty
+- p.78 `4.32` Vessels Measurements
+- p.79 `4.33` Weather Resource
+- p.81 `5` Roles
+- p.81 `5.1` Positions
+- p.81 `5.2` Component of
+- p.81 `5.3` Information provided for
+- p.81 `5.4` Provides information
+- p.81 `5.5` The applicable RxN
+- p.81 `5.6` Applies in location
+- p.81 `5.7` Authority
+- p.81 `5.8` Authority service hours
+- p.82 `5.9` Contact details
+- p.82 `5.10` Control authority
+- p.82 `5.11` Controlled service
+- p.82 `5.12` Identifies
+- p.82 `5.13` Is applicable to
+- p.82 `5.14` Service Hours (reference)
+- p.82 `5.15` The RxN
+- p.82 `5.16` The service hours for a non-standard workday
+- p.83 `5.17` Vessel location
+- p.83 `5.18` Partial working day
+- p.83 `5.19` Service place
+- p.83 `5.20` Location service hours
+- p.83 `5.21` The organisation
+- p.83 `5.22` The information
+- p.83 `5.23` Permission
+- p.83 `5.24` Constitute
+- p.84 `5.25` Auxiliary Facility
+- p.84 `5.26` Demarcated Feature
+- p.84 `5.27` Demarcation Indicator
+- p.84 `5.28` Entrance Reference
+- p.84 `5.29` Entrance To
+- p.84 `5.30` Has Infrastructure
+- p.84 `5.31` Infrastructure Location
+- p.84 `5.32` Limit Extent
+- p.85 `5.33` Limit Reference
+- p.85 `5.34` Layout Unit
+- p.85 `5.35` Location Served
+- p.85 `5.36` Facility Operating Hours
+- p.85 `5.37` Primary Facility
+- p.85 `5.38` Service Description Reference
+- p.85 `5.39` Sub-Unit
+- p.85 `5.40` Defined for
+- p.86 `5.41` Defines
+- p.87 `6` Information Associations
+- p.87 `6.1` Additional information
+- p.87 `6.2` Authority contact
+- p.87 `6.3` Authority hours
+- p.87 `6.4` Associated RxN
+- p.87 `6.5` Exceptional workday
+- p.88 `6.6` Service control
+- p.88 `6.7` Service contact
+- p.88 `6.8` Location hours
+- p.88 `6.9` Related organisation
+- p.88 `6.10` InclusionType
+- p.89 `6.11` Permission Type
+- p.89 `6.12` Spatial Association
+- p.89 `6.13` Limit Entrance
+- p.89 `6.14` Service Availability
+- p.91 `7` Feature Associations
+- p.91 `7.1` Text association
+- p.91 `7.2` Subsection
+- p.91 `7.3` Infrastructure
+- p.91 `7.4` Primary/Auxiliary Facility
+- p.91 `7.5` Demarcation
+- p.92 `7.6` Jurisdictional Limit
+- p.92 `7.7` Layout Division
+- p.93 `8` Information Types
+- p.93 `8.1` Information Type
+- p.93 `8.2` AbstractRxN
+- p.94 `8.3` Applicability
+- p.95 `8.4` Authority
+- p.96 `8.5` Available Port Services
+- p.98 `8.6` Contact Details
+- p.99 `8.7` Entrance
+- p.99 `8.8` Nautical Information
+- p.99 `8.9` Non-Standard Working Day
+- p.100 `8.10` Recommendations
+- p.100 `8.11` Regulations
+- p.100 `8.12` Restrictions
+- p.101 `8.13` Service Hours
+- p.101 `8.14` Spatial Quality
+- p.102 `9` Feature Types
+- p.102 `9.1` Feature Type
+- p.102 `9.2` Organization Contact Area
+- p.103 `9.3` Supervised Area
+- p.103 `9.4` Harbour Physical Infrastructure
+- p.104 `9.5` Layout
+- p.104 `9.6` Anchor Berth
+- p.105 `9.7` Anchorage Area
+- p.105 `9.8` Berth
+- p.106 `9.9` Berth Position
+- p.107 `9.10` Dock Area
+- p.108 `9.11` Dry Dock
+- p.108 `9.12` Dumping Ground
+- p.109 `9.13` Floating Dock
+- p.109 `9.14` Gridiron
+- p.109 `9.15` Harbour Area (Administrative)
+- p.110 `9.16` Harbour Area Section
+- p.111 `9.17` Harbour Basin
+- p.112 `9.18` Harbour Facility
+- p.112 `9.19` Mooring/Warping Facility
+- p.113 `9.20` Outer Limit
+- p.114 `9.21` Pilot Boarding Place
+- p.114 `9.22` Seaplane Landing Area
+- p.115 `9.23` Terminal
+- p.116 `9.24` Turning Basin
+- p.117 `9.25` Waterway Area
+- p.117 `9.26` Data Coverage
+- p.118 `9.27` Quality of Non-Bathymetric Data
+- p.118 `9.28` Sounding Datum
+- p.119 `9.29` Vertical Datum of Data
+- p.120 `9.30` Text Placement

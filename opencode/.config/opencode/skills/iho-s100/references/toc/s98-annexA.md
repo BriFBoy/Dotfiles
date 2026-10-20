@@ -1,0 +1,221 @@
+# S-98 Annex A Interoperability — Edition 2.0.0
+
+PDF pages: 74. Page numbers below are PDF pages; open with `scripts/s100.py page s98-annexA <n>`.
+
+## Detected clause headings, tables and figures
+
+- p.1 `S-100` ECDIS and
+- p.9 `1` Overview
+- p.9 `1.1` Introduction
+- p.9 `1.2` Scope
+- p.9 `Table 1-1` below. A catalogue conforming to this edition of the Annex may potentially also include similar
+- p.9 `Table 2-1` S-100 Product Specifications covered by this version of S-98
+- p.9 `1.3` References
+- p.10 `1.4` Terms, definitions and abbreviations
+- p.10 `1.4.1` Terms and definitions
+- p.12 `1.4.2` Abbreviations
+- p.13 `1.5` Use of language
+- p.13 `1.6` General data product description
+- p.14 `1.7` Specification metadata
+- p.14 `S-100` Version: 5.0.0
+- p.14 `1.8` IHO Specification maintenance
+- p.14 `1.8.1` Introduction
+- p.14 `1.8.2` New Edition
+- p.14 `1.8.3` Revisions
+- p.15 `1.8.4` Clarifications
+- p.15 `1.8.5` Version numbers
+- p.15 `1.9` Implementation phases (informative)
+- p.15 `1.10` How to read and implement this specification
+- p.15 `2` Annex Scope
+- p.16 `2.1` Conformance levels
+- p.16 `3` Interoperability Catalogue Identification
+- p.17 `4` Data Content and Structure
+- p.17 `4.1` Application Schema
+- p.18 `4.1.1` List of covered data products
+- p.18 `4.2` Interoperability Catalogue
+- p.18 `4.2.1` Introduction
+- p.18 `4.2.2` Use of S-100 types
+- p.18 `4.2.2.1` Geographic feature types
+- p.18 `4.2.2.2` Meta feature types
+- p.18 `4.2.2.3` Feature and Information associations
+- p.18 `4.2.2.4` Information types
+- p.19 `4.2.2.5` Attributes
+- p.19 `4.3` Filters
+- p.20 `4.4` Interoperability Levels
+- p.20 `4.4.1` Level 0 – Overlays – no explicit interoperability
+- p.20 `4.4.2` Level 1 – Interleaving
+- p.20 `4.4.3` Level 2 – Type-based selectivity and feature class replacement
+- p.21 `4.4.4` Level 3 – Feature hybridization
+- p.21 `4.4.5` Level 4 – Spatial operations
+- p.21 `4.4.6` Progression of interoperability levels
+- p.22 `Figure 4.1.` Progressive use of Interoperability Catalogue model
+- p.22 `5` Coordinate Reference Systems (CRS)
+- p.22 `6` Data Quality
+- p.22 `6.1` Quality of displayed data
+- p.22 `6.2` Quality of Interoperability Catalogues
+- p.23 `Table 6-1` Quality elements for S-98 Interoperability Catalogues
+- p.25 `6.2.1` Test methods
+- p.25 `6.2.1.1` Accuracy computations
+- p.25 `6.2.2` Data quality testing and reporting
+- p.25 `7` Performance Standards for ECDIS
+- p.25 `8` How to Make Product Specifications Interoperable
+- p.26 `8.1` Duplicated features
+- p.26 `8.1.1` Duplicated features same model
+- p.26 `8.1.2` Duplicated features, different models
+- p.26 `8.1.3` Duplicate feature domains
+- p.27 `8.2` Geometry
+- p.27 `8.2.1` Combined geometry
+- p.27 `8.2.2` Spatial discrepancy, unrelated to scaled or cartographic smoothing
+- p.28 `8.2.3` Spatial discrepancies, related to scale or cartographic smoothing
+- p.28 `8.3` Display of text
+- p.28 `8.4` Skin-of-the-earth feature operations
+- p.28 `8.4.1` Skin-of-the-earth feature replacement
+- p.28 `8.4.2` Skin-of-the-earth feature adjusting
+- p.29 `8.5` Blended feature concepts
+- p.29 `8.6` Hierarchy of data
+- p.29 `8.7` New datasets
+- p.29 `8.7.1` New datasets - coverages
+- p.29 `8.7.2` New datasets - maximum and minimum display scales
+- p.29 `8.7.3` New datasets - feature geometry
+- p.29 `8.7.4` New datasets - types and attributes
+- p.30 `8.8` Dataset scales, loading and unloading
+- p.30 `8.9` Metadata
+- p.30 `8.9.1` Meta-features
+- p.30 `8.9.2` Quality considerations
+- p.30 `9` Maintenance
+- p.30 `9.1` Maintenance and update frequency
+- p.30 `9.2` Typical sources of change
+- p.31 `9.3` Production process
+- p.31 `9.4` Management of Feature Catalogue and Portrayal Catalogue updates
+- p.31 `Figure 9.1` Examples of how Feature Catalogue change may impact Interoperability Catalogue lifecycle
+- p.32 `9.5` Product Specification updates other than FC/PC
+- p.32 `9.6` Unpredictable Product Specification updates
+- p.32 `9.7` New data products
+- p.33 `9.8` Backward compatibility
+- p.33 `Figure 9.2` Example life cycle of Interoperability Catalogue
+- p.33 `10` Portrayal
+- p.33 `10.1` Display of significant features
+- p.34 `10.2` Display of significant features - switching to original
+- p.34 `10.3` Portrayal distinguishability - colour set-asides
+- p.34 `10.4` Day/night/dusk modes
+- p.34 `10.5` Impacts on viewing groups
+- p.34 `10.6` Impacts on Portrayal Catalogues
+- p.34 `10.7` Meta-features
+- p.35 `10.7.1` Data quality for individual products
+- p.35 `10.7.2` Portrayal of data quality for combinations
+- p.35 `10.8` Display of text
+- p.35 `10.9` Skin-of-the-earth operations and portrayal
+- p.35 `10.10` Blended portrayals
+- p.35 `10.11` Hierarchy of data
+- p.36 `10.11.1` Interacting gridded information
+- p.36 `10.12` Pick Reports
+- p.36 `10.12.1` Combined Pick Reports
+- p.36 `10.12.2` Prioritized Pick Reports
+- p.37 `10.12.3` Full information availability
+- p.37 `10.13` User control over loaded set
+- p.37 `10.14` User control over Interoperation Level
+- p.37 `11` Data Product Format (Encoding)
+- p.38 `12` Data Product Delivery
+- p.38 `12.1` Introduction
+- p.38 `Figure 12.1` Exchange Set structure for base catalogue set
+- p.38 `Figure 12.2` Exchange Set structure for update catalogue set
+- p.39 `12.1.1` Interoperability Catalogue in different formats
+- p.39 `12.1.2` Extending the Interoperability Catalogue
+- p.39 `12.1.3` Customization - OEM/integrator
+- p.39 `12.2` Interoperability Catalogue product
+- p.39 `12.2.1` Interoperability Catalogue size
+- p.39 `12.2.2` Interoperability Catalogue Exchange Set compression
+- p.39 `12.2.3` Interoperability Catalogue file naming
+- p.39 `12.3` Support files
+- p.40 `12.3.1` Support file naming
+- p.40 `12.3.2` Support file management
+- p.40 `12.4` Exchange Catalogue
+- p.40 `12.5` Encryption and authentication
+- p.40 `12.5.1` Encryption method
+- p.40 `12.5.2` Digital signature
+- p.40 `12.5.3` Authentication and integrity checks
+- p.40 `S-100` Part 15.
+- p.41 `12.6` Updating the Interoperability Catalogue
+- p.41 `12.6.1` Updating the Interoperability Catalogue
+- p.41 `12.6.2` Cancelling a version of the Interoperability Catalogue
+- p.41 `12.6.3` Updating the Interoperability Catalogue support files
+- p.41 `12.6.3.1` New Edition of the support files
+- p.41 `12.6.3.2` Revisions to the support files
+- p.42 `12.6.3.3` Clarification to the support files
+- p.42 `12.6.3.4` Version Numbers
+- p.42 `13` Metadata
+- p.42 `13.1` Introduction
+- p.42 `13.2` Language
+- p.42 `13.3` Interoperability Catalogue Metadata elements
+- p.43 `Figure 13.1` S-98 Metadata classes, attributes, and relationships
+- p.45 `13.3.1` S100_ExchangeCatalogue
+- p.46 `13.3.2` S100_ExchangeCatalogueIdentifier
+- p.46 `13.3.3` S100_CataloguePointofContact
+- p.47 `13.3.4` S100_Purpose
+- p.47 `13.3.5` S100_ProductSpecification
+- p.48 `13.3.6` S100_ProtectionScheme
+- p.48 `13.3.7` S100_SupportFileDiscoveryMetadata
+- p.49 `13.3.8` S100_SupportFileFormat
+- p.50 `13.3.9` S100_SupportFileRevisionStatus
+- p.50 `13.3.10` S100_SupportFileSpecification
+- p.50 `13.3.11` S100_ResourcePurpose
+- p.51 `13.3.12` S100_CatalogueDiscoveryMetadata
+- p.52 `13.3.13` S100_CatalogueScope
+- p.52 `13.3.14` PT_Locale
+- p.53 `13.3.15` Types for digital signatures
+- p.55 `14` Processing Model
+- p.55 `14.1` Overview of processing
+- p.56 `Figure 14.1` Overview of interoperability processing
+- p.56 `15` User Interaction Constraints and Expectations
+- p.56 `15.1` Interoperation requirements for Product Specifications
+- p.57 `Figure 15.1` Generic life cycle (from MSC.1/Circ.1512)
+- p.57 `Figure 15.1` shows a typical generic life cycle with the stages recommended as a minimum for the
+- p.57 `15.2` Support different levels of interoperation
+- p.57 `15.3` User control over loaded set
+- p.58 `15.4` User control over interoperation level
+- p.58 `15.5` Priority overrides for user-specified settings
+- p.58 `16` Data Encoding Guide
+- p.59 `17` Normative Implementation Guidance
+- p.59 `17.1` Reduce demand on user attention - display adjustment
+- p.59 `17.2` Reduce demands on user attention - avoid text overload
+- p.59 `17.3` Support for novice users
+- p.59 `17.4` Reduce demands on user attention - planning and monitoring modes
+- p.59 `17.5` Interoperability and data coverage
+- p.60 `17.6` Other significant information
+- p.60 `17.7` Alarm and indication functionality
+- p.61 `17.8` Interoperability in the presence of legacy data formats
+- p.61 `17.9` Interoperability with partial data coverage
+- p.61 `17.10` Phased implementation
+- p.61 `18` Interoperability Catalogue Schema documentation
+- p.61 `19` Feature Catalogue
+- p.61 `20` Portrayal Catalogue
+- p.63 `A-1` References
+- p.63 `A-2` Terms, Definitions and Abbreviations
+- p.63 `A-2.1` Use of language
+- p.63 `A-2.2` Terms and definitions
+- p.63 `A-2.3` Abbreviations
+- p.64 `A-3` Operational Contexts
+- p.65 `Figure A-2` Passage planning stages (from [ICS 2016])
+- p.65 `A-3.1` Voyage planning
+- p.66 `A-3.2` Route monitoring
+- p.67 `A-4` Product Collections for Operational Contexts
+- p.71 `A-5` Operational Activities and Products
+- p.71 `A-5.1` Route monitoring activities
+- p.71 `Table A-2` below summarizes the tasks related to route monitoring activity; the information needed by
+- p.71 `Table A-3` Route monitoring activities and products
+- p.71 `A-6` Use Cases
+- p.71 `A-6.1` Bathymetry replaces soundings
+- p.71 `A-6.2` Suppression of parts of underlying ENC data
+- p.72 `A-6.2.1` Sub-case: Suppression of ENC information with coverage data - S-101 and S-111
+- p.72 `A-6.2.2` Sub-case: Suppression of ENC data with vector data - S-101 and S-411 and S-412
+- p.72 `A-6.3` Bridge with air gap and wind information
+- p.72 `6.4` Passage / route planning
+- p.72 `A-7` Route Monitoring
+- p.72 `A-7.1.1` Sub-case: Ocean passage
+- p.73 `A-7.1.2` Sub-case: Coastal route monitoring
+- p.73 `A-7.1.3` Sub-case: Navigation in harbour approaches
+- p.73 `A-7.2` Entering or departing harbour
+- p.73 `A-7.3` Operations within harbours
+- p.73 `A-7.4` Operations in narrow channels
+- p.73 `A-7.5` Operations in congested waters
+- p.73 `A-7.6` Berthing

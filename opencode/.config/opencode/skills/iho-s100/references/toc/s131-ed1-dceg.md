@@ -1,0 +1,450 @@
+# S-131 Ed 1 Annex A DCEG — Edition 1.0.0
+
+PDF pages: 278. Page numbers below are PDF pages; open with `scripts/s100.py page s131-ed1-dceg <n>`.
+
+## Detected clause headings, tables and figures
+
+- p.5 `6.1.5` Inheritance of TextAssociation by all layout and physical infrastructure features ... 53
+- p.6 `12.3` Characterizing the relationship between the vessel set and the feature or regulation
+- p.12 `1` Overview
+- p.12 `1.1` Preface
+- p.12 `1.2` S-131 Annex A - Data Classification and Encoding Guide – Metadata
+- p.12 `Table 1.1` Marine Harbour Infrastructure product specification metadata
+- p.12 `1.3` Terms and definitions
+- p.13 `1.4` Abbreviations
+- p.13 `1.5` Use of language
+- p.13 `1.6` Maintenance
+- p.14 `2` General
+- p.14 `2.1` Introduction
+- p.14 `2.2` Descriptive characteristics
+- p.14 `2.2.1` Feature
+- p.14 `2.2.1.1` Geographic feature class
+- p.14 `2.2.1.2` Meta feature class
+- p.14 `2.2.1.3` Charted background feature
+- p.14 `2.2.2` Information type
+- p.15 `2.3` Spatial characteristics
+- p.15 `2.3.1` Spatial primitives
+- p.15 `Table 2.1` Features and their spatial primitives
+- p.16 `2.3.2` Capture density guideline
+- p.16 `2.4` Attributes
+- p.16 `2.4.1` Simple attribute types
+- p.16 `Table 2.2` Simple attribute types
+- p.17 `2.4.2` Mandatory attributes
+- p.18 `Table 2.3` Multiplicity of attributes
+- p.19 `Figure 2.1` Spatial quality information
+- p.19 `2.4.7` Portrayal feature attributes
+- p.19 `Table 2.4` Attributes which have effects on portrayal
+- p.20 `2.4.8` Textual information
+- p.20 `2.4.8.1` Specialized information types for common kinds of textual information
+- p.20 `2.4.8.2` Textual information attributes
+- p.20 `2.4.8.3` Languages
+- p.21 `2.4.8.4` Minimal use of generalized text attributes
+- p.21 `2.4.8.5` Short textual information
+- p.21 `2.4.8.6` Complex or lengthy textual information
+- p.22 `2.4.9` Attributes referencing external files
+- p.22 `2.4.9.1` Predefined derived types
+- p.22 `Table 2.5` presents the following predefined derived types which are described in S-100 (§ 1-4.6):
+- p.22 `Table 2.5` Predefined derived types
+- p.22 `2.4.9.2` Reference to textual files
+- p.22 `Table 2.6` Locators for external files
+- p.23 `2.4.9.3` Reference to external sources
+- p.23 `2.4.9.4` Reference to graphics
+- p.23 `Table 2.7` Graphics characteristics
+- p.23 `2.4.10` Dates
+- p.24 `2.4.10.1` Complete dates
+- p.24 `2.4.10.2` Truncated dates
+- p.24 `Table 2.8` Date encoding format in XML and GML
+- p.24 `2.4.10.3` Start and end of ranges
+- p.25 `2.4.10.4` Schedules
+- p.25 `1` S-100 and by extension S-131 have not adopted ISO 8601-1/2 (2019).
+- p.26 `2.4.10.5` Times
+- p.27 `2.4.11` Combination of date schedules and times
+- p.27 `2.4.12` Graphic information
+- p.27 `2.4.12.1` Bearing information
+- p.27 `2.5` Associations
+- p.27 `2.5.1` Introduction
+- p.27 `2.5.2` Association names
+- p.27 `2.5.3` Association roles
+- p.28 `2.5.4` Association classes
+- p.28 `2.5.4.1` Permission Type
+- p.28 `Figure 2.2` Association class for hypothetical requirement for non-use of a berth by a vessel
+- p.28 `2.5.4.2` Inclusion Type
+- p.29 `Figure 2.3` Association class for inclusion of vessel types in regulations
+- p.29 `2.5.5` Use of various associations
+- p.29 `2.5.5.1` General
+- p.29 `2.5.5.2` Generic association for uncategorized additional information
+- p.29 `2.5.5.3` Associations to Restrictions, Recommendation, Regulations, and Nautical
+- p.30 `2.5.5.4` Conventional Association
+- p.30 `2.5.5.5` Where to Encode Associations
+- p.30 `2.6` Datasets
+- p.30 `2.6.1` Types of Datasets
+- p.30 `Table 2.9` shows the types of datasets which may be produced and contained within an exchange set:
+- p.30 `Table 2.9` Dataset types
+- p.30 `2.6.2` Overlay data sets
+- p.31 `2.6.3` Data coverage
+- p.31 `2.6.4` Discovery metadata
+- p.31 `2.6.5` Dataset header metadata
+- p.31 `2.6.6` Dataset units
+- p.31 `2.6.7` Dataset Coverage
+- p.32 `2.6.8` Overlaps
+- p.32 `2.6.9` Feature Object Identifiers
+- p.32 `2.7` Geographic names
+- p.32 `2.7.1` Feature names
+- p.33 `2.7.2` Text placement
+- p.33 `2.8` Scale policy
+- p.33 `2.8.1` General policy
+- p.33 `2.8.2` Usage of scale attributes in displays (informative)
+- p.34 `2.8.3` Scale minimum values
+- p.34 `Table 2.10` Scale minimum values (from the S-101 DCEG)
+- p.35 `2.8.4` Scale policy for feature types
+- p.35 `2.9` Masking
+- p.36 `Figure 2.4` "Linear" features
+- p.37 `3` Description of table format for feature and information types
+- p.39 `4` Metadata Features
+- p.39 `4.1` Introduction
+- p.39 `4.2` Mandatory meta features
+- p.39 `4.3` Maximum and minimum display scales
+- p.39 `Table 4.1` Maximum and minimum display scale values (from S-101 DCEG)
+- p.40 `4.4` Data coverage meta feature
+- p.40 `4.4.1` General
+- p.40 `S-101` DCEG “Data Coverage” clause for displaying overscale warnings and setting the viewing scale
+- p.42 `4.5` Quality of Non-Bathymetric Data
+- p.43 `4.5.1` Quality of positions
+- p.44 `4.6` Sounding Datum
+- p.45 `4.6.1` General
+- p.46 `4.7` Vertical Datum of Data
+- p.47 `4.7.1` General
+- p.48 `5` Abstract Geo Features
+- p.48 `5.1` Introduction
+- p.49 `Figure 5.1` Abstract feature types and their relationships
+- p.49 `5.2` Feature Type
+- p.54 `5.2.1` General
+- p.56 `5.3` Organization Contact Area
+- p.56 `5.3.1` General
+- p.57 `5.4` Supervised Area
+- p.57 `5.4.1` General
+- p.58 `5.5` Harbour Physical Infrastructure
+- p.58 `5.5.1` General
+- p.59 `5.6` Layout
+- p.59 `5.6.1` General
+- p.60 `6` Harbour Layout
+- p.60 `6.1` Introduction
+- p.60 `Figure 6.1` depicts the logical hierarchy of layout feature types in S-131, showing what attributes are
+- p.61 `Figure 6.1` Layout features and attributes
+- p.62 `6.1.1` Layout container associations
+- p.62 `Figure 6.2` depicts the containment (spatial) hierarchy, with containment relationships between layout
+- p.62 `Figure 6.2` Containment hierarchy of layout features
+- p.62 `6.1.2` Positioning in berths
+- p.63 `Figure 6.3` Positions within berths and mooring facilities
+- p.63 `6.1.3` Associations for layout features
+- p.63 `Figure 6.4` depicts all associations between layout features.
+- p.63 `Figure 6.4` Feature associations for non-abstract layout features
+- p.64 `6.1.4` Associations between layout and physical infrastructure features
+- p.64 `Figure 6.5` Feature association for infrastructure
+- p.64 `6.1.5` Inheritance of TextAssociation by all layout and physical infrastructure features
+- p.64 `Figure 6.6` Inherited TextAssociation
+- p.64 `6.2` Anchor Berth
+- p.65 `6.2.1` General
+- p.65 `6.2.2` Anchor berths with limitations or restrictions on their use
+- p.67 `6.3` Anchorage Area
+- p.70 `6.3.1` General
+- p.70 `6.3.2` Regulations, depth information, and general textual information
+- p.70 `6.3.3` Anchorages with limitations or restrictions on their use
+- p.72 `6.4` Berth
+- p.73 `6.4.1` General
+- p.74 `6.5` Berth Position
+- p.74 `6.5.1` General
+- p.76 `6.6` Dock Area
+- p.79 `6.6.1` General
+- p.81 `6.7` Dumping Ground
+- p.84 `6.7.1` General
+- p.85 `6.8` Harbour Area (Administrative)
+- p.95 `6.8.1` General
+- p.97 `6.9` Harbour Area Section
+- p.99 `6.9.1` General
+- p.101 `6.10` Harbour Basin
+- p.104 `6.10.1` General
+- p.105 `6.11` Mooring/Warping Facility
+- p.105 `6.11.1` General
+- p.107 `6.12` Outer Limit
+- p.115 `6.12.1` General
+- p.117 `6.13` Pilot Boarding Place
+- p.120 `6.13.1` General
+- p.122 `6.14` Seaplane Landing Area
+- p.125 `6.14.1` General
+- p.126 `6.15` Terminal
+- p.127 `6.15.1` General
+- p.129 `6.16` Turning Basin
+- p.132 `6.16.1` General
+- p.133 `6.17` Waterway Area
+- p.136 `6.17.1` General
+- p.137 `7` Physical Infrastructure
+- p.137 `7.1` Introduction
+- p.137 `Figure 7.1` Physical infrastructure features
+- p.138 `7.2` Dry Dock
+- p.138 `7.2.1` General
+- p.139 `7.3` Floating Dock
+- p.139 `7.3.1` General
+- p.140 `7.4` Gridiron
+- p.140 `7.4.1` General
+- p.141 `7.5` Harbour Facility
+- p.141 `7.5.1` General
+- p.142 `8` Cartographic Features
+- p.142 `8.1` Text Placement
+- p.142 `8.1.1` General
+- p.144 `9` Abstract Information types
+- p.144 `9.1` Introduction
+- p.144 `Figure 9.1` Abstract information types
+- p.144 `9.2` Information Type
+- p.147 `9.2.1` General
+- p.149 `9.3` AbstractRxN
+- p.152 `9.3.1` Abstract supertype for information from textual sources
+- p.153 `10` Textual Regulations and Notes
+- p.153 `10.1` Introduction
+- p.154 `Figure 10.1` Types for textual information concerning regulations, etc.
+- p.155 `10.1.1` Regulations, etc., for specific locations
+- p.155 `Figure 10.2` Regulations, etc., for geo features
+- p.156 `10.1.2` Regulations applying only to vessels with specific characteristics or cargoes
+- p.156 `10.2` Regulations
+- p.156 `10.2.1` General
+- p.157 `10.3` Restrictions
+- p.157 `10.3.1` General
+- p.158 `10.4` Recommendations
+- p.158 `10.4.1` General
+- p.159 `10.5` Nautical Information
+- p.160 `11` Services, Organisations, and Work Schedules
+- p.160 `11.1` Introduction
+- p.160 `Figure 11.1` Port services
+- p.160 `11.1.1` Work schedules and holidays
+- p.160 `11.1.2` Contact information
+- p.161 `Figure 11.2` Associations to contact information
+- p.161 `11.2` Authority
+- p.163 `11.2.1` General
+- p.165 `11.3` Contact details
+- p.167 `11.3.1` General
+- p.169 `11.4` Service Hours
+- p.170 `11.4.1` General
+- p.171 `11.5` Non-Standard Working Day
+- p.171 `11.5.1` General
+- p.172 `11.6` Available Port Services
+- p.176 `11.6.1` General
+- p.177 `12` Limitation by Vessels Characteristics and Cargo
+- p.177 `12.1` Introduction
+- p.177 `12.2` Defining subsets of vessels by dimensions, cargo, and other characteristics
+- p.177 `Figure 12.1` Characteristics and dimensions defining sets of vessels
+- p.178 `Figure 12.2` Attributes for specifying vessel dimensions
+- p.178 `Table 12.1` Examples of conditions based on vessel dimensions
+- p.178 `12.3` Characterizing the relationship between the vessel set and the feature or
+- p.179 `Figure 12.3` Permission relationship
+- p.179 `Figure 12.4` Inclusion/exclusion relationship
+- p.180 `12.4` Production hints and recommended practices (informative)
+- p.180 `12.4.1` Capturing the application of a regulation, recommendation, etc. to specified kinds of
+- p.180 `12.4.2` Capturing the permissibility or otherwise of a geographic feature for specified kinds of
+- p.180 `12.4.3` Constructing the Applicability information type
+- p.181 `Table 12.2` Example of conversion of complex condition to multiple simple conditions
+- p.181 `12.5` Applicability
+- p.184 `12.5.1` General
+- p.186 `13` Harbour Entrance
+- p.186 `13.1` Entrance
+- p.194 `13.1.1` General
+- p.195 `14` Spatial Quality
+- p.195 `14.1` Spatial Quality
+- p.196 `14.1.1` General
+- p.197 `15` Association Names
+- p.197 `15.1` Additional Information
+- p.197 `15.2` Authority Contact
+- p.197 `15.3` Authority Hours
+- p.198 `15.4` Associated RxN
+- p.198 `15.5` Exceptional Workday
+- p.198 `15.6` Inclusion Type
+- p.199 `15.7` Limit Entrance
+- p.199 `15.8` Permission Type
+- p.199 `15.9` Related organisation
+- p.200 `15.10` Service Contact
+- p.200 `15.11` Service Control
+- p.200 `15.12` Spatial Association
+- p.201 `15.13` Location Hours
+- p.201 `15.14` Service Availability
+- p.202 `15.15` Subsection
+- p.202 `15.16` Infrastructure
+- p.202 `15.17` Primary/Auxiliary Facility
+- p.202 `15.18` Demarcation
+- p.203 `15.19` Jurisdictional Limit
+- p.203 `15.20` Layout Division
+- p.203 `15.21` Text Association
+- p.205 `16` Association Roles
+- p.205 `16.1` Component of
+- p.205 `16.2` Constitute
+- p.205 `16.3` The applicable RxN
+- p.205 `16.4` Applies in location
+- p.205 `16.5` Authority (reference)
+- p.205 `16.6` Authority service hours
+- p.205 `16.7` Contact details (reference)
+- p.205 `16.8` Auxiliary Facility
+- p.206 `16.9` Control authority
+- p.206 `16.10` Controlled service
+- p.206 `16.11` Defined for
+- p.206 `16.12` Defines
+- p.206 `16.13` Demarcated Feature
+- p.206 `16.14` Demarcation Indicator
+- p.206 `16.15` Entrance Reference
+- p.206 `16.16` Entrance To
+- p.207 `16.17` Has Infrastructure
+- p.207 `16.18` Identifies
+- p.207 `16.19` Infrastructure Location
+- p.207 `16.20` Information provided for
+- p.207 `16.21` Is applicable to
+- p.207 `16.22` Limit Extent
+- p.207 `16.23` Limit Reference
+- p.208 `16.24` Location service hours
+- p.208 `16.25` Layout Unit
+- p.208 `16.26` Location Served
+- p.208 `16.27` Facility Operating Hours
+- p.208 `16.28` Partial working day
+- p.208 `16.29` Permission
+- p.208 `16.30` Positions
+- p.208 `16.31` Primary Facility
+- p.209 `16.32` Provides information
+- p.209 `16.33` Service Description Reference
+- p.209 `16.34` The information
+- p.209 `16.35` The organisation
+- p.209 `16.36` The RxN
+- p.209 `16.37` Service Hours (reference)
+- p.209 `16.38` The service hours for a non-standard workday
+- p.209 `16.39` Service place
+- p.210 `16.40` Sub-Unit
+- p.210 `16.41` Vessel location
+- p.211 `17` Attribute and Enumerate Descriptions
+- p.211 `17.1` Administrative Division
+- p.211 `17.2` Applicable Load Line Zone
+- p.211 `17.3` Application Profile
+- p.211 `17.4` Approach Description
+- p.212 `17.5` Associated Feature Name
+- p.212 `17.6` Available Berthing Length
+- p.212 `17.7` Berthing Assistance
+- p.212 `17.8` Bollard Description
+- p.213 `17.9` Bollard Number
+- p.213 `17.10` Bollard Pull
+- p.213 `17.11` Call Name
+- p.213 `17.12` Call Sign
+- p.213 `17.13` Cardinal Direction
+- p.215 `17.14` Cargo Service
+- p.215 `17.15` Category of Authority
+- p.216 `17.16` Category of Berth Location
+- p.217 `17.17` Category of Cargo
+- p.218 `17.18` Category of Communication Preference
+- p.218 `17.19` Category Of Dangerous Or Hazardous Cargo
+- p.219 `17.20` Category of Depths Description
+- p.220 `17.21` Category of Harbour Facility
+- p.221 `17.22` Category of Mooring/Warping Facility
+- p.222 `17.23` Category of Port Section
+- p.222 `17.24` Category of Relationship
+- p.223 `17.25` Category of Schedule
+- p.223 `17.26` Category of Temporal Variation
+- p.224 `17.27` Category of text
+- p.224 `17.28` Category of Vessel Registry
+- p.225 `17.29` Cathodic Protection System
+- p.225 `17.30` City Name
+- p.225 `17.31` Communication Channel
+- p.225 `17.32` Condition
+- p.226 `17.33` Comparison Operator
+- p.226 `17.34` Contact Instructions
+- p.226 `17.35` Country Name
+- p.227 `17.36` Date End
+- p.227 `17.37` Date Fixed
+- p.227 `17.38` Date Start
+- p.227 `17.39` Date Variable
+- p.228 `17.40` Day of Week
+- p.228 `17.41` Day of Week is Range
+- p.228 `17.42` Delivery Point
+- p.229 `17.43` Development
+- p.229 `17.44` Display Name
+- p.229 `17.45` Distance
+- p.229 `17.46` Dynamic Resource
+- p.230 `17.47` Elevation
+- p.230 `17.48` Entrance Description
+- p.230 `17.49` File Locator
+- p.231 `17.50` File Reference
+- p.231 `17.51` Firefighting Service
+- p.231 `17.52` Frequency Shore Station Receives
+- p.231 `17.53` Frequency Shore Station Transmits
+- p.232 `17.54` GLN Extension
+- p.232 `17.55` Global Location Number
+- p.232 `17.56` Headline
+- p.232 `17.57` Heaving Lines From Shore
+- p.233 `17.58` Horizontal Distance Uncertainty
+- p.233 `17.59` ID Code
+- p.233 `17.60` In Ballast
+- p.233 `17.61` ISPS Level
+- p.234 `17.62` Language
+- p.234 `17.63` Local Knowledge Description
+- p.234 `17.64` Location by Text
+- p.235 `17.65` Location Maritime Resource Name
+- p.235 `17.66` Logical Connectives
+- p.235 `17.67` Manifold Number
+- p.236 `17.68` Maximum Display Scale
+- p.236 `17.69` Medical Service
+- p.237 `17.70` Membership
+- p.237 `17.71` Method of Securing
+- p.238 `17.72` Metre Mark Number
+- p.238 `17.73` Minimum Berth Depth
+- p.238 `17.74` Minimum Display Scale
+- p.239 `17.75` MMSI Code
+- p.239 `17.76` Name
+- p.239 `17.77` Name of Resource
+- p.239 `17.78` Nationality
+- p.240 `17.79` Online Function
+- p.240 `17.80` Online Resource Description
+- p.241 `17.81` Online Resource Linkage URL
+- p.241 `17.82` Orientation Uncertainty
+- p.241 `17.83` Orientation Value
+- p.241 `17.84` Pictorial Representation
+- p.241 `17.85` Picture Caption
+- p.242 `17.86` Picture Information
+- p.242 `17.87` Port Facility Number
+- p.242 `17.88` Postal Code
+- p.242 `17.89` Product
+- p.244 `17.90` Protocol
+- p.244 `17.91` Protocol Request
+- p.244 `17.92` Quality of Horizontal Measurement
+- p.245 `17.93` Ramp Number
+- p.245 `17.94` Repair Service
+- p.246 `17.95` Reported Date
+- p.246 `17.96` SMDG Terminal Code
+- p.247 `17.97` Scale Minimum
+- p.247 `17.98` Sector Bearing
+- p.247 `17.99` Ship Sanitation Control
+- p.267 `18` Complex Attributes
+- p.267 `18.1` Bearing Information
+- p.267 `18.2` Cargo Services Description
+- p.268 `18.3` Construction Information
+- p.268 `18.4` Contact Address
+- p.269 `18.5` Depths Description
+- p.269 `18.6` Facilities Layout Description
+- p.269 `18.7` Feature Name
+- p.269 `18.8` Fixed Date Range
+- p.270 `18.9` Frequency Pair
+- p.270 `18.10` General Harbour Information
+- p.271 `18.11` General Port Description
+- p.271 `18.12` Graphic
+- p.271 `18.13` Horizontal Position Uncertainty
+- p.272 `18.14` Information
+- p.272 `18.15` Landmark Description
+- p.273 `18.16` Limits Description
+- p.273 `18.17` Major Light Description
+- p.273 `18.18` Marked By
+- p.273 `18.19` Online Resource
+- p.274 `18.20` Offshore Mark Description
+- p.274 `18.21` Orientation
+- p.274 `18.22` Schedule by Day of Week
+- p.275 `18.23` Periodic Date Range
+- p.275 `18.24` RxN Code
+- p.275 `18.25` Spatial Accuracy
+- p.276 `18.26` Survey Date Range
+- p.276 `18.27` Telecommunications
+- p.276 `18.28` Text Content
+- p.277 `18.29` Time Intervals by Day of Week
+- p.277 `18.30` Useful Mark Description
+- p.278 `18.31` Vessels Measurements
+- p.278 `18.32` Weather Resource
+- p.278 `18.33` Vertical Uncertainty

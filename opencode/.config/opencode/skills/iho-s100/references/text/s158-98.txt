@@ -1,0 +1,566 @@
+# S-158:98 Interoperability Validation Checks – Introduction — Edition 1.0.0
+# source: /home/johanneslj/Documents/S-100/S-98/S-158-98_Validation_Checks_Ed_1.0.0/S-158_98_Data_Product_Interoperability_Validation_Checks_Introduction_Ed_1.0.0.pdf
+# Page markers are PDF page numbers (1-based), not printed page numbers.
+
+<<<PAGE 1>>>
+S-158:98
+
+
+
+
+  Data Product
+  Interoperability Validation
+  Checks
+
+  Edition 1.0.0 – February 2025
+  Aligned to S-98 Edition 2.0.0
+
+
+
+
+                                                          Published by the
+                                  International Hydrographic Organization
+                                                       4b quai Antoine 1er
+                                                   Principauté de Monaco
+                                                    Tel: (377) 93.10.81.00
+                                                   Fax: (377) 93.10.81.40
+                                                               info@iho.int
+                                                                www.iho.int
+
+<<<PAGE 2>>>
+ii                                Data Product Interoperability Validation Checks
+
+
+
+
+                      © Copyright International Hydrographic Organization 2025
+
+           This work is copyright. Apart from any use permitted in accordance with the Berne
+           Convention for the Protection of Literary and Artistic Works (1886), and except in the
+           circumstances described below, no part may be translated, reproduced by any
+           process, adapted, communicated or commercially exploited without prior written
+           permission from the International Hydrographic Organization (IHO). Copyright in some
+           of the material in this publication may be owned by another party and permission for
+           the translation and/or reproduction of that material must be obtained from the owner.
+
+           This document or partial material from this document may be translated, reproduced
+           or distributed for general information, on no more than a cost recovery basis. Copies
+           may not be sold or distributed for profit or gain without prior written agreement of the
+           IHO Secretariat and any other copyright holders.
+
+           In the event that this document or partial material from this document is reproduced,
+           translated or distributed under the terms described above, the following statements are
+           to be included:
+
+              “Material from IHO publication [reference to extract: Title, Edition] is reproduced
+              with the permission of the IHO Secretariat (Permission No ……./…) acting for the
+              International Hydrographic Organization (IHO), which does not accept responsibility
+              for the correctness of the material as reproduced: in case of doubt, the IHO’s
+              authentic text shall prevail. The incorporation of material sourced from IHO shall
+              not be construed as constituting an endorsement by IHO of this product.”
+
+              “This [document/publication] is a translation of IHO [document/publication] [name].
+              The IHO has not checked this translation and therefore takes no responsibility for its
+              accuracy. In case of doubt the source version of [name] in [language] should be
+              consulted.”
+           The IHO Logo or other identifiers shall not be used in any derived product
+           without prior written permission from the IHO Secretariat.
+
+
+
+
+S-158:98                                         February 2025                                         Edition 1.0.0
+
+<<<PAGE 3>>>
+                                 Data Product Interoperability Validation Checks                         iii
+
+
+
+
+                                         Document History
+Changes to this Specification are coordinated by the IHO S-100 Working Group. New editions will be
+made available via the IHO web site. Maintenance of the Specification shall conform to IHO Resolution
+2/2007 (as amended).
+
+ Version    Date            Author/Editor       Purpose
+ Number
+ 0.1.0      2024-10-23      RM                  Initial draft for S100 Validation Checks GitHub
+                                                repository. Based on Edition 1.0.0 of S-98 Annex C and
+                                                S-100 WG7 8.1.
+ 0.2.0      2024-12-01      RM                  Updated maintenance section; updated tolerances;
+                                                added some generic checks to S-100, updated
+                                                conformance statement. Draft is WIP pending Dec. 9
+                                                VTC.
+ 0.2.1      2024-12-11      RM                  DQ Measure column removed; refined checks for
+                                                overlaps; added check for holes in S-102; additional
+                                                terms in cover document; classification now uses
+                                                C/E/W indicators.
+ 1.0.0      2025-02-24      RM                  Applied S-100WG feedback; updated terms and
+                                                definitions; updated references; updated check
+                                                numbering; added S-98 Ed. 1.8.0 clause references in
+                                                list of checks; added clause requiring check messages
+                                                to identify location of error
+ 1.0.0      Feb 2025        HSSC17              First implementation and testing Edition of S-158:98.
+
+
+
+
+                    Summary of Substantive Changes in Edition x.x
+Bold references in the Clauses Affected column indicate the principal sections/clauses that are affected
+by the described change.
+
+
+                              Change Summary                                        Clauses Affected
+
+ (To be populated for editions following Edition 1.0.0)
+
+
+
+
+S-158:98                                        February 2025                                  Edition 1.0.0
+
+<<<PAGE 4>>>
+iv                                              Data Product Interoperability Validation Checks
+
+
+
+
+Contents                                                                                                                                          Page
+1      Introduction ......................................................................................................................... 1
+     1.1 Scope .............................................................................................................................. 1
+     1.2 Conformance ................................................................................................................... 1
+     1.3 References ...................................................................................................................... 1
+        1.3.1   Normative references ............................................................................................ 1
+        1.3.2   Informative references ........................................................................................... 2
+     1.4 Terms, definitions and abbreviations............................................................................... 2
+        1.4.1   Terms and definitions ............................................................................................ 2
+        1.4.2   Abbreviations ......................................................................................................... 2
+        1.4.3   Symbols ................................................................................................................. 2
+     1.5 Use of language .............................................................................................................. 2
+     1.6 General description ......................................................................................................... 3
+     1.7 Specification metadata and maintenance ....................................................................... 3
+        1.7.1   Specification metadata .......................................................................................... 3
+        1.7.2   Specification maintenance ..................................................................................... 3
+2       Check Structure .................................................................................................................. 4
+3       Check Syntax....................................................................................................................... 5
+4       Organisation ........................................................................................................................ 5
+5       Other Applicable Checks ................................................................................................... 5
+6      Check Application Sequence ............................................................................................. 5
+     6.1 Check messages ............................................................................................................. 6
+7       Check Classification ........................................................................................................... 6
+8       Geometry and Spatial Operators ....................................................................................... 6
+9       Other Components of this Specification .......................................................................... 7
+
+
+
+
+S-158:98                                                           February 2025                                                        Edition 1.0.0
+
+<<<PAGE 5>>>
+                                 Data Product Interoperability Validation Checks                         1
+
+
+
+1         Introduction
+This document specifies a set of checks that producers of validation tools must implement in their
+validation software in order to ensure conformance of S-100 datasets and exchange sets with
+requirements specified in S-98. The initial list of checks for S-98 was compiled by the IHO S-100
+Working Group (S-100 WG) in conjunction with the Tides, Water Level, and Currents Working Group
+(TWCWG) and NIPWG (Nautical Information Provision Working Group).
+The checks listed in this document apply to different products or combinations of products as specified
+in each individual check. They supplement but do not replace the generic S-100 validation checks
+applicable to all S-100 products which are defined in a separate IHO publication (S-158:100 – Universal
+Hydrographic Model Validation Checks) and the product-specific validation checks for each product,
+described in other specifications pertaining to particular data products.
+
+
+1.1        Scope
+This document, designated as “S-158:98” by the IHO, specifies validation checks for data products
+conforming to any of the Product Specifications listed below (“x” indicates any number):
+      •    S-101 Edition 2.0.x
+      •    S-102 Edition 3.0.x
+      •    S-104 Edition 2.0.x
+      •    S-111 Edition 2.0.x
+      •    S-124 Edition 2.0.x
+      •    S-128 Edition 2.0.x
+      •    S-129 Edition 2.0.x
+This document specifies product-specific validation checks for both datasets and exchange sets
+containing datasets conforming to the listed Product Specifications.
+The checks specified in this document supplement the checks described in Edition 1.0.0 of S-158:100
+(Universal Hydrographic Data Model Validation Checks) and product-specific validation checks for each
+product (collectively designated “S-158:1xx Validation Checks”). While the S-58:100 and S-158:1xx
+Validation Checks verify the integrity of individual datasets and exchange sets, the checks in S-158:98,
+must be applied to verify the cross-compatibility of datasets and exchange sets intended for use on
+ECDIS.
+
+
+1.2        Conformance
+
+This specification conforms to Edition 1.0.0 of IHO specification S-158 (Validation Checks – Introduction
+and Structure).
+The validation checks described herein conform to Edition 2.0.x of IHO Product Specification S-98 (Data
+Product Interoperability in S-100 Navigation Systems).
+Edition 1.0.0 of S-158:98 is an Implementation version in accordance with IHO TR 2/2007 and there
+may be revisions issued by the Working Group prior to the Operational Edition 2.0.0 being published.
+
+
+1.3        References
+1.3.1       Normative references
+S-98                   S-100 ECDIS and Interoperability Specification, IHO Publication S-98, Edition
+                       2.0.0, ??? 2025. In Preparation.
+S-100                  IHO Universal Hydrographic Data Model, Edition 5.2.0, June 2024
+
+
+
+
+S-158:98                                         February 2025                                Edition 1.0.0
+
+<<<PAGE 6>>>
+2                                 Data Product Interoperability Validation Checks
+
+
+
+S-158                 Validation Checks – Introduction and Structure, Edition 1.0.0, ??? 2025. In
+                      preparation.
+S-158:100             Universal Hydrographic Data Model Validation Checks, Edition 1.0.0, ??? 2025. In
+                      preparation.
+1.3.2       Informative references
+ISO 19157:2013        Geographic information – Data Quality. As amended by Amendment 1, 2018
+
+
+1.4        Terms, definitions and abbreviations
+1.4.1       Terms and definitions
+
+The terms and definitions listed in S-158 apply to this document. In addition, the following terms are
+used in this document or the accompanying list of checks:
+
+compatible CRSs
+for the purposes of this specification, compatible coordinate reference systems are those which are
+based on the same horizontal datum, or at least members of the same ensemble (i.e., different
+realisations).
+
+fill value
+a special value denoting the absence of a data value in an HDF5 dataset. Product specifications using
+the HDF5 format designate the fill value for each attribute for which a fill value is allowed.
+
+successor (dataset)
+a subsequent forecast, prediction, etc., for the same area as a predecessor dataset, but covering a time
+period that starts strictly after the period covered by the predecessor dataset. A successor dataset is
+not necessarily designated as an update, new edition, or reissue.
+
+1.4.2       Abbreviations
+This Specification uses the abbreviated terms defined in S-158.
+In addition, this Specification uses the following abbreviated terms:
+CNP          Catalogue of Nautical Products
+S-158:1xx Product-specific checks for the product identified by “1xx”, for example, S-158:111 (Surface
+          Currents Validation Checks).
+UPS          Universal Polar Stereographic
+UTM          Universal Transverse Mercator
+USSC         User Selectable Safety Contour. Defined in S-98 as “User selectable safety contour means
+             creation of the safety contour from the bathymetric grid data based on the value set by the
+             user”.
+WLA          Water Level Adjustment. Adjustment of depth information by water level height according to
+             the methods described in S-98.
+1.4.3       Symbols
+
+The symbols used in logical and spatial expressions are defined in S-158 clause 1.3.3 (Symbols).
+
+
+
+1.5        Use of language
+Within this document:
+•     “Must” indicates a mandatory requirement.
+•     “Should” indicates an optional requirement, that is the recommended process to be followed, but
+      is not mandatory.
+
+
+S-158:98                                          February 2025                              Edition 1.0.0
+
+<<<PAGE 7>>>
+                                     Data Product Interoperability Validation Checks                       3
+
+
+
+•     “May” means “allowed to” or “could possibly”, and is not mandatory.
+
+
+1.6        General description
+S-158:98 is a specification describing validation checks for S-100 data products intended for use
+together on ECDIS. There are no data products based directly on this edition of S-158:98 and therefore
+no general information applicable to data products conforming to it.
+
+The validation checks are intended for systems which produce, compile, distribute, and use certain
+specified S-100 products on ECDIS. The checks can be administered at any time during the dataset
+and exchange set production, compilation, and distribution phases. They can also be used on the end-
+user system to assess compatibility of available datasets and exchange sets.
+
+
+
+1.7        Specification metadata and maintenance
+1.7.1       Specification metadata
+This information uniquely identifies this Specification and provides information about its creation and
+maintenance.
+Title:                Interoperability Validation Checks
+Version:              1.0.0
+Date:                 February 2025
+Language:             English
+Classification: Unclassified
+Contact:              International Hydrographic Organization.
+                      4 quai Antoine 1er,
+                      B.P.445 MC 98011 MONACO CEDEX
+                      Telephone: +377 93 10 81 00
+                      B.P. 445 Fax: + 377 93 10 81 40
+                      Email: info@iho.int
+Role:                 Owner
+URL:                  https://registry.iho.int
+Identifier:           S-158:98
+Maintenance:          Changes to this Specification are coordinated by the IHO S-100 Working Group and
+                      made available via the IHO Publications website. Maintenance of the Product
+                      Specification must conform to IHO Technical Resolution 2/2007 (revised 2010). For
+                      reporting issues which need correction, use the contact information.
+1.7.2       Specification maintenance
+1.7.2.1       Introduction
+Changes to S-158:98 will be released by the IHO as a New Edition, revision, or clarification.
+The list of checks, which accompanies this document is considered part of this Specification and
+changes to it are considered changes to this Specification.
+S-158:98 is not accompanied by separate artefacts such as an XML Schema, Feature or Portrayal
+Catalogue and therefore this clause does not address the question of changes to such derived artefacts.
+1.7.2.2       New Edition
+New Editions of S-158:98 include at least one of the following changes:
+      •    introduce a new validation check (of any classification);
+
+
+
+S-158:98                                             February 2025                              Edition 1.0.0
+
+<<<PAGE 8>>>
+4                                     Data Product Interoperability Validation Checks
+
+
+
+      •      remove an existing validation check (of any classification);
+      •      change the classification of a validation check, whether upgrade (such as Error to Critical) or
+             downgrade (such as Error to Warning);
+      •      extend a validation check to include new features, conditions, etc., in a way that requires
+             validation software manufacturers to change their software.
+New Editions are likely to require validation software manufacturers to change their software or
+invalidate datasets which passed validation according to the previous Edition of S-158:98.
+All cumulative revisions and clarifications must be included with the release of approved New Editions.
+1.7.2.3         Revision
+Revisions are defined as substantive semantic changes to S-158:98. Typically, revisions will change S-
+158:98 to correct factual errors or introduce necessary changes that have become evident as a result
+of practical experience or changing circumstances. Revisions include corrections of misinterpretations
+of S-98, corrections of misinterpretations of any of the Product Specifications within its scope (cf. clause
+1.1), or extensions to checks that do not require changes to validation software.
+A revision must not be classified as a clarification. All cumulative clarifications must be included with
+the release of approved revisions.
+1.7.2.4         Clarification
+Clarifications are changes to S-158:98 arising from non-substantive reasons.
+Typically clarifications for non-substantive reasons remove ambiguity; correct grammatical and spelling
+errors; amend or update cross references; revise check messages or clarify check descriptions without
+requiring manufacturers to change their software.
+1.7.2.5         Version numbers
+The associated version control numbering to identify changes (boldface n) to S-158:98 must be as
+follows:
+
+New Editions denoted as n.0.0
+
+Revisions denoted as n.n.0
+
+Clarifications denoted as n.n.n
+
+
+
+2         Check Structure
+
+Check structure in S-158:98 includes the fields specified in S-158 plus the additional fields specified in
+Table 2-1.
+The optional “Data Quality Measure” column is not used in S-158:98.
+                                    Table 2-1 - Extensions to check structure
+
+    Column Name                 Description
+
+    Products                    The data products to which the validation check applies.
+
+    Inputs                      The product component (for example, dataset, exchange set, exchange
+                                catalogue file, etc.) to which the check is applied.
+
+    Linked Table                A reference to a table where additional information referenced in the check
+                                description is provided.
+
+
+
+
+S-158:98                                              February 2025                               Edition 1.0.0
+
+<<<PAGE 9>>>
+                                 Data Product Interoperability Validation Checks                             5
+
+
+
+3     Check Syntax
+The check syntax conforms to the syntax and operators for product-specific checks described in S-158
+clause 4.2.
+
+
+
+
+4     Organisation
+
+The list of validation checks for this edition of S-158:98 is available separately (see clause 9). The list
+of checks accompanies this specification and forms an integral part of it.
+
+The numeric component of the check ID is a 4-digit number whose first digit indicates the phase to
+which the check belongs (see Table 4-1 below).
+
+                      Table 4-1 - Categories of data product interoperability checks
+ Phase     Check Numbers         Name                       Description
+
+ 1         98_1xxx               Dataset Coverage           Assessment of the compatibility of coverage
+                                 and Datums                 and datum information in different data
+                                                            products.
+
+ 2         98_20xx               Data Values                Assessment of the compatibility of attribute
+                                                            and data values.
+
+ 3         98_30xx               Coverage                   Checks related to data overlaps.
+
+ 4         98_40xx               Grid Structure             Checks related to the structure of gridded
+                                                            datasets.
+
+ 5         98_50xx               Resources                  Checks for data product resources.
+
+ 6         98_60xx               Dataset Metadata           Assessment of the compatibility of discovery
+                                                            metadata compatibility in CATALOG.XML with
+                                                            dataset content.
+
+ 7         98_70xx               Cross Validation           Assessment of whether datasets from data
+                                                            products are mutually compatible for the
+                                                            purpose of implementing certain ECDIS
+                                                            functionalities described in S-98.
+
+
+
+
+5     Other Applicable Checks
+Datasets and exchange sets intended for use on ECDIS must also pass the applicable generic and
+product-specific checks described in S-158:100 and S-158:1xx respectively.
+
+
+
+
+6     Check Application Sequence
+
+The suggested check application sequence below elaborates, as far as interoperability validation
+checks are concerned, on the application sequence described in S-158. Product-specific checks for
+each data product should be applied in the sequence described in the appropriate S-158:1xx and are
+included in this table only for context, as are the generic S-100 validation checks.
+
+
+
+
+S-158:98                                         February 2025                                    Edition 1.0.0
+
+<<<PAGE 10>>>
+6                                    Data Product Interoperability Validation Checks
+
+
+
+                           Table 6-1 - Suggested application order of validation checks
+    Order     Check Collection                             Defined in                  Apply to
+    1         S-100 generic checks for datasets            S-158:100                   Dataset, in isolation
+    2         Product-specific checks for datasets         S-158:1xx                   Dataset, in isolation
+    3         Interoperability checks for                  S-158:98 Checks             Datasets from the
+              combinations of datasets                     whose inputs are            products listed in clause
+                                                           datasets                    1.1 (Scope).
+
+    4         S-100 generic checks for exchange            S-158:100                   Exchange set
+              sets
+    5         Product-specific checks for exchange         S-158:1xx                   Exchange set
+              sets
+    6         Interoperability checks for discovery        S-158:98 Checks             CATALOG.XML
+              metadata                                     whose inputs
+                                                           include
+                                                           CATALOG.XML
+    7         Product catalogue checks                     S-158:128                   S-128 datasets
+
+
+6.1          Check messages
+Application software is expected to identify the location where the error was detected, and indicate the
+location in addition to the check message. The location should be identified to as high a level of detail
+as possible for the specific check (for some checks this may be individual features, for others it may be
+only possible to identify the dataset file(s)). The method used to identify and indicate the location will
+depend on the format and is left to the application software developer.
+
+
+
+7           Check Classification
+
+The check classification conforms to the scheme described in S-158.
+
+
+
+8           Geometry and Spatial Operators
+
+S-102 Edition 3.0.x, S-104 and S-111 Editions 2.0.x datasets use coverage spatial types and do not
+use vector geometry (points, curves, or surface spatial primitives, except that points are used in point
+coverages and polygon geometry is used in domain extent polygons). The other data products covered
+by this Specification use vector geometry. In addition, vector geometry is used for coverage information
+in discovery metadata in all data products.
+
+Any spatial operations mentioned in checks pertaining to vector spatial primitives (for example, domain
+extent polygons, coverage polygons, etc.) must conform to the operations for vector products described
+in S-158:100. Any spatial operators mentioned in checks pertaining to positioning information or grid
+coordinates or extent must conform to the operations for HDF5 coverage geometries specified in S-
+158:100.
+
+For all spatial operators a default tolerance should be applied in validation software as follows:
+        •    For coordinates in decimal degrees – a tolerance of 10-7 degrees or the precision of the lowest-
+             precision coordinate field, whichever is greater.
+        •    For coordinates in metres (UTM or UPS) – a tolerance of 0.01 m or the precision of the lowest-
+             precision coordinate field being compared, whichever is greater.
+
+
+
+
+S-158:98                                             February 2025                                             Edition 1.0.0
+
+<<<PAGE 11>>>
+                                Data Product Interoperability Validation Checks                       7
+
+
+
+EXAMPLE: If the coordinates of a bounding box in an HDF5 dataset carrier metadata (data type float
+or double) are being compared to bounding box coordinates in dataset discovery metadata (precision
+2 decimal places) then the tolerance should be 0.01 decimal degrees (given that both use decimal
+degrees as the unit).
+
+
+
+9     Other Components of this Specification
+
+The other components of this Specification listed below are provided as separate documents or
+artefacts accompanying this document and form an integral part of this Specification.
+
+    1) Spreadsheet of S-98 validation checks named S-158_98_1_0_0_YYYYMMDD. The build date
+       is the YYYYMMDD suffix in the file name, whereas the “1_0_0” component represents the
+       edition, revision, and clarification number. The file with the same edition and revision number
+       as this document but with the most recent build date must be used.
+
+
+
+
+S-158:98                                        February 2025                              Edition 1.0.0
+
+<<<PAGE 12>>>
+8          Data Product Interoperability Validation Checks
+
+
+
+
+               Page intentionally left blank
+
+
+
+
+S-158:98                   February 2025                     Edition 1.0.0

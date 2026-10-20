@@ -1,0 +1,1213 @@
+# S-131 Ed 1 Annex D Validation Checks — Edition 1.0.0
+# source: /home/johanneslj/Documents/S-100/S-131/S-131 Edition 1.0.0 Annexes/S-131 Ed 1.0.0 AnnexD ValidationChecks_Final.pdf
+# Page markers are PDF page numbers (1-based), not printed page numbers.
+
+<<<PAGE 1>>>
+S-131
+
+
+
+
+   Annex D
+
+
+
+
+   Marine Harbour
+   Infrastructure Product
+   Specification
+   Validation Checks
+
+
+
+
+   Edition 1.0.0 – March 2023
+
+
+
+
+                                                        Published by the
+                                International Hydrographic Organization
+                                                     4b quai Antoine 1er
+                                                 Principauté de Monaco
+                                                  Tel: (377) 93.10.81.00
+                                                  Fax: (377) 93.10.81.40
+                                                            info@iho.int
+                                                            www.iho.int
+
+<<<PAGE 2>>>
+ii                                        MHI Validation Checks
+
+
+
+
+                       © Copyright International Hydrographic Organization 2023
+
+        This work is copyright. Apart from any use permitted in accordance with the Berne
+        Convention for the Protection of Literary and Artistic Works (1886), and except in the
+        circumstances described below, no part may be translated, reproduced by any process,
+        adapted, communicated or commercially exploited without prior written permission from
+        the International Hydrographic Organization (IHO). Copyright in some of the material in
+        this publication may be owned by another party and permission for the translation
+        and/or reproduction of that material must be obtained from the owner.
+
+        This document or partial material from this document may be translated, reproduced or
+        distributed for general information, on no more than a cost recovery basis. Copies may
+        not be sold or distributed for profit or gain without prior written agreement of the IHO
+        Secretariat and any other copyright holders.
+
+        In the event that this document or partial material from this document is reproduced,
+        translated or distributed under the terms described above, the following statements are
+        to be included:
+
+           “Material from IHO publication [reference to extract: Title, Edition] is reproduced
+           with the permission of the IHO Secretariat (Permission No ……./…) acting for the
+           International Hydrographic Organization (IHO), which does not accept responsibility
+           for the correctness of the material as reproduced: in case of doubt, the IHO’s
+           authentic text shall prevail. The incorporation of material sourced from IHO shall
+           not be construed as constituting an endorsement by IHO of this product.”
+
+           “This [document/publication] is a translation of IHO [document/publication] [name].
+           The IHO has not checked this translation and therefore takes no responsibility for its
+           accuracy. In case of doubt the source version of [name] in [language] should be
+           consulted.”
+        The IHO Logo or other identifiers shall not be used in any derived product without
+        prior written permission from the IHO Secretariat.
+
+
+
+
+S-131                                          March 2023                                           Edition 1.0.0
+
+<<<PAGE 3>>>
+iii                                                            MHI Validation Checks
+
+
+
+
+Contents
+1           Overview ........................................................................................................................... 1
+      1.1     Preface......................................................................................................................... 1
+      1.2     Document Metadata .................................................................................................... 1
+      1.3     Terms and definitions .................................................................................................. 1
+      1.4     Abbreviations ............................................................................................................... 1
+      1.5     Use of language ........................................................................................................... 2
+      1.6     Maintenance ................................................................................................................ 2
+2           Introduction ...................................................................................................................... 2
+3           Check Classification ....................................................................................................... 2
+4           Check Application ........................................................................................................... 3
+5           Validation processing ..................................................................................................... 3
+6           Check Description Format .............................................................................................. 4
+      6.1     Structure of check specifications ................................................................................. 4
+      6.2     Comparison and logical operators ............................................................................... 5
+      6.3     Geometry and spatial operators .................................................................................. 5
+      6.4     Values .......................................................................................................................... 5
+7           Dataset validation checks .............................................................................................. 6
+8           Exchange set validation checks .................................................................................. 19
+
+
+
+
+S-131                                                                March 2023                                                            Edition 1.0.0
+
+<<<PAGE 4>>>
+ iv                                       MHI Validation Checks
+
+
+
+
+                                       Document History
+ Changes to this Specification are coordinated by the Nautical Information Provision Working Group, an
+ IHO working group under HSSC. New editions will be made available via the IHO web site. Maintenance
+ of the Specification shall conform to IHO Resolution 2/2007 (as amended).
+
+Version      Date               Approved       Purpose
+Number                          By
+1.0.0        2022-11-25                       Draft 1 of validation checks
+1.0.0        2022-12-31                       Version date updated to sync with other artefacts
+
+
+
+
+ S-131                                         March 2023                                   Edition 1.0.0
+
+<<<PAGE 5>>>
+1                                            MHI Validation Checks
+
+
+
+
+1      Overview
+
+1.1      Preface
+
+The “Validation Checks” Annex has been developed to provide conformance tests for S-100 compliant
+Marine Harbour Infrastructure (S-131) data and exchange sets.
+
+The purpose of the Validation Checks Annex is to facilitate testing of the validity of S-131 datasets and
+exchange sets and their compliance with the S-131 Product Specification and the S-100 Universal
+Hydrographic Data Model.
+
+The entire S-100 Universal Hydrographic Data Model, including the S-131 Product Specification, is
+available at the following web site, http://www.iho.int.
+
+NOTE: Due to the fact that generic validation checks for S-100 are still under development at the
+time this Annex is being written, this entire Annex is designated as “Informative”.
+
+1.2      Document Metadata
+
+The metadata in this clause uniquely identifies this Annex to the Product Specification and provides
+information about its creation and maintenance.
+
+Table 1.1 - Document metadata
+    Metadata                         Content
+
+    Title:                           The International Hydrographic Organization Marine Harbour
+                                     Infrastructure Product Specification, Annex D - Validation Checks
+
+    Version:                         1.0.0
+
+    Date:                            15 March 2023
+
+    Language:                        English
+
+    Classification:                  Unclassified
+
+    Contact:                         International Hydrographic Organization
+                                     4 Quai Antoine 1er
+                                     B.P. 445
+                                     MC 98011 MONACO CEDEX
+                                     Telephone: +377 93 10 81 00
+                                     Fax: +377 93 10 81 40
+                                     URL: www.iho.int
+    Identifier:                      S-131 Annex D Data Classification and Encoding Guide
+
+    Maintenance:                     Changes to S-131 Annex D - Validation Checks are coordinated
+                                     by the IHO Nautical Information Provision Working Group
+                                     (NIPWG) and must be made available via the IHO web site.
+
+
+
+
+1.3      Terms and definitions
+
+For terms and definitions, see the Marine Harbour Infrastructure (MHI) Product Specification, Clause 1.4.2.
+
+1.4      Abbreviations
+
+For a list of abbreviations, see the MHI Product Specification, Clause 1.4.3.
+
+S-131                                             March 2023                                    Edition 1.0.0
+
+<<<PAGE 6>>>
+2                                              MHI Validation Checks
+
+
+
+
+1.5         Use of language
+
+Within this document:
+
+             “Must” indicates a mandatory requirement;
+
+             “Should” indicates an optional requirement, that is the recommended process to be followed, but
+             is not mandatory;
+
+             “May” means “allowed to” or “could possibly”, and is not mandatory, or recommended.
+
+1.6         Maintenance
+
+Changes to this document must occur in accordance with the S-131 Product Specification clause 1.7.
+
+2       Introduction
+
+This S-131 Validation Checks Annex defines tests for the structure, format and content of S-131 Marine
+Harbour Infrastructure datasets. It also defines tests for exchange set structure, components, the content
+of exchange catalogues and metadata for exchange sets containing S-131 datasets.
+
+The validation checks are primarily intended for production systems designed to produce S-131 Marine
+Harbour Infrastructure datasets and exchange sets. Production systems should implement these checks
+to ensure that datasets and exchange sets produced conform to the MHI Product Specification. The
+checks may optionally also be applied at later stages in the distribution chain from producer to the end-
+user, as well as on end-user systems.
+
+Checks are divided into:
+
+        •    Dataset checks, that validate the integrity and conformance of individual MHI dataset files and
+             support files referenced from within MHO datasets.
+
+        •    Exchange set checks, that validate the integrity and conformance of exchange sets containing
+             MHI datasets.
+
+NOTE: Generic S-100 validation checks are currently being developed by the IHO S-100 working group.
+When the generic checks are finalized, a future edition of this Annex will be harmonized with the generic
+S-100 checks. Until such harmonization is accomplished, implementers who encounter discrepancies
+between this Annex and the future S-100 generic validation checks should consult the NIPWG Chair for
+advice on how to proceed.
+
+3       Check Classification
+
+Checks are classified as Critical, Error, or Warning as described in the table below.
+
+Table 3.1 - Classification of checks by importance
+    Indicator     Type                Description
+
+    C             Critical Error      An error which would make a dataset unusable in ECDIS through not
+                                      loading or causing an ECDIS to crash or presenting data which is
+                                      unsafe for navigation.
+
+    E             Error               An error which may degrade the quality of the dataset through
+                                      appearance or usability but which will not pose a significant danger
+                                      when used to support navigation.
+
+    W             Warning             An error which may be a duplication or an inconsistency which will not
+                                      noticeably degrade the usability of a dataset in ECDIS.
+
+S-131                                               March 2023                                     Edition 1.0.0
+
+<<<PAGE 7>>>
+3                                              MHI Validation Checks
+
+
+
+
+4       Check Application
+
+Certain dataset checks apply to only base datasets, some checks only to update datasets, and some can
+be applied only to complete datasets after an update has been applied. The application of checks to
+datasets or dataset updates is indicated by one or more of the indicators in the leftmost column of the
+table below.
+
+Table 4.1 - Check application indicators
+    Indicator    Applies to          Description
+
+    B            Base                Apply check to new dataset, new edition, and post-update dataset
+                                     (after updates have been applied to the base).
+
+    U            Update              Apply check to update datasets in isolation.
+
+    S            Post-update         Apply check only to a post-update dataset, i.e., subsequent to
+                                     application of all available updates.
+
+
+
+Checks do not apply to dataset terminations or cancellations, except where the check description explicitly
+states it applies in case of a termination or cancellation.
+
+5       Validation processing
+
+Automatic validation of MHI datasets and exchange catalogues must consist of at least the following
+phases:
+
+        •   Schema validation: Verification of conformance to the XML schema that defines its format. For
+            the GML dataset, this is the schema defined in Annex B (Encoding Format). For the exchange
+            catalogue, it is the S-100 generic exchange catalogue schema.
+
+            Off-the-shelf XML validation software tools or libraries that are “schema-aware” can be used for
+            this phase. “Schema-aware” means that the tool or library must be capable of checking the dataset
+            or catalogue against the structure and constraints defined in the governing schema and schemas
+            imported or included in it.
+
+            Schema-validation must ensure that an appropriate edition of the controlling schema is used for
+            validation.
+
+            Implementers are free to use alternate methods or implement custom validation provided the end-
+            result is equivalent to schema-validation as described here.
+
+        •   Non-schema constraint validation. Verification of conformance to constraints which cannot be
+            expressed in XML schema form. These constraints are formally specified as Schematron rules.
+            Product-specific constraints for datasets and exchange catalogues as well as generic constraints
+            for the exchange catalogue will be made available from the IHO schema server). The constraints
+            can be checked with a Schematron-capable processor (many commercial XML validation tools
+            and software libraries are also capable of checking Schematron rules), but may be converted to
+            or re-implemented in any form preferred by the implementer.
+
+        •   Annex D checks: Verification of conformance to the checks defined in this Annex. This may be
+            implemented by any means or combination of means the implementer prefers, including but not
+            limited to Schematron processing, XSLT templates, code written in common programming
+            languages, etc.
+
+
+
+S-131                                               March 2023                                    Edition 1.0.0
+
+<<<PAGE 8>>>
+4                                             MHI Validation Checks
+
+
+
+
+The checks specified in this Annex are formally supplemental to schema-validation of the dataset with
+the GML application schema (for datasets) or the S-100 exchange catalogue schema (for exchange
+catalogues).
+
+If both generic and product-specific constraints are defined for a component, both sets must be checked.
+This applies in particular to the exchange catalogue, which will have generic checks defined as part of the
+generic S-100 schema distribution as well as additional product-specific checks defined as part of the S-
+131 MHI Product Specification.
+
+In addition to automatic validation, visual validation and data quality checks must be carried out as
+appropriate, for example, to verify that attribute values match reality, file references point to the correct
+files, etc.
+
+6      Check Description Format
+
+6.1     Structure of check specifications
+
+Individual checks are defined in the format described in Table 6.1.
+
+Table 6.1 - Check specification format
+
+
+    Column             Description
+
+    Data Quality       Quality measure or theme from S-97 Part C.
+    Measure or
+    Theme
+
+    Check ID / Short   Identifier for check
+    Name
+
+    Check condition    Specification of check condition, written in structured English.
+    description
+                       The conditions are written so that if the condition evaluates to TRUE it indicates
+                       an error or other issue exists in the dataset.
+                       Conditions beginning with “For each <item>…” are applied to every instance of the
+                       designated item. Items may be features, information type, attributes, associations,
+                       roles, etc. Box brackets are used for grouping phrases where the interpretation
+                       may be ambiguous (for example, “X AND [Y OR Z]”).
+                       “Object” means an instance of a feature or information type.
+                       The logical and spatial operators used in check conditions are listed following this
+                       table.
+
+    Check message      Message to emit if the dataset fails the check condition (i.e., the condition
+                       evaluates to TRUE).
+
+    Check solution     Solution to be applied to correct the failure.
+
+    Conformity         Reference to place in S-100 or S-131 where more information about the check can
+                       be found, e.g., lists of allowed values for enumerations. All S-100 references for
+                       checks are to S-100 Edition 5.0.0.
+
+    Classification     Whether check failure is a critical, error, or warning issue.
+
+    Apply To           Whether the check should be applied to a base dataset, update dataset, or to a
+                       complete dataset after an update has been applied.
+
+
+
+S-131                                              March 2023                                     Edition 1.0.0
+
+<<<PAGE 9>>>
+5                                              MHI Validation Checks
+
+
+
+
+6.2       Comparison and logical operators
+
+The following comparison and logical operators are used:
+
+      (1) Equal (=)
+      (2) Not equal (≠)
+      (3) Less than (<)
+      (4) Less than or equal to (≤)
+      (5) Greater than (>)
+      (6) Greater than or equal to (≥)
+      (7) AND (∧)
+      (8) OR (inclusive OR) (∨)
+
+6.3       Geometry and spatial operators
+
+The spatial operators (EQUALS, DISJOINT, TOUCHES, WITHIN, OVERLAPS, CROSSES,
+INTERSECTS, CONTAINS, and COINCIDENT), based on those laid out in the ISO standard 19125-1,
+are used to describe spatial relationships tested within the checks.
+
+The definitions of the spatial operators are as specified in IHO S-58 Edition 7.0.0 clause 21.
+
+For all spatial operators, the default tolerance is the same as the coordinate precision specified in the MHI
+Product Specification.
+
+6.4       Values
+
+The following terms are used for types or values of attributes in data objects or metadata, such as
+attributes of features, information types, or metadata blocks in exchange catalogues:
+
+      •    Present: The attribute is present and may or may not be populated with a value.
+
+      •    Known: The attribute is Present and has been populated with a value.
+
+      •    Unknown: The attribute is Present, but has not been populated with a value..
+
+      •    Optional: The encoding of the attribute is optional. It may be Present or not Present.
+
+The following terms are used in relation to XML element content in GML or other XML files, or for values
+of XML attributes (including the GML data format and exchange catalogues):
+
+      •    Whitespace: One or more of the characters defined as white space in the W3C XML specification:
+           space, tab, carriage return or line feed.
+
+      •    Null: The XML element or attribute has no content or the content is the empty (0-length) string.
+
+               o   String type attributes consisting of only whitespace characters are not considered to be
+                   empty.
+
+               o   URI, URL, or URN type attributes consisting of only whitespace characters are considered
+                   to be empty.
+
+               o   Numeric, enumeration, date, time, dateTime, or Boolean types consisting of only
+                   whitespace characters are considered to be empty. This situation is an error (unless the
+
+
+
+
+1 For the purposes of this Annex, the terms used in S-58 should be treated as their S-100 equivalents: Surface for
+
+Polygon, Point for Point, Curve or Composite Curve for LineString.
+S-131                                               March 2023                                         Edition 1.0.0
+
+<<<PAGE 10>>>
+6                                            MHI Validation Checks
+
+
+
+
+                attribute is declared nillable in the GML application schema). Such errors should be
+                detected by XML validation software when the file is validated against its XML schema.
+
+    •   Nilled: The value of the XML element is Null and the element has the XML attribute xsi:nil=”true”.
+        A nillable attribute is one which the GML application schema or GML profile allows to be nilled.
+
+    •   notNull: The attribute has been populated with a value.
+
+The following terms are used to combine the above terms for brevity:
+
+    •   Missing: The attribute is either not present, or present and either null or nilled.
+
+    •   Populated: The attribute is present and has been assigned a value conforming to its constraints.
+
+The terms for types and content are used in relation to GML data files as well as exchange catalogues,
+which are XML files.
+
+7   Dataset validation checks
+
+The following table contains the checks applicable to MHI datasets.
+
+Implementers should note that validation with schema-aware validation software and the official GML
+schema defined in Annex B will detect many of the check conditions described in Table 7.1, and others
+can be detected by defining Schematron validation rules which can also be detected with software capable
+of processing Schematron rules.
+
+The “code” for features and information types referenced in some checks is the camel case code.
+
+To provide for future harmonization with S-101, a reference to a similar S-101 check (as of 11/11/2022)
+may be included in parentheses.
+
+
+
+
+S-131                                             March 2023                                   Edition 1.0.0
+
+<<<PAGE 11>>>
+7                                                                                   MHI Validation Checks
+
+
+
+
+Table 7.1 - MHI Dataset checks
+    DQ Measure /    Check  Check condition description                 Check message                        Check solution                      Conformity   Classification   Apply
+    Theme            ID                                                                                                                                                       to
+    Logical            101 For each feature object where its           Objects   fall   outside       the   Ensure objects are not outside of   PS 7.1.3     E                B, S
+    Consistency /          geometry is not COVERED_BY the              coverage object.                     the limits of the cell.
+    Topological            UNION of all DataCoverage meta-
+    Consistency            features
+    Logical            102 For each DataCoverage feature               Data Coverage has an inner ring      Modify geometry.                                 E                B
+    Consistency /          where its referenced surface spatial        without adjoined another Data
+    Topological            object has an inner ring AND that           Coverage.
+    Consistency            ring is not external for another
+                           DataCoverage.
+    Logical            103 For each DataCoverage feature               Maximum display scale is larger      Correct values of maximum and       DCEG 4.4.1   E                B
+    Consistency /          where the attributes maximum                or equal to the value of the         minimum display scales.
+    Conceptual             display scale and minimum display           minimum display scale.
+    Consistency            scale are Present AND value of
+                           maximum display scale is larger or
+                           equal to the value of the minimum
+                           display scales.
+    Logical            104 For each DataCoverage feature that          Dataset contains overlapping         Remove overlap.                     DCEG 4.4.1   E                B
+    Consistency /          OVERLAPS or is WITHIN another               DataCoverage features.
+    Topological            DataCoverage.
+    Consistency
+    Logical             105 For each DataCoverage feature              DataCoverage features have           Use the same values            of   DCEG 4.4.1   E                B
+    Consistency /           where the value of the attribute           different values of the attribute    minimum display scale.
+    Conceptual              minimum display scale is different         minimum display scale.
+    Consistency             from other Data Coverage meta
+                            features.
+    Logical             106 If the dataset file size is greater than   Dataset exceeds size limits.         Ensure that the dataset is no       PS 13.7      E                B, S
+    Consistency /           the limit set in the Product                                                    larger than the applicable limit
+    Format                  Specification.                                                                  specified    in  the   Product
+    Consistency                                                                                             Specification.
+
+
+
+
+S-131                                                                                    March 2023                                                                               Edition 1.0.0
+
+<<<PAGE 12>>>
+8                                                                                MHI Validation Checks
+
+
+
+
+    DQ Measure /    Check  Check condition description             Check message                         Check solution                       Conformity    Classification   Apply
+    Theme            ID                                                                                                                                                      to
+    Completeness       107 If any of the mandatory meta feature    Mandatory meta feature objects        Include all mandatory        meta    DCEG 4.2      C                B, S
+    / Omission             objects do not exist within the data    are missing.                          feature objects
+                           set.
+    Completeness       108 If any mandatory attributes are not     Mandatory attributes are not          Populate mandatory attributes        PS 4.2, FC,   E                B, U
+    / Omission             present.                                encoded.                              (If unknown encode attribute         DCEG
+                                                                                                         with empty value).
+    Logical             109 For each feature object with an        Values have been padded with          Remove non-significant zeroes.       PS 12.4       W                B, U
+    Consistency /           attribute of type Float or Integer     non-significant zeroes.
+    Format                  where the value contains zeroes
+    Consistency             before the first numerical digit or
+                            after the last numerical digit.
+    Logical             110 For each feature object with an        An attribute value of a meta          Remove duplicate value from          --            W                B, S
+    Consistency /           attribute value identical to a         feature object is duplicated on a     geo object.
+    Topological             corresponding attribute of a meta      geo object.
+    Consistency             feature object it is COVERED_BY.
+    Logical             111 For each association between           Wrong association used.               Use correct association type.        PS 4.2, FC,   E                B, U
+    Consistency /           feature instances, feature instances                                                                              DCEG
+    Conceptual              and information instances, and
+    Consistency             between information instances that
+                            is not defined in the feature
+                            catalogue.
+    Logical             112 For each role name on associations     Wrong role used.                      Use correct role name.               PS 4.2, FC,   E                B, U
+    Consistency /           that is not defined in the feature                                                                                DCEG
+    Conceptual              catalogue.
+    Consistency
+    Logical             113 For each association where the         Self-referential association          Correct association target           --            E                B, U
+    Consistency /           object references itself               (InvalidFeatureBinding,
+    Conceptual                                                     InvalidInformationBinding)
+    Consistency
+    Logical             114 For each association that is not       Unknown association is used.          Use association that is defined in   PS 4.2, FC,   E                B, U
+    Consistency /           defined in the feature catalogue.                                            the feature catalogue.               DCEG
+    Conceptual
+    Consistency
+
+
+
+
+S-131                                                                                 March 2023                                                                               Edition 1.0.0
+
+<<<PAGE 13>>>
+9                                                                                MHI Validation Checks
+
+
+
+
+    DQ Measure /    Check  Check condition description             Check message                         Check solution                       Conformity    Classification   Apply
+    Theme            ID                                                                                                                                                      to
+    Logical            115 For each role name that is not          Unknown role name is used.            Use role name that is defined in     PS 4.2, FC,   E                B, U
+    Consistency /          defined in the feature catalogue.                                             the feature catalogue.               DCEG
+    Conceptual
+    Consistency
+    Logical            116 For each association that refences      Object association is           not   Ensure correct association is        PS 4.2, FC,   E                B, U,
+    Consistency /          an object not permitted by the object   allowed.                              used between classes.                DCEG                           S
+    Conceptual             binding in the feature catalogue.       (MissingFeatureBinding)
+    Consistency
+    Logical            117 For each role name ensure it is only    Role name is used on an illegal       Ensure correct role names are        PS 4.2, FC,   E                B, U,
+    Consistency /          used with permitted associations.       association.                          used on the association.             DCEG                           S
+    Conceptual
+    Consistency
+    Logical            118 Dataset fails schema validation with    Dataset must conform to the           Ensure conformance to the GML        PS 10.4 &     C                B, U
+    Consistency /          the    GML      schema      for   the   GML schema for its Product            schema for the PS edition and        12.1
+    Format                 corresponding edition and revision      Specification  edition  and           revision specified in the dataset.
+    Consistency            of the Product Specification.           revision.
+    Logical            119 For each text field using a character    Character encoding for text          Change character encoding to         PS 12.5       E                B, U
+    Consistency /          encoding different from UTF-8.          must be UTF-8.                        UTF-8.
+    Format
+    Consistency
+    Logical            120 For each feature or information type    Values of “name” sub attribute of     Ensure that name sub-attributes      --            E                B, U
+    Consistency /          where more than one featureName         “featureName” are identical.          are populated with the correct
+    Conceptual             is present, and the name sub-                                                 values.
+    Consistency            attribute of two or more featureName
+                           instances is equal.
+    Completeness       121 For each feature, information type,     Values for “text” sub-attribute of    Ensure that text sub-attributes      --            W                B, U
+    / Commission           or complex attribute where two or       “information” are identical.          are populated with the correct
+                           more information attributes are                                               values.
+                           present, AND the text sub-attributes
+                           of information are equal.
+
+
+
+
+S-131                                                                                 March 2023                                                                               Edition 1.0.0
+
+<<<PAGE 14>>>
+10                                                                            MHI Validation Checks
+
+
+
+
+ DQ Measure /    Check  Check condition description             Check message                         Check solution                        Conformity   Classification   Apply
+ Theme            ID                                                                                                                                                      to
+ Completeness       122 For each feature, information type or   Different languages information       Replace with       the correct        --           W                B, U
+ / Commission           complex attribute where two or more     refers to the same external file      fileLocator and    fileReference
+                        information complex attributes are      and its fragment.                     combination.
+                        present AND they have different
+                        language value AND identical pair of
+                        notNull values of the sub-attributes
+                        fileLocator and fileReference.
+ Logical            123 For each information complex            File reference attribute refers to    Correct fileReference         value   DCEG         W                B, U
+ Consistency /          attribute where the sub-attribute       a file with inadmissible format.      and/or support file type.             2.4.9.2
+ Domain                 fileReference has a file name with
+ Consistency            extension which is not equal one
+                        of .TXT or .HTM or .XML.
+ Completeness       124 For each object where textContent       Values for file                       Ensure that national language         --           W                B, U
+ / Commission           attribute is present, and two or more   reference       and      locator      attributes are populated with the
+                        information      sub-attributes   are   combinations are identical.           correct values.
+                        present, and the combination of
+                        fileReference and fileLocator sub-
+                        attributes are equal.
+ Completeness       125 For each featureName sub-attribute      Name is encoded in national           Populate text     attribute    with   PS 3         W                B, U
+ / Omission             with language not equal to eng, and     language only.                        English text.
+                        where featureName sub-attributes
+                        with language equal to eng is not
+                        present.
+ Completeness       126 For each information sub-attribute      Text is encoded in national           Populate name attribute with          PS 3         W                B, U
+ / Omission             with language not equal to eng, and     language only                         English text.
+                        where information sub-attribute with
+                        language equal to eng is not
+                        present.
+ Logical            127 If the horizontal CRS in the dataset    Horizontal CRS is not EPSG            Set the horizontal CRS EPSG           PS 6.1 and   C                B, U
+ Consistency /          is Not equal to EPSG:4326 (WGS          4326                                  4326 and verify that all spatial      7.3.3
+ Domain                 84).                                                                          primitives are in EPSG:4326
+ Consistency
+
+
+
+
+S-131                                                                              March 2023                                                                               Edition 1.0.0
+
+<<<PAGE 15>>>
+11                                                                              MHI Validation Checks
+
+
+
+
+ DQ Measure /    Check  Check condition description               Check message                           Check solution                     Conformity    Classification   Apply
+ Theme            ID                                                                                                                                                        to
+ Logical            128 For each feature instance that does       Object outside area of coverage.        Remove object        or   amend    PS 10.9       E                B, S
+ Consistency /          not OVERLAP OR is WITHIN an                                                       coverage.                          DCEG 2.6.3
+ Topological            area of DataCoverage
+ Consistency
+ Logical             129 For each object which is present in      Datasets must only contain the          Delete object or replace with an   PS 4.2, FC    C                B, U
+ Consistency /           the dataset but not present in the       feature and information types           instance of a feature or
+ Conceptual              feature catalogue.                       listed in the FC.                       information type defined in the
+ Consistency                                                      (ProhibitedObject)                      feature catalogue.
+ Logical             130 For each object where another            Object is a duplicate of another        Remove duplicate object            --            E                B, U,
+ Consistency /           object has identical attribute values    object (DuplicateObject)                                                                                  S
+ Domain                  and identical geometry (if applicable)
+ Consistency
+ Logical             131 For each object which does not have      Object has invalid feature class        Amend object class code.           PS 4.2, FC,   E                B, U
+ Consistency /           a valid feature or information type      code.                                                                      DCEG
+ Conceptual              label/code as defined by the feature
+ Consistency             catalogue.
+ Logical             132 For each attribute which does not        Attribute has invalid attribute.        Amend attribute name.              PS 4.2, FC,   E                B, U
+ Consistency /           correspond to an attribute code as                                                                                  DCEG
+ Conceptual              defined by the feature catalogue.
+ Consistency
+ Logical             133 For each object which contains           Attribute not permitted            on   Remove attribute.                  PS 4.2, FC,   E                B, U
+ Consistency /           attributes outside the list of           feature or information type.                                               DCEG
+ Conceptual              permissible attributes for the feature   (InvalidAttributeBinding,
+ Consistency             class (as defined in the feature         ProhibitedAttribute)
+                         catalogue).
+ Logical             134 For each object which is present in      Feature types must only have            Use allowed spatial primitive.     PS 4.2, FC,   E                B, U
+ Consistency /           the dataset which references a           permitted geometric primitives.                                            DCEG
+ Conceptual              geometry which is not permitted in       (ProhibitedGeometry)
+ Consistency             the feature catalogue (including
+                         noGeometry if allowed)
+ Logical             135 For each integer or real attribute       Error in numeric attribute value.       Correct value                      FC            C                B, U
+ Consistency /           whose value does not conform to the      (ProhibitedAttributeValue)
+ Domain                  range (if any) defined in the feature
+ Consistency             catalogue
+
+
+
+
+S-131                                                                                March 2023                                                                               Edition 1.0.0
+
+<<<PAGE 16>>>
+12                                                                             MHI Validation Checks
+
+
+
+
+ DQ Measure /      Check  Check condition description              Check message                       Check solution                      Conformity     Classification   Apply
+ Theme              ID                                                                                                                                                     to
+ Logical              136 For each enumeration attribute           Value of attribute is outside       Correct value                       FC             C                B, U
+ Consistency /            whose code or value do not conform       range.
+ Domain                   to the values permitted in the feature   (ProhibitedAttributeValue)
+ Consistency              catalogue.
+ Logical              137 For each enumeration or codelist         Code and value of enumeration       Correct attribute code or value.    FC             C                B, U
+ Consistency /            attribute whose code and value do        or codelist attribute do not
+ Domain                   not correspond to the same listed        match.
+ Consistency              value in the feature catalogue.
+ Logical              138 For each attribute which does not        Attribute values must be in the     Correct format of value             DCEG           E                B, U
+ Consistency /            correspond to the format defined for     correct format.
+ Domain                   the attribute value specified in the     (AttributeFormat)
+ Consistency              feature catalogue
+ Logical              139 For each feature instance which is       Feature instance not covered by     Ensure    full coverage     of      PS 12.11       E                B, S
+ Consistency /            not COVERED_BY the combined              an                                  QualityOfNonBathymetricData
+ Topological              coverage                            of   QualityOfNonBathymetricData         instance.
+ Consistency              QualityOfNonBathymetricData              instance.
+                          meta feature instances.
+ Logical              140 For each feature instance where a        Feature instance not covered by     Ensure   full coverage         of   PS 12.15       E                B, S
+ Consistency /            depth attribute is present AND which     SoundingDatum instance.             SoundingDatum instance.
+ Topological              is not COVERED_BY the combined
+ Consistency              coverage of SoundingDatum meta
+                          feature instances.
+ Logical              141 For each feature instance where an       Feature instance not covered by     Ensure     full coverage    of      PS 12.15       E                B, S
+ Consistency /            elevation attribute is present AND       VerticalDatumOfData instance.       VerticalDatumOfData instance.
+ Topological              which is not COVERED_BY the
+ Consistency              combined           coverage         of
+                          VerticalDatumOfData meta feature
+                          instances.
+ Completeness         142 If there is not exactly one instance     Exactly    one  instance  of        Ensure that the dataset contains    DCEG           E                B, S
+ /                        each of SoundingDatum and                SoundingDatum            and        exactly one instance each of        4.6.1, 4.7.1
+ Omission if < 1          VerticalDatumOfData present in the       VerticalDatumOfData      are        SoundingDatum               and
+ Commission if            dataset.                                 required.                           VerticalDatumOfData.
+ >1
+
+
+
+
+S-131                                                                               March 2023                                                                               Edition 1.0.0
+
+<<<PAGE 17>>>
+13                                                                              MHI Validation Checks
+
+
+
+
+ DQ Measure /    Check  Check condition description                Check message                        Check solution                     Conformity    Classification   Apply
+ Theme            ID                                                                                                                                                      to
+ Logical            143 If the order of the data in a dataset is   Incorrect data order.                Amend data order.                  PS 12.13      W                B, U
+ Consistency /          not correct.
+ Format
+ Consistency
+ Logical             144 For each attribute instance where         Too many instances of attribute.     Ensure      correct    attribute   PS 4.2, FC,   E                B, U
+ Consistency /           the total number of instances exceed                                           encoding.                          DCEG
+ Format                  the permitted number of instances
+ Consistency
+ Logical             145 For each feature instance where           Object has identical values of       Ensure          values        of   --            W                B, U
+ Consistency /           periodicDateRange sub-attributes          periodicDateRange         sub-       periodicDateRange          sub-
+ Domain                  dateEnd and dateStart are notNull         attributes    dateEnd       and      attributes dateEnd and dateStart
+ Consistency             AND their values are identical.           dateStart.                           are logical.
+ Completeness        146 For each feature instance where           Periodic date range must have        Populate both dateStart and        --            E                B, U
+ / Omission              periodicDateRange        sub-attribute    both dateEnd and dateStart.          dateEnd.
+                         dateStart OR dateEnd is missing.
+ Logical             147 For each linear geometry which            Vertex density exceeds         the   Generalise edge(s).                PS 7.3.1      W                B, U
+ Consistency /           contains vertices at a density            allowable tolerance.
+ Topological             Greater than 0.3mm at maximum
+ Consistency             display scale.
+ Logical             148 For each instance of ServiceHours         Time intervals within the same       Review time intervals       and    --            E                B, U
+ Consistency /           where        an      instance       of    scheduleByDayOfWeek                  remove time overlap.
+ Domain                  scheduleByDayOfWeek          attribute    attribute overlap.
+ Consistency             has temporal overlaps specified by
+                         timeIntervalByDayOfWeek attribute.
+ Logical             149 For each instance of ServiceHours         Schedule overlaps.                   Review service hour intervals      --            E                B, U
+ Consistency /           with more than one instance of                                                 and remove time overlap.
+ Domain                  scheduleByDayOfWeek, and where
+ Consistency             an             instance             of
+                         scheduleByDayOfWeek         has      a
+                         temporal overlap with another
+                         instance of scheduleByDayOfWeek.
+ Completeness        150 For each instance of a file               File referenced in the dataset is    Add file to exchange set or        PS 13.1       E                B, S
+ / Omission              referenced in the data and not            not present in the exchange set.     remove reference to file.
+                         present in the exchange set.
+
+
+
+
+S-131                                                                                March 2023                                                                             Edition 1.0.0
+
+<<<PAGE 18>>>
+14                                                                           MHI Validation Checks
+
+
+
+
+ DQ Measure /    Check  Check condition description             Check message                        Check solution                     Conformity     Classification   Apply
+ Theme            ID                                                                                                                                                    to
+ Logical            151 For each feature instance which         Data    crossing     the    180°     Split the dataset along the 180°   PS     12.2,   E                B, U
+ Consistency /          CROSS the 180° meridian.                meridian.                            meridian.                          DCEG
+ Topological                                                                                                                            2.6.10
+ Consistency
+ Logical            152 For each fixedDateRange where           dateEnd precedes dateStart.          Amend values of dateEnd or         --             E                B, U
+ Consistency /          dateEnd and dateStart are not Null                                           dateStart accordingly.
+ Domain                 and dateEnd is less than or equal to
+ Consistency            dateStart.
+ Completeness       153 For each fixedDateRange where           FixedDateRange not populated         Populate at least one              PS 12.16,      E                B, U
+ / Omission             both dateEnd and dateStart are          making       the       attribute     of dateEnd or dateStart.           DCEG 5.2.1
+                        missing.                                meaningless.
+ Completeness       154 For each fixedDateRange where           Year     is     required      in     Populate year component of         --             E                B, U
+ / Omission             dateEnd or dateStart is not Null but    fixedDateRange dates.                dateStart and dateEnd
+                        the year component is not specified.
+ Completeness       155 For each textContent attribute where    TextContent is not populated         Populate information or            --             E                B, U
+ / Omission             both           information        and   with meaningful information.         onlineResource.
+                        onlineResource are missing.
+ Completeness       156 For each information attribute where    Information is not populated with    Populate fileReference             --             E                B, U
+ / Omission             both fileReference and text sub-        meaningful information.              or text attribute.
+                        attributes are missing.
+ Logical            157 For each instance of the text           Text attribute contains more         Reduce content of text attribute   DCEG           E                B, U
+ Consistency /          attribute that contains more than 300   than 300 characters.                 or move to support file.           17.111
+ Domain                 characters
+ Consistency
+ Completeness       158 For each contactAddress where all       Contact     address     is  not      Populate at least one sub-         PS 12.16       E                B, U
+ / Omission             sub-attributes are missing.             populated     with   meaningful      attribute of contactAddress.
+                                                                information.
+ Completeness       159 For each frequencyPair                  Frequency pair                       Populate at least one of           --             E                B, U
+ / Omission             with                 sub-attributes     frequency attributes                 frequencyShoreStation
+                        frequencyShoreStationTransmits          are    not     populated   with      Transmits or
+                        and frequencyShoreStationRec            meaningful information.              frequencyShoreStation
+                        eives both missing.                                                          Receives.
+
+
+
+
+S-131                                                                              March 2023                                                                             Edition 1.0.0
+
+<<<PAGE 19>>>
+15                                                                            MHI Validation Checks
+
+
+
+
+ DQ Measure /    Check  Check condition description              Check message                        Check solution                     Conformity   Classification   Apply
+ Theme            ID                                                                                                                                                   to
+ Completeness       160 For each Regulations, Restrictions,      Regulations,        Restrictions,    Populate at least one of           --           E                B, U
+ / Omission             Recommendations, or                      Recommendations,                     graphic and
+                        NauticalInformation       with    both   NauticalInformation           not    textContent.
+                        graphic and textContent missing.         populated.
+ Completeness       161 For each Applicability without at        Applicability is not populated       Populate at least one              PS 12.16     E                B, U
+ / Omission             least one of its attributes populated,   with meaningful information.         attribute of Applicability other
+                        or with only logicalConnectives                                               than logicalConnectives.
+                        populated.
+ Completeness       162 For     each      Applicability   with   Logical connective not encoded       Add the appropriate value of       DCEG         W                B, U
+ / Omission             logicalConnectives missing AND           in Applicability instance.           logicalConnectives.                12.1.1
+                        [more than one of the other
+                        attributes populated OR more than
+                        one vesselsMeasurements].
+ Logical            163 For each Applicability with mutually     Vessel     measurements        are   Correct the inconsistency.         DCEG         W                B, U
+ Consistency /          inconsistent values of vessel            mutually inconsistent.                                                  12.1.1
+ Domain                 measurements in the attribute
+ Consistency            vesselsMeasurements.
+ Completeness       164 For each NonStandardWorkingDay           NonStandardWorkingDay not            Populate at least one of           --           E                B, U
+ / Omission             with all of dateFixed, dateVariable,     populated    with meaningful         dateFixed,
+                        and information missing.                 information.                         dateVariable, and
+                                                                                                      information.
+ Completeness        165 For each ContactDetails with all        ContactDetails not populated         Populate at least one              PS 12.16     E                B, U
+ / Omission              attributes missing.                     with meaningful information.         attribute of
+                                                                                                      ContactDetails.
+ Completeness        166 For each feature or information         Associated       feature      or     Correct or remove the              --           E                B, S
+ / Omission              association where the target object     information type not present.        association, or add the
+                         is not present in the dataset.                                               missing feature or
+                                                                                                      information type.
+ Completeness        167 For each weatherResource with           Weather resource information is      Populate at least one of           DCEG 6.8.1   E                B, U
+ / Omission              both onlineResouce and textContent      not present.                         onlineResource or textContent.
+                         missing.
+
+
+
+
+S-131                                                                              March 2023                                                                            Edition 1.0.0
+
+<<<PAGE 20>>>
+16                                                                          MHI Validation Checks
+
+
+
+
+ DQ Measure /    Check  Check condition description            Check message                        Check solution                     Conformity   Classification   Apply
+ Theme            ID                                                                                                                                                 to
+ Completeness       168 For each weatherResource with          Complex attributes for dynamic       Populate    the   onlineResource   DCEG 6.8.1   E                B, S
+ / Omission             dynamicResource = 2 or 3 and           resources must indicate a            attibute.
+                        onlineResource missing.                source    for     the   dynamic
+                                                               information.
+ Completeness       169 For each weatherResource with          Complex attributes for online        Populate the dynamicResource       DCEG 6.8.1   W                B, S
+ / Omission             onlineResource   present and           weather resources must indicate      attibute.
+                        dynamicResource missing.               whether the resource is static or
+                                                               dynamic.
+ Logical            170 For each SpatialQuality information    SpatialQuality is associated with    Remove prohibited association.     DCEG 14.1    W                B, U
+ Consistency /          type which is referenced by a          a Surface spatial object.
+ Conceptual             Surface spatial object.
+ Consistency
+ Logical            171 For each SpatialQuality information    Prohibited vertical uncertainty      Remove prohibited association.     DCEG 14.1    W                B, U
+ Consistency /          type which has vertical uncertainty    attribute of SpatialQuality for
+ Conceptual             populated and is referenced by a       curve spatial object.
+ Consistency            Curve or Composite Curve spatial
+                        object.
+ Logical            172 For each language attribute which is   Language code not from ISO           Correct language code.             DCEG         W                B, U
+ Consistency /          populated with a value other than      639-2/T list.                                                           2.4.8.3
+ Domain                 one of the 3-character ISO 639-2/T
+ Consistency            codes.
+ Logical            173 For each surface where the exterior    Geometry does not conform to         Correct spatial object.            S-100 Part   C                B, U
+ Consistency /          boundary shares more than one          S-100.                                                                  7 3a-3
+ Topological            node with an interior boundary.        (Self-intersection)
+ Consistency
+ Logical            174 For each curve segment with >1         Curve segments must be well          Correct spatial object(s).                      C                B, U
+ Consistency /          segment and composite curve            formed.
+ Topological            components where the individual        (Well formed curve segments)
+ Consistency            components do not have coincident
+                        start/end points (e.g. end segment                                                                             S-100 Part
+                        N != start segment N+1).                                                                                       7 3a-4
+
+
+
+
+S-131                                                                            March 2023                                                                            Edition 1.0.0
+
+<<<PAGE 21>>>
+17                                                                            MHI Validation Checks
+
+
+
+
+ DQ Measure /    Check  Check condition description             Check message                         Check solution               Conformity   Classification   Apply
+ Theme            ID                                                                                                                                             to
+ Logical            175 For each feature of primitive surface   Spatial object error.                 Correct spatial object(s).                C                B, U
+ Consistency /          where the exterior boundary is not      (Orientation of Surfaces)
+ Topological            oriented clockwise (surface to the                                                                         S-100 Part
+ Consistency            right).                                                                                                    7 3a-5
+ Logical            176 For each feature of primitive surface   Spatial object error.                 Correct spatial object(s).                C                B, U
+ Consistency /          where an interior boundary is not       (Orientation of Surfaces)
+ Topological            oriented anti-clockwise (surface to                                                                        S-100 Part
+ Consistency            the right).                                                                                                7 3a-6
+ Logical            177 For each surface where an interior      Spatial object error                  Correct spatial object(s).                C                B, U
+ Consistency /          boundary is within an interior           (interiors can not be inside
+ Topological            boundary.                               interiors).                                                        S-100 Part
+ Consistency                                                                                                                       7 3a-7
+ Logical             178 For each surface where an interior     Spatial object error                  Correct spatial object(s).                C                B, U
+ Consistency /           boundary is not within one exterior     (interiors must be inside an
+ Topological             boundary.                              exterior).                                                         S-100 Part
+ Consistency                                                                                                                       7 3a-8
+ Logical             179 For each surface where an exterior     Spatial object error                  Correct spatial object(s).                C                B, U
+ Consistency /           boundary is within an interior          (exteriors can not be inside
+ Topological             boundary.                              interiors)                                                         S-100 Part
+ Consistency                                                                                                                       7 3a-9
+ Logical             180 For each feature of geometric          Spatial object error.                 Correct spatial object(s).                C                B, U
+ Consistency /           primitive surface with >1 spatial       (Surface features must
+ Topological             associations (SPAS) ?                  associate with only one                                            S-100 Part
+ Consistency                                                    surface)                                                           7 3a-10
+ Logical             181 Curves and Composite curves            Spatial object error.                 Correct spatial object(s).                C                B, U
+ Consistency /           (including Polygons referenced by       (Self-intersection)
+ Topological             Surface features in level 3a/b) must
+ Consistency             not self-intersect [defined with                                                                          S-100 Part
+                         reference to diagram].                                                                                    7 11
+
+
+
+
+S-131                                                                              March 2023                                                                      Edition 1.0.0
+
+<<<PAGE 22>>>
+18                                                                             MHI Validation Checks
+
+
+
+
+ DQ Measure /    Check  Check condition description               Check message                        Check solution                  Conformity   Classification   Apply
+ Theme            ID                                                                                                                                                 to
+ Logical            182 Each composite curve must be              Spatial object error.                Correct spatial object(s).                   C                B, U
+ Consistency /          continuous. The end point of each         (Composite curves must be
+ Topological            component (taking into account the        well defined.)
+ Consistency            orientation) must be a duplicate of
+                        the start point of the next curve
+                        component (again, taking into                                                                                  S-100 Part
+                        account the orientation).                                                                                      7 2a-4
+ Logical            183 Curve Segments must not start or          Spatial object error.                Correct spatial object(s).                   C                B, U
+ Consistency /          end     with     repeated    vertices.     (No self-intersection (repeated
+ Topological            Segments must not repeat any              vertices))
+ Consistency            vertex     (this   constitutes    self-
+                        intersection). (For each curve
+                        component           with       EQUAL                                                                           S-100 Part
+                        consecutive vertices.)                                                                                         7 2a-12
+ Logical            184 A closed curve must have two or           Spatial object error.                Correct spatial object(s).                   C                B, U
+ Consistency /          more intermediate vertices (or it self-    (No self-intersection (number
+ Topological            intersects).                              of vertices))                                                        S-100 Part
+ Consistency                                                                                                                           7 2a-13
+ Logical             185 For each feature with more than one      Too many position numbers.           Review whether all of bollard                W                B, S
+ Consistency /           of the attributes bollardNumber,                                              number, meter mark number,
+ Conceptual              metreMarkNumber,                                                              manifold number, and ramp
+ Consistency             manifoldNumber,        rampNumber                                             number are appropriate.
+                         populated.                                                                                                    DCEG
+
+
+
+
+S-131                                                                               March 2023                                                                         Edition 1.0.0
+
+<<<PAGE 23>>>
+19                                         MHI Validation Checks
+
+
+
+
+8    Exchange set validation checks
+
+The checks in this section apply to exchange sets containing MHI datasets.
+
+Exchange set validation involves the following phases:
+
+     1) Checking the presence and correctness of the exchange catalogue (CATALOG.XML).
+     2) Verification of signatures, including the exchange catalogue signature and signatures for
+        individual datasets, catalogues, and support files.
+     3) Checking the structure and contents of the exchange set package. This involves the following
+        checks:
+            a. The exchange catalogue must contain a discovery block for each dataset, catalogue, and
+               support file in the exchange set, as described in S-100 Part 17 and the MHI Product
+               Specification.
+            b. All datasets and catalogues described by a discovery block in the exchange catalogue
+               must be present in the exchange set.
+            c.   Any support file described by a support file discovery block in the exchange catalogue
+                 must either be in the exchange set or already present on the system.
+     4) Checking that any metadata encoded in a discovery block and repeated in the corresponding
+        component (dataset, catalogue, or support file) are compatible.
+The exchange set validation checks are given in the following table. The “Apply To” column is omitted
+because the checks are for exchange sets and not base or update datasets.
+Implementers should note that validation with schema-aware validation software and the official S-100
+exchange catalogue schema from the S-100 schema server will detect many of the check conditions
+described in Table 8.1, and others can be detected using Schematron validation rules.
+NOTE: The checks listed in this table are extracted from a preliminary list of generic S-100 checks and
+the reader’s attention is particularly drawn to the note in clause 2 about the ongoing development of S-
+100 generic checks.
+
+
+
+
+S-131                                           March 2023                                    Edition 1.0.0
+
+<<<PAGE 24>>>
+20                                                                           MHI Validation Checks
+
+
+
+
+Table 8.1 - MHI Exchange Set checks
+ DQ Measure /       Check ID                 Check condition description                       Check message              Check solution     Conformity     Classification
+ Theme
+
+ Logical            InvalidAgencyCode        If the producer agency code is not a value                                                      S-100   Part   E
+ Consistency    /                            present in the IHO Producer code register.                                                      17
+ Domain
+ Consistency
+
+ Logical            CatalogStructure         If the structure and content of the                                                             S-100   Part   C
+ Consistency    /                            CATALOG.XML file is invalid as detected by                                                      17
+ Format                                      schema-validation.
+ Consistency
+
+ Completeness   /   MissingSupportFile       If a support file included in the                                                               S-100   Part   E
+ Omission                                    SupportFileDiscovery Metadata is not                                                            17
+                                             present in the exchange set at the location
+                                             specified by the file URI.
+
+ Completeness   /   DigitalSignatures        If the digital signature values are not present                                                 S-100 Parts    E
+ Omission                                    and valid in the DatasetDiscoveryMetadata                                                       17, 15
+                                             or SupportFileDiscoveryMetadata.
+
+ Logical            InvalidDatasetName       If the dataset file name is not in accordance     Dataset file name is not   Amend       file   PS 13.3.2,     E
+ Consistency    /                            with the Product Specification.                   in accordance with the     name.              13.3.3
+ Domain                                                                                        Product Specification.
+ Consistency
+
+ Logical            InvalidSupportFilename   If the support file name is not in accordance     Support file name is not   Amend       file   PS 13.4.1      E
+ Consistency    /                            with the Product Specification.                   in accordance with the     name.
+ Domain                                                                                        Product Specification.
+ Consistency
+
+
+
+
+S-131                                                                             March 2023                                                                           Edition 1.0.0
+
+<<<PAGE 25>>>
+21                                                                              MHI Validation Checks
+
+
+
+
+ DQ Measure /       Check ID                     Check condition description                      Check message              Check solution        Conformity       Classification
+ Theme
+
+ Completeness   /   MissingCatalogFile           If the CATALOG.XML file is not present.                                                           S-100     Part   C
+ Omission                                                                                                                                          17
+
+ Logical            CatalogDatasetInconsistent   If any of the metadata attribute values listed                                                    S-100     Part   E
+ Consistency    /                                in the CATALOG.XML and present in the                                                             17
+ Domain                                          dataset are not identical.
+ Consistency
+
+ Completeness   /   MissingDatasetMetadata       For each instance of a dataset present in the    Dataset      discovery     Add       dataset     PS      14.2,    E
+ Omission                                        exchange set and that does not have              metadata is missing for    discovery             14.3
+                                                 dataset discovery metadata.                      dataset.                   metadata.
+
+ Completeness   /   MissingSupportMetadata       For each instance of a support file present      Support file discovery     Support        file   PS 14.3          E
+ Omission                                        in the exchange set and that does not have       metadata is missing for    discovery
+                                                 support file discovery metadata.                 support file.              metadata.
+
+ Completeness   /   MissingCatalogueMetadata     For each file referenced by the catalogue file   File is missing    from    Add     file     to   PS      14.5,    E
+ Omission                                        in the exchange set and not present in the       exchange set.              exchange set or       14.6
+                                                 exchange set.                                                               remove
+                                                                                                                             reference to file.
+
+ Completeness   /   SuperfluousMetadata          For each dataset discovery metadata file         Dataset discovery ISO      Ensure correct        PS 13.1          W
+ Commission                                      (ISO file) that does not correspond to a         metadata file that does    encoding of the
+                                                 dataset in the exchange set.                     not correspond to the      discovery
+                                                                                                  dataset        discovery   metadata file.
+                                                                                                  metadata content table.
+
+ Completeness   /   ExtraCancellationDataset     For each cancellation (termination) of a         Cancellations     cannot   Remove         the    --               W
+ Commission                                      dataset where the update exchange set            contain data objects.      dataset file from
+                                                 contains a corresponding dataset file.                                      the exchange set
+                                                                                                                             or correct the
+                                                                                                                             metadata.
+
+
+
+
+S-131                                                                                March 2023                                                                                Edition 1.0.0
+
+<<<PAGE 26>>>
+22                                                                    MHI Validation Checks
+
+
+
+
+ DQ Measure /       Check ID             Check condition description                    Check message   Check solution     Conformity   Classification
+ Theme
+
+ Completeness   /   EmptyUpdateDataset   For each update dataset, without a feature,    Empty update.   Add the data or    --           W
+ Omission                                information type, or support file.                             support file or
+                                                                                                        correct      the
+                                                                                                        metadata.
+
+
+
+
+S-131                                                                      March 2023                                                              Edition 1.0.0
+
+<<<PAGE 27>>>
+23             MHI Validation Checks
+
+
+
+
+        This page intentionally left blank.
+
+
+
+
+S-131               March 2023                Edition 1.0.0

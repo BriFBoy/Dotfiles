@@ -1,0 +1,882 @@
+# S-98 Part B — Edition 2.0.0
+# source: /home/johanneslj/Documents/S-100/S-98/S-98 Part B_Ed_2.0.0_Final.pdf
+# Page markers are PDF page numbers (1-based), not printed page numbers.
+
+<<<PAGE 1>>>
+S-98
+
+
+
+
+  S-100 ECDIS and
+  Interoperability
+  Specification
+  Part B: Level 2 Interoperability
+
+  Edition 2.0.0 – October 2025
+
+
+
+
+                                                         Published by the
+                                 International Hydrographic Organization
+                                                      4b quai Antoine 1er
+                                                  Principauté de Monaco
+                                                   Tel: (377) 93.10.81.00
+                                                  Fax: (377) 93.10.81.40
+                                                              info@iho.int
+                                                               www.iho.int
+
+<<<PAGE 2>>>
+ii                                              Level 2 Interoperability
+
+
+
+
+                               © Copyright International Hydrographic Organization 2025
+
+              This work is copyright. Apart from any use permitted in accordance with the Berne
+              Convention for the Protection of Literary and Artistic Works (1886), and except in the
+              circumstances described below, no part may be translated, reproduced by any process,
+              adapted, communicated or commercially exploited without prior written permission from the
+              International Hydrographic Organization (IHO). Copyright in some of the material in this
+              publication may be owned by another party and permission for the translation and/or
+              reproduction of that material must be obtained from the owner.
+
+              This document or partial material from this document may be translated, reproduced or
+              distributed for general information, on no more than a cost recovery basis. Copies may not
+              be sold or distributed for profit or gain without prior written agreement of the IHO Secretariat
+              and any other copyright holders.
+
+              In the event that this document or partial material from this document is reproduced,
+              translated or distributed under the terms described above, the following statements are to
+              be included:
+
+                 “Material from IHO publication [reference to extract: Title, Edition] is reproduced with the
+                 permission of the IHO Secretariat (Permission No ……./…) acting for the International
+                 Hydrographic Organization (IHO), which does not accept responsibility for the correctness
+                 of the material as reproduced: in case of doubt, the IHO’s authentic text shall prevail.
+                 The incorporation of material sourced from IHO shall not be construed as constituting an
+                 endorsement by IHO of this product.”
+
+                 “This [document/publication] is a translation of IHO [document/publication] [name]. The
+                 IHO has not checked this translation and therefore takes no responsibility for its accuracy.
+                 In case of doubt the source version of [name] in [language] should be consulted.”
+              The IHO Logo or other identifiers shall not be used in any derived product without
+              prior written permission from the IHO Secretariat.
+
+
+
+
+S-98 Part B                                          October 2025                                         Edition 2.0.0
+
+<<<PAGE 3>>>
+                                                               Level 2 Interoperability                                                                  iii
+
+
+
+
+Contents
+B-1 Introduction ............................................................................................................................................ 1
+B-1.1        How to read this Part ...................................................................................................................... 1
+B-2 Specification Scope for Part B ............................................................................................................... 1
+B-3 Data Content and Structure ................................................................................................................... 2
+B-3.1        Application Schema ........................................................................................................................ 2
+B-3.1.1      Overview of Application Schema .................................................................................................... 2
+B-3.1.2      Operations in pre-defined combinations ........................................................................................ 3
+B-3.1.3      Enhanced selection of feature instances ....................................................................................... 3
+B-3.1.4      Interoperability levels ...................................................................................................................... 4
+B-3.1.5      Hybridization rules .......................................................................................................................... 4
+B-3.1.6      Hybrid Feature and Portrayal Catalogues ...................................................................................... 4
+B-3.1.7      Progression of Interoperability Levels ............................................................................................ 4
+B-3.2        Interoperability Catalogue .............................................................................................................. 4
+B-3.2.1      Conceptual types for Level 2 interoperability ................................................................................. 4
+B-3.2.2      Use of S-100 types ......................................................................................................................... 6
+B-3.3        UML model documentation ............................................................................................................ 6
+B-4 Level-Specific Data Quality Considerations .......................................................................................... 7
+B-4.1        Quality of displayed data ................................................................................................................ 7
+B-4.2        Quality of interoperability catalogues ............................................................................................. 7
+B-4.2.1      Test methods .................................................................................................................................. 7
+B-4.2.2      Data quality testing ......................................................................................................................... 7
+B-5 Level-specific Guidance on Making Product Specifications Interoperable ........................................... 7
+B-5.1        Duplicated features ........................................................................................................................ 7
+B-5.1.1      Duplicated features same model .................................................................................................... 8
+B-5.1.2      Duplicated features, different models ............................................................................................. 8
+B-5.1.3      Duplicate feature domains .............................................................................................................. 8
+B-5.2        Geometry ........................................................................................................................................ 8
+B-5.2.1      Combined geometry ....................................................................................................................... 8
+B-5.2.2      Spatial discrepancy, unrelated to scaled or cartographic smoothing ............................................. 8
+B-5.2.3      Spatial discrepancies, related to scale or cartographic smoothing ................................................ 8
+B-5.3        Display of text ................................................................................................................................. 8
+B-5.4        Skin-of-the-earth feature operations............................................................................................... 9
+B-5.4.1      Skin-of-the earth feature replacement ............................................................................................ 9
+B-5.4.2      Skin-of-the earth feature adjusting ................................................................................................. 9
+B-5.5        Blended feature concepts ............................................................................................................... 9
+B-5.6        Hierarchy of data ............................................................................................................................ 9
+B-5.6.1      Hierarchy by stacking of display planes ......................................................................................... 9
+B-5.6.2      Predefined combinations ................................................................................................................ 9
+B-5.7        New datasets .................................................................................................................................. 9
+B-5.8        Dataset scales, loading, and unloading ......................................................................................... 9
+B-5.9        Metadata ....................................................................................................................................... 10
+B-5.10       Meta-features ............................................................................................................................... 10
+B-5.11       Quality considerations .................................................................................................................. 10
+B-6 Portrayal .............................................................................................................................................. 10
+B-6.1        Display of significant features ....................................................................................................... 10
+B-6.2        Display of significant features - switching to original .................................................................... 10
+B-6.3        Portrayal distinguishability - colour set-asides ............................................................................. 10
+B-6.4        Day/night/dusk modes .................................................................................................................. 10
+B-6.5        Impacts on viewing groups ........................................................................................................... 11
+
+
+
+S-98 Part B                                                         October 2025                                                           Edition 2.0.0
+
+<<<PAGE 4>>>
+iv                                                           Level 2 Interoperability
+
+
+
+B-6.6    Impacts on Portrayal Catalogues ................................................................................................. 11
+B-6.7    Meta-features ............................................................................................................................... 11
+B-6.8    Display of text ............................................................................................................................... 11
+B-6.9    Skin-of-the-earth operations and portrayal ................................................................................... 11
+B-6.9.1 Skin-of-the-earth feature replacement and portrayal ................................................................... 11
+B-6.9.2 Skin-of-the-earth feature adjusting and portrayal ......................................................................... 11
+B-6.10 Blended portrayals ....................................................................................................................... 12
+B-6.11 Hierarchy of data .......................................................................................................................... 12
+B-6.11.1 Interacting gridded information ..................................................................................................... 12
+B-6.12 Pick Reports ................................................................................................................................. 12
+B-7 Processing Model ................................................................................................................................ 12
+B-8 Normative Implementation Guidance .................................................................................................. 15
+B-9 Feature Catalogue ............................................................................................................................... 15
+B-10         Portrayal Catalogue ...................................................................................................................... 15
+
+
+
+
+S-98 Part B                                                        October 2025                                                        Edition 2.0.0
+
+<<<PAGE 5>>>
+                                          Level 2 Interoperability                                        v
+
+
+
+
+                                          Document History
+Changes to this Specification are coordinated by the IHO S-100 Working Group. New editions will be made
+available via the IHO web site. Maintenance of the Specification shall conform to IHO Resolution 2/2007 (as
+amended).
+
+ Version         Date           Approved          Purpose
+ Number                         By
+ 0.1             31 Jul 2017    EM, RM          First draft.
+ 0.2             12 Dec 2017    RM, EM          Changes from interoperability workshop and TSM5.
+ 0.3             08 Jul 2018    EM, RM          Edits from March 2018 review comments
+                                                Updates for conformance to S-100 Edition 4.0.0, ISO
+                                                19115-1, and 19115-3. Removed metadata items not
+                                                used by S-98 from the metadata documentation tables.
+ 1.0.0 RC1       13 Mar 2019    RM              Applied S-100 WG4 decisions; updated metadata to
+                                                conform to final version of S-100 Edition 4.0.0.
+ 1.0.0 (Draft)   21 Mar 2019    JW              Editorial updates for HSSC.
+ 0.4             Jan 2020       RM              Revised after TSM7 decision to separate interoperability
+                                                into an abstract specification (new S-100 Part) and
+                                                implementation specification (S-98).
+ 1.0.0           May 2022       S-100WG         Submission to HSSC14 for approval.
+ 1.0.0           May 2022       HSSC            Initial published version for evaluation and testing.
+ 2.0.0           Jan 2025       S-100WG         Initial version for submission to HSSC as S-98 Part B
+ 2.0.0           Oct 2025       IHO CL          First operational Edition of S-98.
+                                41/2025
+
+
+
+
+S-98 Part B                                   October 2025                                     Edition 2.0.0
+
+<<<PAGE 6>>>
+vi                Level 2 Interoperability
+
+
+
+
+              Page intentionally left blank
+
+
+
+
+S-98 Part B           October 2025            Edition 2.0.0
+
+<<<PAGE 7>>>
+                                             Level 2 Interoperability                                       1
+
+
+
+
+B-1 Introduction
+S-98 Part B contains information that applies to Interoperability Catalogues which use interoperability rules
+and operations of at most Level 2 interoperability.
+Interoperability Catalogues conforming to this Part must comply with both the following components of S-
+98:
+    1) S-98 Main Specification, which describes requirements applying to all S-98 Interoperability
+       Catalogues and S-98 Exchange Sets;
+    2) S-98 Part B (this Part), which defines the subset of the interoperability model and Catalogue encoding
+       that are specific to Level 2 interoperability.
+The hypothetical processing model for implementations is described in general terms in the “S-98 - Main”
+document and elaborated in clause B-B-7 of this Part.
+Level 2 interoperability includes the following capabilities:
+   • Level 1 interoperability, in which feature types from different products, including S-101, are interleaved
+     as specified by display plane and drawing priority information contained in the Interoperability
+     Catalogue.
+   • In addition, Level 2 allows suppression of all features of a specified feature type in a specified product,
+     with another feature type from a different product being displayed instead. Filtering by attribute values
+     and geometry type is also possible.
+   • Level 2 also adds constructs allowing Catalogues to partition interoperability rules and operations
+     according to specified combinations of data products (“predefined combinations”). The rules and
+     operations in each partition are applied only when the corresponding data products are part of the
+     display.
+The output of interoperability processing is either the original feature data (processing option 1) or drawing
+instructions (processing option 2), accompanied by display plane and drawing priority information, which is
+passed through to the portrayal processor. Clause B-7 elaborates on these options.
+
+
+B-1.1 How to read this Part
+Clause B-2 of this Part contains scope identification information corresponding to the contents of this Part,
+which applies specifically to Interoperability Catalogues designated as Level 2.
+For Clauses B-3–B-10, the content of the clause or sub-clause extends or elaborates on the content under
+the same or similar clause heading or sub-heading in the S-98 – Main document.
+The numbering of clauses B-3–B-10 may differ from that of corresponding clauses in S-98 – Main, because
+for some there is no additional Level-specific information needed. If a clause or sub-clause in S-98 – Main
+has no corresponding clause or sub-clause in this Part, there is no Level-specific information on that topic.
+Part B includes Part A content (pertaining to Level 1), adapted as necessary for Level 2. Reference to Part
+A should therefore not be needed.
+
+
+B-2 Specification Scope for Part B
+S-98 Part B describes the portions of S-98 which correspond to the following scope defined in S-98 – Main
+(clause 2):
+Scope Identification: S98L2
+Level: MD_ScopeCode – 13 (software)
+Level Name: Interoperability Level 2
+
+
+
+S-98 Part B                                      October 2025                                     Edition 2.0.0
+
+<<<PAGE 8>>>
+2                                         Level 2 Interoperability
+
+
+
+Description: Type-based selectivity and feature class replacement; interleaving
+Extent: EX_Extent.description = “worldwide”; EX_GeographicBoundingBox = [-180, +180, -90, +90]
+
+
+B-3 Data Content and Structure
+B-3.1 Application Schema
+B-3.1.1 Overview of Application Schema
+The Application Schema for Interoperability Level 2 is depicted in Figure B-3.1 below. This Application
+Schema is a subset of the full Application Schema in S-100 Part 16. It consists of the following components:
+   1) Catalogue header information.
+   2) Display plane ordering information.
+   3) Display planes content in the form of either features or drawing instructions.
+   4) Specification of rules indicating which feature layers to suppress.
+   5) Specification of data product combinations and method of referencing collections of interoperability
+      rules and operations to specific combinations.
+   6) Specification of rules indicating which feature instances to suppress.
+
+
+
+
+S-98 Part B                                   October 2025                                    Edition 2.0.0
+
+<<<PAGE 9>>>
+                                           Level 2 Interoperability                                      3
+
+
+
+
+                              Figure B-3.1 – Level 2 Interoperability Catalogue
+B-3.1.2 Operations in pre-defined combinations
+Level 2 introduces predefined combinations, whereby the scope of specified interoperability operations can
+be restricted so the operations are executed only when a specified set of data products is active on the user
+display. Display plane and feature ordering (Level 1 operations) can be thus restricted by associating a
+specific set of products (listed in S100_IC_PredefinedCombination elements) to S100_IC_DisplayPlane
+elements.
+Level 2 interoperability also allows replacement of a feature layer from one product by a feature layer from
+another product. These layers are specified by S100_IC_SuppressedFeatureLayer elements.
+Replacement operations are restricted to occur only when specific combinations of data products are present
+on the user display because the S100_IC_SuppressedFeatureLayer elements in Interoperability
+Catalogues are always contained within S100_IC_PredefinedCombination elements.
+B-3.1.3 Enhanced selection of feature instances
+Enhanced selection of feature instances is possible only in Levels 3 and 4 (Parts C and D).
+
+
+
+
+S-98 Part B                                    October 2025                                    Edition 2.0.0
+
+<<<PAGE 10>>>
+4                                           Level 2 Interoperability
+
+
+
+B-3.1.4 Interoperability levels
+The interoperabilityLevel attribute in S100_IC_InteroperabilityCatalogue specifies the highest Level of
+interoperability implemented in that XML Interoperability Catalogue file. The interoperabilityLevel attribute in
+S100_IC_DisplayPlane specifies the Level to which that display plane pertains.
+The interoperabilityLevel attribute in each S100_IC_PredefinedCombination element specifies the highest
+Level of interoperability operations that are encoded in the element. S100_IC_PredefinedCombination
+elements are permitted to also include operations of a lower Level of interoperability.
+B-3.1.5 Hybridization rules
+Hybridization rules are allowed only in Levels 3 and 4 (Parts C and D).
+B-3.1.6 Hybrid Feature and Portrayal Catalogues
+Hybrid Feature and Portrayal Catalogues are allowed only in Levels 3 and 4 (Parts C and D).
+B-3.1.7 Progression of Interoperability Levels
+Figure B-3.2 below shows the components of the model subset used by this Level compared to lower Levels.
+Level 2 adds predefined combinations and feature suppression elements to Level 1.
+Interoperability Catalogues at any Level can also use lower-Level functionality.
+
+
+
+
+                      Figure B-3.2 - Progressive use of Interoperability Catalogue model
+
+
+
+B-3.2 Interoperability Catalogue
+B-3.2.1 Conceptual types for Level 2 interoperability
+The following clauses summarize the conceptual elements used in Level 2 Interoperability Catalogues.
+Details about these conceptual types are provided in S-100 Part 16.
+B-3.2.1.1 Display plane (S100_IC_DisplayPlane)
+A display plane element in the Interoperability Catalogue acts as a container for display information for
+specified feature classes, which enables the interleaving of feature layers during portrayal by indicating the
+display plane, priority, and drawing order of the features assigned to a display plane.
+
+
+
+
+S-98 Part B                                     October 2025                                      Edition 2.0.0
+
+<<<PAGE 11>>>
+                                            Level 2 Interoperability                                        5
+
+
+
+A feature type may be referenced in more than one S100_IC_DisplayPlane, but the entries in different
+display planes must be distinguished by different attribute-value combinations or spatial primitives so that
+the actual instances of features are partitioned unambiguously between different display planes.
+The portrayal of feature types not mentioned in any S100_IC_DisplayPlane component is undefined until
+ordinary portrayal processing takes place.
+B-3.2.1.2 Feature type display information (S100_IC_Feature)
+The S100_IC_Feature element describes the display parameters for all features of a specific feature type
+in a specific product and thereby determines the order of drawing the feature type relative to other feature
+types in the same display plane. It also specifies the viewing group to which the feature is assigned. Its
+applicability can be optionally restricted to a subset of instances of the feature type by additional attributes
+that specify the type of spatial primitive and indicate specific values of thematic attributes.
+B-3.2.1.3 Feature layer (S100_IC_SuppressedFeatureLayer)
+Each instance of this element identifies a feature type in a specific data product which is supposed to be
+suppressed in the presence of another specified feature type from another product.
+B-3.2.1.4 Drawing instruction (S100_IC_DrawingInstruction)
+Drawing instructions in the Interoperability Catalogue play a similar role to feature type display information
+(S100_IC_FeatureType) but with drawing instructions instead of feature objects. The
+S100_IC_DrawingInstruction element in Interoperability Catalogues is similar in operation to the layering
+and priority aspects of the DrawingInstruction element in Portrayal Catalogues (see S-100 Part 9 -
+Portrayal). Where there is a conflict with a Portrayal Catalogue drawing instruction, the drawing instruction
+in the Interoperability Catalogue supersedes the drawing instruction in the Portrayal Catalogue.
+The S100_IC_DrawingInstruction element contains an additional attribute that allows substitution of
+symbolization instructions generated by portrayal processing.
+B-3.2.1.4.1 Comparison and use of S100_IC_Feature and S100_IC_DrawingInstruction
+S100_IC_Feature and S100_IC_DrawingInstruction elements in Interoperability Catalogues operate in
+essentially the same way as far as assignment of drawing order, priority, and display planes is concerned.
+They differ in that S100_IC_DrawingInstruction provides an optional attribute to substitute the
+symbolization elements of the drawing instruction.
+S100_IC_Feature should be used for Interoperability Catalogues that are designed for systems where
+interoperability processing precedes the generation of drawing instructions.
+S100_IC_DrawingInstruction should be used for Interoperability Catalogues that are designed for systems
+where interoperability processing precedes the generation of drawing instructions. It should also be used in
+all Catalogues where substitution of symbolization is necessary.
+B-3.2.1.5 Predefined combination (S100_IC_PredefinedCombination)
+A predefined combination element defines a collection of data products for which a common set of
+interoperability operations have been defined in the Interoperability Catalogue. Instances of predefined
+combinations are also characterized by interoperability Level, which allows the encoding of different sets of
+operations depending on how tightly integrated the user desires the products to be on the resultant display.
+The interoperabilityLevel attribute in each S100_IC_PredefinedCombination element specifies the highest
+Level of interoperability operations that are encoded in the element. S100_IC_PredefinedCombination
+elements with a specified Level attribute are permitted to also include operations of a lower Level of
+interoperability.
+Predefined combinations can be linked to S100_IC_DisplayPlane elements by means of references in the
+S100_IC_PredefinedCombination elements.
+
+
+
+
+S-98 Part B                                     October 2025                                      Edition 2.0.0
+
+<<<PAGE 12>>>
+6                                           Level 2 Interoperability
+
+
+
+B-3.2.2 Use of S-100 types
+The S-100 types used by S-98 Level 2 Interoperability Catalogues are described in the S-98 – Main
+document. For Level 2 Interoperability Catalogues, the following additional information applies.
+    • Interoperability Catalogues of Level 2 do not use feature and information associations in feature filters.
+
+
+B-3.3 UML model documentation
+The UML model documentation is provided in S-100 Part 16. This clause documents details specific to the
+use of the UML model for the interoperability Level described in this Part of S-98.
+Only the model elements used in this Level (and included in the Level’s Application Schema) are listed. The
+constraints and considerations listed in the UML documentation tables in S-100 Part 16 apply. Any S-98
+general or Level-specific considerations are described under the element name in the list below.
+    1) S100_IC_DisplayPlane: No Level-specific constraints or notes.
+        Attribute interoperabilityLevel: Mandatory. The only values allowed for Level 2 Interoperability
+        Catalogues are 1 and 2.
+    2) S100_IC_DrawingInstruction:
+        NOTE for implementers: Even if the Presentation Schema in S-100 Part 9 is used, implementers
+        may need to provide specific code to validate the content of the substituteSymbolization attribute
+        instead of depending on normal XML Schema validation. The content of this attribute is not
+        prescribed by this Specification and may be a fragment of XML, or interpretable code or rules, etc,
+        in a non-XML syntax. It may be enclosed in a <![CDATA[ … ]]> section so that XML validators
+        treat it as character data instead of XML.
+    3) S100_IC_Feature: No Level-specific constraints or notes.
+    4) S100_IC_InteroperabilityCatalogue:
+        Attribute productCovered: Must use values defined in the dictionary identified by MRN:
+        urn:mrn:iho:prod:s98:1:0:0:products.
+        Attribute interoperabilityLevel: Mandatory in S-98 Catalogues at all Levels. The only value allowed
+        for Level 2 Interoperability Catalogues is 2.
+    5) S100_IC_PredefinedCombination:
+        Attribute interoperabilityLevel: Mandatory in S-98 Interoperability Catalogue; allowed values: 1, 2.
+    6) S100_IC_SuppressedFeatureLayer: No Level-specific constraints or notes.
+    7) Codelist dataProduct: No Level-specific constraints or notes. The data type for all Levels is
+       described below.
+               Codelist Type: closed dictionary
+               MRN: urn:mrn:iho:prod:s98:1:0:0:products.
+    8) Codelist requirementType: No Level-specific constraints or notes.
+         For all interoperability Levels, the following subset of the standard values listed in S-100 Part 16 are
+         permitted to be used in S-98 Interoperability Catalogues:
+                                   Table B-3-1 - Allowed values for requirementType
+
+              Value   Description                                                                      Code
+              IHO     Original IHO Interoperability Catalogue                                             1
+              OEM     Prepared according to requirements specified by OEM or systems                      2
+                      integrator
+
+
+
+
+S-98 Part B                                     October 2025                                      Edition 2.0.0
+
+<<<PAGE 13>>>
+                                             Level 2 Interoperability                                          7
+
+
+
+
+              national   Prepared according to requirements specified by a national Government,            3
+                         group of national Governments (for example the European Union), or
+                         governmental agency such as a national shipping authority or the Coast
+                         Guard
+              local      Prepared according to requirements specified by a sub-national                    4
+                         governmental authority such as a state, province, or county
+              port       Prepared according to requirements specified by a harbormaster's office           5
+                         or port authority
+              company    Prepared according to requirements specified by the owner, charterer, or          6
+                         operator
+              pilot      Prepared according to requirements specified by a pilot                           7
+              master     Prepared according to requirements specified by the vessel’s master               8
+
+       Extra values (“other: ...”) as defined in S-100 Part 3, clause 3-6.7 are also permitted.
+    9) S100_IC_PredefinedCombination
+       Role derivedFeatures: Not allowed in Level 2 Interoperability Catalogues.
+
+
+B-4 Level-Specific Data Quality Considerations
+B-4.1 Quality of displayed data
+There are no Level-specific extensions to clause 6.1 of the “S98 – Main” document.
+Clause B-B-5.111 provides guidance for maintaining data quality for Level-specific rules and operations.
+
+
+B-4.2 Quality of interoperability catalogues
+The quality measures recommended in S-97 (Part C) which are applicable to Level 2 S-98 Interoperability
+Catalogues are those listed in Table 6-1 of the “S-98 – Main” document. There are no additional Level-
+specific measures for Level 2.
+B-4.2.1 Test methods
+There are no Level-specific extensions to Clause 6.2.1 of the “S-98 – Main” document.
+B-4.2.2 Data quality testing
+There are no Level-specific extensions to Clause 6.2.2 of the “S-98 – Main” document.
+
+
+B-5 Level-specific Guidance on Making Product Specifications Interoperable
+The guidelines in this clause supplement and extend guidance common to all Levels on making Product
+Specifications interoperable, which is given in clause 8 of the “S-98 – Main” document.
+
+
+B-5.1 Duplicated features
+There is no Level-specific guidance for determining duplicated features. However, when Interoperability
+Catalogues are developed to resolve duplicated features, keep in mind the following Level-dependent
+considerations:
+Level 2 Interoperability Catalogues offer the following interoperability functionality:
+
+
+S-98 Part B                                      October 2025                                      Edition 2.0.0
+
+<<<PAGE 14>>>
+8                                          Level 2 Interoperability
+
+
+
+    • Interleaving changes - changes to the display planes and display orders specified in the products’
+      Portrayal Catalogues, as determined by display plane and drawing priority information. This means
+      that features which are not covered by features with higher drawing priority or in an upper display
+      plane will still be visible. This is the same functionality as Level 1.
+    • Type-based suppression of features from one product by features from another product. The
+      difference from interleaving changes is that type-based suppression will suppress even features which
+      are not covered by features from the second product. Note that this applies only in areas where there
+      is data coverage by both products; it does not apply in areas where only one product has data
+      coverage. This functionality is added in Level 2.
+B-5.1.1 Duplicated features same model
+See the guidance in clause 8.1.1 of the “S-98 – Main” document, and keep in mind the differences between
+Level 1 and Level 2 interoperability solutions described earlier in clause B-5.1 of this Part.
+S100_IC_SuppressedFeatureLayer elements only have feature code and product as attributes for
+suppression, this means that all instances of a listed feature class will be suppressed. This is important to
+remember when creating rules that promote alternative instances. S100_IC_Feature and
+S100_IC_DrawingInstruction can have attribute combinations and spatial primitives to select the
+alternative instances. There is therefore a risk that unless sufficient attention to detail is given, important
+instances may be omitted.
+EXAMPLE: If Restricted Area Navigational in ENC is suppressed, and Restricted Area Navigational with
+attribute category of restricted area = 4 (nature reserve) in a Marine Protected Area dataset is promoted
+in its place, there is a chance that only instances with that combination will be visible, and all others
+supressed.
+B-5.1.2 Duplicated features, different models
+See the guidance in clause 8.1.2 of the “S-98 – Main” document, and keep in mind the differences between
+Level 1 and Level 2 interoperability solutions described in clause B-5.1 of this Part. There is no other Level-
+specific guidance for this scenario.
+B-5.1.3 Duplicate feature domains
+See the guidance in clause 8.1.3 of the “S-98 – Main” document, and keep in mind the differences between
+Level 1 and Level 2 interoperability solutions described in Clause B-5.1 of this Part. There is no other Level-
+specific guidance for this scenario.
+
+
+B-5.2 Geometry
+B-5.2.1 Combined geometry
+Combined geometry is possible only in interoperability Levels 3 and 4 (Parts C and D of this Specification).
+B-5.2.2 Spatial discrepancy, unrelated to scaled or cartographic smoothing
+There is no Level-specific guidance for this issue. Common guidance is provided in clause 8.2.2 of the “S-
+98 – Main” document.
+B-5.2.3 Spatial discrepancies, related to scale or cartographic smoothing
+There is no Level-specific guidance for this issue. Common guidance is provided in clause 8.2.3 of the “S-
+98 – Main” document.
+
+
+B-5.3 Display of text
+There is no Level-specific guidance for this issue. Common guidance is provided in clause 10.8 of the “S-
+98 – Main” document.
+
+
+
+
+S-98 Part B                                    October 2025                                      Edition 2.0.0
+
+<<<PAGE 15>>>
+                                           Level 2 Interoperability                                        9
+
+
+
+
+B-5.4 Skin-of-the-earth feature operations
+B-5.4.1 Skin-of-the earth feature replacement
+Level 2 Interoperability Catalogues permit any of the following:
+   • Interleaving of display planes so that upper planes overwrite lower planes (Level 1 functionality). This
+     can be used to shift feature layers to lower or higher planes to overwrite layers whose replacement is
+     desired.
+   • Suppression of feature layers in which case the features in the suppressed layer are not processed
+     for portrayal but features over/under the suppressed features will be displayed as determined by their
+     display planes and drawing priorities (Level 2 functionality).
+See clause B-6.9 for portrayal considerations.
+B-5.4.2 Skin-of-the earth feature adjusting
+Adjustment of the geometry of skin-of-the-earth features is possible only in Level 4 (Part D).
+
+
+B-5.5 Blended feature concepts
+Blended features or blended portrayal are only possible in interoperability Levels 3 and 4 (Parts C and D).
+
+
+B-5.6 Hierarchy of data
+B-5.6.1 Hierarchy by stacking of display planes
+In Level 2 Interoperability Catalogues, hierarchy can be set by interleaving of display planes or feature layer
+suppression operations.
+B-5.6.2 Predefined combinations
+Predefined combinations can be defined in Level 2 Interoperability Catalogues. Interoperability rules can be
+made contingent on the presence of particular combinations of data products on the display. Predefined
+combinations are generally created with a particular type of operational view in mind, and therefore the
+hierarchy of data may vary between predefined combinations. Typically, the ENC will be the base layer; that
+is, the lowest layer in a predefined combination.
+Predefined combinations are used to define the hierarchy of data between different S-100 based
+Specifications. An instance of S100_IC_PredefinedCombination is associated to S100_IC_DisplayPlane
+instances to give the hierarchy of the data products that are intended to be used. The attribute order within
+the S100_IC_DisplayPlane gives the order in which the layers are drawn.
+
+
+B-5.7 New datasets
+There is no Level-specific guidance for this issue. Common guidance is provided in clause 8.7 of the “S-98
+– Main” document.
+
+
+B-5.8 Dataset scales, loading, and unloading
+There is no Level-specific guidance for this issue. Common guidance is provided in clause 8.8 of the “S-98
+– Main” document.
+
+
+
+
+S-98 Part B                                      October 2025                                    Edition 2.0.0
+
+<<<PAGE 16>>>
+10                                         Level 2 Interoperability
+
+
+
+B-5.9 Metadata
+There is no Level-specific guidance for this issue. Common guidance is provided in clause 8.9 of the “S-98
+– Main” document.
+
+
+B-5.10 Meta-features
+Any spatial operations on meta-features require an Interoperability Catalogue to implement at least Level 4.
+There is no other Level-specific guidance for meta-features. Common guidance is provided in clause 8.10
+of the “S-98 – Main” document.
+
+
+B-5.11 Quality considerations
+There is no Level-specific guidance for this issue. Common guidance is provided in clause 8.11 of the “S-
+98 – Main” document.
+
+
+B-6 Portrayal
+This clause gives guidelines and instruction to portrayal considerations related to the use of the
+Interoperability Catalogue in an ECDIS. The Interoperability Catalogue must apply to the specific Product
+Specifications listed in the Interoperability Catalogue metadata, interoperabilityCatalogueProducts attribute
+under S100_IC_CatalogueMetadata.
+There may be additional data products present in the S-100 ECDIS that are external to the Interoperability
+Catalogue; in such cases the Interoperability Catalogue should continue to function in presence of products
+not defined in the Catalogue. Data products that are outside of the interoperability scope must be treated in
+Interoperability Level 0 (see clause 9.6 in the “S-98 – Main” document).
+
+
+B-6.1 Display of significant features
+There is no Level-specific guidance for this issue. Common guidance is provided in clause 10.1 of the “S-
+98 – Main” document.
+
+
+B-6.2 Display of significant features - switching to original
+There is no Level-specific guidance for this issue. Common guidance is provided in clause 10.2 of the “S-
+98 – Main” document.
+
+
+B-6.3 Portrayal distinguishability - colour set-asides
+There is no Level-specific guidance for this issue. Common guidance is provided in clause 10.3 of the “S-
+98 – Main” document. See also S-100 Part 16 for specific guidance on colour set-asides.
+
+
+B-6.4 Day/night/dusk modes
+There is no Level-specific guidance for this issue. Common guidance is provided in clause 10.4 of the “S-
+98 – Main” document.
+
+
+
+
+S-98 Part B                                    October 2025                                    Edition 2.0.0
+
+<<<PAGE 17>>>
+                                           Level 2 Interoperability                                       11
+
+
+
+B-6.5 Impacts on viewing groups
+There is no Level-specific guidance for this issue. Common guidance is provided in clause 10.5 of the “S-
+98 – Main” document.
+
+
+B-6.6 Impacts on Portrayal Catalogues
+There is no Level-specific guidance for this issue. Common guidance is provided in clause 10.6 of the “S-
+98 – Main” document.
+
+
+B-6.7 Meta-features
+There is no Level-specific guidance for this issue. Common guidance is provided in clause 10.7 of the “S-
+98 – Main” document.
+
+
+B-6.8 Display of text
+There is no Level-specific guidance for this issue. Common guidance is provided in clause 10.8 of the “S-
+98 – Main” document.
+
+
+B-6.9 Skin-of-the-earth operations and portrayal
+B-6.9.1 Skin-of-the-earth feature replacement and portrayal
+For all Levels, anything that replaces S-101 skin-of-the-earth features, will overwrite it by having a higher
+priority; that is, be drawn later. The major difference between the Levels is in the overwriting.
+Interoperability operations in Level 2 can overwrite skin-of-the-earth features and everything else (by
+interleaving display planes so that upper planes overwrite lower planes). They can also suppress feature
+layers, in which case features over/under the suppressed features will be displayed as determined by their
+display planes and drawing priorities.
+Gridded data will generally go over ENC and obscure ENC features, either all (interoperability Level 0) or
+specific features (interoperability Levels 1 or 2) depending on interoperability Level chosen, the predefined
+combinations or display plane of the features that are interacting.
+EXAMPLE 1: High definition gridded bathymetry replaces (overwrite) depth area and depth contours, but
+soundings, aids to navigation, and obstructions are over the high definition bathymetry (interoperability Level
+1).
+EXAMPLE 2: Surface current gridded data goes over ENC and replaces all surface current features
+(interoperability Level 2).
+NOTE: The safety contour comes from the ENC and is generated by the viewer system. This safety contour
+is an IMO requirement (IMO Performance Standard 5.8 (MSC.232(82))) for ECDIS and should be presented
+with highest priority when turned on by the user. OEMs are permitted to add additional safety contour
+functions; for example, generated from combining high definition gridded bathymetry (S-102) and S-104
+input.
+B-6.9.2 Skin-of-the-earth feature adjusting and portrayal
+This clause covers the possibility of the skin-of-the-earth feature geometry and/or attribute values being
+dynamically adjusted based on the corresponding features in other data layers.
+Changes to the location or extent of symbols displayed on the screen due to a feature in another dataset
+are only possible in interoperability Levels 3 and 4 (Parts C and D).
+
+
+
+S-98 Part B                                    October 2025                                      Edition 2.0.0
+
+<<<PAGE 18>>>
+12                                         Level 2 Interoperability
+
+
+
+B-6.10 Blended portrayals
+There is no Level-specific guidance for this issue. Common guidance is provided in clause 10.10 of the “S-
+98 – Main” document.
+
+
+B-6.11 Hierarchy of data
+As noted in clause 11.11 of the “S-98 – Main” document, hierarchy of data can be controlled by predefined
+combinations. There is no Level-specific guidance for portrayal in connection with this issue.
+B-6.11.1      Interacting gridded information
+There is no Level-specific guidance for portrayal in connection with this issue. Common guidance is provided
+in clause 10.11.1 of the “S-98 – Main” document.
+
+
+B-6.12 Pick Reports
+[NOTE: The Pick Report functionality specification in S-98 is still under development, and the content of this
+section will change as this functionality is defined.]
+
+
+B-7 Processing Model
+Figure B-7.1 below shows the processing steps and input to each step from parts of the Interoperability
+Catalogue, for the “Interoperability before portrayal” processing option. Figure B-7.2 shows the steps and
+inputs for the “Interoperability after portrayal” processing option. In both cases, the flow depends on the
+interoperability Level selected by the Mariner.
+In Level 0 processing, interoperability is turned off and all data products loaded are passed through to S-
+100 Portrayal Processing to be portrayed as overlays to ENC data according to their individual Portrayal
+Catalogues.
+In Level 1 processing, the only interoperability processing is interleaving of feature layers by means of
+display plane information, and Interleave Feature Layers is the only interoperability processing before
+feature data is passed to S-100 Portrayal Processing. The only input from the Interoperability Catalogue is
+display plane and drawing order information from S100_IC_DisplayPlane elements in the Catalogue.
+In Level 2 processing, feature type suppression operations (stage Suppress Feature Types) precede
+interleaving operations.
+Figures B-7.1 and B-7.2 depict two possible implementations, with the input to interoperability processing
+being either feature data or drawing instructions generated from feature data by (part of) portrayal
+processing.
+
+
+
+
+S-98 Part B                                     October 2025                                    Edition 2.0.0
+
+<<<PAGE 19>>>
+                                                Level 2 Interoperability                                        13
+
+
+
+
+              Figure B-7.1 - Interoperability processing flow (portrayal processing after interoperability)
+For implementations that pass drawing instructions instead of features to interoperability processing, the
+flow is similar except that portrayal processing takes place before interoperability processing.
+
+
+
+
+S-98 Part B                                         October 2025                                       Edition 2.0.0
+
+<<<PAGE 20>>>
+14                                          Level 2 Interoperability
+
+
+
+
+Figure B-7.2 - Interoperability processing (drawing instructions generated before interoperability processing)
+
+
+                          Table B-7.1 - Stages in Level 2 interoperability processing
+
+ Stage         Description       Level   IC information                Context information      Remarks
+ Select Load   Select data       All     Level 1: User adds data       Level 1: None            Information &
+ Sets          products to be            products to display           Level 2: User-selected   functionality
+               loaded                    individually                  predefined combination   depends on
+                                         Level 2: Included product                              whether user
+                                         list from S100_IC_                                     selects Level
+                                         PredefinedCombination.                                 1 or 2
+                                         includedProduct
+ Portrayal     Ordinary S-       All     display planes                                         Except final
+ Processing    100 portrayal                                                                    display
+               processing                                                                       processing /
+                                                                                                rendering
+ Interleave    Assign display    1, 2    S100_IC_DisplayPlane
+ Feature       plane and
+ Layers        drawing order
+               to feature
+               data
+ Suppress      Suppress all      2       S100_IC_Suppressed
+ Feature       instances of a            FeatureLayer
+ Types         specified
+               feature type in
+               a product
+ Rendering     Display           All     S100_IC_DisplayPlane
+               processing
+
+
+
+
+S-98 Part B                                     October 2025                                       Edition 2.0.0
+
+<<<PAGE 21>>>
+                                         Level 2 Interoperability                                    15
+
+
+
+
+B-8 Normative Implementation Guidance
+There is no level-specific normative implementation guidance in this Edition of S-98. See clause 17 of the
+“S-98 – Main” document for implementation guidance that applies to all Levels.
+
+
+B-9 Feature Catalogue
+Level 2 does not define Feature Catalogues.
+
+
+B-10 Portrayal Catalogue
+Level 2 does not define Portrayal Catalogues.
+
+
+
+
+S-98 Part B                                     October 2025                                Edition 2.0.0
+
+<<<PAGE 22>>>
+16                Level 2 Interoperability
+
+
+
+
+              Page intentionally left blank
+
+
+
+
+S-98 Part B           October 2025            Edition 2.0.0

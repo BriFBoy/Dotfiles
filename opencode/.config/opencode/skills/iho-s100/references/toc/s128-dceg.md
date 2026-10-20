@@ -1,0 +1,73 @@
+# S-128 Annex A Data Classification and Encoding Guide — Edition 2.0.0
+
+PDF pages: 66. Page numbers below are PDF pages; open with `scripts/s100.py page s128-dceg <n>`.
+
+## Detected clause headings, tables and figures
+
+- p.7 `1` Overview
+- p.7 `1.1` Preface
+- p.7 `1.2` S-128 Annex A - Data Classification and Encoding Guide - Metadata
+- p.7 `1.3` Terms, definitions and abbreviations
+- p.7 `1.3.1` Terms and definitions
+- p.8 `1.3.2` Abbreviations
+- p.9 `1.4` Use of language
+- p.9 `1.5` Maintenance
+- p.9 `2` General
+- p.9 `2.1` Feature types
+- p.9 `2.2` Geometric primitives
+- p.11 `2.4.3` Mandatory and conditional attributes
+- p.11 `2.4.4` Missing attribute values
+- p.12 `2.4.5` Textual information
+- p.13 `3` Geo Features
+- p.13 `3.1` Catalogue element
+- p.13 `S-128` Geo Feature: CatalogueElement
+- p.17 `3.2` Navigational product
+- p.17 `S-128` Geo Feature: NavigationalProduct
+- p.17 `S-128` Attribute
+- p.20 `3.3` Electronic product
+- p.20 `S-128` Geo Feature: ElectronicProduct
+- p.21 `3.4` Physical product
+- p.21 `S-128` Geo Feature: PhysicalProduct
+- p.22 `3.5` S100 service
+- p.22 `S-128` Geo Feature: S100Service
+- p.23 `S-128` Information Type: CatalogueSectionHeader
+- p.24 `S-128` Information Type: ContactDetails
+- p.26 `4.3` Indication of carriage requirement
+- p.26 `S-128` Information Type: IndicationOfCarriageRequirement
+- p.27 `S-128` Information Type: PriceInformation
+- p.29 `4.5` Producer information
+- p.29 `S-128` Information Type: ProducerInformation
+- p.30 `4.6` Distributor information
+- p.30 `S-128` Geo Feature: DistributorInformation
+- p.31 `5` Association Names
+- p.31 `5.1` Carriage requirement
+- p.31 `5.2` Distribution details
+- p.31 `5.3` Distributor contact
+- p.31 `5.4` Product mapping
+- p.32 `5.5` Price of element
+- p.32 `5.6` Price of nautical product
+- p.32 `5.7` Producer contact
+- p.32 `5.8` Production details
+- p.33 `5.9` Product package
+- p.33 `5.10` Correlated
+- p.34 `6` Association Roles
+- p.34 `6.1` Catalogue header
+- p.34 `6.2` Element container
+- p.34 `6.3` The catalogue element
+- p.34 `6.4` The catalogue of nautical product
+- p.34 `6.5` The contact details
+- p.34 `6.6` The distributor
+- p.34 `6.7` The element
+- p.34 `6.8` The price information
+- p.34 `6.9` The producer
+- p.34 `6.10` The reference
+- p.35 `6.11` The requirement
+- p.35 `6.12` The source
+- p.35 `6.13` The main
+- p.35 `6.14` The panel
+- p.36 `7` Attribute and Enumerate Descriptions
+- p.44 `7.39` IMO maritime service
+- p.45 `7.41` ISBN
+- p.45 `7.42` ISO 216
+- p.46 `7.43` ISSN
+- p.61 `8` Complex Attributes

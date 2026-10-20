@@ -1,0 +1,49 @@
+{
+  "skill_name": "iho-s100",
+  "evals": [
+    {
+      "id": 1,
+      "name": "exchange-set-rules-s124",
+      "prompt": "I'm building an S-124 exchange set exporter. According to S-100 5.2.1 and S-124 2.0.0, what's the required folder structure of an exchange set, how should fileName in CATALOG.XML reference the dataset files, and what's the dataset file naming convention for S-124? Cite clauses.",
+      "expected_output": "Part 17 17-4.2 folder rules (S100_ROOT, CATALOG.XML+CATALOG.SIGN, S-124/DATASET_FILES ...), fileName is a file URI per Part 1 1-4.6 with Table 17-1 example, unique base names, S-124 9.7 naming; cites with pages",
+      "files": [],
+      "assertions": [
+        "States all content sits under a single top-level S100_ROOT folder with CATALOG.XML and CATALOG.SIGN in it (S-100 Part 17, 17-4.2)",
+        "Describes a per-product S-124 subfolder containing DATASET_FILES (and mentions SUPPORT_FILES and/or CATALOGUES)",
+        "Explains fileName is a URI (file:/...) per S-100 Part 1 clause 1-4.6 and/or Part 17 Table 17-1",
+        "States base dataset filenames must be unique (17-4.3)",
+        "Correctly says S-124 9.7 defers to S-100 Part 17 17-4.3 and gives the XXXYYYY + unique code + extension pattern (124 + 4-char producer code)",
+        "Cites S-100 Ed 5.2.1 clause numbers and gives page numbers for at least the key claims"
+      ]
+    },
+    {
+      "id": 2,
+      "name": "validate-danish-nw-exchange-set",
+      "prompt": "Can you validate the exchange set in testdata/danish-nw-examples (2)/danish-nw-examples/exchange-sets/DK-NW-011-26 (under ~/Documents/S-100)? I want to know if it's conformant with S-124 2.0.0 / S-100 5.2. List any problems with the relevant S-158 check IDs where they exist. Write the report to report.md.",
+      "expected_output": "Structural inspection of CATALOG.XML and the GML, correct handling of bare file:/ fileName, ids/xlinks, metadata, findings linked to S-158 checks with classification, clear separation verified vs judgement",
+      "files": [],
+      "assertions": [
+        "Inspected both CATALOG.XML and the GML dataset (parsed contents, not just listed files)",
+        "Does not report the bare 'file:/124DK00DKNW01126.GML' fileName as an error, or explicitly notes Part 17 Table 17-1 permits it",
+        "Reports the dataset identification metadata (e.g. productIdentifier S-124, productEdition 2.0.0, encodingSpecification S-100 Part 10b)",
+        "Cites at least two specific S-158 check IDs (e.g. 100_xxxx) with their classification for findings or checks performed",
+        "Clearly states what was not verified (e.g. XSD validation against online schemas, signature verification)"
+      ]
+    },
+    {
+      "id": 3,
+      "name": "s111-hdf5-mandatory-metadata",
+      "prompt": "What root-group metadata attributes are mandatory in an S-111 2.0.0 HDF5 file, and which S-158 checks test them? Then check whether 111GB00_20260511T001500Z_GB3DEVK0_dcf2.h5 in ~/Documents/S-100/testdata/UKHO_S100_Trial_datasets/S-111/S-111_GB_May26/S100_ROOT/S-111/DATASET_FILES has all of them. Put the answer in answer.md.",
+      "expected_output": "Table of mandatory root attributes from S-111 Table 12.1 (and S-100 10c), check IDs 111_1002/1003 etc., actual comparison against the file",
+      "files": [],
+      "assertions": [
+        "Lists the mandatory root attributes productSpecification, issueDate, horizontalCRS, the four bounding-box attributes, depthTypeIndex, surfaceCurrentDepth, issueTime and verticalCoordinateBase",
+        "Identifies verticalCS, verticalDatumReference and verticalDatum as mandatory when depthTypeIndex = 1 (conditional)",
+        "Cites S-111 Table 12-1 (General metadata) and/or S-100 Table 10c-6",
+        "Names S-158 check 111_1002 as the check for missing/wrong-type mandatory metadata",
+        "Concludes the sample file contains all mandatory attributes (it does)",
+        "Checks or reports the HDF5 data types of the attributes (e.g. Float32 bounds, enumeration types)"
+      ]
+    }
+  ]
+}

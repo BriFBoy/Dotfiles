@@ -66,3 +66,4 @@ fish_add_path /home/brian/.spicetify
 
 # Added by get-aspire-cli.sh
 fish_add_path $HOME/.aspire/bin
+/home/brian/.local/bin/mise activate fish | source
