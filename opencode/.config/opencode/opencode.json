@@ -15,7 +15,8 @@
       "name": "llama serve (local)",
       "package": "aisdk:@ai-sdk/openai-compatible",
       "settings": {
-        "baseURL": "http://127.0.0.1:8090/v1"
+        "baseURL": "http://127.0.0.1:8090/v1",
+        "apiKey": "{env:LLAMA_API_KEY}"
       },
       "models": {
         "unsloth/Qwen3.8-27B-GGUF:UD-IQ3_XXS": {
