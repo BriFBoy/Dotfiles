@@ -42,7 +42,8 @@ lua/
 │   ├── lint.lua         -- nvim-lint + linters registry
 │   ├── keymaps.lua      -- global keymaps (leader = SPACE, localleader = \)
 │   ├── git.lua          -- gitsigns.nvim
-│   ├── ui.lua           -- lualine, web-devicons, autopairs, tree-sitter-manager
+│   ├── ui.lua           -- lualine, web-devicons, tree-sitter-manager
+│   ├── editing.lua      -- nvim-autopairs + nvim-ts-autotag (tag auto-close/rename)
 │   └── dap.lua          -- nvim-dap + dap-ui + mason-nvim-dap + DAP registry + target helpers
 └── lang/
     └── <name>.lua       -- per-language driver
@@ -59,7 +60,7 @@ A `lua/lang/<name>.lua` file, in order:
 4. `vim.lsp.config("<name>", {...})` then `vim.lsp.enable("<name>")`.
 5. Optionally `require("core.dap").register("<ft>", { mason=, name=, adapter=, configurations= })`.
 
-See `lua/lang/c.lua` (minimal) and `lua/lang/csharp.lua` (full, with a DAP
+See `lua/lang/docker.lua` (minimal) and `lua/lang/csharp.lua` (full, with a DAP
 adapter).
 
 ### Registries
@@ -76,6 +77,13 @@ Read `core/dap.lua` before writing a DAP driver — its annotations and comments
 document the `register()` API, adapter keying, and the target-discovery
 helpers (`pick`, `offer_build`, the `ABORT` convention). `lang/csharp.lua` and
 `lang/rust.lua` are complete examples.
+
+### Exception: Java
+
+nvim-jdtls requires a per-buffer `start_or_attach`, so `lang/java.lua`
+registers its own `FileType` autocmd (named augroup) and does **not** use
+`vim.lsp.enable` or `core.dap.register` — nvim-jdtls registers the DAP adapter
+itself on attach (java-debug/java-test bundles).
 
 ## Conventions
 

@@ -10,7 +10,9 @@ local M = {}
 ---@param filetype string
 ---@param formatters string|string[]  conform formatter name(s)
 function M.register(filetype, formatters)
-	if type(formatters) == "string" then formatters = { formatters } end
+	if type(formatters) == "string" then
+		formatters = { formatters }
+	end
 	conform.formatters_by_ft[filetype] = formatters
 end
 
@@ -20,14 +22,14 @@ local timeouts = {}
 --- Override the format-on-save timeout for a filetype.
 ---@param filetype string
 ---@param ms integer
-function M.timeout(filetype, ms) timeouts[filetype] = ms end
+function M.timeout(filetype, ms)
+	timeouts[filetype] = ms
+end
 
+-- Function form so per-filetype timeouts are read at save time.
 conform.setup({
 	format_on_save = function(bufnr)
-		return {
-			timeout_ms = timeouts[vim.bo[bufnr].filetype] or 500,
-			lsp_format = "fallback",
-		}
+		return { timeout_ms = timeouts[vim.bo[bufnr].filetype] or 500, lsp_format = "fallback" }
 	end,
 })
 

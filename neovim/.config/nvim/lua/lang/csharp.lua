@@ -1,3 +1,5 @@
+-- C#: roslyn.nvim (LSP) + csharpier + netcoredbg.
+
 local mason = require("core.mason")
 local dap = require("core.dap")
 local ABORT = require("dap").ABORT
@@ -6,6 +8,7 @@ mason.ensure("roslyn-language-server")
 mason.ensure("csharpier")
 
 local format = require("core.format")
+
 format.register("cs", "csharpier")
 -- csharpier is a fresh .NET process per save (~0.5s in a real project before
 -- JIT warm-up), which regularly blew through the default 500ms timeout
@@ -31,8 +34,6 @@ vim.lsp.config("roslyn", {
 	},
 })
 
--- DAP: debug the project open in the current directory.
-
 --- .csproj files in the cwd, or all of them below it (excluding build dirs).
 local function project_candidates()
 	local cwd = vim.fn.getcwd()
@@ -40,7 +41,9 @@ local function project_candidates()
 
 	if #candidates == 0 then
 		for _, p in ipairs(vim.fn.glob(cwd .. "/**/*.csproj", false, true)) do
-			if not p:find("/obj/") and not p:find("/bin/") then candidates[#candidates + 1] = p end
+			if not p:find("/obj/") and not p:find("/bin/") then
+				candidates[#candidates + 1] = p
+			end
 		end
 	end
 
@@ -52,7 +55,9 @@ end
 local function assembly_name(proj)
 	local src = table.concat(vim.fn.readfile(proj), "\n")
 	local name = src:match("<AssemblyName>([^<]+)</AssemblyName>")
-	if name and name ~= "" then return name end
+	if name and name ~= "" then
+		return name
+	end
 	return vim.fn.fnamemodify(proj, ":t:r")
 end
 
@@ -63,7 +68,9 @@ local function latest_dll(proj)
 
 	table.sort(matches, function(a, b)
 		local da, db = a:find("/Debug/") ~= nil, b:find("/Debug/") ~= nil
-		if da ~= db then return da end
+		if da ~= db then
+			return da
+		end
 		return dap.mtime(a) > dap.mtime(b)
 	end)
 
@@ -72,15 +79,14 @@ end
 
 --- Latest dll of a project, offering a `dotnet build` if there is none.
 local function resolve_dll(proj)
-	local dll = latest_dll(proj)
-	if not dll then
-		dll = dap.offer_build(
+	return latest_dll(proj)
+		or dap.offer_build(
 			"No built output for " .. vim.fn.fnamemodify(proj, ":t") .. ".\nRun 'dotnet build' now?",
 			{ "dotnet", "build", proj },
-			function() return latest_dll(proj) end
+			function()
+				return latest_dll(proj)
+			end
 		)
-	end
-	return dll
 end
 
 --- Project to debug (asked if ambiguous) and the dll to launch (confirmed or overridden).
@@ -89,15 +95,19 @@ local function resolve_program()
 
 	if #candidates == 0 then
 		vim.notify("no .csproj found under " .. vim.fn.getcwd(), vim.log.levels.WARN)
-		return nil
+		return ABORT
 	end
-	local proj = dap.pick(candidates, "Debug project: ", function(p) return vim.fn.fnamemodify(p, ":.") end)
-	if not proj then return nil end
+	local proj = dap.pick(candidates, "Debug project: ", function(p)
+		return vim.fn.fnamemodify(p, ":.")
+	end)
+	if not proj then
+		return ABORT
+	end
 
 	local dll = resolve_dll(proj)
 	if not dll then
 		vim.notify("no built dll found for " .. proj .. "; run 'dotnet build' first", vim.log.levels.WARN)
-		return nil
+		return ABORT
 	end
 
 	return vim.fn.input("Path to dll: ", dll, "file")
@@ -107,11 +117,19 @@ end
 --- `dotnet exec <Service>.dll`; the label is that dll's name when present.
 local function dotnet_processes()
 	local procs = {}
-	for _, line in ipairs(vim.fn.system({ "pgrep", "-a", "dotnet" })) do
+	local lines = vim.fn.systemlist({ "pgrep", "-a", "dotnet" })
+	-- exit 1 = no matches; anything else non-zero is a real failure
+	if vim.v.shell_error ~= 0 then
+		return procs
+	end
+	for _, line in ipairs(lines) do
 		local pid, args = line:match("^(%d+)%s+(.*)$")
 		if pid then
 			local dll = args:match("([%w_%.%-]+%.dll)")
-			local label = (dll and vim.fn.fnamemodify(dll, ":t") or vim.fn.split(args, " ")[1]) .. " (pid " .. pid .. ")"
+			local label = (dll and vim.fn.fnamemodify(dll, ":t") or vim.fn.split(args, " ")[1])
+				.. " (pid "
+				.. pid
+				.. ")"
 			procs[#procs + 1] = { pid = tonumber(pid), label = label }
 		end
 	end
@@ -150,7 +168,7 @@ dap.register("cs", {
 			name = "Launch .NET",
 			request = "launch",
 			program = resolve_program,
-			cwd = vim.fn.getcwd(),
+			cwd = "${workspaceFolder}",
 			stopOnEntry = false,
 		},
 		{

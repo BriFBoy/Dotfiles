@@ -9,12 +9,17 @@ local M = {}
 ---@param filetype string
 ---@param linters string|string[]  nvim-lint linter name(s)
 function M.register(filetype, linters)
-	if type(linters) == "string" then linters = { linters } end
+	if type(linters) == "string" then
+		linters = { linters }
+	end
 	lint.linters_by_ft[filetype] = linters
 end
 
-vim.api.nvim_create_autocmd("BufWritePost", {
-	callback = function() lint.try_lint() end,
+vim.api.nvim_create_autocmd({ "BufWritePost", "InsertLeave" }, {
+	group = vim.api.nvim_create_augroup("core_lint", { clear = true }),
+	callback = function()
+		lint.try_lint()
+	end,
 })
 
 return M

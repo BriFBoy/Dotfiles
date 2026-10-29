@@ -35,6 +35,7 @@ vim.pack.add({
 	"https://github.com/rcarriga/nvim-dap-ui",
 	"https://github.com/nvim-neotest/nvim-nio", -- dap-ui's own dependency
 	"https://github.com/jay-babu/mason-nvim-dap.nvim",
+	"https://github.com/theHamsta/nvim-dap-virtual-text",
 
 	-- Cosmetics / dependencies
 	"https://github.com/nvim-tree/nvim-web-devicons",
@@ -46,4 +47,6 @@ vim.pack.add({
 	-- per-language LSP plugins
 	"https://github.com/mrcjkb/rustaceanvim",
 	"https://github.com/seblyng/roslyn.nvim",
+	"https://github.com/JavaHello/spring-boot.nvim",
+	"https://github.com/mfussenegger/nvim-jdtls",
 })
