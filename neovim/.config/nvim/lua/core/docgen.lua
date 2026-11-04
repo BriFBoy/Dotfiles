@@ -9,6 +9,10 @@ local languages = {}
 
 local function apply() neogen.setup({ snippet_engine = "luasnip", languages = languages }) end
 
+--- Template item names (Parameter, Return, Throw, ...) for custom templates,
+--- so drivers don't require neogen modules directly.
+M.item = require("neogen.types.template").item
+
 --- Set the doc-comment style for a filetype.
 ---@param filetype string
 ---@param spec string|table  neogen annotation_convention (e.g. "xmldoc"), or a

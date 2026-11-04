@@ -8,6 +8,10 @@ mason.ensure("rust-analyzer")
 
 require("core.format").register("rust", "rustfmt")
 
+-- Doc comments: rustdoc `///` summary. Section checks (# Errors, # Panics,
+-- # Safety) are left to clippy's doc lints.
+require("core.docgen").register("rust", "rustdoc")
+
 --- Executables built directly under target/debug (skips directories and artifacts), newest first.
 local function debug_binaries()
 	local dir = vim.fn.getcwd() .. "/target/debug"

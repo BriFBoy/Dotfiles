@@ -9,6 +9,29 @@ mason.ensure("java-debug-adapter")
 mason.ensure("java-test")
 mason.ensure("vscode-spring-boot-tools")
 
+-- Doc comments: Javadoc. neogen's stock template also emits `@property` for
+-- class fields, which isn't a Javadoc tag, so this keeps only the standard
+-- block tags in the order Oracle's style guide uses (@param, @return, @throws).
+local docgen = require("core.docgen")
+local i = docgen.item
+docgen.register("java", {
+	template = {
+		annotation_convention = "javadoc",
+		javadoc = {
+			{ nil, "/**", { no_results = true, type = { "class", "func", "type" } } },
+			{ nil, " * $1", { no_results = true, type = { "class", "func", "type" } } },
+			{ nil, " */", { no_results = true, type = { "class", "func", "type" } } },
+			{ nil, "/**", { type = { "class", "func", "type" } } },
+			{ nil, " * $1", { type = { "class", "func", "type" } } },
+			{ nil, " *", { type = { "func" } } },
+			{ i.Parameter, " * @param %s $1", { type = { "func" } } },
+			{ i.Return, " * @return $1", { type = { "func" } } },
+			{ i.Throw, " * @throws %s $1", { type = { "func" } } },
+			{ nil, " */", { type = { "class", "func", "type" } } },
+		},
+	},
+})
+
 -- Spring Boot LS (beans, endpoints, properties completion). Must run before
 -- jdtls starts: its classpath-handshake handlers have to be in place before
 -- jdtls imports a Spring Boot project.

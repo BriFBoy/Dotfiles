@@ -15,8 +15,9 @@ format.register("cs", "csharpier")
 format.timeout("cs", 2000)
 
 -- Doc comments: summary, one <param> per parameter, and <returns>.
-local i = require("neogen.types.template").item
-require("core.docgen").register("cs", {
+local docgen = require("core.docgen")
+local i = docgen.item
+docgen.register("cs", {
 	template = {
 		annotation_convention = "xmldoc_basic",
 		xmldoc_basic = {
