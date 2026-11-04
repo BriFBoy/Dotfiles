@@ -44,6 +44,7 @@ lua/
 │   ├── git.lua          -- gitsigns.nvim
 │   ├── ui.lua           -- lualine, web-devicons, tree-sitter-manager
 │   ├── editing.lua      -- nvim-autopairs + nvim-ts-autotag (tag auto-close/rename)
+│   ├── docgen.lua       -- neogen doc-comment generation + convention registry
 │   └── dap.lua          -- nvim-dap + dap-ui + mason-nvim-dap + DAP registry + target helpers
 └── lang/
     └── <name>.lua       -- per-language driver
@@ -57,6 +58,9 @@ A `lua/lang/<name>.lua` file, in order:
    installs the Mason package if missing; safe to call every load.
 2. `require("core.format").register("<ft>", "<formatter>")` — conform registry.
 3. `require("core.lint").register("<ft>", "<linter>")` — nvim-lint registry.
+   Optionally `require("core.docgen").register("<ft>", "<convention>")` —
+   neogen doc-comment style (never call `neogen.setup()` from a driver; it
+   resets every other language's setting).
 4. `vim.lsp.config("<name>", {...})` then `vim.lsp.enable("<name>")`.
 5. Optionally `require("core.dap").register("<ft>", { mason=, name=, adapter=, configurations= })`.
 

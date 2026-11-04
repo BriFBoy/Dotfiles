@@ -29,6 +29,7 @@ vim.pack.add({
 	-- editing
 	"https://github.com/windwp/nvim-autopairs",
 	"https://github.com/windwp/nvim-ts-autotag",
+	"https://github.com/danymat/neogen",
 
 	-- debugging
 	"https://github.com/mfussenegger/nvim-dap",

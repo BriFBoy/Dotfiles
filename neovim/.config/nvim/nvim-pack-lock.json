@@ -40,9 +40,17 @@
       "rev": "2a6940af80375532e5e9e7c1f2fc6319a1b7a69d",
       "src": "git@github.com:mason-org/mason.nvim"
     },
+    "neogen": {
+      "rev": "23e7e9f883d01289ebd90e98025acc860ea26366",
+      "src": "https://github.com/danymat/neogen"
+    },
     "neopywal.nvim": {
       "rev": "95425eea6411eebc17c2fcdc46d1c45e57d99205",
       "src": "git@github.com:RedsXDD/neopywal.nvim"
+    },
+    "nui.nvim": {
+      "rev": "10fc361835c856ba4233ef5ea135b919bf3dce97",
+      "src": "git@github.com:MunifTanjim/nui.nvim"
     },
     "nvim-autopairs": {
       "rev": "430522f95fe4fb7c511ec64f8c1a90cc6a66c05c",
@@ -59,6 +67,10 @@
     "nvim-dap-virtual-text": {
       "rev": "fbdb48c2ed45f4a8293d0d483f7730d24467ccb6",
       "src": "https://github.com/theHamsta/nvim-dap-virtual-text"
+    },
+    "nvim-java": {
+      "rev": "9e8b842ea9eff3ebf25fb7360908ed4d4f87c56a",
+      "src": "git@github.com:nvim-java/nvim-java"
     },
     "nvim-jdtls": {
       "rev": "6e9d953f0b82bccdb834cfde0e893f3119c22592",
@@ -100,9 +112,17 @@
       "rev": "8e5a9c3eaff437b3f987b9abd9403dfed324529d",
       "src": "git@github.com:mrcjkb/rustaceanvim"
     },
+    "snacks": {
+      "rev": "882c996cf28183f4d63640de0b4c02ec886d01f2",
+      "src": "git@github.com:folke/snacks.nvim"
+    },
     "spring-boot.nvim": {
       "rev": "eea95b752bceb6ca410b3e2d87a1a02d08bd61a6",
       "src": "git@github.com:JavaHello/spring-boot.nvim"
+    },
+    "tree-sitter-manager": {
+      "rev": "023590c8f068788a0513a4409bf37ff7f9d1deff",
+      "src": "git@github.com:romus204/tree-sitter-manager.nvim"
     },
     "tree-sitter-manager.nvim": {
       "rev": "023590c8f068788a0513a4409bf37ff7f9d1deff",

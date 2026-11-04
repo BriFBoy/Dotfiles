@@ -14,6 +14,24 @@ format.register("cs", "csharpier")
 -- JIT warm-up), which regularly blew through the default 500ms timeout
 format.timeout("cs", 2000)
 
+-- Doc comments: summary, one <param> per parameter, and <returns>.
+local i = require("neogen.types.template").item
+require("core.docgen").register("cs", {
+	template = {
+		annotation_convention = "xmldoc_basic",
+		xmldoc_basic = {
+			{ nil, "/// <summary>", { no_results = true } },
+			{ nil, "/// $1", { no_results = true } },
+			{ nil, "/// </summary>", { no_results = true } },
+			{ nil, "/// <summary>", {} },
+			{ nil, "/// $1", {} },
+			{ nil, "/// </summary>", {} },
+			{ i.Parameter, '/// <param name="%s">$1</param>', { type = { "func" } } },
+			{ i.Return, "/// <returns>$1</returns>", { type = { "func" } } },
+		},
+	},
+})
+
 -- skip conform's `dotnet csharpier --version` probe for a local tool; the
 -- mason binary is always the one we want
 require("conform").formatters.csharpier = { command = "csharpier", args = { "format", "--stdin-path", "$FILENAME" } }
