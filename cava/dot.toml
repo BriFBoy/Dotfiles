@@ -1,0 +1,4 @@
+exclude = ["dot.toml", "fedora.sh"]
+
+[fedora]
+script = "fedora.sh"

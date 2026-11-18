@@ -9,20 +9,41 @@ control is the user's job: make and verify the changes, then report them.
 
 ## What this is
 
-Personal dotfiles for an **Arch Linux + Hyprland** setup. Each top-level
-directory is a [stow](https://www.gnu.org/software/stow/) package that mirrors
-the home directory — e.g. `hyprland/.config/hypr/hyprland.lua` symlinks to
-`~/.config/hypr/hyprland.lua`, and `bash/.bashrc` to `~/.bashrc`.
+Personal dotfiles for a **Fedora + Hyprland** setup. Each top-level directory
+is a package that mirrors the home directory — e.g.
+`hyprland/.config/hypr/hyprland.lua` symlinks to `~/.config/hypr/hyprland.lua`,
+and `bash/.bashrc` to `~/.bashrc`. Packages are managed with
+[doty](https://github.com/BriFBoy/doty); the layout stays
+[stow](https://www.gnu.org/software/stow/)-compatible.
 
 ## Layout conventions
 
 - **One directory per app**, named after it (`ghostty/`, `rofi/`, `tmux/`, ...).
 - **Replicate the target path**: configs go in `.config/<app>/`, dotfiles
   (`.bashrc`, `.tmux.conf`, `.gitconfig`) go at the package root.
-- **New app**: create the package directory, then add it to the `stow` commands
-  in `install.sh`.
-- **`Scripts/`** (capital S) holds helper scripts, outside the stow structure.
+- **New app**: create the package directory, then add a `dot.toml` and a
+  `fedora.sh` stub (copy an existing package's). Add it to a `[bundles]` group
+  in `doty.toml` if it belongs to one.
+- **`Scripts/`** (capital S) holds helper scripts, outside the package structure.
 - **`doc/`** holds README screenshots.
+
+## doty setup
+
+Each package carries a `dot.toml` + a `fedora.sh` hook; `doty.toml` at the repo
+root configures the project. Run doty from the repo root.
+
+- **`dot.toml`** (per package): `exclude` lists the top-level paths `doty link`
+  must skip — always `dot.toml` + the hook script, so they aren't symlinked into
+  `$HOME`. A per-OS table (e.g. `[fedora]`) maps an OS ID (the `ID` from
+  `/etc/os-release`) to that OS's hook script.
+- **`fedora.sh`** (per package): the OS hook, which doty runs as `fedora.sh
+  install` / `fedora.sh uninstall`. **Rule: a hook only sets up its own package
+  and must be idempotent** (safe to re-run). Stubs are no-ops for now.
+- **`doty.toml`** (root): `[packages] conflict = "backup"` plus (later)
+  `[bundles]` — named groups for `doty bundle install <name>`.
+
+`doty link <pkg>` symlinks a package; `doty install <pkg>` runs its hook.
+`stow <pkg>` still works on the same layout.
 
 ## Hyprland config
 
@@ -75,7 +96,7 @@ unthemed instead of erroring.
 
 ```bash
 stylua --check .                  # Lua formatting (needs stylua)
-bash -n install.sh Scripts/*.sh   # shell syntax
+bash -n Scripts/*.sh */fedora.sh  # shell syntax
 nvim --headless -c 'qa'           # catches neovim config errors
 ```
 
@@ -86,8 +107,10 @@ nvim --headless -c 'qa'           # catches neovim config errors
 
 ## Gotchas
 
-- **`install.sh` is destructive** — it deletes existing dotfiles
-  (`rm -rf ~/.bashrc`) and only works on a clean Arch install (assumes yay).
+- **doty `link` is non-destructive** — with `conflict = "backup"` a clashing
+  real file is moved to `name.bak` before symlinking. `stow` has no such
+  exclude, so it will also symlink each package's `dot.toml`/`fedora.sh` into
+  `$HOME` (harmless).
 - **`dunst/.config/dunst/dunstrc`** and cava shaders/themes are gitignored
   generated artifacts — don't commit them.
 - **Personal repo** — keep changes aligned with the existing structure rather
