@@ -38,7 +38,10 @@ root configures the project. Run doty from the repo root.
   `/etc/os-release`) to that OS's hook script.
 - **`fedora.sh`** (per package): the OS hook, which doty runs as `fedora.sh
   install` / `fedora.sh uninstall`. **Rule: a hook only sets up its own package
-  and must be idempotent** (safe to re-run). Stubs are no-ops for now.
+  and must be idempotent** (safe to re-run). Hooks install the app with the
+  distro's package manager (repo specifics live in the hook itself) or the
+  official installer script (mise, opencode); `uninstall` reverses that, except
+  core packages (bash/git/tmux) which are left installed.
 - **`doty.toml`** (root): `[packages] conflict = "backup"` plus (later)
   `[bundles]` — named groups for `doty bundle install <name>`.
 

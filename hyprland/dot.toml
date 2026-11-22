@@ -1,4 +1,5 @@
 exclude = ["dot.toml", "fedora.sh"]
+depends_on = ["pywal"]
 
 [fedora]
 script = "fedora.sh"

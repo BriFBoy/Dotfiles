@@ -1,10 +1,15 @@
-#!/usr/bin/env bash
-# mise: Fedora install/uninstall hook (stub).
-# doty runs this as: fedora.sh install | fedora.sh uninstall
-# Keep it idempotent and scoped to this package only.
-set -euo pipefail
-case "${1:-install}" in
-  install)   : ;;
-  uninstall) : ;;
-  *) echo "usage: $0 {install|uninstall}" >&2; exit 1 ;;
-esac
+#!/bin/sh
+install() {
+  curl -fsSL mise.run | sh
+}
+
+uninstall() {
+  rm -f "${HOME}/.local/bin/mise"
+  rm -rf "${HOME}/.local/share/mise"
+}
+
+if [ "$1" = "install" ]; then
+  install
+elif [ "$1" = "uninstall" ]; then
+  uninstall
+fi

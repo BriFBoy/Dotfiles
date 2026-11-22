@@ -8,6 +8,22 @@ conflict = "backup"
 # `fallback` is left at the default ("once"); it only matters if the OS ID
 # doesn't match a [os] table, and ID=fedora matches [fedora] directly.
 
-# [bundles]
+[bundles]
 # Named groups of packages for `doty bundle install <name>`.
-# TODO: define bundles (base / dev / …) — parked for a later decision.
+hyprland = [
+  "hyprland",
+  "noctalia",
+  "ghostty",
+  "bash",
+  "fish",
+  "starship",
+  "yazi",
+  "fastfetch",
+]
+dev = [
+  "git",
+  "neovim",
+  "tmux",
+  "mise",
+  "opencode",
+]
