@@ -173,20 +173,11 @@ builtin_ids = [
 community_ids = ["pywalfox"]
 
 [wallpaper]
-directory = "/home/brian/Pictures/Wallpapers"
+directory = "~/Pictures/Wallpapers"
 fill_mode = "crop"
 
 [wallpaper.default]
-path = "/home/brian/Pictures/Wallpapers/city.jpg"
-
-[wallpaper.last]
-path = "/home/brian/Pictures/Wallpapers/city.jpg"
-
-[wallpaper.monitors.DP-1]
-path = "/home/brian/Pictures/Wallpapers/city.jpg"
-
-[wallpaper.monitors.HDMI-A-1]
-path = "/home/brian/Pictures/Wallpapers/city.jpg"
+path = "~/.dotfiles/default_wallpaper.jpg"
 
 [widget.clock]
 capsule = true

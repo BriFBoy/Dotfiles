@@ -1,6 +1,7 @@
 #!/bin/sh
 install() {
   sudo dnf -y install noctalia
+  mkdir -p ~/Pictures/Wallpapers
 }
 
 uninstall() {
